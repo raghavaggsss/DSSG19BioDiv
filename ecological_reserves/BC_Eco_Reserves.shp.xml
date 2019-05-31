@@ -1,0 +1,193 @@
+<metadata>
+	<eainfo>
+		<detailed>
+			<attr>
+				<attrlabl>ADMIN_AREA</attrlabl>
+				<attalias>ADMIN_AREA</attalias>
+				<attrdef>ADMIN_AREA</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>FEATURE_AR</attrlabl>
+				<attalias>FEATURE_AR</attalias>
+				<attrdef>FEATURE_AR</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>FEATURE_CO</attrlabl>
+				<attalias>FEATURE_CO</attalias>
+				<attrdef>FEATURE_CO</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>FEATURE_LE</attrlabl>
+				<attalias>FEATURE_LE</attalias>
+				<attrdef>FEATURE_LE</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>FID</attrlabl>
+				<attalias>FID</attalias>
+				<attrdef>FID</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>OBJECTID</attrlabl>
+				<attalias>OBJECTID</attalias>
+				<attrdef>OBJECTID</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>OBJECTID_1</attrlabl>
+				<attalias>OBJECTID_1</attalias>
+				<attrdef>OBJECTID_1</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ORCS_PRIMA</attrlabl>
+				<attalias>ORCS_PRIMA</attalias>
+				<attrdef>ORCS_PRIMA</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ORCS_SECON</attrlabl>
+				<attalias>ORCS_SECON</attalias>
+				<attrdef>ORCS_SECON</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>PARK_CLASS</attrlabl>
+				<attalias>PARK_CLASS</attalias>
+				<attrdef>PARK_CLASS</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>PROTECTED1</attrlabl>
+				<attalias>PROTECTED1</attalias>
+				<attrdef>PROTECTED1</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>PROTECTED_</attrlabl>
+				<attalias>PROTECTED_</attalias>
+				<attrdef>PROTECTED_</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>PROTECTE_1</attrlabl>
+				<attalias>PROTECTE_1</attalias>
+				<attrdef>PROTECTE_1</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>SE_ANNO_CA</attrlabl>
+				<attalias>SE_ANNO_CA</attalias>
+				<attrdef>SE_ANNO_CA</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>Shape</attrlabl>
+				<attalias>Shape</attalias>
+				<attrdef>Shape</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>SHAPE_Area</attrlabl>
+				<attalias>SHAPE_Area</attalias>
+				<attrdef>SHAPE_Area</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>SHAPE_Leng</attrlabl>
+				<attalias>SHAPE_Leng</attalias>
+				<attrdef>SHAPE_Leng</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>SURVEYOR_G</attrlabl>
+				<attalias>SURVEYOR_G</attalias>
+				<attrdef>SURVEYOR_G</attrdef>
+			</attr>
+		</detailed>
+	</eainfo>
+	<dataqual>
+		<lineage>
+			<procstep>
+				<procdesc>Consolidated Data Basin Info: </procdesc>
+			</procstep>
+		</lineage>
+	</dataqual>
+	<idinfo>
+		<descript>
+			<abstract>Ecological Reserves throughout British Columbia</abstract>
+		</descript>
+		<useconst>This work is licensed under a  Creative Commons Attribution 3.0 License.</useconst>
+		<keywords>
+			<theme>
+				<themekey>ecological reserves,british columbia</themekey>
+			</theme>
+		</keywords>
+		<citation>
+			<citeinfo>
+				<onlink>http://databasin.org/datasets/b2dd6127a91e4a3c8645165af9638a66</onlink>
+				<title>Ecological Reserves in British Columbia</title>
+				<origin>BC Ministry of the Environment</origin>
+				<origin>BC Parks</origin>
+				<origin>Cascadia Partner forum</origin>
+			</citeinfo>
+		</citation>
+		<spdom>
+			<bounding>
+				<southbc>6078663.8876</southbc>
+				<northbc>8381663.7546</northbc>
+				<eastbc>-12543794.4968</eastbc>
+				<westbc>-14941081.4021</westbc>
+			</bounding>
+		</spdom>
+	</idinfo>
+	<distinfo>
+		<techpreq>ESRI ArcGIS Desktop and supporting operating systems.</techpreq>
+		<stdorder>
+			<digform>
+				<digtopt>
+					<onlinopt>
+						<accinstr>Download from http://databasin.org</accinstr>
+					</onlinopt>
+					<onlineopt>
+						<computer>
+							<networka>
+								<networkr>http://databasin.org/datasets/b2dd6127a91e4a3c8645165af9638a66</networkr>
+							</networka>
+						</computer>
+					</onlineopt>
+				</digtopt>
+				<digtinfo>
+					<filedec>No compression applied</filedec>
+					<formvern>ArcGIS 10</formvern>
+					<formspec>Feature Layer</formspec>
+					<formname>Feature Layer</formname>
+				</digtinfo>
+			</digform>
+			<ordering>Download from http://databasin.org</ordering>
+			<fees>None</fees>
+		</stdorder>
+		<distliab>No warranty is made by Data Basin for use of this dataset.  No warranty is made by Data Basin regarding the accuracy, reliability, or completeness of this dataset. In no event shall Data Basin have any liability whatsoever for payment of any consequential, incidental, indirect, special, or tort damages of any kind, including, but not limited to, any loss of profits arising out of the use or reliance on the geographic or attribute data contained within this dataset or arising out of the delivery, installation, operation, or support by Data Basin.</distliab>
+		<distrib>
+			<cntinfo>
+				<cntvoice>541-757-0687</cntvoice>
+				<cntemail>databasin_admin@consbio.org</cntemail>
+				<cntperp>
+					<cntorg>Data Basin</cntorg>
+					<cntper>Data Basin Administrator</cntper>
+				</cntperp>
+				<cntaddr>
+					<postal>97333</postal>
+					<city>Corvallis</city>
+					<address>136 SW Washington Ave, Suite 202</address>
+					<addrtype>physical address</addrtype>
+					<country>USA</country>
+					<state>OR</state>
+				</cntaddr>
+			</cntinfo>
+		</distrib>
+	</distinfo>
+	<Esri>
+		<CreaDate>20151023</CreaDate>
+		<CreaTime>18054600</CreaTime>
+		<SyncOnce>TRUE</SyncOnce>
+		<DataProperties>
+			<itemProps>
+				<itemLocation>
+					<linkage Sync="TRUE">file://C:\windows\temp\tmpv7uaqo\b2dd6127a91e4a3c8645165af9638a66\commondata\ecological_reserves\BC_Eco_Reserves</linkage>
+					<protocol Sync="TRUE">Local Area Network</protocol>
+				</itemLocation>
+			</itemProps>
+			<copyHistory>
+				<copy source="C:\windows\temp\tmpv7uaqo\commondata\ecological_reserves\BC_Eco_Reserves" dest="C:\windows\temp\tmpv7uaqo\b2dd6127a91e4a3c8645165af9638a66\commondata\ecological_reserves\BC_Eco_Reserves" date="20151023" time="18054600"/>
+			</copyHistory>
+		</DataProperties>
+	</Esri>
+</metadata>
