@@ -6,8 +6,8 @@
   cursor: pointer;
   fill: #fff;
   fill-opacity: 0.5;
-  stroke: #000000;
-  stroke-width: 0.5px;
+  /*stroke: #000000;*/
+  /*stroke-width: 0.5px;*/
 }
 
 .node text {
@@ -17,9 +17,9 @@
 
 .link {
   fill: none;
-  /*stroke: #9ecae1;*/
+  stroke: #d9e1e0;
   stroke-width: 1.5px;
-    opacity: 50%;
+    /*opacity: 50%;*/
 }
 
 </style>
@@ -30,7 +30,7 @@
 var margin = {top: 30, right: 20, bottom: 30, left: 20},
     width = 960,
     barHeight = 20,
-    barWidth = (width - margin.left - margin.right) * 0.8;
+    barWidth = (width - margin.left - margin.right) * 0.2;
 
 var i = 0,
     duration = 400,
@@ -88,14 +88,14 @@ function update(source) {
   nodeEnter.append("rect")
       .attr("y", -barHeight / 2)
       .attr("height", barHeight)
-      .attr("width", barWidth)
+      .attr("width", (function(d) { return barWidth*d.data.ratio} ))
       .style("fill", color)
       .on("click", click);
 
   nodeEnter.append("text")
       .attr("dy", 3.5)
       .attr("dx", 5.5)
-      .text(function(d) { return d.data.name; });
+      .text(function(d) { return (d.data.name + " : " + d.data.size) });
 
   // Transition nodes to their new position.
   nodeEnter.transition()
@@ -175,6 +175,7 @@ function color(d) {
     // }
     var height = d.height;
     switch(height) {
+        case 6: return "#8240bd"
         case 5: return "#bd47a0";
         case 4: return "#35b9bd";
         case 3: return "#0932bd";
@@ -196,22 +197,22 @@ function getRandomColor() {
   return color;
 }
 
-function setRandomColor() {
-   var elems = document.getElementsByClassName('link');
-   var i;
-   for (i = 0; i < elems.length; i++) {
-       elems[i].setAttribute('stroke', getRandomColor());
-       // elems[i].setAttribute('opacity', "0.5");
-   }
-    // var elems = document.getElementsByClassName('link');
-    // for (elem in elems) {
-    //     elem.setAttribute('stroke', getRandomColor());
-    // }
+// function setRandomColor() {
+//    var elems = document.getElementsByClassName('link');
+//    var i;
+//    for (i = 0; i < elems.length; i++) {
+//        elems[i].setAttribute('stroke', getRandomColor());
+//        // elems[i].setAttribute('opacity', "0.5");
+//    }
+//     // var elems = document.getElementsByClassName('link');
+//     // for (elem in elems) {
+//     //     elem.setAttribute('stroke', getRandomColor());
+//     // }
+//
+// }
 
-}
-
-window.onload = function() {
-  setRandomColor();
-};
+// window.onload = function() {
+//   setRandomColor();
+// };
 
 </script>

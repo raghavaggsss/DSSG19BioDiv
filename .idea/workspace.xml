@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/DSSG19BioDiv.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DSSG19BioDiv.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/d3_tree/flare.json" beforeDir="false" afterPath="$PROJECT_DIR$/d3_tree/flare.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/d3_tree/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/d3_tree/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" afterDir="false" />
@@ -35,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+            <state relative-caret-position="278">
+              <caret line="97" column="67" selection-start-line="97" selection-start-column="67" selection-end-line="97" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -45,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="12" selection-start-column="12" selection-end-column="12" />
+              <caret column="24" selection-start-column="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -61,13 +58,17 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>name</find>
       <find>childre</find>
       <find>color</find>
       <find>children</find>
       <find>click</find>
       <find>_children</find>
       <find>border</find>
+      <find>bar</find>
+      <find>name</find>
+      <find>ratio</find>
+      <find>width</find>
+      <find>function</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -92,8 +93,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="218" />
-    <option name="y" value="243" />
+    <option name="x" value="214" />
+    <option name="y" value="241" />
     <option name="width" value="1391" />
     <option name="height" value="791" />
   </component>
@@ -165,15 +166,15 @@
       <workItem from="1559234884507" duration="975000" />
       <workItem from="1559841796331" duration="2706000" />
       <workItem from="1559846265211" duration="246000" />
-      <workItem from="1559851469428" duration="3813000" />
+      <workItem from="1559851469428" duration="5771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7740000" />
+    <option name="totallyTimeSpent" value="9698000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="218" y="243" width="1391" height="791" extended-state="0" />
+    <frame x="215" y="241" width="1391" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24536695" />
@@ -209,15 +210,15 @@
     <entry file="file://$PROJECT_DIR$/d3_tree/data.json" />
     <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        <state relative-caret-position="278">
+          <caret line="97" column="67" selection-start-line="97" selection-start-column="67" selection-end-line="97" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
         </state>
       </provider>
     </entry>
