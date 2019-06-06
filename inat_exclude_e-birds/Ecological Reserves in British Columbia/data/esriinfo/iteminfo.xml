@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ESRI_ItemInformation Culture='en-US'>
+<name>b2dd6127a91e4a3c8645165af9638a66</name>
+<guid>C45AB45E-5B27-48ED-A080-F7BA46230FDB</guid>
+<catalogpath></catalogpath>
+<snippet></snippet>
+<description>Ecological Reserves throughout British Columbia
+
+This dataset was uploaded to Data Basin and is available with additional information at: /datasets/b2dd6127a91e4a3c8645165af9638a66</description>
+<summary></summary>
+<title>b2dd6127a91e4a3c8645165af9638a66</title>
+<tags></tags>
+<type>Layer Package</type>
+<typekeywords>
+<typekeyword>Shapefile Feature Class</typekeyword>
+<typekeyword>Layer Package</typekeyword>
+<typekeyword>Data</typekeyword>
+<typekeyword>ArcMap</typekeyword>
+<typekeyword>ArcGlobe</typekeyword>
+<typekeyword>ArcGIS Explorer</typekeyword>
+<typekeyword>lpk</typekeyword>
+</typekeywords>
+<thumbnail>thumbnail/thumbnail.png</thumbnail>
+<documentation></documentation>
+<url></url>
+<datalastmodifiedtime></datalastmodifiedtime>
+<extent>
+<xmin>-134.218039110812</xmin>
+<ymin>47.8302749315713</ymin>
+<xmax>-112.682840246608</xmax>
+<ymax>59.9187244480392</ymax>
+</extent>
+<spatialreference>NAD_1983_BC_Environment_Albers</spatialreference>
+<accessinformation>BC Ministry of the Environment, BC Parks, Cascadia Partner forum</accessinformation>
+<licenseinfo></licenseinfo>
+</ESRI_ItemInformation>
