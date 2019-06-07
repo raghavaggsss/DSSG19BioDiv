@@ -1,0 +1,189 @@
+---
+title: "Taxonomy Explorer"
+author: "Gabriel Smith"
+date: "June 7, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(ggplot2)
+library(phyloseq)
+library(phytools)
+```
+
+# DATA IMPORT AND CLEANING
+
+```{r}
+data.whole = read.csv("GBif Total.csv", sep="\t", stringsAsFactors = FALSE, na.strings = "")
+# Remove data that doesn't have information to at least the species level
+data = data.whole[which(!is.na(data.whole$genus)),]
+# Remove any data marked 'incertae sedis'
+data = data[which(data$kingdom != "incertae sedis"),]
+# For the data points with full scientific names but empty 'species' columns, derive the species name from the scientific name
+for(r in 1:nrow(data)) {
+  if (data$taxonRank[r]=="SPECIES" & is.na(data$species[r])) {
+    data$species[r] = strsplit(data$scientificName[r], split = " ")[[1]][2]
+  }
+}
+# Get rid of data from the macroalgae study
+data = data[which(data$datasetKey != "3cb3a142-8a6c-45e3-a5d1-80b7d6522ad7"),]
+
+# Create an alternate dataset with only iNaturalist observations for the purpose of examining the species distributions that arise from a more-or-less unbiased citizen science program. There are 15,985 observations in total.
+data.inat = data[which(data$datasetKey == "50c9509d-22c7-4a22-a47d-8c48425ef4a7"),]
+```
+
+# INTERACTIVE EXPLORERS
+
+This code establishes two functions. 
+create.phylograph produces a phylograph (or similar alternative) from an inputted group (at any level; e.g., "Animalia", "Reptilia") by tracing its descendants to a given level of precision (e.g., "family", "genus").
+taxonomy.viewer allows the user to explore the tree of life starting at the kingdom level by entering the group they would like to examine and providing a list of constiuent levels within that group. This can be used to identify the taxon of interest to feed into the create.phylograph function
+
+```{r}
+dict = data.frame(c(4,5,6,7,8,9),c("kingdom","phylum","class","order","family","genus"))
+create.phylograph = function() {
+  ty = readline(prompt="What type of chart would you like? Enter \"p\" for phylograph, \"c\" for 
+    cladogram, \"f\" for fan, \"u\" for unrooted, or \"r\" for radial.")
+  focus = readline(prompt="What kind of organism would you like to focus on? (case-sensitive)")
+  high = 4
+  if (focus %in% unique(data$kingdom)) {df = subset(data, kingdom==focus)}
+  else if (focus %in% unique(data$phylum)) {
+    df = subset(data, phylum==focus)
+    high = 5}
+  else if (focus %in% unique(data$class)) {
+    df = subset(data, class==focus)
+    high = 6}
+  else if (focus %in% unique(data$order)) {
+    df = subset(data, order==focus)
+    high = 7}
+  else if (focus %in% unique(data$family)) {
+    df = subset(data, family==focus)
+    high = 8}
+  depth = tolower(readline(prompt="What level of specificity would you like to see the data of?"))
+  depth = dict[which(dict[,2]==depth),1]
+  
+  newick = df2newick(df[,high:depth], TRUE)
+  tr = read.tree(text = newick)
+  plot(tr, type = ty, show.node.label = TRUE, node.depth = 2, direction = "downwards", srt = 45)
+}
+
+taxonomy.viewer = function(df) {
+  kingdom = readline(prompt = as.character(paste("Select a kingdom to view or enter \"exit\" to leave. \n", cat(unique(df$kingdom), sep = "\n"))))
+  if (tolower(kingdom) != "exit") {
+    phylum = readline(prompt = as.character(paste("Select a phylum to view or enter \"exit\" to leave. \n", cat(unique(df$phylum[df$kingdom==kingdom]), sep = "\n"))))
+    if (tolower(phylum) != "exit") {
+      class = readline(prompt = as.character(paste("Select a class to view or enter \"exit\" to leave. \n", cat(unique(df$class[df$phylum==phylum]), sep = "\n"))))
+      if (tolower(class) != "exit") {
+        order = readline(prompt = as.character(paste("Select an order to view or enter \"exit\" to leave. \n", cat(unique(df$order[df$class==class]), sep = "\n"))))
+        if (tolower(order) != "exit") {
+          family = readline(prompt = as.character(paste("Select a family to view or enter \"exit\" to leave. \n", cat(unique(df$family[df$order==order]), sep = "\n"))))
+          if (tolower(family) != "exit") {
+            genus = readline(prompt = as.character(paste("Select a genus to view or enter \"exit\" to leave. \n", cat(unique(df$genus[df$family==family]), sep = "\n"))))
+            if (tolower(genus) != "exit") {
+              cat(unique(df$species[df$genus==genus]), sep = "\n")
+            }
+          }
+        }
+      }
+    }
+  }
+  noquote("Have a good day!")
+  df = NULL
+}
+```
+
+# IDENTIFYING GAPS
+
+Below is a table of the distributions of the different classes within the Chordata phylum of the Animalia kingdom, since these represent both the vast majority of observations as well as the animal species that are typically of greatest interest to humans. 
+
+```{r classes of chordata - full data}
+a = c("Reptiles", "Birds", "Mammals", "Amphibians", "Ray-Finned Fish", "Lampreys", "Filter-Feeders", "Sharks/Skates", "Ratfish")
+b = NULL
+c = NULL
+d = NULL
+for (cl in unique(data$class[which(data$phylum=="Chordata")])) {
+  if (!is.na(cl)) {
+    b = c(b, cl)
+    c = c(c, length(unique(data$species[which(data$class==cl)])))
+    d = c(d, length(data$species[which(data$class==cl)]))
+    }
+}
+sum = as.data.frame(cbind(a,b,c,d))[order(d, decreasing = TRUE),]
+colnames(sum) = c("Class","Scientific Name","Unique Species","Observations")
+sum
+```
+
+Birds and fish appear to be the most heavily represented, seemingly due to the databases that were composed entirely of birds or aquatic life.
+
+```{r classes of chordata - iNat}
+a = c("Reptiles", "Birds", "Mammals", "Amphibians", "Ray-Finned Fish", "Lampreys", "Filter-Feeders")
+b = NULL
+c = NULL
+d = NULL
+for (cl in unique(data.inat$class[which(data.inat$phylum=="Chordata")])) {
+  if (!is.na(cl)) {
+    b = c(b, cl)
+    c = c(c, length(unique(data.inat$species[which(data.inat$class==cl)])))
+    d = c(d, length(data.inat$species[which(data.inat$class==cl)]))
+    }
+}
+sum = as.data.frame(cbind(a,b,c,d))[order(d, decreasing = TRUE),]
+colnames(sum) = c("Class","Scientific Name","Unique Species","Observations")
+sum
+```
+
+The two largest differences observable in the iNat data are that the shark/skate as well as ratfish classes are absent, and that fish are much less commonly observed relative to mammals. There is still one observation of a lamprey and two observations of Ascidiacea (invertebrate filter-feeding tube organisms), and birds still enjoy dominance.
+
+```{r orders of birds}
+a = c("Passerines", "Shorebirds", "Woodpeckers", "Waterfowl", "Hawks/Eagles/Vultures", "Pelicans", "Landfowl (Chickens etc.)", "Gannets (Cormorants)", "Doves/Pigeons", "Hummingbirds/Swifts", "Owls", "Cranes/Coots/Rails", "Loons", "Kingfishers", "Grebes", "Falcons", "Nighthawks/Nightjars")
+b = NULL
+c = NULL
+d = NULL
+for (or in unique(data$order[which(data$class=="Aves")])) {
+  if (!is.na(or)) {
+    b = c(b, or)
+    c = c(c, length(unique(data$species[which(data$order==or)])))
+    d = c(d, length(data$species[which(data$order==or)]))
+    }
+}
+sum = as.data.frame(cbind(a,b,c,d))[order(d, decreasing = TRUE),]
+colnames(sum) = c("Order","Scientific Name","Unique Species","Observations")
+sum
+```
+
+```{r orders of mammals}
+a = c("Rodents", "Carnivorans", "Ungulates", "Aquatic Mammals", "Rabbits", "Bats")
+b = NULL
+c = NULL
+d = NULL
+for (or in unique(data$order[which(data$class=="Mammalia")])) {
+  if (!is.na(or)) {
+    b = c(b, or)
+    c = c(c, length(unique(data$species[which(data$order==or)])))
+    d = c(d, length(data$species[which(data$order==or)]))
+    }
+}
+sum = as.data.frame(cbind(a,b,c,d))[order(d, decreasing = TRUE),]
+colnames(sum) = c("Order","Scientific Name","Unique Species","Observations")
+sum
+```
+
+```{r families of carnovorans}
+a = c()
+b = NULL
+c = NULL
+d = NULL
+for (fam in unique(data$family[which(data$order=="Carnivora")])) {
+  if (!is.na(fam)) {
+    b = c(b, or)
+    c = c(c, length(unique(data$species[which(data$family==fam)])))
+    d = c(d, length(data$species[which(data$family==fam)]))
+    }
+}
+sum = as.data.frame(cbind(a,b,c,d))[order(d, decreasing = TRUE),]
+colnames(sum) = c("Family","Scientific Name","Unique Species","Observations")
+sum
+```
