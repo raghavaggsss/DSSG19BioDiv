@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/d3_tree/flare.json" beforeDir="false" afterPath="$PROJECT_DIR$/d3_tree/flare.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/d3_tree/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/d3_tree/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" afterDir="false" />
@@ -32,8 +33,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="97" column="67" selection-start-line="97" selection-start-column="67" selection-end-line="97" selection-end-column="67" />
+            <state relative-caret-position="455">
+              <caret line="301" column="14" selection-start-line="301" selection-start-column="14" selection-end-line="301" selection-end-column="14" />
+              <folding>
+                <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="24" selection-start-column="24" selection-end-column="24" />
+              <caret column="26545" selection-start-column="26545" selection-end-column="26545" />
             </state>
           </provider>
         </entry>
@@ -59,8 +63,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>childre</find>
-      <find>color</find>
-      <find>children</find>
       <find>click</find>
       <find>_children</find>
       <find>border</find>
@@ -69,6 +71,18 @@
       <find>ratio</find>
       <find>width</find>
       <find>function</find>
+      <find>types</find>
+      <find>flare</find>
+      <find>createShadowRoot</find>
+      <find>d3</find>
+      <find>svg</find>
+      <find>body</find>
+      <find>barwidth</find>
+      <find>barhei</find>
+      <find>update</find>
+      <find>children</find>
+      <find>color</find>
+      <find>height</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -82,20 +96,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/DSSG19BioDiv.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="214" />
-    <option name="y" value="241" />
-    <option name="width" value="1391" />
+    <option name="x" value="531" />
+    <option name="y" value="124" />
+    <option name="width" value="1277" />
     <option name="height" value="791" />
   </component>
   <component name="ProjectView">
@@ -166,18 +170,18 @@
       <workItem from="1559234884507" duration="975000" />
       <workItem from="1559841796331" duration="2706000" />
       <workItem from="1559846265211" duration="246000" />
-      <workItem from="1559851469428" duration="5771000" />
+      <workItem from="1559851469428" duration="16933000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9698000" />
+    <option name="totallyTimeSpent" value="20860000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="215" y="241" width="1391" height="791" extended-state="0" />
+    <frame x="531" y="124" width="1277" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24536695" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12307692" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -208,17 +212,20 @@
     <entry file="file://$PROJECT_DIR$/inat_exclude_e-birds/inat_exclude_e-birds_graph.ipynb" />
     <entry file="file://$PROJECT_DIR$/inat_small/data.json" />
     <entry file="file://$PROJECT_DIR$/d3_tree/data.json" />
-    <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="97" column="67" selection-start-line="97" selection-start-column="67" selection-end-line="97" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
+          <caret column="26545" selection-start-column="26545" selection-end-column="26545" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="301" column="14" selection-start-line="301" selection-start-column="14" selection-end-line="301" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
