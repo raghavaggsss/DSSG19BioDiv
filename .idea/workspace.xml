@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/d3_tree/flare.json" beforeDir="false" afterPath="$PROJECT_DIR$/d3_tree/flare.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/d3_tree/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/d3_tree/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inat_small/inat_small.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/inat_small/inat_small.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="301" column="14" selection-start-line="301" selection-start-column="14" selection-end-line="301" selection-end-column="14" />
+            <state relative-caret-position="69">
+              <caret line="112" column="55" selection-start-line="112" selection-start-column="55" selection-end-line="112" selection-end-column="55" />
               <folding>
                 <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
               </folding>
@@ -83,6 +79,8 @@
       <find>children</find>
       <find>color</find>
       <find>height</find>
+      <find>transition</find>
+      <find>d.data</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -97,8 +95,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="531" />
-    <option name="y" value="124" />
+    <option name="x" value="560" />
+    <option name="y" value="103" />
     <option name="width" value="1277" />
     <option name="height" value="791" />
   </component>
@@ -170,15 +168,15 @@
       <workItem from="1559234884507" duration="975000" />
       <workItem from="1559841796331" duration="2706000" />
       <workItem from="1559846265211" duration="246000" />
-      <workItem from="1559851469428" duration="16933000" />
+      <workItem from="1559851469428" duration="17424000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20860000" />
+    <option name="totallyTimeSpent" value="21351000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="531" y="124" width="1277" height="791" extended-state="0" />
+    <frame x="560" y="103" width="1277" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12307692" />
@@ -221,8 +219,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="301" column="14" selection-start-line="301" selection-start-column="14" selection-end-line="301" selection-end-column="14" />
+        <state relative-caret-position="69">
+          <caret line="112" column="55" selection-start-line="112" selection-start-column="55" selection-end-line="112" selection-end-column="55" />
           <folding>
             <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
           </folding>
