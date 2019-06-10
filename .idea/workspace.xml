@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/d3_tree/flare.json" beforeDir="false" afterPath="$PROJECT_DIR$/d3_tree/flare.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/d3_tree/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/d3_tree/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inat_small/inat_small.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/inat_small/inat_small.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,22 +27,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
+        <entry file="file://$PROJECT_DIR$/leaflet/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="301" column="14" selection-start-line="301" selection-start-column="14" selection-end-line="301" selection-end-column="14" />
-              <folding>
-                <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="412">
+              <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
+        <entry file="file://$PROJECT_DIR$/leaflet/rodents.geojson">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="26545" selection-start-column="26545" selection-end-column="26545" />
+            <state relative-caret-position="20350">
+              <caret line="925" column="1" selection-start-line="925" selection-start-column="1" selection-end-line="925" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -93,14 +86,17 @@
       <list>
         <option value="$PROJECT_DIR$/d3_tree/flare.json" />
         <option value="$PROJECT_DIR$/d3_tree/index.html" />
+        <option value="$PROJECT_DIR$/leaflet/rodents.geojson" />
+        <option value="$PROJECT_DIR$/leaflet/jquery.min.js" />
+        <option value="$PROJECT_DIR$/leaflet/index.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="531" />
-    <option name="y" value="124" />
-    <option name="width" value="1277" />
-    <option name="height" value="791" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
+    <option name="y" value="114" />
+    <option name="width" value="1843" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -128,6 +124,11 @@
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
               <item name="inat_small" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="leaflet" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -171,17 +172,18 @@
       <workItem from="1559841796331" duration="2706000" />
       <workItem from="1559846265211" duration="246000" />
       <workItem from="1559851469428" duration="16933000" />
+      <workItem from="1560202432126" duration="1485000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20860000" />
+    <option name="totallyTimeSpent" value="22345000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="531" y="124" width="1277" height="791" extended-state="0" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12307692" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123962365" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -212,20 +214,49 @@
     <entry file="file://$PROJECT_DIR$/inat_exclude_e-birds/inat_exclude_e-birds_graph.ipynb" />
     <entry file="file://$PROJECT_DIR$/inat_small/data.json" />
     <entry file="file://$PROJECT_DIR$/d3_tree/data.json" />
+    <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="274" lean-forward="true" selection-start-line="274" selection-end-line="274" />
+          <folding>
+            <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="572">
           <caret column="26545" selection-start-column="26545" selection-end-column="26545" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
+    <entry file="file://$PROJECT_DIR$/leaflet/rodents.geojson">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="301" column="14" selection-start-line="301" selection-start-column="14" selection-end-line="301" selection-end-column="14" />
+        <state relative-caret-position="20350">
+          <caret line="925" column="1" selection-start-line="925" selection-start-column="1" selection-end-line="925" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="88065" selection-start-line="1" selection-start-column="88065" selection-end-line="1" selection-end-column="88065" />
           <folding>
-            <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/UBC.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6534" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
         </state>
       </provider>
     </entry>
