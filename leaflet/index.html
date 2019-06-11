@@ -18,14 +18,14 @@
   var map = L.map('map').setView([49.263710, -123.259378], 13);
 
   // load a tile layer
-  L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
-    {
-      attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-      maxZoom: 17,
-      minZoom: 9
-    }).addTo(map);
+  // L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
+  //   {
+  //     attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+  //     maxZoom: 17,
+  //     minZoom: 9
+  //   }).addTo(map);
 
-      // bike lanes
+      // openstreet maps
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
       maxZoom: 17,
@@ -33,10 +33,10 @@
     }).addTo(map);
 
       // load GeoJSON from an external file
-    // $.getJSON("rodents.geojson",function(data){
-    //   // add GeoJSON layer to the map once the file is loaded
-    //   L.geoJson(data).addTo(map);
-    // });
+    $.getJSON("UBC.geojson",function(data){
+      // add GeoJSON layer to the map once the file is loaded
+      L.geoJson(data).addTo(map);
+    });
 
 
   </script>
