@@ -1,3 +1,4 @@
+*.sqlite
 *.tsv
 *.csv
 *.DS_Store
