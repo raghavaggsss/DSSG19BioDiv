@@ -1,82 +1,42 @@
 <html>
 <head>
-  <title>A Leaflet map!</title>
-  <link rel="stylesheet" href="./leaflet/leaflet.css"/>
-  <link rel="stylesheet" href="./Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css"/>
-  <script src="./leaflet/leaflet.js"></script>
-  <script src="./Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js"></script>
-  <script src="jquery.min.js"></script>
-  <style>
-    #map{ width: 900px; height: 500px; }
-  </style>
+    <title>A Leaflet map!</title>
+    <link rel="stylesheet" href="./leaflet/leaflet.css"/>
+<!--    <link rel="stylesheet" href="./Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css"/>-->
+    <script src="./leaflet/leaflet.js"></script>
+    <script src="./Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="jquery.min.js"></script>
+    <style>
+        #map {
+            width: 900px;
+            height: 500px;
+        }
+    </style>
 </head>
 <body>
 
-  <div id="map"></div>
+<style>
+		.endangered {
+			width: 80px;
+			height: 40px;
+			background-color: red;
+			text-align: center;
+			font-size: 10px;
+		}
 
-  <script>
+        .not_endangered {
+			width: 80px;
+			height: 40px;
+			background-color: greenyellow;
+			text-align: center;
+			font-size: 10px;
+		}
 
-  // initialize the map
-  var map = L.map('map').setView([49.263710, -123.259378], 13);
+	</style>
 
-  // load a tile layer
-  // L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
-  //   {
-  //     attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-  //     maxZoom: 17,
-  //     minZoom: 9
-  //   }).addTo(map);
+<div id="map"></div>
 
-      // openstreet maps
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-      maxZoom: 17,
-      minZoom: 2
-    }).addTo(map);
+<script src="./leaflet_map.js"></script>
 
-      // load GeoJSON from an external file
-   // var points_data;
-    $.getJSON("UBC_points.geojson",function(data){
-      // var ratIcon = L.icon({
-      //   iconUrl: 'rat.png',
-      //   iconSize: [50,40]
-      // });
-      // add GeoJSON layer to the map once the file is loaded
-      var points_data = L.geoJson(data, {
-        pointToLayer: function(feature, latlng){
-          // var marker = L.marker(latlng, {icon: ratIcon});
-          var marker = L.marker(latlng, {title: ""});
-          marker.bindPopup(feature.properties.species + '<br/>' + feature.properties.locality);
-          return marker;
-        }
-      });
-      var clusters = L.markerClusterGroup(
-              // {singleMarkerMode: 1}
-    //           {iconCreateFunction: function(cluster) {
-	// 	return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b>' });
-	// }}
-      );
-      clusters.addLayer(points_data);
-      map.addLayer(clusters);
-    });
-
-
-
-    // add shapes
-     $.getJSON("UBC_poly.geojson",function(hoodData){
-       L.geoJson( hoodData, {
-       style: function(feature) {
-         return { color: "#e10c1c", weight: 1, fillColor: "#66ff33", fillOpacity: .3 };
-        },
-       onEachFeature: function( feature, layer ){
-      layer.bindPopup( "<strong>" + feature.properties.PROTECTED_ + "</strong><br/>" )
-      }})
-      .addTo(map);
-    });
-
-
-
-
-  </script>
 </body>
 </html>
