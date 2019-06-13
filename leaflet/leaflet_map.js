@@ -43,11 +43,15 @@ $.getJSON("gbif_tot.geojson", function (data) {
                     break;
                 }
             }
+            var num_children = cluster.getChildCount();
+            if (num_children == 1) {
+                num_children = "";
+            }
             if (endangered) {
-                return L.divIcon({ html: cluster.getChildCount(), className: 'endangered'});
+                return L.divIcon({ html: num_children, className: 'endangered', iconSize: 15});
             }
             else {
-                return L.divIcon({ html: cluster.getChildCount(), className: 'not_endangered' });
+                return L.divIcon({ html: num_children, className: 'not_endangered', iconSize: 15 });
             }
 
 
