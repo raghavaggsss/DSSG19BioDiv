@@ -29,26 +29,25 @@
     }).addTo(map);
 
       // load GeoJSON from an external file
-    $.getJSON("UBC_alt.geojson",function(json){
+    $.getJSON("UBC.geojson",function(json){
         // add GeoJSON layer to the map once the file is loaded
         var testlayer = L.geoJson(json  ,{
             pointToLayer: function(feature,latlng){
 	        var marker = L.marker(latlng,{title: "marker1"});
-            marker.bindPopup(feature.properties.species + '<br/>' + feature.properties.time);
+            marker.bindPopup(feature.properties.species + '<br/>' + feature.properties.year);
             return marker;
             }
         });
         testlayer.addTo(map);
         //Create a marker layer (in the example done via a GeoJSON FeatureCollection)
-        var sliderControl = L.control.sliderControl({position: "topright", layer: testlayer, range: true});
+        var sliderControl = L.control.sliderControl({position: "topright", layer: testlayer});
         var mrki = L.icon({iconSize: [50,40]});
         //Make sure to add the slider to the map ;-)
         map.addControl(sliderControl)
-        sliderControl.options.markers.sort(function(a, b) {
-            return (a.feature.properties.time > b.feature.properties.time);
-        });
         //And initialize the slider
         sliderControl.startSlider();
+        $('#slider-timestamp').html(options.markers[ui.value].feature.properties.year.substr(0, 19));
+
 
     });
 
