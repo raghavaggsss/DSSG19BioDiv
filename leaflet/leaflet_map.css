@@ -1,0 +1,36 @@
+#map {
+    width: 900px;
+    height: 500px;
+}
+
+
+.endangered {
+    /*width: 40px;*/
+    /*height: 40px;*/
+    /*background-color: red;*/
+    text-align: center;
+    font-size: 8px;
+    border-radius: 50%;
+    color: black;
+    background: rgba(225, 12, 28, 0.85);
+    -webkit-text-stroke: 0.5px black;
+}
+
+.not_endangered {
+
+    text-align: center;
+    font-size: 8px;
+    border-radius: 50%;
+    color: black;
+    background: rgba(59, 101, 252, 0.85);
+    -webkit-text-stroke: 0.5px black;
+
+}
+
+.popUpfeature {
+    font: 10px sans-serif;
+}
+
+.redListFont {
+    color: rgba(225, 12, 28, 1);
+}

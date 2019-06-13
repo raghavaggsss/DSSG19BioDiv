@@ -28,7 +28,15 @@ $.getJSON("gbif_tot.geojson", function (data) {
         pointToLayer: function (feature, latlng) {
             var marker = L.marker(latlng, {icon: dotIcon});
             // var marker = L.marker(latlng, {title: ""});
-            marker.bindPopup(feature.properties.species + '<br/>' + feature.properties.common);
+            var redList = feature.properties.redList;
+            var markerPopUp = '<div class="popUpfeature">' + feature.properties.species + '<br/> <b>'
+                + feature.properties.common + '</b>';
+            if (redList) {
+                markerPopUp += '<div class="redListFont">' + '<br/>' + feature.properties.redList + '</div>';
+            }
+            markerPopUp += '</div>';
+
+            marker.bindPopup(markerPopUp);
             return marker;
         }
     });
