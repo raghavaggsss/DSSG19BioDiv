@@ -29,12 +29,13 @@
     }).addTo(map);
 
       // load GeoJSON from an external file
-    $.getJSON("UBC_alt.geojson",function(json){
+    $.getJSON("test.geojson",function(json){
         // add GeoJSON layer to the map once the file is loaded
-        var testlayer = L.geoJson(json  ,{
+
+      var testlayer = L.geoJson(json  ,{
             pointToLayer: function(feature,latlng){
 	        var marker = L.marker(latlng,{title: "marker1"});
-            marker.bindPopup(feature.properties.species + '<br/>' + feature.properties.time);
+            marker.bindPopup(feature.properties.species + '<br/>' + feature.properties.year);
             return marker;
             }
         });
