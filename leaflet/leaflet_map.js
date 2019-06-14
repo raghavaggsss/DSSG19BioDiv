@@ -127,7 +127,7 @@ $.getJSON("gbif_tot.geojson", function (data) {
 
             // markerPopUp += '<input type="button" value="Wiki" '+ ' onClick="goToWiki(\'' + feature.properties.species + '\')" />';
 
-            markerPopUp += '<input type="button" value="Loading" id=' + (id_species + "_wiki") + '>';
+            markerPopUp += '<input type="button" class="wikiButton" value="Loading" id=' + (id_species + "_wiki") + '>';
 
             markerPopUp += '<div class="thumbnail"  id=' + (id_species + "_thumb") + '> </div>';
 
