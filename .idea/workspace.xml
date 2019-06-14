@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/leaflet/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaflet/leaflet_map.css" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/leaflet_map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaflet/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/leaflet_map.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+            <state relative-caret-position="212">
+              <caret line="122" column="61" lean-forward="true" selection-start-line="122" selection-start-column="61" selection-end-line="122" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -40,17 +39,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leaflet/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+            <state relative-caret-position="277">
+              <caret line="23" column="12" lean-forward="true" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="107" column="22" lean-forward="true" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
+            <state relative-caret-position="434">
+              <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -66,7 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>border</find>
       <find>bar</find>
       <find>name</find>
       <find>ratio</find>
@@ -96,6 +94,7 @@
       <find>consol</find>
       <find>console.log</find>
       <find>window.op</find>
+      <find>window.ope</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,8 +122,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="153" />
-    <option name="y" value="72" />
-    <option name="width" value="985" />
+    <option name="y" value="71" />
+    <option name="width" value="1358" />
     <option name="height" value="791" />
   </component>
   <component name="ProjectView">
@@ -194,7 +193,7 @@
       <workItem from="1559234884507" duration="975000" />
       <workItem from="1559841796331" duration="2706000" />
       <workItem from="1559846265211" duration="246000" />
-      <workItem from="1559851469428" duration="48591000" />
+      <workItem from="1559851469428" duration="50407000" />
     </task>
     <task id="LOCAL-00001" summary="Markers for data points in UBC on the Map. geopandas.to_json() gives double encoding of json. use write insted.">
       <created>1560273308210</created>
@@ -203,17 +202,24 @@
       <option name="project" value="LOCAL" />
       <updated>1560273308210</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="remove separate button for loading image; marker onclick instead">
+      <created>1560545102749</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560545102749</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52518000" />
+    <option name="totallyTimeSpent" value="54334000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="153" y="72" width="985" height="791" extended-state="0" />
+    <frame x="153" y="71" width="1358" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22587487" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1618541" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -268,7 +274,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Markers for data points in UBC on the Map. geopandas.to_json() gives double encoding of json. use write insted." />
-    <option name="LAST_COMMIT_MESSAGE" value="Markers for data points in UBC on the Map. geopandas.to_json() gives double encoding of json. use write insted." />
+    <MESSAGE value="remove separate button for loading image; marker onclick instead" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove separate button for loading image; marker onclick instead" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/inat_exclude_e-birds/inat_exclude_e-birds_graph.ipynb" />
@@ -369,22 +376,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
+        <state relative-caret-position="434">
           <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+        <state relative-caret-position="277">
+          <caret line="23" column="12" lean-forward="true" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="107" column="22" lean-forward="true" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
+        <state relative-caret-position="212">
+          <caret line="122" column="61" lean-forward="true" selection-start-line="122" selection-start-column="61" selection-end-line="122" selection-end-column="61" />
         </state>
       </provider>
     </entry>

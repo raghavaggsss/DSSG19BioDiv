@@ -17,31 +17,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     }).addTo(map);
 
 
-function goToWiki(keyword) { //AJAX request
-    $.ajax({
-        url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + keyword + "&prop=info&inprop=url&utf8=&format=json",
-        dataType: "jsonp",
-        success: function (response) {
-            // console.log(response.query);
-            if (response.query.searchinfo.totalhits === 0) {
-                alert("No results");
-            } else {
-                openWiki(response);
-            }
-        },
-        error: function () {
-            alert("Error retrieving search results, please refresh the page");
-        }
-    });
-}
 
-function openWiki(callback) {
+function openWiki(callback, speciesName) {
     var title = callback.query.search[0].title;
 
     var url = title.replace(/ /g, "_");
 
-    window.open("https://en.wikipedia.org/wiki/" + url, "_blank");
+    var speciesId = speciesName.replace(/\s+/g, '_');
 
+    var wikiButton = document.getElementById(speciesId + "_wiki");
+    wikiButton.onclick = function () {window.open("https://en.wikipedia.org/wiki/" + url, "_blank");};
+    wikiButton.value = "Wikipedia";
 }
 
 
@@ -55,6 +41,7 @@ function loadImg(speciesName) { //AJAX request
                 alert("No results");
             } else {
                 wikiImg(response.query.search[0].title, speciesName);
+                openWiki(response, speciesName);
             }
         },
         error: function () {
@@ -97,15 +84,17 @@ function imgResults(callback, speciesName) {
     var img_url = 'https://upload.wikimedia.org/wikipedia/commons/' + img_name_hash[0] +
         '/' + img_name_hash.substr(0, 2) + '/' + img_name;
     // console.log(img_url);
+    var speciesId = speciesName.replace(/\s+/g, '_');
 
     var img = new Image(),
         url = img_url,
-        container = document.getElementById(speciesName.replace(/\s+/g, '_'));
+        container = document.getElementById( speciesId + "_thumb");
 
     img.onload = function () { container.appendChild(img); };
     img.src = url;
-    // container.onclick = window.open(img_url);
     // return img_url;
+
+
 }
 
 // load GeoJSON from an external file
@@ -136,10 +125,11 @@ $.getJSON("gbif_tot.geojson", function (data) {
 
             // markerPopUp += '<input type="button" value="wikiImg" '+  ' onClick="loadImg(\'' + feature.properties.species + '\')" />';
 
-            markerPopUp += '<input type="button" value="Wiki" '+ ' onClick="goToWiki(\'' + feature.properties.species + '\')" />';
+            // markerPopUp += '<input type="button" value="Wiki" '+ ' onClick="goToWiki(\'' + feature.properties.species + '\')" />';
 
-            markerPopUp += '<div class="thumbnail"  id=' + id_species + '>';
+            markerPopUp += '<input type="button" value="Loading" id=' + (id_species + "_wiki") + '>';
 
+            markerPopUp += '<div class="thumbnail"  id=' + (id_species + "_thumb") + '> </div>';
 
             markerPopUp += '</div>';
 
