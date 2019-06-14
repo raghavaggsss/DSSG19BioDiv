@@ -17,31 +17,97 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     }).addTo(map);
 
 
-function ajax (keyword) { //AJAX request
-	$.ajax({
-		url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + keyword + "&prop=info&inprop=url&utf8=&format=json",
-		dataType: "jsonp",
-		success: function(response) {
-			// console.log(response.query);
-			if (response.query.searchinfo.totalhits === 0) {
-				alert("No results");
-			}
-
-			else {
-				showResults(response);
-			}
-		},
-		error: function () {
-			alert("Error retrieving search results, please refresh the page");
-		}
-	});
+function goToWiki(keyword) { //AJAX request
+    $.ajax({
+        url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + keyword + "&prop=info&inprop=url&utf8=&format=json",
+        dataType: "jsonp",
+        success: function (response) {
+            // console.log(response.query);
+            if (response.query.searchinfo.totalhits === 0) {
+                alert("No results");
+            } else {
+                openWiki(response);
+            }
+        },
+        error: function () {
+            alert("Error retrieving search results, please refresh the page");
+        }
+    });
 }
 
-function showResults(callback) {
+function openWiki(callback) {
     var title = callback.query.search[0].title;
+
     var url = title.replace(/ /g, "_");
+
     window.open("https://en.wikipedia.org/wiki/" + url, "_blank");
+
 }
+
+
+function loadImg(speciesName) { //AJAX request
+    $.ajax({
+        url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + speciesName + "&prop=info&inprop=url&utf8=&format=json",
+        dataType: "jsonp",
+        success: function (response) {
+            // console.log(response.query);
+            if (response.query.searchinfo.totalhits === 0) {
+                alert("No results");
+            } else {
+                wikiImg(response.query.search[0].title, speciesName);
+            }
+        },
+        error: function () {
+            alert("Error retrieving search results, please refresh the page");
+        }
+    });
+}
+
+
+
+function wikiImg(pageTitle, speciesName) { //AJAX request
+    $.ajax({
+        url: "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&sites=enwiki&props=claims&titles=" + pageTitle,
+        dataType: "jsonp",
+        success: function (response) {
+            // console.log(response.query);
+            // if (response.query.searchinfo.totalhits === 0) {
+            // 	showError(keyword);
+            // }
+
+            // else {
+            imgResults(response, speciesName);
+            // }
+        },
+        error: function () {
+            alert("Error retrieving search results, please refresh the page");
+        }
+    });
+}
+
+function imgResults(callback, speciesName) {
+
+    var img_name = callback.entities;
+    var key_entity = Object.keys(img_name)[0];
+    img_name = callback.entities[key_entity].claims.P18[0].mainsnak.datavalue.value;
+
+    img_name = img_name.replace(/\s+/g, '_');
+    // console.log(img_name);
+    var img_name_hash = md5(img_name);
+    var img_url = 'https://upload.wikimedia.org/wikipedia/commons/' + img_name_hash[0] +
+        '/' + img_name_hash.substr(0, 2) + '/' + img_name;
+    // console.log(img_url);
+
+    var img = new Image(),
+        url = img_url,
+        container = document.getElementById(speciesName.replace(/\s+/g, '_'));
+
+    img.onload = function () { container.appendChild(img); };
+    img.src = url;
+    // container.onclick = window.open(img_url);
+    // return img_url;
+}
+
 
 
 
@@ -55,8 +121,8 @@ function showResults(callback) {
 // var points_data;
 $.getJSON("gbif_tot.geojson", function (data) {
     var dotIcon = L.icon({
-      iconUrl: 'blue_dot.png',
-      iconSize: [10,10]
+        iconUrl: 'blue_dot.png',
+        iconSize: [10, 10]
     });
     // add GeoJSON layer to the map once the file is loaded
     var points_data = L.geoJson(data, {
@@ -72,7 +138,17 @@ $.getJSON("gbif_tot.geojson", function (data) {
 
             markerPopUp += '<br/>';
 
-            markerPopUp += '<input type="button" value="Wiki" onClick="ajax(\'' + feature.properties.species + '\')" />';
+            var id_species  = feature.properties.species;
+            if (id_species) {
+                id_species = id_species.replace(/\s+/g, '_');
+            }
+
+            markerPopUp += '<input type="button" value="wikiImg" '+  ' onClick="loadImg(\'' + feature.properties.species + '\')" />';
+
+            markerPopUp += '<input type="button" value="Wiki" '+ ' onClick="goToWiki(\'' + feature.properties.species + '\')" />';
+
+            markerPopUp += '<div class="thumbnail"  id=' + id_species + '>';
+
 
             markerPopUp += '</div>';
 
@@ -81,29 +157,30 @@ $.getJSON("gbif_tot.geojson", function (data) {
         }
     });
     var clusters = L.markerClusterGroup(
-        {iconCreateFunction: function(cluster) {
-            var i = 0;
-            var childrenMarkers = cluster.getAllChildMarkers();
-            var endangered = 0;
-            for (i = 0; i < childrenMarkers.length; i++) {
-                if (childrenMarkers[i].feature.properties.redList) {
-                    endangered = 1;
-                    break;
+        {
+            iconCreateFunction: function (cluster) {
+                var i = 0;
+                var childrenMarkers = cluster.getAllChildMarkers();
+                var endangered = 0;
+                for (i = 0; i < childrenMarkers.length; i++) {
+                    if (childrenMarkers[i].feature.properties.redList) {
+                        endangered = 1;
+                        break;
+                    }
                 }
-            }
-            var num_children = cluster.getChildCount();
-            if (num_children == 1) {
-                num_children = "";
-            }
-            if (endangered) {
-                return L.divIcon({ html: num_children, className: 'endangered', iconSize: 15});
-            }
-            else {
-                return L.divIcon({ html: num_children, className: 'not_endangered', iconSize: 15 });
-            }
+                var num_children = cluster.getChildCount();
+                if (num_children == 1) {
+                    num_children = "";
+                }
+                if (endangered) {
+                    return L.divIcon({html: num_children, className: 'endangered', iconSize: 15});
+                } else {
+                    return L.divIcon({html: num_children, className: 'not_endangered', iconSize: 15});
+                }
 
 
-	}, singleMarkerMode: 1}
+            }, singleMarkerMode: 1
+        }
     );
     clusters.addLayer(points_data);
     map.addLayer(clusters);
@@ -134,3 +211,7 @@ $.getJSON("UBC_poly.geojson", function (hoodData) {
     })
         .addTo(map);
 });
+
+
+// Wikipedia get image
+

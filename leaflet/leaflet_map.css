@@ -34,3 +34,16 @@
 .redListFont {
     color: rgba(225, 12, 28, 1);
 }
+
+
+.thumbnail {
+   width: 80px; /* I took the width from your post and placed it in css */
+   height: 80px;
+}
+
+/* This will style any <img> element in .parent div */
+.thumbnail img {
+   height: 100%;
+   width: 100%;
+    align-content: center;
+}
