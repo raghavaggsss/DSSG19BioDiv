@@ -108,15 +108,6 @@ function imgResults(callback, speciesName) {
     // return img_url;
 }
 
-
-
-
-// openNewWindow = function(species)
-// {
-//
-//  window.open("http://www.google.com/", "_blank");
-// };
-
 // load GeoJSON from an external file
 // var points_data;
 $.getJSON("gbif_tot.geojson", function (data) {
@@ -143,7 +134,7 @@ $.getJSON("gbif_tot.geojson", function (data) {
                 id_species = id_species.replace(/\s+/g, '_');
             }
 
-            markerPopUp += '<input type="button" value="wikiImg" '+  ' onClick="loadImg(\'' + feature.properties.species + '\')" />';
+            // markerPopUp += '<input type="button" value="wikiImg" '+  ' onClick="loadImg(\'' + feature.properties.species + '\')" />';
 
             markerPopUp += '<input type="button" value="Wiki" '+ ' onClick="goToWiki(\'' + feature.properties.species + '\')" />';
 
@@ -153,6 +144,11 @@ $.getJSON("gbif_tot.geojson", function (data) {
             markerPopUp += '</div>';
 
             marker.bindPopup(markerPopUp);
+
+            marker.on('click', function() {
+                loadImg(feature.properties.species);
+            });
+
             return marker;
         }
     });
