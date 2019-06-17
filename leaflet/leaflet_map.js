@@ -98,7 +98,7 @@ function imgResults(callback, speciesName) {
 }
 
 // load GeoJSON from an external file
-// var points_data;
+var points_data;
 $.getJSON("gbif_tot.geojson", function (data) {
     var dotIcon = L.icon({
         iconUrl: 'blue_dot.png',
@@ -111,9 +111,9 @@ $.getJSON("gbif_tot.geojson", function (data) {
             // var marker = L.marker(latlng, {title: ""});
             var redList = feature.properties.redList;
             var markerPopUp = '<div class="popUpfeature">' + feature.properties.species + '<br/> <b>'
-                + feature.properties.common + '</b>';
+                + feature.properties.common.split(',')[0] + '</b>';
             if (redList) {
-                markerPopUp += '<div class="redListFont">' + '<br/>' + feature.properties.redList + '</div>';
+                markerPopUp += '<b class="redListFont">' + '<br/>' + feature.properties.redList + '</b>';
             }
 
             markerPopUp += '<br/>';
@@ -184,20 +184,58 @@ $.getJSON("gbif_tot.geojson", function (data) {
 //   }  ).addTo(map);
 // });
 
+var highlight = {
+    'color': '#333333',
+    'weight': 1,
+    'opacity': 1,
+    'fillColor': '#14bd00'
+};
+
+var remove_highlight = {
+    'color': "#515055",
+    'weight': 1,
+    'fillColor': "#8d8c91",
+    'fillOpacity': .5};
+
 
 // add shapes
-$.getJSON("UBC_poly.geojson", function (hoodData) {
-    L.geoJson(hoodData, {
+$.getJSON("SEI.geojson", function (data) {
+    L.geoJson(data, {
         style: function (feature) {
-            return {color: "#e10c1c", weight: 1, fillColor: "#66ff33", fillOpacity: .3};
+            return remove_highlight;
         },
         onEachFeature: function (feature, layer) {
-            layer.bindPopup("<strong>" + feature.properties.PROTECTED_ + "</strong><br/>")
+            var popUpInfo =  feature.properties.Comp1Lgnd_;
+            if (feature.properties.Comp2Lgnd_) {
+                popUpInfo += "<br/>" + feature.properties.Comp2Lgnd_;
+                if (feature.properties.Comp3Lgnd_) {
+                    popUpInfo += "<br/>" + feature.properties.Comp3Lgnd_;
+                }
+            }
+            popUpInfo += "</br> Quality: " + feature.properties.QualityNo_ + "/5.0";
+            if (feature.properties.Location) {
+                popUpInfo += "</br> Location: " + feature.properties.Location;
+            }
+            // var popUp = layer.bindPopup(popUpInfo);
+            // popUp.on('popupclose', function() {
+            //     // layer.setStyle(remove_highlight);
+            // });
+            layer.on('click', function() {
+                layer.bringToFront();
+                if (layer.selected) {
+                    layer.setStyle(remove_highlight);
+                    layer.selected = 0;
+                    layer.unbindPopup();
+                }
+                else {
+                    layer.setStyle(highlight);
+                    layer.selected = 1;
+                    layer.bindPopup(popUpInfo).openPopup();
+                }
+            })
         }
     })
         .addTo(map);
 });
 
-
-// Wikipedia get image
 

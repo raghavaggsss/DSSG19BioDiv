@@ -33,7 +33,9 @@
 
 .redListFont {
     color: rgba(225, 12, 28, 1);
+    height: 10px;
 }
+
 
 
 .thumbnail {

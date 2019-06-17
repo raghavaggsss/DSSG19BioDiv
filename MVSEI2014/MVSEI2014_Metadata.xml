@@ -1,0 +1,796 @@
+﻿<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <pubdate>20190329</pubdate>
+        <title>Sensitive Ecosystem Inventory for Metro Vancouver (2014)</title>
+        <edition>2014</edition>
+        <geoform>vector digital data</geoform>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>A Sensitive Ecosystem Inventory (SEI) was conducted for the Metro Vancouver region and Abbotsford from 2010-2012, using 2009 imagery. An update to that inventory was conducted for the Metro Vancouver region only from 2015-2018, using 2014 imagery. Provincial SEI standards were followed to identify and map ecologically significant and relatively unmodified 'Sensitive Ecosystems', including wetlands, older forests and woodlands. In addition, 'Modified Ecosystems' such as old fields and young forests, which are human modified but still have ecological value and importance to biodiversity were included in the mapping process. The project area totaled 330,600 ha, consisting of terrestrial lands plus rivers, freshwater bodies, intertidal and estuarine zones. Two main approaches were used to build the inventory of polygons based on the availability of Terrestrial Ecosystem Mapping (TEM) products. TEM was used to generate SEI values in the Coquitlam, Capilano, and Seymour watersheds; the Regional Parks network; and Mount Seymour and Indian Arm Provincial Parks. Riparian fringe and gully SEI classes could often not be directly translated from TEM so had to be newly generated. For remaining areas with no existing TEM, SEI mapping was developed through image interpretation followed by selective field checks to confirm and inform mapping decisions. For new mapping, 20% of polygons were checked in the field. Polygons were delineated at 1:5,000 (new mapping) to 1: 10,000 - 1: 20,000 (originating from TEM). Sites as small as 0.5 ha were mapped, with the exception of some “Modified Ecosystems”, where only larger instances were mapped, e.g., greater than 2.5 ha for old fields, and greater than 5ha for young forest. Some sites originating from TEM were smaller than 0.5 ha and these were also included in the inventory. Key attributes of class and subclass, structural stage, stand composition, condition and size were recorded for each component within a polygon. Although a polygon can have up to three ecosystem components, attempts were made to map as many pure sites as possible (i.e. one component). Other attributes of biogeoclimatic unit, landscape context, disturbance factors and ecosystem 'quality' were recorded for the polygon as a whole. In the 2014 update, inventory polygons were assessed with the primary purpose of detecting removals or disturbances during the previous 5 years. Corrections were also made where needed.Users of the SEI must take into account certain limitations inherent with this type of dataset and consider how those limitations may impact the intended use of the information. This includes differences between the dataset and actual site conditions that could be due to human error, classification difficulties, and changes to the site occurring after the date of the imagery or field work. The dataset is considered accurate at the scale it was delineated at and should not be enlarged beyond this. The SEI does not replace the need for on-site assessments to support any decisions made for a particular area.Visit www.metrovancouver.organd search ‘SEI’ to access the SEI Technical Report.</abstract>
+      <purpose>Provides the location and attributes for sensitive and important modified ecosystems throughout Metro Vancouver.</purpose>
+    </descript>
+    <spdom>
+      <bounding>
+        <westbc>-123.435816</westbc>
+        <eastbc>-122.348401</eastbc>
+        <northbc>49.614155</northbc>
+        <southbc>49.000211</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>None</themekt>
+        <themekey>SEI;Sensitive;Ecosystem;Inventory;Metro Vancovuer;2014</themekey>
+      </theme>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>To be used only in accordance with a data sharing agreement with Metro Vancouver</useconst>
+    <datacred>MV - Josephine Clark</datacred>
+    <native>Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.5.1.7333</native>
+  </idinfo>
+  <spdoinfo>
+    <direct>Vector</direct>
+    <ptvctinf>
+      <sdtsterm>
+        <sdtstype>GT-polygon composed of chains</sdtstype>
+        <ptvctcnt>24759</ptvctcnt>
+      </sdtsterm>
+    </ptvctinf>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <planar>
+        <mapproj>
+          <mapprojn>NAD 1983 UTM Zone 10N</mapprojn>
+          <transmer>
+            <sfctrmer>0.9996</sfctrmer>
+            <longcm>-123.0</longcm>
+            <latprjo>0.0</latprjo>
+            <feast>500000.0</feast>
+            <fnorth>0.0</fnorth>
+          </transmer>
+        </mapproj>
+        <planci>
+          <plance>coordinate pair</plance>
+          <coordrep>
+            <absres>0.0001</absres>
+            <ordres>0.0001</ordres>
+          </coordrep>
+          <plandu>meter</plandu>
+        </planci>
+      </planar>
+      <geodetic>
+        <horizdn>D North American 1983</horizdn>
+        <ellips>GRS 1980</ellips>
+        <semiaxis>6378137.0</semiaxis>
+        <denflat>298.257222101</denflat>
+      </geodetic>
+    </horizsys>
+  </spref>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>MVSEI2014</enttypl>
+      </enttyp>
+      <attr>
+        <attrlabl>BGC_Unit</attrlabl>
+        <attrdef>Combination of BGC Zone/subzone/variant</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eBGCUnit</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SEsubcl_1</attrlabl>
+        <attrdef>Sensitive Ecosystem Subclass of Ecosystem Component 1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eEcosystemSubclass</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Jurisdiction</attrlabl>
+        <attrdef>Internal MV field. MV department the data is associated with.</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eJurisdiction</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SourceName</attrlabl>
+        <attrdef>Field to identify the agency or organization where the data originates</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eSourceName</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Stand_A1</attrlabl>
+        <attrdef>Stand Composition Modifier of Ecosystem Component 1 - Differentiates forest stands based on coniferous, broadleaf and mixed stand composition</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eStandComposition</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ConditionNo_SE3</attrlabl>
+        <attrdef>Condition assessment for component 3 expressed as a number. 5 (best) to 1 (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRatingNumeric</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Location</attrlabl>
+        <attrdef>Used only when polygon originates from MV TEM. Internal MV field. Specific name of park or watershed</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>rLocationName</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Strct_S1</attrlabl>
+        <attrdef>Structural Stage of Ecosystem Component 1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>WSize_SE2_BASIC</attrlabl>
+        <attrdef>Area of polygon covered by ecosystem component 2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Classification</attrlabl>
+        <attrdef>Used only when polygon originates from MV TEM. Internal MV field. Type of ecological or administrative unit</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>rClassification</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>QualityNo_SE1</attrlabl>
+        <attrdef>Quality assessment for component 1, combination of condition, landscape context and size rating</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Quality</attrlabl>
+        <attrdef>Final quality grade for the polygon (based on WCombQuality) expressed as A (best) to E (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRating</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Microsite</attrlabl>
+        <attrdef>Microsite - ecosystem representing &lt; 10% of the polygon</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Condition_SE3</attrlabl>
+        <attrdef>Condition assessment of the third component present in the polygon. A (best) to E (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRating</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ConditionNo_SE2</attrlabl>
+        <attrdef>Condition assessment for component 2 expressed as a number. 5 (best) to 1 (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRatingNumeric</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Strct_S2</attrlabl>
+        <attrdef>Structural Stage of Ecosystem Component 2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>ProjType</attrlabl>
+        <attrdef>Project Type - Indicates the type of mapping project</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eProjType</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PlotNo</attrlabl>
+        <attrdef>Field Plot number</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>WCombQuality</attrlabl>
+        <attrdef>Total quality rating for the polygon, combining the weighted quality ratings for each component (WQuality_SE1, WQuality_SE2, WQuality_SE3)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>AmendDate</attrlabl>
+        <attrdef>Date of amendment</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Size_SE3</attrlabl>
+        <attrdef>Size grade for component 3. A (best) to E (worst). Based on SumWSize_SE3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRating</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>QualityNo_SE2</attrlabl>
+        <attrdef>Quality assessment for component 2, combination of condition, landscape context and size ratings</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Disturb_4</attrlabl>
+        <attrdef>Disturbance (of least importance)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eDisturbance</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Disturb_1</attrlabl>
+        <attrdef>Disturbance (of greatest importance)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eDisturbance</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Comp3Lgnd</attrlabl>
+        <attrdef>Class and type (sensitive, modified or non-sensitive) of Ecosystem Component 3. Labeling field</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>StrctMod_3</attrlabl>
+        <attrdef>Structural Stage Substage or Modifier of Ecosystem Component 3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Comp2Lgnd</attrlabl>
+        <attrdef>Class and type (sensitive, modified or non-sensitive) of Ecosystem Component 2. Labeling field</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Condition_SE1</attrlabl>
+        <attrdef>Condition assessment of the first component present in the polygon. A (best) to E (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRating</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>OBJECTID</attrlabl>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>WSize_SE3_BASIC</attrlabl>
+        <attrdef>Area of polygon covered by ecosystem component 3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SEDec_1</attrlabl>
+        <attrdef>Ecosystem Decile of Ecosystem Component 1 - Proportion of the polygon covered by ecosystem component 1, in deciles.</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SECl_2</attrlabl>
+        <attrdef>Sensitive Ecosystem Class of Ecosystem Component 2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eEcosystemClass</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SmplType</attrlabl>
+        <attrdef>Field check of polygon - describes the level of field checking done on the current polygon</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eSmplType</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ConditionNo_SE1</attrlabl>
+        <attrdef>Condition assessment for component 1 expressed as a number. 5 (best) to 1 (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRatingNumeric</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>GlobalID</attrlabl>
+        <attrdef>UUID (Universal Unique Identifier).</attrdef>
+        <attrdefs>ESRI</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SEsubcl_3</attrlabl>
+        <attrdef>Sensitive Ecosystem Subclass of Ecosystem Component 3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eEcosystemSubclass</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SEsubcl_2</attrlabl>
+        <attrdef>Sensitive Ecosystem Subclass of Ecosystem Component 2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eEcosystemSubclass</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>WSize_SE1_BASIC</attrlabl>
+        <attrdef>Area of polygon covered by ecosystem component 1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>WSize_SE3</attrlabl>
+        <attrdef>Area of polygon covered by ecosystem component 3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Context</attrlabl>
+        <attrdef>Landscape context assessment for the entire polygon. A (best) to E (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRating</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>AmendComment</attrlabl>
+        <attrdef>Brief details of the amendment made</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Proj_ID</attrlabl>
+        <attrdef>Project Identification - A unique identifier for each project</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SizeNo_SE1</attrlabl>
+        <attrdef>Size grade for component 1 expressed as a number. Based on SumWSize_SE1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRatingNumeric</codesetn>
+            <codesets>MetroVancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>WSize_SE1</attrlabl>
+        <attrdef>Area of polygon covered by ecosystem component 1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Strct_S3</attrlabl>
+        <attrdef>Structural Stage of Ecosystem Component 3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SizeNo_SE3</attrlabl>
+        <attrdef>Size grade for component 3 expressed as a number. Based on SumWSize_SE3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRatingNumeric</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>EcoSec</attrlabl>
+        <attrdef>Ecosection Label - Component of the hierarchial Ecoregion Classification system</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eEcoSec</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>EcoMap</attrlabl>
+        <attrdef>First initial and surname of mapper</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eEcoMap</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SECl_3</attrlabl>
+        <attrdef>Sensitive Ecosystem Class of Ecosystem Component 3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eEcosystemClass</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SHAPE</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Condition_SE2</attrlabl>
+        <attrdef>Condition assessment of the second component present in the polygon. A (best) to E (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRating</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SECl_1</attrlabl>
+        <attrdef>Sensitive Ecosystem Class of Ecosystem Component 1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eEcosystemClass</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Size_SE2</attrlabl>
+        <attrdef>Size grade for component 2. A (best) to E (worst). Based on SumWSize_SE2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRating</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SEDec_2</attrlabl>
+        <attrdef>Ecosystem Decile of Ecosystem Component 2 - Proportion of the polygon covered by ecosystem component 2, in deciles.</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Disturb_2</attrlabl>
+        <attrdef>Disturbance</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eDisturbance</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>AmendMapper</attrlabl>
+        <attrdef>First initial and surname of the mapper who made the amendment</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>QualityNo</attrlabl>
+        <attrdef>Final quality grade for the polygon (based on WCombQuality) expressed as a number – 5 (best) to 1 (worst)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRatingNumeric</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>StrctMod_1</attrlabl>
+        <attrdef>Structural Stage Substage or Modifier of Ecosystem Component 1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>WSize_SE2</attrlabl>
+        <attrdef>Area of polygon covered by ecosystem component 2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Stand_A2</attrlabl>
+        <attrdef>Stand Composition Modifier of Ecosystem Component 2 - Differentiates forest stands based on coniferous, broadleaf and mixed stand composition</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eStandComposition</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>WQuality_SE1</attrlabl>
+        <attrdef>Quality rating (QualityNo_SE1) weighted by the proportion of the polygon covered by component 1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>WQuality_SE3</attrlabl>
+        <attrdef>Quality rating (QualityNo_SE3) weighted by the proportion of the polygon covered by component 3</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SizeNo_SE2</attrlabl>
+        <attrdef>Size grade for component 2 expressed as a number. Based on SumWSize_SE2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRatingNumeric</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>WQuality_SE2</attrlabl>
+        <attrdef>Quality rating (QualityNo_SE2) weighted by the proportion of the polygon covered by component 2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SE_ME_1</attrlabl>
+        <attrdef>Status of component 1 as sensitive, modified or non-sensitive ecosystem</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SE_ME_2</attrlabl>
+        <attrdef>Status of component 2 as sensitive, modified or non-sensitive ecosystem</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SE_ME_3</attrlabl>
+        <attrdef>Status of component 1 as sensitive, modified or non-sensitive ecosystem</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>StrctMod_2</attrlabl>
+        <attrdef>Structural Stage Substage or Modifier of Ecosystem Component 2</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SEI_PolyNbr</attrlabl>
+        <attrdef>Polygon Number - An identifying number for polygon being mapped</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>TEM_PolyNbr</attrlabl>
+        <attrdef>Used only when polygon originates from TEM. Identifying number for the related polygon in the TEM dataset</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SEDec_3</attrlabl>
+        <attrdef>Ecosystem Decile of Ecosystem Component 3 - Proportion of the polygon covered by ecosystem component 3, in deciles.</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Disturb_3</attrlabl>
+        <attrdef>Disturbance</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>Disturbance</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Stand_A3</attrlabl>
+        <attrdef>Stand Composition Modifier of Ecosystem Component 3 - Differentiates forest stands based on coniferous, broadleaf and mixed stand composition</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eStandComposition</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Size_SE1</attrlabl>
+        <attrdef>Size grade for component 1. A (best) to E (worst). Based on SumWSize_SE1</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRating</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>QualityNo_SE3</attrlabl>
+        <attrdef>Quality assessment for component 3, combination of condition, landscape context and size ratings</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SourceDate</attrlabl>
+        <attrdef>Date the data was sourced or created</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Mod_Type</attrlabl>
+        <attrdef>Type of modification observed</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>LU_Change</attrlabl>
+        <attrdef>Land use change observed (i.e. from Sensitive/Modified Ecosystem to a different land use)</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>LU_Change_Desc</attrlabl>
+        <attrdef>Additional information about land use change</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>SEI_PolyNbr2009</attrlabl>
+        <attrdef>Holds the original SEI Polygon Number. Provides a link between the update and the original 2009 SEI </attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Comp1Lgnd</attrlabl>
+        <attrdef>Class and type (sensitive, modified or non-sensitive) of Ecosystem Component 1. Labeling field</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>PolyCom</attrlabl>
+        <attrdef>Polygon comments</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>ContextNo</attrlabl>
+        <attrdef>Landscape context assessment for the polygon expressed as a number. 5 (best) to 1 (worst</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>eRatingNumeric</codesetn>
+            <codesets>Metro Vancouver</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Change</attrlabl>
+        <attrdef>Was this polygon added or deleted between 2009 and 2014?</attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Adj09Qual</attrlabl>
+        <attrdef>Quality score for 2009, adjusted. Wherever there is I in Change_Qual, 2014 quality score is brought in. For polygons noted as CHANGE in Change_Qual, 2009 values used. For 0-Diff0914 and NoChange in Change_Qual use 2014 (doesn't matter, same 09 and 14); For polys added since 09, and for NC polys, deleted polys and polys with no quality in either 09 or 14 use N/A; </attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+      </attr>
+      <attr>
+        <attrlabl>Comp1Lgnd_Full</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Comp2Lgnd_Full</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Comp3Lgnd_Full</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>created_user</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>created_date</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>last_edited_user</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>last_edited_date</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>UTMSTArea</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>UTMSTLength</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Q0914</attrlabl>
+        <attrdef>Used in summarize to determine which polygons to assess quality for.  </attrdef>
+        <attrdefs>Metro Vancouver</attrdefs>
+        <attrvai>
+          <attrva>QAll - Assessed for quality in both 09 and 14; Q09 - Assessed for quality in 09 but not 14; Q14 - Assessed for quality in 14 but not 09; DEL - not assessed for quality in 09 or 14 OR assessed for quality in 09 but not 14 (delete before running summarize)</attrva>
+        </attrvai>
+      </attr>
+      <attr>
+        <attrlabl>SHAPE_Length</attrlabl>
+        <attrdef>Length of feature in internal units.</attrdef>
+        <attrdefs>Esri</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SHAPE_Area</attrlabl>
+        <attrdef>Area of feature in internal units squared.</attrdef>
+        <attrdefs>Esri</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+    </detailed>
+  </eainfo>
+  <metainfo>
+    <metd>20190605</metd>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+    <mettc>local time</mettc>
+  </metainfo>
+</metadata>
