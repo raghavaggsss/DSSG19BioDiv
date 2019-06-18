@@ -27,6 +27,8 @@ sei <- spTransform(sei, CRS("+proj=longlat +datum=WGS84"))
 
 ```{r}
 sei
+nrow(sei)-sum(is.na(sei$Comp2Lgnd))
+unique(sei$SECl_1)
 ```
 
 
@@ -37,7 +39,7 @@ library(spdplyr)
 
 
 ```{r}
-sei_select <- sei %>% select(SEI_PolyNb, Comp1Lgnd)
+sei_select <- sei %>% select(SEI_PolyNb, Comp1Lgnd_, Comp2Lgnd_, Comp3Lgnd_, QualityNo_, Location, SE_ME_1,SECl_1)
 ```
 
 
@@ -47,7 +49,7 @@ library(geojsonio)
 ```
 
 ```{r}
-sei_json <- geojson_json(sei_select)
+sei_json <- topojson_json(sei_select)
 ```
 
 ```{r}
@@ -57,7 +59,7 @@ sei_json_simplified <- ms_simplify(sei_json)
 
 
 ```{r}
-geojson_write(sei_json_simplified, file = "/Users/raghav/DSSG19BioDiv/leaflet/SEI.geojson")
+geojson_write(sei_json_simplified, file = "/Users/raghav/DSSG19BioDiv/leaflet/SEI.topojson")
 ```
 
 

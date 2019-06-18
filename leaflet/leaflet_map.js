@@ -1,17 +1,38 @@
+L.TopoJSON = L.GeoJSON.extend({
+    addData: function (data) {
+        var geojson, key;
+        if (data.type === "Topology") {
+            for (key in data.objects) {
+                if (data.objects.hasOwnProperty(key)) {
+                    geojson = topojson.feature(data, data.objects[key]);
+                    L.GeoJSON.prototype.addData.call(this, geojson);
+                }
+            }
+
+            return this;
+        }
+
+        L.GeoJSON.prototype.addData.call(this, data);
+
+        return this;
+    }
+});
+
+L.topoJson = function (data, options) {
+    return new L.TopoJSON(data, options);
+};
+
+
+
 // initialize the map
 var map = L.map('map').setView([49.263710, -123.259378], 13);
 
-// load a tile layer
-// L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
-//   {
-//     attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-//     maxZoom: 17,
-//     minZoom: 9
-//   }).addTo(map);
+var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 
-// openstreet maps
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+// 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
     {
+        attribution: cartodbAttribution,
         maxZoom: 17,
         minZoom: 2
     }).addTo(map);
@@ -222,8 +243,8 @@ var typeSE = {
 // "#FF851B", "#01FF70","#FFDC00" ,"#F012BE",
 
 // add shapes
-$.getJSON("SEI.geojson", function (data) {
-    L.geoJson(data, {
+$.getJSON("SEI.topojson", function (data) {
+    new L.TopoJSON(data, {
 
         style: function (feature) {
             sstyle = remove_highlight;
