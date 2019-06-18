@@ -185,24 +185,56 @@ $.getJSON("gbif_tot.geojson", function (data) {
 // });
 
 var highlight = {
-    'color': '#333333',
-    'weight': 1,
+    'color': '#ffffff',
+    'weight': 2,
     'opacity': 1,
-    'fillColor': '#14bd00'
+    'fillColor': '#ffffff',
+    'fillOpacity': 0.5
 };
 
 var remove_highlight = {
-    'color': "#515055",
+    'color': "#d2d2d2",
     'weight': 1,
     'fillColor': "#8d8c91",
-    'fillOpacity': .5};
+    'fillOpacity': 1};
 
+
+var typeEco = {"ME": "#F012BE",
+    "SE": "#85144b",
+    "XX": "rgb(39,39,48)",
+    "YS": "#c9c731"};
+
+var typeSE = {
+    "OF": "#2ECC40",
+    "MF": "#3D9970",
+    "WD": "#653f2e",
+    "RI": "#00236e",
+    "IT": "#eeaf8c",
+    "WN": "#0074D9",
+    "HB": "#98Fb98",
+    "SV": "#857e4e",
+    "ES": "#7FDBFF",
+    "FW": "#39CCCC",
+    "AP": "#AAAAAA",
+
+};
+
+// "#FF851B", "#01FF70","#FFDC00" ,"#F012BE",
 
 // add shapes
 $.getJSON("SEI.geojson", function (data) {
     L.geoJson(data, {
+
         style: function (feature) {
-            return remove_highlight;
+            sstyle = remove_highlight;
+            if (feature.properties.SE_ME_1 != "SE") {
+                sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+            }
+            else {
+                sstyle.fillColor = typeSE[feature.properties.SECl_1];
+            }
+
+            return sstyle;
         },
         onEachFeature: function (feature, layer) {
             var popUpInfo =  feature.properties.Comp1Lgnd_;
@@ -223,12 +255,26 @@ $.getJSON("SEI.geojson", function (data) {
             layer.on('click', function() {
                 layer.bringToFront();
                 if (layer.selected) {
-                    layer.setStyle(remove_highlight);
+                    sstyle = remove_highlight;
+                    if (feature.properties.SE_ME_1 != "SE") {
+                        sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+                    }
+                    else {
+                        sstyle.fillColor = typeSE[feature.properties.SECl_1];
+                    }
+                    layer.setStyle(sstyle);
                     layer.selected = 0;
                     layer.unbindPopup();
                 }
                 else {
-                    layer.setStyle(highlight);
+                    sstyle = highlight;
+                    // if (feature.properties.SE_ME_1 != "SE") {
+                    //     sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+                    // }
+                    // else {
+                    //     sstyle.fillColor = typeSE[feature.properties.SECl_1];
+                    // }
+                    layer.setStyle(sstyle);
                     layer.selected = 1;
                     layer.bindPopup(popUpInfo).openPopup();
                 }
