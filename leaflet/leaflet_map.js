@@ -22,22 +22,46 @@ L.topoJson = function (data, options) {
     return new L.TopoJSON(data, options);
 };
 
-
+function countKeys(obj) { return Object.keys(obj).length; }
 
 // initialize the map
-var map = L.map('map').setView([49.263710, -123.259378], 13);
+
 
 var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 
 // 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-    {
-        attribution: cartodbAttribution,
-        maxZoom: 17,
-        minZoom: 2
-    }).addTo(map);
+grayScaleBaseMap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+            {
+                edgeBufferTiles: 1,
+                attribution: cartodbAttribution,
+                maxZoom: 17,
+                minZoom: 2
+            });
 
 
+streetsBaseMap =  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                edgeBufferTiles: 1,
+                attribution: cartodbAttribution,
+                maxZoom: 17,
+                minZoom: 2
+            });
+
+var baseLayers = {
+		"Grayscale": grayScaleBaseMap,
+		"Streets": streetsBaseMap
+	};
+
+var overlays = {};
+var num_overlays = 2;
+
+var map = L.map('map', {
+    center: [49.263710, -123.259378],
+    zoom: 10,
+    layers: [streetsBaseMap, grayScaleBaseMap]
+    });
+
+grayScaleBaseMap.addTo(map);
 
 function openWiki(callback, speciesName) {
     var title = callback.query.search[0].title;
@@ -119,14 +143,14 @@ function imgResults(callback, speciesName) {
 }
 
 // load GeoJSON from an external file
-var points_data;
+var points_layer;
 $.getJSON("gbif_tot.geojson", function (data) {
     var dotIcon = L.icon({
         iconUrl: 'blue_dot.png',
         iconSize: [10, 10]
     });
     // add GeoJSON layer to the map once the file is loaded
-    var points_data = L.geoJson(data, {
+    points_layer = L.geoJson(data, {
         pointToLayer: function (feature, latlng) {
             var marker = L.marker(latlng, {icon: dotIcon});
             // var marker = L.marker(latlng, {title: ""});
@@ -189,8 +213,13 @@ $.getJSON("gbif_tot.geojson", function (data) {
             }, singleMarkerMode: 1
         }
     );
-    clusters.addLayer(points_data);
-    map.addLayer(clusters);
+    clusters.addLayer(points_layer);
+    var clusters_layer = map.addLayer(clusters);
+    overlays.Gbif = clusters;
+    if (countKeys(overlays) == num_overlays) {
+        L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
+    }
+
 });
 
 // $.getJSON("red.geojson",function(data){
@@ -242,9 +271,9 @@ var typeSE = {
 
 // "#FF851B", "#01FF70","#FFDC00" ,"#F012BE",
 
-// add shapes
+var shapes_layer;
 $.getJSON("SEI.topojson", function (data) {
-    new L.TopoJSON(data, {
+    shapes_layer = L.topoJson(data, {
 
         style: function (feature) {
             sstyle = remove_highlight;
@@ -303,6 +332,61 @@ $.getJSON("SEI.topojson", function (data) {
         }
     })
         .addTo(map);
+    overlays.SEI = shapes_layer;
+    if (countKeys(overlays) == num_overlays) {
+        L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
+    }
 });
 
+// var htmlLegend1and2 = L.control.htmllegend({
+//         position: 'bottomright',
+//         legends: [{
+//             name: 'Layer 1',
+//             layer: points_layer,
+//             elements: [{
+//                 label: 'Rectangle',
+//                 html: '',
+//                 style: {
+//                     'background-color': 'red',
+//                     'width': '10px',
+//                     'height': '10px'
+//                 }
+//             }, {
+//                 label: 'Triangle',
+//                 html: '',
+//                 style: {
+//                     'background-color': 'green',
+//                     'width': '10px',
+//                     'height': '10px'
+//                 }
+//             }]
+//         }],
+//         collapseSimple: true,
+//         detectStretched: true,
+//         collapsedOnInit: true,
+//         defaultOpacity: 0.7,
+//         visibleIcon: 'icon icon-eye',
+//         hiddenIcon: 'icon icon-eye-slash'
+//     });
+//     map.addControl(htmlLegend1and2);
+//
+//
+// var DeleteControl  = L.Control.extend({
+//         options: {
+//             position: 'topright'
+//         },
+//         onAdd: function(m) {
+//             var btn = L.DomUtil.create('button')
+//             btn.innerText = 'Delete layer 1'
+//             L.DomEvent.on(btn, 'click', function() {
+//                 // Remove legend uses entry id, which can be accessed through `htmllegend._entries`
+//                 htmlLegend1and2.removeLegend(1)
+//                 m.removeControl(this)
+//             })
+//             return btn
+//         }
+//     })
+//     map.addControl(new DeleteControl())
 
+//
+//     L.control.layers(null, overlays, { collapsed: false }).addTo(map);

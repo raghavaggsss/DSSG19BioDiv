@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/R Shp/README.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/R Shp/README.Rmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R Shp/README.nb.html" beforeDir="false" afterPath="$PROJECT_DIR$/R Shp/README.nb.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaflet/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaflet/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/leaflet_map.js" afterDir="false" />
     </list>
@@ -32,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leaflet/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+            <state relative-caret-position="255">
+              <caret line="17" column="51" lean-forward="true" selection-start-line="15" selection-end-line="17" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -50,21 +48,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="5010">
+              <caret line="334" column="31" selection-start-line="334" selection-start-column="31" selection-end-line="334" selection-end-column="31" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#88#94#1" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leaflet/SEI.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret column="2905686" selection-start-column="2905686" selection-end-column="2905686" />
             </state>
           </provider>
         </entry>
@@ -80,8 +69,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>flare</find>
-      <find>createShadowRoot</find>
       <find>d3</find>
       <find>svg</find>
       <find>body</find>
@@ -110,6 +97,8 @@
       <find>image</find>
       <find>highlight</find>
       <find>geojson</find>
+      <find>points_data</find>
+      <find>collapsed</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,15 +119,16 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/leaflet/md5.min.js" />
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.css" />
+        <option value="$PROJECT_DIR$/leaflet/leaflet.edgebuffer.js" />
         <option value="$PROJECT_DIR$/leaflet/index.html" />
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="146" />
-    <option name="y" value="55" />
-    <option name="width" value="1358" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="489" />
+    <option name="y" value="111" />
+    <option name="width" value="992" />
     <option name="height" value="791" />
   </component>
   <component name="ProjectView">
@@ -239,13 +229,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71926000" />
+    <option name="totallyTimeSpent" value="75691000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="146" y="55" width="1358" height="791" extended-state="0" />
+    <frame x="489" y="111" width="992" height="791" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1618541" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22421053" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -419,10 +409,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/SEI.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret column="2905686" selection-start-column="2905686" selection-end-column="2905686" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/SEI.topojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret column="3939" selection-start-column="3939" selection-end-column="3939" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/leaflet.edgebuffer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/L.Control.HtmlLegend.css.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="77" selection-start-column="77" selection-end-column="77" />
+        </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/L.Control.HtmlLegend.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+        <state relative-caret-position="255">
+          <caret line="17" column="51" lean-forward="true" selection-start-line="15" selection-end-line="17" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -433,17 +455,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leaflet/SEI.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret column="2905686" selection-start-column="2905686" selection-end-column="2905686" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="5010">
+          <caret line="334" column="31" selection-start-line="334" selection-start-column="31" selection-end-line="334" selection-end-column="31" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#88#94#1" expanded="true" />
