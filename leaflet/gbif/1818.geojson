@@ -2,6 +2,6 @@
 "type": "FeatureCollection",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "Unnamed: 0": 519906, "datasetKey": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "kingdom": "Animalia", "phylum": "Chordata", "class": "Aves", "order": "Strigiformes", "family": "Strigidae", "genus": "Megascops", "species": "Megascops kennicottii", "decimalLatitude": 49.26586, "decimalLongitude": -123.26317, "eventDate": "1818-06-20T00:00:00Z", "day": 20.0, "month": 6.0, "year": 1818.0, "redList": null, "common": "Tecolote occidental, Western Screech-Owl, Western Screech Owl" }, "geometry": { "type": "Point", "coordinates": [ -123.26317, 49.26586 ] } }
+{ "type": "Feature", "properties": { "Unnamed: 0": 269286, "kingdom": "Animalia", "phylum": "Chordata", "class": "Aves", "order": "Strigiformes", "family": "Strigidae", "genus": "Megascops", "species": "Megascops kennicottii", "year": 1818.0, "datasetName": "MVZ Bird Collection (Arctos)\r\n", "Winter": 0, "Spring": 0, "Summer": 1, "Fall": 0, "redList": null, "common": "Tecolote occidental, Western Screech-Owl, Western Screech Owl" }, "geometry": { "type": "Point", "coordinates": [ -123.26317, 49.26586 ] } }
 ]
 }

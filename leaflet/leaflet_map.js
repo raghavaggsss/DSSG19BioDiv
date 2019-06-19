@@ -339,26 +339,20 @@ points_layers = [];
 var gbif_json_sent = [];
 
 function loadPointsJson(year) {
-    if (!gbif_json_sent[year]) {
         $.getJSON("gbif/"+ year.toString() + ".geojson", function (data) {
         // add GeoJSON layer to the map once the file is loaded
-
-        points_layers[year].addData(data);
+        points_layers[year] = L.geoJSON(data, points_layer_options);
         clusters.addLayer(points_layers[year]);
         // points_layer.addData(data);
 
         // clusters.removeLayer(points_layer);
             gbif_json_sent[year] = 1
     });
-    }
-    else {
-        clusters.addLayer(points_layers[year]);
-    }
-
 }
 
 function deletePointsLayer(year) {
     clusters.removeLayer(points_layers[year]);
+    points_layers[year] = null;
 }
 
 var year_button_div = document.getElementById("year-buttons");
@@ -368,7 +362,6 @@ var init_year = 1990;
 for (let i = init_year; i <= 2019; i++) {
     gbif_json_sent[i] = 0;
     gbif_years.push(i);
-    points_layers[i] = L.geoJSON(null, points_layer_options);
     year_button = document.createElement("input");
     year_button.setAttribute("type", "checkbox");
     year_button.id = "year-" + i.toString();

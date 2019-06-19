@@ -2,6 +2,6 @@
 "type": "FeatureCollection",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "Unnamed: 0": 1365700, "datasetKey": "4bfac3ea-8763-4f4b-a71a-76a6f5f243d3", "kingdom": "Animalia", "phylum": "Arthropoda", "class": "Malacostraca", "order": "Decapoda", "family": "Pseudothelphusidae", "genus": "Hemigrapsus", "species": "Hemigrapsus nudus", "decimalLatitude": 49.167339, "decimalLongitude": -123.403931, "eventDate": "1860-01-26T00:00:00Z", "day": 26.0, "month": 1.0, "year": 1860.0, "redList": null, "common": "purple shore crab" }, "geometry": { "type": "Point", "coordinates": [ -123.403931, 49.167339 ] } }
+{ "type": "Feature", "properties": { "Unnamed: 0": 611262, "kingdom": "Animalia", "phylum": "Arthropoda", "class": "Malacostraca", "order": "Decapoda", "family": "Pseudothelphusidae", "genus": "Hemigrapsus", "species": "Hemigrapsus nudus", "year": 1860.0, "datasetName": "Museum of Comparative Zoology, Harvard University\r\n", "Winter": 1, "Spring": 0, "Summer": 0, "Fall": 0, "redList": null, "common": "purple shore crab" }, "geometry": { "type": "Point", "coordinates": [ -123.403931, 49.167339 ] } }
 ]
 }
