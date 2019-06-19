@@ -1837,22 +1837,6 @@ Levels: AP ES FW HB IT MF OD OF RI SV WD WN XX YF YS</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzcGRwbHlyKVxuYGBgIn0= -->
 <pre class="r"><code>library(spdplyr)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBkcGx5clxuUmVnaXN0ZXJlZCBTMyBtZXRob2Qgb3ZlcndyaXR0ZW4gYnkgJ2RwbHlyJzpcbiAgbWV0aG9kICAgICAgICAgICBmcm9tXG4gIHByaW50LnJvd3dpc2VfZGYgICAgIFxuXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYZHBseXLigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgZmlsdGVyLCBsYWdcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmJhc2XigJk6XG5cbiAgICBpbnRlcnNlY3QsIHNldGRpZmYsIHNldGVxdWFsLCB1bmlvblxuIn0= -->
-<pre><code>Loading required package: dplyr
-Registered S3 method overwritten by 'dplyr':
-  method           from
-  print.rowwise_df     
-
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1867,17 +1851,6 @@ The following objects are masked from ‘package:base’:
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZW9qc29uaW8pXG5gYGAifQ== -->
 <pre class="r"><code>library(geojsonio)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2Qgb3ZlcndyaXR0ZW4gYnkgJ2dlb2pzb25pbyc6XG4gIG1ldGhvZCAgICAgICAgIGZyb20gXG4gIHByaW50LmxvY2F0aW9uIGRwbHlyXG5cbkF0dGFjaGluZyBwYWNrYWdlOiDigJhnZW9qc29uaW/igJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g4oCYcGFja2FnZTpiYXNl4oCZOlxuXG4gICAgcHJldHR5XG4ifQ== -->
-<pre><code>Registered S3 method overwritten by 'geojsonio':
-  method         from 
-  print.location dplyr
-
-Attaching package: ‘geojsonio’
-
-The following object is masked from ‘package:base’:
-
-    pretty</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1893,19 +1866,23 @@ The following object is masked from ‘package:base’:
 <pre class="r"><code>library(rmapshaper)
 sei_json_simplified &lt;- ms_simplify(sei_json)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gVXNlTWV0aG9kKFwibXNfc2ltcGxpZnlcIikgOiBcbiAgbm8gYXBwbGljYWJsZSBtZXRob2QgZm9yICdtc19zaW1wbGlmeScgYXBwbGllZCB0byBhbiBvYmplY3Qgb2YgY2xhc3MgXCJqc29uXCJcbiJ9 -->
+<pre><code>Error in UseMethod(&quot;ms_simplify&quot;) : 
+  no applicable method for 'ms_simplify' applied to an object of class &quot;json&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2VvanNvbl93cml0ZShzZWlfanNvbl9zaW1wbGlmaWVkLCBmaWxlID0gXCIvVXNlcnMvcmFnaGF2L0RTU0cxOUJpb0Rpdi9sZWFmbGV0L1NFSS5nZW9qc29uXCIpXG5gYGAifQ== -->
-<pre class="r"><code>geojson_write(sei_json_simplified, file = &quot;/Users/raghav/DSSG19BioDiv/leaflet/SEI.geojson&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2VvanNvbl93cml0ZShzZWlfanNvbl9zaW1wbGlmaWVkLCBmaWxlID0gXCIvVXNlcnMvcmFnaGF2L0RTU0cxOUJpb0Rpdi9sZWFmbGV0L1NFSS50b3BvanNvblwiKVxuYGBgIn0= -->
+<pre class="r"><code>geojson_write(sei_json_simplified, file = &quot;/Users/raghav/DSSG19BioDiv/leaflet/SEI.topojson&quot;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiU3VjY2VzcyEgRmlsZSBpcyBhdCAvVXNlcnMvcmFnaGF2L0RTU0cxOUJpb0Rpdi9sZWFmbGV0L1NFSS5nZW9qc29uXG4ifQ== -->
-<pre><code>Success! File is at /Users/raghav/DSSG19BioDiv/leaflet/SEI.geojson</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiU3VjY2VzcyEgRmlsZSBpcyBhdCAvVXNlcnMvcmFnaGF2L0RTU0cxOUJpb0Rpdi9sZWFmbGV0L1NFSS50b3BvanNvblxuIn0= -->
+<pre><code>Success! File is at /Users/raghav/DSSG19BioDiv/leaflet/SEI.topojson</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiPGdlb2pzb24tZmlsZT5cbiAgUGF0aDogICAgICAgL1VzZXJzL3JhZ2hhdi9EU1NHMTlCaW9EaXYvbGVhZmxldC9TRUkuZ2VvanNvblxuICBGcm9tIGNsYXNzOiBqc29uXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiPGdlb2pzb24tZmlsZT5cbiAgUGF0aDogICAgICAgL1VzZXJzL3JhZ2hhdi9EU1NHMTlCaW9EaXYvbGVhZmxldC9TRUkudG9wb2pzb25cbiAgRnJvbSBjbGFzczoganNvblxuIn0= -->
 <pre><code>&lt;geojson-file&gt;
-  Path:       /Users/raghav/DSSG19BioDiv/leaflet/SEI.geojson
+  Path:       /Users/raghav/DSSG19BioDiv/leaflet/SEI.topojson
   From class: json</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->

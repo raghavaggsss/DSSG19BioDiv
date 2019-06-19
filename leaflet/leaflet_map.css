@@ -68,3 +68,22 @@
     margin: 0 auto;
     width: 100%;
 }
+
+.year-buttons {
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+label {
+
+}
+
+
+.leaflet-bottom {
+    pointer-events: auto
+}
+
+.leaflet-right {
+    pointer-events: auto
+}
+

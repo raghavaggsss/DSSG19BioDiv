@@ -2,9 +2,165 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaflet/gbif_tot.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif_tot.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/R Shp/README.nb.html" beforeDir="false" afterPath="$PROJECT_DIR$/R Shp/README.nb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1700.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1700.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1800.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1800.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1818.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1818.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1856.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1856.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1857.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1857.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1859.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1859.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1860.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1860.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1872.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1872.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1874.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1874.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1875.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1875.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1876.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1876.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1877.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1877.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1878.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1878.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1879.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1879.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1880.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1880.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1881.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1881.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1882.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1882.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1883.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1883.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1884.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1884.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1885.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1885.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1886.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1886.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1887.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1887.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1888.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1888.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1889.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1889.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1890.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1890.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1891.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1891.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1892.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1892.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1893.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1893.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1894.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1894.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1895.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1895.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1896.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1896.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1897.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1897.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1898.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1898.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1899.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1899.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1900.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1900.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1901.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1901.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1902.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1902.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1903.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1903.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1904.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1904.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1905.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1905.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1906.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1906.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1907.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1907.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1908.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1908.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1909.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1909.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1910.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1910.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1911.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1911.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1912.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1912.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1913.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1913.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1914.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1914.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1915.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1915.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1916.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1916.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1917.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1917.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1918.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1918.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1919.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1919.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1920.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1920.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1921.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1921.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1922.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1922.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1923.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1923.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1924.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1924.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1925.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1925.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1926.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1926.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1927.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1927.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1928.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1928.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1929.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1929.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1930.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1930.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1931.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1931.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1932.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1932.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1933.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1933.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1934.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1934.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1935.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1935.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1936.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1936.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1937.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1937.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1938.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1938.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1939.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1939.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1940.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1940.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1941.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1941.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1942.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1942.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1943.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1943.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1944.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1944.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1945.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1945.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1946.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1946.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1947.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1947.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1948.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1948.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1949.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1949.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1950.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1950.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1951.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1951.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1952.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1952.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1953.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1953.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1954.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1954.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1955.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1955.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1956.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1956.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1957.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1957.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1958.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1958.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1959.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1959.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1960.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1960.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1961.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1961.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1962.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1962.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1963.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1963.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1964.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1964.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1965.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1965.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1966.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1966.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1967.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1967.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1968.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1968.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1969.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1969.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1970.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1970.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1971.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1971.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1972.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1972.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1973.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1973.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1974.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1974.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1975.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1975.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1976.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1976.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1977.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1977.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1978.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1978.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1979.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1979.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1980.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1980.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1981.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1981.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1982.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1982.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1983.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1983.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1984.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1984.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1985.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1985.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1986.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1986.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1987.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1987.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1988.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1988.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1989.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1989.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1990.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1990.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1991.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1991.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1992.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1992.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1993.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1993.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1994.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1994.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1995.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1995.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1996.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1996.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1997.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1997.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1998.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1998.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/1999.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/1999.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2000.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2000.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2001.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2001.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2002.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2002.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2003.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2003.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2004.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2004.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2005.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2005.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2006.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2006.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2007.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2007.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2008.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2008.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2009.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2009.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2010.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2010.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2011.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2011.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2012.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2012.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2013.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2013.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2014.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2014.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2015.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2015.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2016.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2016.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2017.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2017.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2018.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2018.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/gbif/2019.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/gbif/2019.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/leaflet_map.css" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/leaflet_map.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaflet/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/leaflet_map.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,11 +185,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="341" column="32" lean-forward="true" selection-start-line="341" selection-start-column="32" selection-end-line="341" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#6#0" expanded="true" />
+                <element signature="e#88#94#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leaflet/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+            <state relative-caret-position="180">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -41,21 +210,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="382">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/leaflet/gbif/2019.geojson">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="242" column="35" lean-forward="true" selection-start-line="242" selection-start-column="35" selection-end-line="242" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#6#0" expanded="true" />
-                <element signature="e#88#94#1" expanded="true" />
-              </folding>
+            <state relative-caret-position="58">
+              <caret line="4" column="588" selection-start-line="4" selection-end-line="4" selection-end-column="588" />
             </state>
           </provider>
         </entry>
@@ -80,8 +245,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>barhei</find>
-      <find>update</find>
       <find>children</find>
       <find>color</find>
       <find>height</find>
@@ -110,6 +273,8 @@
       <find>clusters</find>
       <find>loadPo</find>
       <find>doticon</find>
+      <find>console</find>
+      <find>year</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,17 +294,17 @@
         <option value="$PROJECT_DIR$/leaflet/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/leaflet/md5.min.js" />
-        <option value="$PROJECT_DIR$/leaflet/leaflet_map.css" />
         <option value="$PROJECT_DIR$/leaflet/leaflet.edgebuffer.js" />
-        <option value="$PROJECT_DIR$/leaflet/index.html" />
         <option value="$PROJECT_DIR$/leaflet/files.php" />
+        <option value="$PROJECT_DIR$/leaflet/leaflet_map.css" />
+        <option value="$PROJECT_DIR$/leaflet/index.html" />
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="310" />
-    <option name="y" value="93" />
+    <option name="x" value="9" />
+    <option name="y" value="83" />
     <option name="width" value="992" />
     <option name="height" value="791" />
   </component>
@@ -169,12 +334,6 @@
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
               <item name="leaflet" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="leaflet" type="462c0819:PsiDirectoryNode" />
-              <item name="gbif_parts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -247,13 +406,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82025000" />
+    <option name="totallyTimeSpent" value="89974000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="310" y="93" width="992" height="791" extended-state="0" />
+    <frame x="9" y="83" width="992" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22421053" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16421053" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" />
@@ -463,20 +622,6 @@
     <entry file="file://$PROJECT_DIR$/leaflet/L.Control.HtmlLegend.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/leaflet/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/files.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -487,10 +632,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif/2019.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="4" column="588" selection-start-line="4" selection-end-line="4" selection-end-column="588" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="242" column="35" lean-forward="true" selection-start-line="242" selection-start-column="35" selection-end-line="242" selection-end-column="35" />
+        <state relative-caret-position="189">
+          <caret line="341" column="32" lean-forward="true" selection-start-line="341" selection-start-column="32" selection-end-line="341" selection-end-column="32" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#88#94#1" expanded="true" />
