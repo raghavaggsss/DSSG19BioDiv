@@ -295,11 +295,6 @@ var points_layer_options = {
     }
 };
 
-// var points_layer = L.geoJson({ "type": "FeatureCollection", "features": [{ "type": "Feature", "properties": { "Unnamed: 0": 70300, "datasetKey": "50c9509d-22c7-4a22-a47d-8c48425ef4a7", "kingdom": "Plantae", "phylum": "Tracheophyta", "class": "Magnoliopsida", "order": "Asterales", "family": "Asteraceae", "genus": "Tanacetum", "species": "Tanacetum vulgare", "decimalLatitude": 49.174106, "decimalLongitude": -123.120081, "eventDate": "2019-04-26T20:44:53Z", "day": 26.0, "month": 4.0, "year": 2019.0, "redList": null, "common": "common tansy, tansy, golden-buttons, garden tansy" }, "geometry": { "type": "Point", "coordinates": [ -123.120081, 49.174106 ] } },]},
-//                        points_layer_options );
-
-// var points_layer = L.geoJSON(null, points_layer_options);
-
 var clusters = L.markerClusterGroup(
             {
                 iconCreateFunction: function (cluster) {
@@ -327,26 +322,13 @@ var clusters = L.markerClusterGroup(
             }
         );
 clusters.addTo(map);
-        // var clusters_layer = map.addLayer(clusters);
-        // overlays.Gbif = clusters;
-        // if (countKeys(overlays) == num_overlays) {
-        //     L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
-        // }
 
-gbif_parts_filenames = ["UBC2010.geojson", "UBC2014.geojson", "UBC2018.geojson"];
-gbif_years = [];
 points_layers = [];
-var gbif_json_sent = [];
 
 function loadPointsJson(year) {
         $.getJSON("gbif/"+ year.toString() + ".geojson", function (data) {
-        // add GeoJSON layer to the map once the file is loaded
         points_layers[year] = L.geoJSON(data, points_layer_options);
         clusters.addLayer(points_layers[year]);
-        // points_layer.addData(data);
-
-        // clusters.removeLayer(points_layer);
-            gbif_json_sent[year] = 1
     });
 }
 
@@ -385,31 +367,6 @@ function plotGbif() {
         loadPointsJson(parseInt(sel.text));
     })
 }
-
-
-
-
-//
-// map.addLayer(clusters);
-
-
-
-// gbif_years.forEach(function(year) {
-//     loadPointsJson("gbif/"+ year.toString() + ".geojson", year);
-// });
-
-
-
-
-
-
-
-
-
-
-
-// "#FF851B", "#01FF70","#FFDC00" ,"#F012BE",
-
 
 
 
