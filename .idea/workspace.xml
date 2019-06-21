@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaflet/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaflet/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/leaflet_map.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,11 +28,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/leaflet/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="34" selection-start-line="34" selection-start-column="4" selection-end-line="37" selection-end-column="18" />
+              <folding>
+                <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="223" column="28" selection-start-line="223" selection-start-column="28" selection-end-line="223" selection-end-column="28" />
+            <state relative-caret-position="859">
+              <caret line="386" column="1" lean-forward="true" selection-start-line="386" selection-start-column="1" selection-end-line="386" selection-end-column="1" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#88#94#1" expanded="true" />
@@ -41,37 +54,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leaflet/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="1230">
+              <caret line="82" column="24" lean-forward="true" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leaflet/gbif/2019.geojson">
+        <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="4" column="588" selection-start-line="4" selection-end-line="4" selection-end-column="588" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leaflet/gbif_parts/UBC2010.geojson">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="1051" selection-start-line="4" selection-end-line="4" selection-end-column="1051" />
+            <state>
+              <caret column="26545" selection-start-column="26545" selection-end-column="26545" />
             </state>
           </provider>
         </entry>
@@ -87,9 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>color</find>
-      <find>height</find>
-      <find>transition</find>
       <find>d.data</find>
       <find>types</find>
       <find>geometry</find>
@@ -117,6 +109,9 @@
       <find>console</find>
       <find>year</find>
       <find>points_layers</find>
+      <find>popper</find>
+      <find>foreach</find>
+      <find>int</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,6 +133,8 @@
         <option value="$PROJECT_DIR$/leaflet/md5.min.js" />
         <option value="$PROJECT_DIR$/leaflet/leaflet.edgebuffer.js" />
         <option value="$PROJECT_DIR$/leaflet/files.php" />
+        <option value="$PROJECT_DIR$/leaflet/bootstrap-multiselect.css" />
+        <option value="$PROJECT_DIR$/leaflet/bootstrap-multiselect.js" />
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.css" />
         <option value="$PROJECT_DIR$/leaflet/index.html" />
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.js" />
@@ -145,9 +142,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="9" />
-    <option name="y" value="83" />
-    <option name="width" value="992" />
+    <option name="x" value="329" />
+    <option name="y" value="88" />
+    <option name="width" value="1277" />
     <option name="height" value="791" />
   </component>
   <component name="ProjectView">
@@ -155,12 +152,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="d3_tree" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
@@ -181,7 +184,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -195,11 +197,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/leaflet" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/leaflet" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/leaflet" />
     </key>
   </component>
@@ -248,16 +250,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91622000" />
+    <option name="totallyTimeSpent" value="99582000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="9" y="83" width="992" height="791" extended-state="0" />
+    <frame x="329" y="88" width="1277" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16421053" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17651822" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -272,12 +273,38 @@
       <window_info active="true" anchor="bottom" id="Jupyter" order="11" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" weight="0.32982844" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17651822" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007599" side_tool="true" weight="0.32904148" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924013" weight="0.32904148" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info active="true" anchor="bottom" id="Jupyter" order="11" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32982844" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -394,27 +421,10 @@
     <entry file="file://$PROJECT_DIR$/leaflet/blue_dot.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="102" column="84" lean-forward="true" selection-start-line="102" selection-start-column="84" selection-end-line="102" selection-end-column="84" />
-          <folding>
-            <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/md5.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26545" selection-start-column="26545" selection-end-column="26545" />
         </state>
       </provider>
     </entry>
@@ -432,13 +442,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leaflet/SEI.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret column="2905686" selection-start-column="2905686" selection-end-column="2905686" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/SEI.json" />
     <entry file="file://$PROJECT_DIR$/leaflet/SEI.topojson">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -481,24 +485,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/bootstrap-multiselect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24465">
+          <caret line="1742" column="43" lean-forward="true" selection-start-line="1742" selection-start-column="43" selection-end-line="1742" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1096">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
+          <folding>
+            <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26545" selection-start-column="26545" selection-end-column="26545" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/bootstrap-multiselect.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1509" selection-start-column="1509" selection-end-column="1509" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="1230">
+          <caret line="82" column="24" lean-forward="true" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="352">
+          <caret line="34" selection-start-line="34" selection-start-column="4" selection-end-line="37" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="223" column="28" selection-start-line="223" selection-start-column="28" selection-end-line="223" selection-end-column="28" />
+        <state relative-caret-position="859">
+          <caret line="386" column="1" lean-forward="true" selection-start-line="386" selection-start-column="1" selection-end-line="386" selection-end-column="1" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#88#94#1" expanded="true" />

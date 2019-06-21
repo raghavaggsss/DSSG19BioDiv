@@ -84,7 +84,7 @@ streetsBaseMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
     {
         edgeBufferTiles: 1,
         attribution: cartodbAttribution,
-        maxZoom: 17,
+        maxZoom: 19,
         minZoom: 2
     });
 
@@ -355,34 +355,40 @@ function deletePointsLayer(year) {
     points_layers[year] = null;
 }
 
-var year_button_div = document.getElementById("year-buttons");
-
 var init_year = 1990;
 
+data_select2 = [];
+
 for (let i = init_year; i <= 2019; i++) {
-    gbif_json_sent[i] = 0;
-    gbif_years.push(i);
-    year_button = document.createElement("input");
-    year_button.setAttribute("type", "checkbox");
-    year_button.id = "year-" + i.toString();
-    year_button.onclick = function() {
-        if (this.checked) {
-             loadPointsJson(this.id.split('-')[1])
-        }
-        else {
-            deletePointsLayer(this.id.split('-')[1]);
-        }
 
-    };
-
-    year_label = document.createElement("label");
-    year_label.setAttribute("for", year_button.id);
-    year_label.innerText = i.toString();
-
-
-    year_button_div.appendChild(year_button);
-    year_button_div.appendChild(year_label);
+    //select2 data
+    data_select2.push( {
+        id: "year-" + i.toString(),
+        text: i.toString()
+    });
 }
+
+select2_element = $(".select2-year").select2({
+  data: data_select2,
+  width: 'resolve',
+    closeOnSelect: false,
+});
+
+selections = [];
+
+function plotGbif() {
+    selections.forEach(function(sel) {
+        deletePointsLayer(parseInt(sel.text));
+    });
+    selections = select2_element.select2('data');
+    selections.forEach(function(sel) {
+        loadPointsJson(parseInt(sel.text));
+    })
+}
+
+
+
+
 //
 // map.addLayer(clusters);
 
