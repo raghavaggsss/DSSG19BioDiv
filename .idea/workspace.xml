@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/inat_small/.ipynb_checkpoints/inat_small-checkpoint.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,23 +25,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/map_django/biodivmap/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="112" column="55" selection-start-line="112" selection-start-column="55" selection-end-line="112" selection-end-column="55" />
               <folding>
-                <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
+        <entry file="file://$PROJECT_DIR$/map_django/biodivmap/models.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1943/Melanoplus sanguinipes.geojson">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="26545" selection-start-column="26545" selection-end-column="26545" />
+            <state relative-caret-position="105">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -58,46 +60,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>childre</find>
-      <find>click</find>
-      <find>_children</find>
-      <find>border</find>
-      <find>bar</find>
-      <find>name</find>
-      <find>ratio</find>
-      <find>width</find>
-      <find>function</find>
-      <find>types</find>
-      <find>flare</find>
-      <find>createShadowRoot</find>
-      <find>d3</find>
-      <find>svg</find>
-      <find>body</find>
-      <find>barwidth</find>
-      <find>barhei</find>
-      <find>update</find>
-      <find>children</find>
-      <find>color</find>
-      <find>height</find>
-      <find>transition</find>
-      <find>d.data</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/d3_tree/flare.json" />
         <option value="$PROJECT_DIR$/d3_tree/index.html" />
+        <option value="$PROJECT_DIR$/leaflet/UBC.geojson" />
+        <option value="$PROJECT_DIR$/leaflet/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css" />
+        <option value="$PROJECT_DIR$/leaflet/md5.min.js" />
+        <option value="$PROJECT_DIR$/leaflet/leaflet.edgebuffer.js" />
+        <option value="$PROJECT_DIR$/leaflet/files.php" />
+        <option value="$PROJECT_DIR$/leaflet/bootstrap-multiselect.css" />
+        <option value="$PROJECT_DIR$/leaflet/bootstrap-multiselect.js" />
+        <option value="$PROJECT_DIR$/leaflet/leaflet_map.css" />
+        <option value="$PROJECT_DIR$/leaflet/leaflet_map.js" />
+        <option value="$PROJECT_DIR$/leaflet/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/map_django/biodivmap/views.py" />
+        <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="560" />
-    <option name="y" value="103" />
-    <option name="width" value="1277" />
     <option name="height" value="791" />
   </component>
   <component name="ProjectView">
@@ -105,6 +99,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -112,36 +107,31 @@
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="d3_tree" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="inat_full" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="inat_small" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/map_django" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/leaflet" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/map_django" />
+      <recent name="$PROJECT_DIR$/leaflet" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -168,18 +158,14 @@
       <workItem from="1559234884507" duration="975000" />
       <workItem from="1559841796331" duration="2706000" />
       <workItem from="1559846265211" duration="246000" />
-      <workItem from="1559851469428" duration="17424000" />
     </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21351000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="560" y="103" width="1277" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12307692" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2226762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -189,27 +175,264 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007599" side_tool="true" weight="0.32904148" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924013" weight="0.32904148" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info active="true" anchor="bottom" id="Jupyter" order="11" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" weight="0.32982844" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17651822" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007599" side_tool="true" weight="0.32904148" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924013" weight="0.32904148" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info active="true" anchor="bottom" id="Jupyter" order="11" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32982844" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.php" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Markers for data points in UBC on the Map. geopandas.to_json() gives double encoding of json. use write insted." />
+    <MESSAGE value="remove separate button for loading image; marker onclick instead" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove separate button for loading image; marker onclick instead" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/inat_exclude_e-birds/inat_exclude_e-birds_graph.ipynb" />
     <entry file="file://$PROJECT_DIR$/inat_small/data.json" />
     <entry file="file://$PROJECT_DIR$/d3_tree/data.json" />
+    <entry file="file://$PROJECT_DIR$/output.json" />
+    <entry file="file://$PROJECT_DIR$/leaflet/rodents.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="678" selection-start-line="4" selection-start-column="674" selection-end-line="4" selection-end-column="678" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/UBC.geojson" />
+    <entry file="file://$PROJECT_DIR$/leaflet/UBC_points.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/UBC_poly.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="4" column="395" selection-start-line="4" selection-start-column="395" selection-end-line="4" selection-end-column="395" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/Leaflet.markercluster-1.4.1/src/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/Leaflet.markercluster-1.4.1/src/MarkerCluster.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/blue_dot.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/md5.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/SEI.geojson">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="150">
+          <caret column="1538" selection-start-column="1538" selection-end-column="1538" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="51" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/SEI.json" />
+    <entry file="file://$PROJECT_DIR$/leaflet/SEI.topojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret column="3939" selection-start-column="3939" selection-end-column="3939" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/leaflet.edgebuffer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/L.Control.HtmlLegend.css.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="77" selection-start-column="77" selection-end-column="77" />
+        </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/L.Control.HtmlLegend.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/files.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_parts/UBC2010.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="1051" selection-start-line="4" selection-end-line="4" selection-end-column="1051" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif/2019.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="4" column="588" selection-start-line="4" selection-end-line="4" selection-end-column="588" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/bootstrap-multiselect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24465">
+          <caret line="1742" column="43" lean-forward="true" selection-start-line="1742" selection-start-column="43" selection-end-line="1742" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+          <folding>
+            <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/bootstrap-multiselect.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1509" selection-start-column="1509" selection-end-column="1509" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/1700.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="114" selection-start-line="19" selection-start-column="114" selection-end-line="19" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1230">
+          <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/d3_tree/flare.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -217,13 +440,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
+    <entry file="file://$PROJECT_DIR$/leaflet/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="112" column="55" selection-start-line="112" selection-start-column="55" selection-end-line="112" selection-end-column="55" />
+        <state relative-caret-position="517">
+          <caret line="369" selection-start-line="369" selection-end-line="369" />
           <folding>
-            <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#88#94#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-137" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif/1700.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="406" selection-start-line="4" selection-start-column="398" selection-end-line="4" selection-end-column="406" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="264" column="53" selection-start-line="264" selection-start-column="53" selection-end-line="264" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#88#94#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1889/Cypseloides niger.geojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1903/Platanthera stricta.geojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1908/Vireo huttoni.geojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/2017/Bucephala clangula.geojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/2018/Euphagus carolinus.geojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/2018/Haliaeetus leucocephalus.geojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/2018/Turdus migratorius.geojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1943/Melanoplus sanguinipes.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

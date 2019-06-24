@@ -1,3 +1,8 @@
+*.geojson
+*.sqlite3
+*.topojson
+*.geojson
+*.sqlite
 *.tsv
 *.csv
 *.DS_Store
