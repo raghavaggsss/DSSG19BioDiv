@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/DSSG19BioDiv.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DSSG19BioDiv.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +28,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -69,36 +60,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>geometry</find>
-      <find>species</find>
-      <find>loca</find>
-      <find>p</find>
-      <find>local</find>
-      <find>add</find>
-      <find>input</find>
-      <find>consol</find>
-      <find>console.log</find>
-      <find>window.op</find>
-      <find>window.ope</find>
-      <find>pol</find>
-      <find>image</find>
-      <find>highlight</find>
-      <find>geojson</find>
-      <find>points_data</find>
-      <find>collapsed</find>
-      <find>clusters_layer</find>
-      <find>clusters</find>
-      <find>loadPo</find>
-      <find>doticon</find>
-      <find>console</find>
-      <find>year</find>
-      <find>points_layers</find>
-      <find>popper</find>
-      <find>foreach</find>
-      <find>int</find>
-      <find>gbif_years</find>
-      <find>leaflet_map</find>
-      <find>common</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,9 +92,6 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="451" />
-    <option name="y" value="64" />
-    <option name="width" value="1021" />
     <option name="height" value="791" />
   </component>
   <component name="ProjectView">
@@ -200,30 +158,11 @@
       <workItem from="1559234884507" duration="975000" />
       <workItem from="1559841796331" duration="2706000" />
       <workItem from="1559846265211" duration="246000" />
-      <workItem from="1559851469428" duration="50407000" />
-    </task>
-    <task id="LOCAL-00001" summary="Markers for data points in UBC on the Map. geopandas.to_json() gives double encoding of json. use write insted.">
-      <created>1560273308210</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1560273308210</updated>
-    </task>
-    <task id="LOCAL-00002" summary="remove separate button for loading image; marker onclick instead">
-      <created>1560545102749</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1560545102749</updated>
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104489000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="451" y="64" width="1021" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2226762" />
@@ -457,8 +396,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/d3_tree/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1096">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
           <folding>
             <element signature="n#style#0;n#svg#0;n#body#0;n#!!top" expanded="true" />
           </folding>
