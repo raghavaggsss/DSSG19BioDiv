@@ -171,7 +171,7 @@ for (row in 1:nrow(total_unq)) {
 
 total_unq = total_unq[,-c(1,11:13,16:18,23)]
 
-write.csv(total_unq, "GBif Trim June19.csv")
+write.csv(total_unq, "GBif Trim June19.csv", row.names = FALSE)
 
 
 
