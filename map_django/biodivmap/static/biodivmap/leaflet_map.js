@@ -262,7 +262,7 @@ var points_layer_options = {
         if (feature.properties) {
             var redList = feature.properties.redList;
             var markerPopUp = '<div class="popUpfeature">' + feature.properties.species + '<br/> <b>'
-                + feature.properties.common.split(',')[0] + '</b>';
+                + feature.properties.common + '</b>';
             if (redList) {
                 markerPopUp += '<b class="redListFont">' + '<br/>' + feature.properties.redList + '</b>';
             }
