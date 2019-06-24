@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Leaflet.draw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R Scripts/Data Drop.R" beforeDir="false" afterPath="$PROJECT_DIR$/R Scripts/Data Drop.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R Scripts/Tax Explorer.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/R Scripts/Tax Explorer.Rmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaflet/UBCsorted.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/UBCsorted.geojson" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaflet/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaflet/index.html" afterDir="false" />
+
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +29,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leaflet/testj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="1" selection-end-line="11" selection-end-column="1" />
+
             </state>
           </provider>
         </entry>
@@ -104,14 +96,7 @@
       <find>height</find>
       <find>transition</find>
       <find>d.data</find>
-      <find>types</find>
-      <find>geometry</find>
-      <find>if(_options.mark</find>
-      <find>if(_options.markers[ui.value].feature.propert</find>
-      <find>substr</find>
-      <find>event</find>
-      <find>time</find>
-      <find>year</find>
+
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,11 +130,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1042" />
-    <option name="height" value="738" />
+
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -235,21 +216,12 @@
       <workItem from="1559234884507" duration="975000" />
       <workItem from="1559841796331" duration="2706000" />
       <workItem from="1559846265211" duration="246000" />
-      <workItem from="1559851469428" duration="18728000" />
-      <workItem from="1560549495624" duration="555000" />
-      <workItem from="1560550075444" duration="2612000" />
-      <workItem from="1560788930050" duration="1220000" />
-      <workItem from="1560806726331" duration="11462000" />
-      <workItem from="1561048501465" duration="52000" />
-      <workItem from="1561136817237" duration="4236000" />
+
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63675000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17811158" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -360,8 +332,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/epoch/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#0#6#0" expanded="true" />
