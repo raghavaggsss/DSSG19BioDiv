@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r}
-library(ggplot2)
+library(tidyverse)
 library(phyloseq)
 library(phytools)
 ```
@@ -18,7 +18,7 @@ library(phytools)
 # DATA IMPORT AND CLEANING
 
 ```{r}
-data.whole = read.csv("GBif Total.csv", sep="\t", stringsAsFactors = FALSE, na.strings = "")
+data.whole = read.csv("GBif Trim June19.csv", stringsAsFactors = FALSE, na.strings = "")
 # Remove data that doesn't have information to at least the species level
 data = data.whole[which(!is.na(data.whole$genus)),]
 # Remove any data marked 'incertae sedis'
@@ -187,3 +187,23 @@ sum = as.data.frame(cbind(a,b,c,d))[order(d, decreasing = TRUE),]
 colnames(sum) = c("Family","Scientific Name","Unique Species","Observations")
 sum
 ```
+
+```{r}
+x = as.vector(table(data$species, data$year))
+summary(x)
+
+length(x[x==0])/length(x)
+
+head(sort(x, decreasing = TRUE), 20)
+x = as.vector(table(data$species, data$year))
+
+
+spdata = data[,c('year','species')]
+spdata = distinct(spdata)
+t = table(spdata$year)
+t = t[-nrow(t)]
+v = as.vector(t)
+summary(v)
+```
+
+

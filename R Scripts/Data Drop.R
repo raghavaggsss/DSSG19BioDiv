@@ -1,4 +1,5 @@
 library(tidyverse)
+library(reshape)
 
 ## TESTING ##
 
@@ -82,8 +83,8 @@ drop_repeats2 = function(data) {
         for (year in unique(dlong$year)) {
           dyear = dlong[which(dlong$year == year),]
           for (month in unique(dyear$month)) {
-            dmonth = dyear[which(dmonth$month == month),]
-            rr = rownames(dmonth)[2:nrow(dmonth)]
+            dmonth = dyear[which(dyear$month == month),]
+            if(nrow(dmonth > 1)) {rr = c(rr, as.numeric(rownames(dmonth)[2:nrow(dmonth)]))}
           }
         }
       }
@@ -104,4 +105,76 @@ drop_repeats2 = function(data) {
 
 total = read.csv("GBIF Total.csv", sep = "\t", stringsAsFactors = FALSE)
 
-removal_rows = drop_repeats(total)
+unq_rows = as.numeric(rownames(unique(total[c("species","year","month","decimalLatitude","decimalLongitude")])))
+total_unq = total[unq_rows,]
+
+total_unq_trim = total_unq[,c(2,4:10,17:18,25:28)]
+
+write.csv(total_unq_trim, "GBIF Total No-Dupe Trim.csv")
+
+
+
+
+## ACTUAL USEAGE 2 ##
+
+total = read.csv("GBIF Total No-Dupe Trim.csv", stringsAsFactors = FALSE)
+
+dict = cbind(c(1:12),c(rep(c(1:4),each=3)))
+colnames(dict) = c("Month","Season")
+
+unq_rows = as.numeric(rownames(unique(total[c("species","year","decimalLatitude","decimalLongitude")])))
+total_unq = total[unq_rows,]
+
+total_unq$season = NULL
+for (sp in unique(total$species)) {
+  for (y in unique(total$year[which(total$species == sp)])) {
+    for (lat in unique(total$decimalLatitude[which(total$species == sp & total$year == y)])) {
+      for (long in unique(total$decimalLongitude[which(total$species == sp & total$year == y & total$decimalLatitude == lat)])) {
+        sub = total$month[which(total$species == sp & total$year == y & total$decimalLatitude == lat &
+                  total$decimalLongitude == long)]
+        m = unique(sub)
+        total_unq$season[which(total_unq$species == sp & total_unq$year == y)] = m
+      }
+    }
+  }
+}
+
+total_unq = total_unq[,-c("day","month","X","")]
+
+
+
+
+total$coor = paste0(total$decimalLatitude, total$decimalLongitude)
+total_unq$coor = paste0(total_unq$decimalLatitude, total_unq$decimalLongitude)
+
+month_count = total %>% group_by(species, year, coor) %>% summarise(paste(unique(month), collapse = ", "))
+colnames(month_count)[ncol(month_count)] = "months"
+
+total_unq = total_unq[order(total_unq$species, total_unq$year, total_unq$coor),]
+month_count = month_count[order(month_count$species, month_count$year, month_count$coor),]
+total_unq$months = month_count$`paste(unique(month), collapse = ", ")`
+
+sep_months = sapply(total_unq$months, strsplit, ", ")
+
+
+total_unq$Winter = 0
+total_unq$Spring = 0
+total_unq$Summer = 0
+total_unq$Fall = 0
+for (row in 1:nrow(total_unq)) {
+  if (any(c(1,2,12) %in% sep_months[row][[1]][1])) {total_unq$Winter[row] = 1}
+  if (any(c(3:5) %in% sep_months[row][[1]][1])) {total_unq$Spring[row] = 1}
+  if (any(c(6:8) %in% sep_months[row][[1]][1])) {total_unq$Summer[row] = 1}
+  if (any(c(9:11) %in% sep_months[row][[1]][1])) {total_unq$Fall[row] = 1}
+  if (row %% 15000 == 0) {print(paste("Loop is ", round(row/nrow(total_unq)*100), "% done", sep = ""))}
+}
+
+total_unq = total_unq[,-c(1,11:13,16:18,23)]
+
+write.csv(total_unq, "GBif Trim June19.csv")
+
+
+
+
+
+
