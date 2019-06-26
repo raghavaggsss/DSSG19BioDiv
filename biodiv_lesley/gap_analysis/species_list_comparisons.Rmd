@@ -1,0 +1,379 @@
+---
+title: "Species List Comparisons"
+author: "Lesley Miller"
+date: '2019-06-21'
+output: html_notebook
+---
+
+```{r}
+library(plyr)
+library(tidyverse)
+```
+
+# Load the datasets
+
+```{r}
+# load complete GBIF data for MetroVan
+gbif <- read.csv("gbif_complete.csv", sep = "\t", stringsAsFactors = FALSE, na.strings = "")
+
+```
+
+```{r}
+# filter out the observations that have NA, unknown placement, viruses and archaea for kingdom
+trimmed_gbif <- filter(gbif, 
+                       kingdom!="incertae sedis" & kingdom!="NA" & kingdom!="Archaea" & kingdom!="Viruses")
+
+# select the most relevant columns 
+trimmed_gbif <- select(trimmed_gbif, c(datasetKey,kingdom, phylum, class, order,
+                                       family,genus,species,taxonRank,locality, decimalLatitude,decimalLongitude,
+                                       month, year, basisOfRecord))
+
+# Drop any NAs from the species and simplified names columns 
+trimmed_gbif <- drop_na(trimmed_gbif, species, simplified_names)
+
+# Add a column that strips the var. from any species name 
+trimmed_gbif <- mutate(trimmed_gbif, simplified_names = gsub(pattern = " var.*", replacement = "", x = trimmed_gbif$species))
+```
+
+```{r}
+# load BC Red+Blue+ Yellow list (Rainbow list)
+rainbow_list <- read.delim("./bc_rainbow_list.tsv", sep = "\t", stringsAsFactors = FALSE, na.strings = "")
+
+# select the most relevant columns
+rainbow_list <- select(rainbow_list, c(Scientific.Name, Global.Status, Prov.Status, 
+                                            BC.List, Name.Category, Species.Level, Kingdom, Phylum, Class, Order, Family))
+
+# Add a column that strips the var. from any species name 
+rainbow_list <- mutate(rainbow_list, simplified_names = gsub(pattern = " var.*", replacement = "", x = rainbow_list$Scientific.Name))
+
+# Subset red and blue listed species only 
+bc_red_blue <- filter(rainbow_list, BC.List=="Blue" | BC.List== "Red")
+```
+
+```{r}
+# IUCN Red List Data for all species in North America 
+IUCN_list <- read.csv("./redlist_all_species/assessments.csv", stringsAsFactors = FALSE, na.strings = "")
+
+IUCN_list <- mutate(IUCN_list, simplified_names = gsub(pattern = " var.*", replacement = "", x = IUCN_list$scientificName))
+```
+
+
+# GBIF and Rainbow List Comparison
+
+The BC Red + Blue + Yellow list (the rainbow list) is assumed to represent most of the species that are currently present in British Columbia. According to the BC Ministry of Sustainable Resource Mangement, the Yellow list includes "common, declining and increasing species - all species not included on the Red and Blue lists". This implies that the BC rainbow list should be a reasonable approximation of most if not all the species that live in BC. It is of interest, to compare unique species on GBIF to the rainbow list species to investigate whether the rainbow list is a good reference for what occurs in BC. There is an expectation that a majority of the GBIF species names should be found on the rainbow list. The rainbow and GBIF species have the specific variety included in some of the species names. If both lists do not identify the same species to the same variety then the species names will not match even though in actuality the underlying species is the same between the two lists. The following comparisions have all been done with the var. removed from all species names.
+
+### GBIF on Rainbow 
+```{r}
+# get the unique GBIF species names 
+gbif_unique_names <- unique(trimmed_gbif$simplified_names)
+
+# get the unique rainbow list species names 
+rainbow_unique_names <- unique(rainbow_list$simplified_names)
+
+# How many of the unique GBIF species are found on the rainbow list? 
+gbif_rainbow_intersect <- sum(gbif_unique_names%in%rainbow_unique_names);num_gbif_on_rainbow
+```
+
+```{r}
+# What percent of unique GBIF species are found on rainbow list? 
+gbif_rainbow_intersect/length(gbif_unique_names)*100
+
+# What percent of the rainbow list is found on GBIF?
+gbif_rainbow_intersect/nrow(rainbow_list)*100
+```
+In addition to looking at the proportion of the rainbow list that is included on GBIF, one can also consider the proportion of the Red/Blue listed species alone that are found on GBIF. 
+```{r}
+# How many of GBIF unique species are found on bc_red_blue list?
+num_gbif_on_redBlue <- sum(gbif_unique_names%in%bc_red_blue$simplified_names);num_gbif_on_redBlue
+
+# What percent of unique GBIF species are found on bc_red_blue list? 
+num_gbif_on_redBlue/length(gbif_unique_names)*100
+
+# What percent of the bc_red_blue list species are found on GBIF?
+num_gbif_on_redBlue/nrow(bc_red_blue)*100
+```
+### Summary 
+The majority of GBIF species as a whole , ~ 75% are not found on the rainbow list. This top level comparison implies that the BC rainbow list does not represent most of the species in BC. 
+When considering the Red/Blue list separately, ~ 20% of the Red/Blue species are found on GBIF. However, out of the GBIF species, ~ 2% are found on the Red/Blue list. 
+
+### GBIF Plants on Rainbow
+Breaking down the GBIF into its plant, animal and fungi parts could reveal which of these groups match the rainbow list the most. This could indicate where most of taxonomy incompatibilies lie, or indicate true gaps between rainbow and GBIF. 
+```{r}
+# Subset GBIF plants 
+plants_gbif <- filter(trimmed_gbif, kingdom=="Plantae")
+
+
+# get the unique plant names 
+plants_gbif_unique_names <- unique(plants_gbif$simplified_names)
+```
+
+```{r}
+# How many of the unique GBIF plant species are found on rainbow list?
+gbif_plant_on_rainbow <- sum(plants_gbif_unique_names%in%rainbow_unique_names);gbif_plant_on_rainbow
+```
+
+```{r}
+# What percent of GBIF plants are found on rainbow?
+gbif_plant_on_rainbow/length(plants_gbif_unique_names)*100
+
+```
+
+```{r}
+# What percent of GBIF as a whole are the plants found on rainbow?
+gbif_plant_on_rainbow/length(na.omit(unique(trimmed_gbif$species)))*100
+
+# What percent of rainbow are the plants found on GBIF?
+gbif_plant_on_rainbow/nrow(rainbow_list)*100
+```
+### GBIF Animals on Rainbow
+```{r}
+# Subset the GBIF animals 
+animal_gbif <- filter(trimmed_gbif, kingdom=="Animalia")
+
+# Get unique animal names 
+animal_gbif_unique_names <- unique(animal_gbif$simplified_names)
+```
+
+```{r}
+# How many of the unique GBIF animal species are found on rainbow list?
+gbif_animal_on_rainbow <- sum(animal_gbif_unique_names%in%rainbow_unique_names);gbif_animal_on_rainbow
+```
+
+```{r}
+# What percent of GBIF animal are found on rainbow?
+gbif_animal_on_rainbow/length(animal_gbif_unique_names)*100
+
+```
+
+```{r}
+# Plants found on rainbow are what percent of GBIF species?
+gbif_animal_on_rainbow/length(gbif_unique_names)*100
+
+# What percent of the rainbow list are the animals found on GBIF
+gbif_animal_on_rainbow/nrow(rainbow_list)*100
+```
+
+### GBIF Fungi on Rainbow
+```{r}
+# Subset the GBIF fungi 
+fungi_gbif <- filter(trimmed_gbif, kingdom=="Fungi")
+
+# Get the unqiue fungi names 
+fungi_gbif_unique_names <- unique(fungi_gbif$simplified_names)
+```
+
+```{r}
+# Unqiue fungi species are what percent of the GBIF unique species?
+length(fungi_gbif_unique_names)/length(gbif_unique_names)*100
+```
+
+
+```{r}
+# How many of the unique GBIF fungi species are found on rainbow list?
+gbif_fungi_on_rainbow <- sum(na.omit(unique(fungi_gbif$species))%in%rainbow_list$Scientific.Name);gbif_fungi_on_rainbow
+```
+
+```{r}
+# What percent of GBIF fungi are found on rainbow?
+gbif_fungi_on_rainbow/length(na.omit(unique(fungi_gbif$species)))*100
+
+```
+
+```{r}
+# Fungi found on rainbow are what percent of GBIF species?
+gbif_fungi_on_rainbow/length(na.omit(unique(trimmed_gbif$species)))*100
+
+# What percent of the rainbow list are the fungi species found on GBIF?
+gbif_fungi_on_rainbow/nrow(rainbow_list)*100
+```
+
+# Conclusion: 
+25% of GBIF is found on rainbow list. 
+22% of the rainbow list is found on GBIF
+
+Of the GBIF species found on rainbow list, 
+~ 2% are fungi 
+~ 10% are plants 
+~ 12% are animals 
+
+~ 20% of gbif plants are found on rainbow 
+~ 44% of gbif animals are found on rainbow 
+~ 12% of gbif fungi are found on rainbow 
+
+```{r}
+# With var. removed from both gbif and rainbow, how many of the unique GBIF species are found on rainbow list?
+gbif_rainbow_intersect <- sum(na.omit(unique(trimmed_gbif$simplified_names))%in%unique(rainbow_list$simplified_names));gbif_rainbow_intersect
+
+# How many additional species does this allow to match?
+num_gbif_on_rainbow-sum(unique(trimmed_gbif$species)%in%rainbow_list$Scientific.Name)
+```
+
+# Rainbow List and IUCN Comparison 
+```{r}
+# How many species on bc_red_blue list are on the IUCN?
+bc_red_blue_on_IUCN <- sum(unique(bc_red_blue$simplified_names)%in%unique(IUCN_list$simplified_names));bc_red_blue_on_IUCN
+
+# What percent of the BC_red_blue list are on IUCN?
+bc_red_blue_on_IUCN/length(unique(bc_red_blue$simplified_names))*100
+```
+Summary: There is not much overlap between the BC Red/Blue list and the IUCN red list. Only 3.5% of the BC Red/Blue list is found on the IUCN. 
+
+# GBIF and IUCN Comparison 
+```{r}
+# How many of the IUCN red list species are found on GBIF?
+num_gbif_on_IUCN <- sum(unique(IUCN_list$simplified_names)%in%unique(na.omit(trimmed_gbif$simplified_names)));num_gbif_on_IUCN
+
+# what percent of the IUCN list is found on gbif
+num_gbif_on_IUCN/length(IUCN_list$simplified_names)*100
+
+# What percent of the GBIF is found on IUCN?
+num_gbif_on_IUCN/length(na.omit(unique(trimmed_gbif$simplified_names)))*100
+```
+
+# Taxonomic Name Resolution 
+```{r}
+# GBIF plant species list fed into TNRS 
+plant_species <- unique(plants_gbif$species)
+
+# Rainbow plant species list fed into TNRS 
+# subset rainbow plants 
+rainbow_plants <- filter(rainbow_list, Kingdom=="Plantae") %>% 
+      filter(Phylum!="Mitosporic fungi" & Phylum!="Ascomycota")
+
+# Get rainbow plant species list fed into TNRS 
+rainbow_plant_names <- rainbow_plants$Scientific.Name
+```
+
+```{r}
+# read in the GBIF TNRS results 
+gbif_tnrs <- read.csv("gbif_plant_tnrs_results.csv", na.strings = c("", " "), stringsAsFactors = F)
+
+# select most relevant columns 
+gbif_tnrs_trim <- select(gbif_tnrs, c(Name_number, 
+                                            Name_submitted, 
+                                            Overall_score,
+                                            Name_matched, 
+                                            Name_matched_rank,
+                                            Name_matched_author,
+                                            Name_score, 
+                                            Genus_score, 
+                                            Specific_epithet_matched,
+                                            Specific_epithet_score,
+                                            Unmatched_terms,
+                                            Taxonomic_status,
+                                            Accepted_name,
+                                            Accepted_name_rank,
+                                            Warnings))
+# strip out var. from all Accepted_names 
+gbif_tnrs_trim <- mutate(gbif_tnrs_trim, simplified_accepted_names = gsub(pattern = " var.*", replacement = "", 
+                                                                                x = gbif_tnrs_trim$Accepted_name))
+```
+
+```{r}
+# Read in the rainbow TNRS results 
+rainbow_tnrs <- read.csv("rainbow_plant_tnrs.csv", na.strings = c("", " "), stringsAsFactors = F)
+
+# select the most relevant colums 
+rainbow_tnrs_trim <- select(rainbow_tnrs, c(Name_number, 
+                                            Name_submitted, 
+                                            Overall_score,
+                                            Name_matched, 
+                                            Name_matched_rank,
+                                            Name_matched_author,
+                                            Name_score, 
+                                            Genus_score, 
+                                            Specific_epithet_matched,
+                                            Specific_epithet_score,
+                                            Unmatched_terms,
+                                            Taxonomic_status,
+                                            Accepted_name,
+                                            Accepted_name_rank,
+                                            Warnings))
+
+# strip out var. from all Accpeted_names 
+rainbow_tnrs_trim <- mutate(rainbow_tnrs_trim, simplified_accepted_names = gsub(pattern = " var.*", replacement = "", 
+                                                                                x = rainbow_tnrs_trim$Accepted_name))
+
+```
+
+```{r}
+# How many of the rainbow_tnrs "Accepted names" are on the gbif_tnrs "Accepted names" ? 
+sum(unique(rainbow_tnrs_trim$Accepted_name)%in%unique(gbif_tnrs_trim$Accepted_name))
+
+# What percent of the rainbow plant names are mapped to "Accepted_names" that are also found on gbif_tnrs "Accepted_names"?
+sum(unique(rainbow_tnrs_trim$Accepted_name)%in%unique(gbif_tnrs_trim$Accepted_name))/length(rainbow_plant_names)*100
+
+
+# What percent of the gbif plants map to "Accepted_names" that are found on rainbow_tnrs "Accepted_names"?
+sum(unique(rainbow_tnrs_trim$Accepted_name)%in%unique(gbif_tnrs_trim$Accepted_name))/length(plant_species)*100
+
+
+# What percent of gbif plants matched with rainbow before name correction?
+sum(plant_species%in%rainbow_list$Scientific.Name)/length(plant_species)*100
+
+
+# after stripping out var. from both rainbow and gbif, what percent of rainbow match?
+sum(unique(rainbow_tnrs_trim$simplified_accepted_names)%in%unique(gbif_tnrs_trim$simplified_accepted_names))/length(rainbow_plant_names)*100
+
+# Note: stripping out var. only increased the matching by 1.6%
+
+```
+### Add corrected GBIF names to rainbow list
+```{r}
+# Get the gbif_tnrs that have a taxon_status of "Synonym"
+gbif_synonym_status <- filter(gbif_tnrs_trim, Taxonomic_status=="Synonym" & Overall_score==1)
+
+# Get the indices on rainbow that have a "Accepted_name" match to gbif_synonym_status
+i <- which(unique(rainbow_tnrs_trim$simplified_accepted_names)%in%unique(gbif_synonym_status$simplified_accepted_name))
+
+# Get the indices on rainbow that did not have an "Accepted_name" match with gbif_synonym_status
+j <- which(!unique(rainbow_tnrs_trim$simplified_accepted_names)%in%unique(gbif_synonym_status$simplified_accepted_name))
+
+# Get the indices from gbif_synonym_status that have an "Accepted_name" match with rainbow
+m <- which(unique(gbif_synonym_status$simplified_accepted_names)%in%unique(rainbow_tnrs_trim$simplified_accepted_names))
+
+# Make a dataframe that contains rainbow matches to gbif_synonym_status, adding a column for gbif corrected names 
+rain1 <- cbind(rainbow_tnrs_trim[i,], gbif_synonym_status[m,]$Name_submitted)
+colnames(rain1)[17] <- "gbif_corrected_name"
+
+# Make a dataframe that contains the rainbow non-matches to gbif_synonym_status, adding a column for gbif submitted names
+rain2 <- cbind(rainbow_tnrs_trim[j,], rainbow_tnrs_trim[j,]$simplified_accepted_names)
+colnames(rain2)[17] <- "gbif_corrected_name"
+
+rain2 <- cbind(rainbow_tnrs_trim[j,], rep(NA, nrow(rainbow_tnrs_trim[j,])))
+colnames(rain2)[17] <- "gbif_corrected_name"
+
+# re-create the full rainbow_tns_trim with the gbif corrected names added
+# Note: this data frame has had duplicate "simplified_accepted_name" removed
+corrected_rainbow_tnrs_trim <- rbind(rain1, rain2)
+```
+
+
+```{r}
+# test case 
+
+df1_gbif <- data.frame(taxon_status = c("Accepted", "Accepted", "Synonym", "Synonym", "Synonym", "Accepted", "Accepted", "Synonym", "Synonym"), 
+                       simplified_accepted_name = c("Sandra c", "Jane d", "Sally o", "Becky m", "Sally o","Becky m", "Tally h", "Nada l", "Masha e"),
+                       submitted_matched_name = c("Sandra c", "Jane d", "Sally a", "Becky a", "Sally a", "Becky m", "Tally h", "Nada b", "Masha b"))
+
+df2_rainbow <- data.frame(taxon_status = c("Accepted", "Accepted", "Synonym", "Accepted", "Synonym", "Accepted", "Accepted", "Synonym"),
+                          simplified_accepted_name = c("Sally o", "Donna x", "Becky m", "Jade l", "Teal s", "Sally o", "Nada l", "Tally h"))
+
+df1_alt <- filter(df1_gbif, taxon_status=="Synonym")
+
+i <- which(df2_rainbow$simplified_accepted_name%in%df1_alt$simplified_accepted_name)
+
+m <- which(df1_alt$simplified_accepted_name%in%df2_rainbow$simplified_accepted_name)
+
+j <- which(!df2_rainbow$simplified_accepted_name%in%df1_alt$simplified_accepted_name)
+
+rain1 <- cbind(df2_rainbow[i,], df1_alt[m,]$submitted_matched_name)
+colnames(rain1) <- c("taxon_staus", "simplified_accepted_name", "gbif name")
+
+rain2 <- cbind(df2_rainbow[j,], df2_rainbow[j,]$simplified_accepted_name)
+colnames(rain2) <- c("taxon_staus", "simplified_accepted_name", "gbif_name")
+
+rbind(rain1, rain2)
+
+```
+

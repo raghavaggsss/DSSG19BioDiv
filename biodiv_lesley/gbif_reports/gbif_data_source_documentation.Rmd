@@ -1,0 +1,452 @@
+---
+title: "GBIF Data Source Documentation"
+author: "Lesley Miller"
+date: '2019-06-07'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+Load necessary libraries 
+```{r echo=FALSE}
+library(tidyverse)
+library(gridExtra)
+library(grid)
+library(plotrix)
+```
+
+## Documentation of the 14 GBIF data sources 
+Questions to be answered: 
+What is the nature of all these data sources? 
+What does it record? 
+How was the data collected? 
+What is the quality of the data? 
+
+
+
+```{r}
+#########    Data Exploration on GBIF complete    #########
+# load the datasets 
+
+# read in the complete gbif data frame including all ebirds etc for metroVan
+gbif <- read.csv("gbif_complete.csv", sep = "\t", stringsAsFactors = FALSE, na.strings = "")
+
+# Taxonomy for Archaea is very spotty. most do not have anything close to a species level 
+# identification. 
+View(head(filter(gbif, kingdom=="Archaea"), 50))
+
+
+# filter out the observations that have NA, unknown placement, viruses and archaea for kingdom
+trimmed_gbif <- filter(gbif, 
+                       kingdom!="incertae sedis" & kingdom!="NA" & kingdom!="Archaea" & kingdom!="Viruses")
+
+# IUCN Red List Data for all species in North America 
+red_list <- read.csv("./redlist_all_species/assessments.csv")
+
+# BC Red, Blue & Yellow lists
+rainbow_list <- read.delim("./bc_rainbow_list.tsv", sep = "\t", stringsAsFactors = FALSE, na.strings = "")
+```
+
+## 1 EOD - eBird Observation Dataset
+check if the eBird data is in gbif 
+```{r echo=FALSE}
+"4fa7b334-ce0d-4e88-aaae-2e0c138d049e"%in%trimmed_gbif$datasetKey
+```
+link: https://www.gbif.org/dataset/4fa7b334-ce0d-4e88-aaae-2e0c138d049e
+
+- Almost all with coordinates, all with year
+- Collection of verified observation records worldwide that include records dating back to the early 1800s
+- Hosted by the Cornell Lab of Ornithology
+- As you might guess, it is all birds
+- About 2/3 of the data have been flagged for rounded coordinates
+
+How is the data collected? 
+
+- eBird is an open database platform that allows any user to log an observation at any time from anywhere in the world. Every observation is checked by a combination of automated filters and expert reviewers before the observation is permanently added to the database that the public can see. In short, you can trust the eBird data that it is accurate as their review process is more likely to get rid of false negatives than to accept false positives. See QC procedures below.
+
+
+Data Quality Control: Excerpts explaining their review process: website [https://help.ebird.org/customer/portal/articles/1055676](https://help.ebird.org/customer/portal/articles/1055676)
+
+- "every record submitted to eBird goes through the eBird data verification process"
+
+- "Using a combination of automated data filters and a network of local experts,"
+
+- "we've developed a combination of automated filters and a network of regional editors that work together to verify eBird - data. Each eBird submission, regardless of observer or location, is checked for data quality using the same process."
+
+- "Anything that exceeds expected totals for a given species at a location on a given date, will be 'flagged' for review."
+
+
+## 2 (Study) Macroalgal Morphology affects composition and settlement of microbial communities
+Check that the Macroalgal Morphology study is in the gbif data
+```{r echo=FALSE}
+"3cb3a142-8a6c-45e3-a5d1-80b7d6522ad7"%in%trimmed_gbif$datasetKey
+```
+
+link: - [https://www.gbif.org/dataset/3cb3a142-8a6c-45e3-a5d1-80b7d6522ad7#description](https://www.gbif.org/dataset/3cb3a142-8a6c-45e3-a5d1-80b7d6522ad7#description)
+- Nearly all microbe stuff, mostly bacteria
+- Samples collected in 2016
+- Three sampling locations, only one in MetroVan was by Port Moody, meaning that it is not useful
+- All data have been flagged for coordinate rounding
+
+How was the data collected? 
+- the data is from a single study done by a researcher at UBC from a specific time
+- paper likely not published since the sequence data was collected in March 2019
+- gbif just records the number of unique microbial species found and their taxonomy
+- this is a metagenomics study where sequencing data was used to identify what microbial species were there 
+
+
+## 3 Geographically Tagged INSDC Sequences
+Check that INSDC sequences are in gbif data 
+```{r echo=FALSE}
+"ad43e954-dd79-4986-ae34-9ccdbd8bf568"%in%trimmed_gbif$datasetKey
+insdc <- filter(trimmed_gbif,
+                trimmed_gbif$datasetKey=="ad43e954-dd79-4986-ae34-9ccdbd8bf568")
+```
+Link: - [https://www.gbif.org/dataset/ad43e954-dd79-4986-ae34-9ccdbd8bf568](https://www.gbif.org/dataset/ad43e954-dd79-4986-ae34-9ccdbd8bf568)
+
+- Most have coordinates, over 10% are missing their taxon and only about half have the proper year
+- Data from across all taxa, though it is mostly animals
+- Hosted by the European Nucleotide Archive
+- INSDC stands for the International Nucelotide Sequence Database Collaboration
+- Very little information available
+- All data are flagged for coordinate rounding
+
+How was the data collected? 
+
+- The data is a metadata file that gives the species identification for genomic sequence data that was collected. Not clear which organizations collected this data or how it is verified to be accurate identification 
+
+Data Quality Control: 
+
+- 34 of the observations have a scientific name of incertae sedis, which means unknown placement. and there is no other taxonomic information recorded for all these observations. These observations are useless? As there is no way to tell what is actually being recorded?
+- also 70% of this dataset is from "preserved specimens". this contributes nothing to current biodiversity metrics? should these be included?????
+- another ~ 30% is from "material sample". not sure what this means or if it is relevant to current biodiversity
+- It is not clear where exactly the underlying data came from or how it was collected?
+
+- update:
+- further investigated the coordinates for this dataset and found they are sampled from all over. So it's okay to keep the "Preserved Specimens" because they are linked to a location where the organism originally found.
+- The specimens were identified via DNA sequencing
+
+```{r}
+# how many observations in the INSDC dataset? 
+nrow(insdc) # 19130
+
+# what are all the types of records in the this data? what type of data was collected?
+levels(insdc$basisOfRecord)
+# human observation
+# living specimen
+# material sample 
+# observation 
+# preserved  specimen 
+# unknown 
+
+# how many observations in the INSDC dataset have incertae sedis (ie. placement unknown) in their scientific name
+length(which(insdc$scientificName=="incertae sedis"))   # 34 observations have an unknown placement 
+
+# do the observations with unknown placement also have missing info for the rest of the taxonomic levels?  yes!!!!
+filter(insdc, insdc$scientificName=="incertae sedis")
+
+# how much of the data is from preserved specimen?  # 13347
+length(which(insdc$basisOfRecord=="PRESERVED_SPECIMEN"))
+
+# what percentage is from preserved specimen?  # ~ 70%
+length(which(insdc$basisOfRecord=="PRESERVED_SPECIMEN"))/nrow(insdc)*100  
+
+# what percentage is from Unknown? # none 
+length(which(insdc$basisOfRecord=="UNKNOWN"))/nrow(insdc)*100 
+
+# what percentage is from material sample? # ~ 30% 
+length(which(insdc$basisOfRecord=="MATERIAL_SAMPLE"))/nrow(insdc)*100 
+```
+
+## 3 iNaturalist 
+Check iNat data is in gbif 
+```{r}
+"50c9509d-22c7-4a22-a47d-8c48425ef4a7"%in%trimmed_gbif$datasetKey
+```
+Link: - [https://www.gbif.org/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7](https://www.gbif.org/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7)
+
+- Less than 1% are without coordinates or year
+- Citizen science program - everyday people submit photos which are verified by moderators
+- Mostly animals but with a significant chunk of plants
+- Almost all data suffer from coordinate rounding
+
+How is the data collected?
+
+- observations are made by the public for various reasons, citizen science projects, class projects, personal fulfillment
+
+Data Quality Control: 
+
+- observations with Research Grade status are the highest quality and carry more confidence
+- There is a checklist for what the observation must have
+- in addition, 2/3 of the community must agree on a species-level identification
+
+
+## 4 Centre for Biodiversity Genomics - Canadian Specimens
+Check CBG is in gbif data 
+```{r}
+"f9a70dab-004b-45ad-90cb-24d8ff645b44"%in%trimmed_gbif$datasetKey
+
+# subset the CBG data 
+CBG <- filter(trimmed_gbif,
+              trimmed_gbif$datasetKey=="f9a70dab-004b-45ad-90cb-24d8ff645b44")
+```
+
+Link: - [https://www.gbif.org/dataset/f9a70dab-004b-45ad-90cb-24d8ff645b44](https://www.gbif.org/dataset/f9a70dab-004b-45ad-90cb-24d8ff645b44)
+
+- Less than 1% missing coordinates/year
+- All from preserved specimens
+- Only from <20 or so spots around MetroVan
+- Samples collected 2014-2016
+- All insects (and insect-adjacent animals)
+- GBif has flagged every entry as "Coordinate Precision Invalid" - it is hard to tell whether each data sample is a single insect trap or many spread out around an approximate area
+
+How was the data collected? 
+
+- data collected by a project at the CBG at University of Guelph
+- species occurrence and identification is based on genome sequencing (DNA barcodes that are unique to each species)
+- They collected the DNA from specimens taken from places like:
+- Stanley park, various elementary schools in metro van, wreck beach, Indian arm etc.
+- Exact sampling procedure unknown (the precise meaning of "preserved specimen" is unknown
+
+
+## 5 International Barcode of Life project (iBOL)
+Check iBOL is in gbif data 
+```{r}
+"040c5662-da76-4782-a48e-cdea1892d14c"%in%trimmed_gbif$datasetKey
+
+# subset the iBOL data 
+iBOL <- filter(trimmed_gbif,
+               trimmed_gbif$datasetKey=="040c5662-da76-4782-a48e-cdea1892d14c")
+```
+
+Link: [https://www.gbif.org/dataset/040c5662-da76-4782-a48e-cdea1892d14c](https://www.gbif.org/dataset/040c5662-da76-4782-a48e-cdea1892d14c)
+
+- University of Glasgow initiative
+- Almost entirely animals (10 non-animals)
+- Flag on all data: "Geodetic datum assumed WGS84"
+- Almost all categorized as preserved specimens, with a small minority being material samples or unknown
+- Nearly all from 2014-2015 (a handful before that)
+
+How was the data collected?
+- Species identification also done through DNA barcoding
+- These specimens are derived from many collaborators in many nations.
+```{r}
+# is the data from more than one place? 
+# how many unique places was the data collected from?  
+length(unique(iBOL$locality))
+```
+
+
+## 6 Great Backyard Bird Count 
+Check GBBC is in gbif data 
+```{r}
+"82cb293c-f762-11e1-a439-00145eb45e9a"%in%trimmed_gbif$datasetKey
+
+```
+
+- All occurrences have coordinates and years
+- Initiative of the Cornell Lab of Ornithology and Audubon (hosted by the Avian Knowledge Network)
+- Yearly procedure over four days in February
+- A small proportion (~3,000) of the data has been flagged as having rounded coordinates
+
+How was the data collected? 
+
+- it's a cross-sectional bird survey (carried out by thousands of volunteer participants all over the world
+- occurs every year
+- data collected over a 4 day period in mid February from 667 unique places all over metro Van from places like Burnaby, Surrey, North Van, Port Moody etc.
+- location is logged as unique zip codes
+
+Data Quality Control: 
+
+- The data collection is powered by eBIRD so I take this to mean that all the observations go through the eBIRD filters. before being added to the database since it is citizen science, how else would the observations be checked for accuracy?
+```{r}
+# subset the data
+backyard_bird_survey <- filter(trimmed_gbif,
+                               trimmed_gbif$datasetKey=="82cb293c-f762-11e1-a439-00145eb45e9a")
+
+# how many unique places was the data collected from? 
+length(unique(backyard_bird_survey$locality))
+```
+
+## 7 University of British Columbia Herbarium: Vascular plants
+Check herbarium vascular plant collection is in gbif data 
+```{r}
+"07fd0d79-4883-435f-bba1-58fef110cd13"%in%trimmed_gbif$datasetKey
+ubc_herb_vas_plants <- filter(trimmed_gbif, 
+                              trimmed_gbif$datasetKey=="07fd0d79-4883-435f-bba1-58fef110cd13")
+```
+Link: - [https://www.gbif.org/dataset/07fd0d79-4883-435f-bba1-58fef110cd13](https://www.gbif.org/dataset/07fd0d79-4883-435f-bba1-58fef110cd13)
+
+How was the data collected? Vascular plants
+
+- It is all preserved specimens
+- samples taken from localities around metro van area generally (some observations will be from outside this scope)
+- but some of these observations come from places like horticultural greenhouses and testing facilities like Anandia labs that tests cannabis strains
+    - Is this okay?
+  
+```{r}
+# how many unique localities does the data come from?   
+length(levels(ubc_herb_vas_plants$locality))
+
+# what type of data is it? basis of the record? 
+unique(ubc_herb_vas_plants$basisOfRecord)
+
+```
+
+## 8 University of British Columbia Herbarium: Fungi collection
+Check herbarium fungi collection is in gbif 
+```{r}
+"ca1bcd7e-7387-42f9-81ba-1470db55e3e8"%in%trimmed_gbif$datasetKey
+```
+
+Link: - [https://www.gbif.org/dataset/ca1bcd7e-7387-42f9-81ba-1470db55e3e8](https://www.gbif.org/dataset/ca1bcd7e-7387-42f9-81ba-1470db55e3e8)
+```{r}
+# subset the herbarium fungi collection 
+ubc_herb_fungi <- filter(trimmed_gbif, 
+                         trimmed_gbif$datasetKey=="ca1bcd7e-7387-42f9-81ba-1470db55e3e8")
+```
+How was the data collected? 
+-  includes all digitized fungi in the UBC collection
+- The UBC Herbarium fungi collection is worldwide in scope, with emphasis on British Columbia & North America.
+
+
+## 9 University of British Columbia Herbarium: Bryophyte Collection 
+Check herbarium bryophyte collection is in gbif 
+```{r}
+"4edd9396-59df-4b01-9e29-dc21a59f9963"%in%trimmed_gbif$datasetKey
+```
+Link: - [https://www.gbif.org/dataset/4edd9396-59df-4b01-9e29-dc21a59f9963](https://www.gbif.org/dataset/4edd9396-59df-4b01-9e29-dc21a59f9963)
+How was the data collected? 
+- The UBC bryophyte collection houses mosses, liverworts, and hornworts
+- The major representation is for British Columbia and adjacent states of the United States
+
+## 10 Naturgucker
+Check  Naturgucker is in gbif 
+```{r}
+"6ac3f774-d9fb-4796-b3e9-92bf6c81c084"%in%trimmed_gbif$datasetKey
+```
+Link: - [https://www.gbif.org/dataset/6ac3f774-d9fb-4796-b3e9-92bf6c81c084#description](https://www.gbif.org/dataset/6ac3f774-d9fb-4796-b3e9-92bf6c81c084#description)
+
+- German social media page for citizen scientists to submit their findings a-la iNaturalist
+- Over 99% with coordinate and year data
+- Mostly comes from the past two years
+- All flagged as having rounded coordinates
+- WGS84 assumed
+- Mostly animals, a minority of plants
+
+How was the data collected? 
+- Can't find any further info about how the observations are quality checked? some pages can't be translated?
+
+```{r}
+# subset the Naturgucker data 
+naturgucker <- filter(trimmed_gbif, 
+                         trimmed_gbif$datasetKey=="6ac3f774-d9fb-4796-b3e9-92bf6c81c084")
+
+# how many observations does this dataset contribute? 
+nrow(naturgucker)
+
+# how many unique localities is the data from? 
+length(unique(naturgucker$locality))
+unique(naturgucker$locality)
+```
+## 12 University of British Columbia - Spencer Entomological Collection
+Check if SEC data is in gbif
+
+```{r}
+"9c45867f-f77d-42f3-9751-ae16bb7c9bc8"%in%trimmed_gbif$datasetKey
+```
+
+Link: https://www.gbif.org/dataset/9c45867f-f77d-42f3-9751-ae16bb7c9bc8#description
+
+- All insects
+- 90% with coordinates, 96% with year
+- WGS84 assumed
+- All preserved specimens
+
+How was the data collected?
+
+- Over half a million pinned specimens, 75,000 alcohol-preserved specimens and 25,000 specimens on slides showcase BC and the Yukon’s spectacular insect diversity.
+
+
+## 13 Royal BC Museum - Invertebrates Collection
+Check if invertebrates collection data is in gbif
+```{r}
+"34fbcf59-d9bb-47e7-9672-99e13ea8c736"%in%trimmed_gbif$datasetKey
+
+```
+Link: https://www.gbif.org/dataset/34fbcf59-d9bb-47e7-9672-99e13ea8c736
+
+- All animals
+- Between 70-85% with coordinates/year
+- WGS84 assumed
+- All preserved specimens
+
+How was the data collected? 
+
+- The collection has been acquired from various sources including research acquisitions, donations, and geographic/ecological surveys
+
+Data quality control: 
+
+only 8 of the 57 observations have been identified to the species level
+
+most observations identified only down to Order level 
+
+```{r}
+# subset royal BC museum data 
+royal_bc_museum <- filter(trimmed_gbif, 
+                          trimmed_gbif$datasetKey=="34fbcf59-d9bb-47e7-9672-99e13ea8c736")
+
+# how many observations does the royal museum data have? 
+nrow(royal_bc_museum)
+
+# what are the first 10 localities reported in the data? 
+head(unique(royal_bc_museum$locality), 10)
+
+# how many total unique localities in the dataset?
+length(unique(royal_bc_museum$locality))
+```
+
+
+## 14 Pacific Ocean Shelf Tracking Project (POST)
+Check if POST data is in gbif
+```{r}
+"83b45ca6-f762-11e1-a439-00145eb45e9a"%in%trimmed_gbif$datasetKey
+
+```
+Link: https://www.gbif.org/dataset/83b45ca6-f762-11e1-a439-00145eb45e9a#description
+
+- Initiative of the Ocean Biogeographic Information System (OBIS)
+- Exclusively fish - appears to be largely in the Georgia Straight and Howe Sound, but with some inland (presumably river creatures)
+- Most data have been flagged for coordinate rounding
+- WGS84 assumed
+- 100% coordinate and year information
+- Project was going many years before 2009 - appears to have shut down in 2010 because all the data are from 2009-2010
+
+Note: the error flag "Geodetic datum assumed WGS84" occurs when the uploader did not specify the coordinate system that their coordinates were based off of, and thus WGS84 (the most commonly used one) was assumed; in reality it could be different, throwing off the projections somewhat.
+
+How was the data collected? 
+
+- using an array of listening stations set along the west coast of North America
+- POST) was created to monitor the movement of marine animals
+- uses newly developed acoustic technology to track the movement of individual animals
+- Tags implanted in the animals’ abdomens send out unique signals, which are picked up by receivers placed on the ocean floor.
+- the migration path of tagged animals can be reconstructed from the data gathered.
+
+
+### Explore BC Red,Blue & Yellow List (rainbow list)
+
+```{r}
+# how many species are on the rainbow list? 14186
+nrow(rainbow_list)
+
+#how many unique kingdoms are on rainbow list? 
+# only 2, animals and plants 
+length(unique(rainbow_list$Kingdom))
+
+# how many unique name categories are there for BC organisms?
+length(unique(rainbow_list$Name.Category))
+unique(rainbow_list$Name.Category)
+```

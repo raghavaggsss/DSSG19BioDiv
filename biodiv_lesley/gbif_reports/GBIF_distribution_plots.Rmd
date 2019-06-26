@@ -1,0 +1,425 @@
+---
+title: "GBIF Distribution Plots"
+author: "Lesley Miller"
+date: '2019-06-12'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load necessary libraries 
+```{r echo=FALSE}
+library(tidyverse)
+library(gridExtra)
+library(grid)
+library(plotrix)
+```
+# Load the datasets 
+```{r}
+# read in the complete gbif data frame including all ebirds etc for metroVan
+gbif <- read.csv("gbif_complete.csv", sep = "\t", stringsAsFactors = FALSE, na.strings = "")
+
+# filter out the observations that have NA, unknown placement, viruses and archaea for kingdom
+trimmed_gbif <- filter(gbif, 
+                       kingdom!="incertae sedis" & kingdom!="NA" & kingdom!="Archaea" & kingdom!="Viruses")
+```
+
+# Subset the datasets 
+```{r}
+
+# subset the plantae kingdom 
+plants <- subset(trimmed_gbif, trimmed_gbif$kingdom=="Plantae")
+
+# subset the animal kingdom 
+animals <- subset(trimmed_gbif, trimmed_gbif$kingdom=="Animalia")
+
+# subset the fungi kingdom 
+fungi <- subset(trimmed_gbif, trimmed_gbif$kingdom=="Fungi")
+
+# subset the fungi kingdom 
+chromista <- subset(trimmed_gbif, trimmed_gbif$kingdom=="Chromista")
+
+# subset the protozoa kingdom 
+protozoa <- subset(trimmed_gbif, trimmed_gbif$kingdom=="Protozoa")
+
+# subset the bacteria kingdom 
+bacteria <- subset(trimmed_gbif, trimmed_gbif$kingdom=="Bacteria")
+```
+
+# Taxon Counts
+```{r}
+# make a dataframe of the counts of observations in each taxon level for each phylum 
+
+# plants 
+plant_counts <- data.frame(c("Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+                           c(length(unique(na.omit(plants$phylum))),
+                             length(unique(na.omit(plants$class))),
+                             length(unique(na.omit(plants$order))),
+                             length(unique(na.omit(plants$family))),
+                             length(unique(na.omit(plants$genus))),
+                             length(unique(na.omit(plants$species)))))
+colnames(plant_counts) <- c("Plant Taxonomic Levels", "Counts")
+
+# animals 
+animal_counts <- data.frame(c("Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+                            c(length(unique(na.omit(animals$phylum))),
+                              length(unique(na.omit(animals$class))),
+                              length(unique(na.omit(animals$order))),
+                              length(unique(na.omit(animals$family))),
+                              length(unique(na.omit(animals$genus))),
+                              length(unique(na.omit(animals$species)))))
+
+colnames(animal_counts) <- c("Animal Taxonomic Levels", "Counts")
+
+# fungi 
+fungi_counts <- data.frame(c("Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+                           c(length(unique(na.omit(fungi$phylum))),
+                             length(unique(na.omit(fungi$class))),
+                             length(unique(na.omit(fungi$order))),
+                             length(unique(na.omit(fungi$family))),
+                             length(unique(na.omit(fungi$genus))),
+                             length(unique(na.omit(fungi$species)))))
+
+colnames(fungi_counts) <- c("Fungi Taxonomic Levels", "Counts")
+
+# chromists 
+chromista_counts <- data.frame(c("Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+                           c(length(unique(na.omit(chromista$phylum))),
+                             length(unique(na.omit(chromista$class))),
+                             length(unique(na.omit(chromista$order))),
+                             length(unique(na.omit(chromista$family))),
+                             length(unique(na.omit(chromista$genus))),
+                             length(unique(na.omit(chromista$species)))))
+
+colnames(chromista_counts) <- c("Chromista Taxonomic Levels", "Counts")
+
+# protists
+protozoa_counts <- data.frame(c("Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+                           c(length(unique(na.omit(protozoa$phylum))),
+                             length(unique(na.omit(protozoa$class))),
+                             length(unique(na.omit(protozoa$order))),
+                             length(unique(na.omit(protozoa$family))),
+                             length(unique(na.omit(protozoa$genus))),
+                             length(unique(na.omit(protozoa$species)))))
+
+colnames(protozoa_counts) <- c("Protozoa Taxonomic Levels", "Counts")
+
+# bacteria 
+bacteria_counts <- data.frame(c("Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+                           c(length(unique(na.omit(bacteria$phylum))),
+                             length(unique(na.omit(bacteria$class))),
+                             length(unique(na.omit(bacteria$order))),
+                             length(unique(na.omit(bacteria$family))),
+                             length(unique(na.omit(bacteria$genus))),
+                             length(unique(na.omit(bacteria$species)))))
+
+colnames(bacteria_counts) <- c("Bacteria Taxonomic Levels", "Counts")
+```
+
+## Plot Species Occurrence Tables & Distributions 
+```{r echo=FALSE}
+# find the number of unqiue kingdoms, phyla, classes etc. across the dataset 
+counts <- data.frame(c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+                     c(length(unique(na.omit(trimmed_gbif$kingdom))), 
+                       length(unique(na.omit(trimmed_gbif$phylum))),
+                       length(unique(na.omit(trimmed_gbif$class))),
+                       length(unique(na.omit(trimmed_gbif$order))),
+                       length(unique(na.omit(trimmed_gbif$family))),
+                       length(unique(na.omit(trimmed_gbif$genus))),
+                       length(unique(na.omit(trimmed_gbif$species)))))
+colnames(counts) <- c("Global Taxonomic Levels", "Unqiue Counts")
+
+# make a table of unique counts for each taxon level 
+grid.table(counts)
+
+
+
+# taxonomic breakdown of all unqiue kingdom counts
+grid.arrange(
+      tableGrob(plant_counts),
+      tableGrob(animal_counts),
+      nrow = 1, 
+      top = textGrob("Count of Unique Taxon Levels", gp = gpar(fontface= 2, fontsize = 16)))
+
+grid.arrange(
+      tableGrob(fungi_counts),
+      tableGrob(chromista_counts),
+      nrow = 1, 
+      top = textGrob("Count of Unique Taxon Levels", gp = gpar(fontface= 2, fontsize = 16)))
+
+grid.arrange(
+      tableGrob(protozoa_counts), 
+      tableGrob(bacteria_counts), 
+      nrow = 1, 
+      top = textGrob("Count of Unique Taxon Levels", gp = gpar(fontface= 2, fontsize = 16)))
+
+# table of the number of observations in each kingdom 
+lbls <- c("Plants", "Animals", "Fungi", "Chromists", "Protists", "Bacteria")
+total_species_obs <- data.frame(lbls,
+                     c(length(na.omit(plants$species)),
+                       length(na.omit(animals$species)),
+                       length(na.omit(fungi$species)),
+                        length(na.omit(chromista$species)),
+                        length(na.omit(protozoa$species)),
+                       length(na.omit(bacteria$species))))
+
+colnames(total_species_obs) <- c("Phyla", "Number of Observations")
+
+total_species_obs <- total_species_obs[order(total_species_obs$`Number of Observations`),]
+
+grid.arrange(tableGrob(total_species_obs),
+             nrow = 1,
+             top = textGrob("Total Observations in each Kingdom", gp = gpar(fontface= 2, fontsize = 16)))
+
+# use a bar chart to show overall distribution of the dataset betwen plants, animal, fungi etc. 
+slices <- c(length(unique(na.omit(plants$species))),
+            length(unique(na.omit(animals$species))),
+            length(unique(na.omit(fungi$species))),
+            length(unique(na.omit(chromista$species))),
+            length(unique(na.omit(protozoa$species))),
+            length(unique(na.omit(bacteria$species))))
+
+
+phyla_freq <- data.frame(Phyla = lbls, Freq = slices)
+phyla_freq <- phyla_freq %>% mutate(name = fct_reorder(Phyla, Freq))
+
+# plot the kingdom distributions for unique observations 
+ggplot(phyla_freq, aes(x = name, y = Freq, color = name))+
+      geom_col(show.legend = F)+
+      labs(x = "Kingdoms", 
+           y = "Frequency",
+           title = "Distribution of Kingdoms",
+           subtitle = "Unique Species Counts")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+```
+
+
+# Number of Unique Species
+```{r}
+# of the observations with taxon rank at species level, how many unique species are there? 
+gbif_species <- trimmed_gbif %>% 
+      filter(taxonRank=="SPECIES")
+
+# not sure why the above number is different from the one below....
+
+# there are about 12,000 unique species in the dataset 
+length(unique(na.omit(trimmed_gbif$species))) 
+```
+
+# Plants
+```{r}
+# distribution of the  observations in plant phyla
+plant_phyla_counts <- mutate(as.data.frame(sort(table(plants$phylum))), 
+                                          common_name = c("Hornworts", 
+                                                          "Green Algae", 
+                                                          "Green Algae", 
+                                                          "Red Algae", 
+                                                          "Liverworts", 
+                                                          "Non Vascular",
+                                                          "Vascular"))
+plant_phyla_counts <- plant_phyla_counts %>% 
+      mutate(name = fct_reorder(common_name, Freq))
+
+
+ggplot(plant_phyla_counts,
+                            aes(x = name, y = Freq, color = name))+
+      geom_col(show.legend = F)+
+      labs(x = "Plant Phyla", 
+           y = "Frequency",
+           title = "Distribution of the Plantae Phyla Observations",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+                         
+                          
+# plot the distribution of plant phyla excluding: tracheophya/vascular plants 
+ggplot(filter(plant_phyla_counts, common_name!="Vascular"), 
+                     aes(x = name, y = Freq, color = name))+
+      geom_col(show.legend = FALSE)+
+      labs(x = "Plant Phyla", 
+           y = "Frequency",
+           title = "Distribution of the Plantae Phyla Excluding Vascular Plants",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+
+```
+
+# Animals 
+
+```{r}
+######## Animals #######
+# distribution plot of the animal phyla 
+ggplot(as.data.frame(table(animals$phylum)), aes(x = Var1, y = Freq, color = Var1))+
+      geom_col(show.legend = FALSE)+
+      coord_flip()+
+      labs(x = "Animal Phyla", 
+           y = "Frequency",
+           title = "Distribution of the Animalia Phyla Observations",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+      
+      
+# distribution plot of the animal phyla excluding chordata and arthropoda
+ggplot(filter(as.data.frame(sort(table(animals$phylum))), Var1!="Chordata" & Var1!="Arthropoda"),
+                      aes(x = Var1, y = Freq, color = Var1))+
+      geom_col(show.legend = FALSE)+
+      coord_flip()+
+      labs(x = "Animal Phyla", 
+           y = "Frequency",
+           title = "Animalia Phyla Excluding Chordata & Arthropoda",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+# explore the chordates
+chordates <- filter(animals, phylum=="Chordata")
+
+chord_class_freq <- mutate(as.data.frame(table(chordates$class)), 
+                           common_name = c("Ray-finned Fish", "Amphibians", "Tunicates", 
+                                           "Seq Squirts", "Birds","Jawless Fish", "Sharks, Rays, etc",
+                                           "Cartilagenous Fish", "Mammals", "Reptiles"))
+chord_class_freq <- chord_class_freq %>% mutate(name = fct_reorder(common_name, Freq))
+
+colnames(chord_class_freq) <- c("Var1", "Count", "common_name", "Class")
+
+# table of the counts of each chordate class
+grid.arrange(tableGrob(select(chord_class_freq[order(chord_class_freq$Count),], c(Class, Count))),
+             nrow = 1,
+             top = textGrob("Count of Observations per Class", gp = gpar(fontface= 2, fontsize = 16)))
+
+
+# Explore the Arthropods
+arthropods <- 
+      
+```
+
+# Fungi 
+```{r}
+##########  Fungi ########
+# plot the frequency of the fungi phyla 
+ggplot(as.data.frame(sort(table(fungi$phylum))), aes(x = Var1, y = Freq, color = Var1))+
+      geom_col(show.legend = FALSE)+
+      labs(x = "Fungi Phyla", 
+           y = "Frequency",
+           title = "Distribution of the Fungi Phyla Observations",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+# plot the frequency of the fungi orders with >= 20 observations 
+
+
+# make a data frame of the known lichen fungi 
+lichen_orders <- filter(as.data.frame(sort(table(fungi$order))), Var1=="Peltigerales" | Var1=="Pertusariales" | Var1=="Teloschistales")
+
+# plot frquency of known lichen fungi Orders
+ggplot(lichen_orders, aes(x = Var1, y = Freq, color = Var1))+
+      geom_col(show.legend = F)+
+      labs(x = "Known Lichen Orders", 
+           y = "Frequency",
+           title = "Distribution of Lichen Orders",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+```
+
+# Chromists (Single-Celled Eukaryotes)
+```{r}
+
+############ Chromista ########
+# plot the distribution of the chromist phyla 
+chromist_phyla <- mutate(as.data.frame(table(chromista$phylum)), name = fct_reorder(Var1, Freq))
+ggplot(chromist_phyla, aes(x = name, y = Freq, color = name))+
+      geom_col(show.legend = FALSE)+
+      labs(x = "Chromist Phyla", 
+           y = "Frequency",
+           title = "Distribution of the Chromist Phyla",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))+
+      coord_flip()
+      
+
+# plot distribution of the chromist phyla excluding Ochrophyta and Myzozoa the most abundant phyla
+ggplot(filter(chromist_phyla, name!="Ochrophyta" & name!="Myzozoa"),
+       aes(x = name, y = Freq, color = Var1))+
+      geom_col(show.legend = FALSE)+
+      labs(x = "Chromist Phyla", 
+           y = "Frequency",
+           title = "Distribution of the Chromist Phyla Excluding Ochrophyta and Myzozoa",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+```
+
+# Protists (Single-celled Eukaryotes)
+```{r}
+############ Protozoa ########
+# distribution of the protist phyla 
+ggplot(as.data.frame(sort(table(protozoa$phylum))), aes(x = Var1, y = Freq, color = Var1))+
+      geom_col(show.legend = FALSE)+
+       labs(x = "Protist Phyla", 
+           y = "Frequency",
+           title = "Distribution of the Protist Phyla",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+```
+
+# Bacteria (Prokaryotes)
+
+```{r}
+############ Bacteria ########
+# plot the distribution of the bacteria phyla 
+ggplot(as.data.frame(sort(table(bacteria$phylum))), aes(x = Var1, y = Freq, color = Var1))+
+       geom_col(show.legend = FALSE)+
+      labs(x = "Bacteria Phyla", 
+           y = "Frequency",
+           title = "Distribution of the Bacteria Phyla",
+           subtitle = "Metro Vancouver")+
+      theme_dark()+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))+
+      coord_flip()
+```
