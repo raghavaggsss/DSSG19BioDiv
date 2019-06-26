@@ -1,0 +1,74 @@
+
+# Ecological Reserves in British Columbia
+
+
+## URL
+https://databasin.org/datasets/b2dd6127a91e4a3c8645165af9638a66
+
+
+## Dataset Type
+ArcGIS
+
+
+## Credits
+BC Ministry of the Environment, BC Parks, Cascadia Partner forum
+
+
+## Uploaded By
+[Daniel  Hertel](https://databasin.org/people/dhertel)
+
+
+## Description
+Ecological Reserves throughout British Columbia
+
+
+## Use Constraints
+This work is licensed under a  Creative Commons Attribution 3.0 License .
+
+
+### Original Metadata
+metadata/metadata1_original.xml
+
+
+### Data Basin Metadata
+metadata/metadata1.xml
+
+
+### Data Files
+data/v101/0000Ecological Reserves in British Columbia.lyr
+data/commondata/ecological_reserves/BC_Eco_Reserves.CPG
+data/commondata/ecological_reserves/BC_Eco_Reserves.shx
+data/commondata/ecological_reserves/BC_Eco_Reserves.shp
+data/commondata/ecological_reserves/BC_Eco_Reserves.sbx
+data/commondata/ecological_reserves/BC_Eco_Reserves.dbf
+data/commondata/ecological_reserves/BC_Eco_Reserves.shp.xml
+data/commondata/ecological_reserves/BC_Eco_Reserves.prj
+data/commondata/ecological_reserves/BC_Eco_Reserves.sbn
+data/esriinfo/item.pkinfo
+data/esriinfo/iteminfo.xml
+data/esriinfo/thumbnail/thumbnail.png
+data/v10/0000Ecological Reserves in British Columbia.lyr
+
+
+
+### Attribute Data
+
+ADMIN_AREA    ADMIN_AREA    ADMIN_AREA    
+FEATURE_AR    FEATURE_AR    FEATURE_AR    
+FEATURE_CO    FEATURE_CO    FEATURE_CO    
+FEATURE_LE    FEATURE_LE    FEATURE_LE    
+FID    FID    FID    
+OBJECTID    OBJECTID    OBJECTID    
+OBJECTID_1    OBJECTID_1    OBJECTID_1    
+ORCS_PRIMA    ORCS_PRIMA    ORCS_PRIMA    
+ORCS_SECON    ORCS_SECON    ORCS_SECON    
+PARK_CLASS    PARK_CLASS    PARK_CLASS    
+PROTECTED1    PROTECTED1    PROTECTED1    
+PROTECTED_    PROTECTED_    PROTECTED_    
+PROTECTE_1    PROTECTE_1    PROTECTE_1    
+SE_ANNO_CA    SE_ANNO_CA    SE_ANNO_CA    
+SHAPE_Area    SHAPE_Area    SHAPE_Area    
+SHAPE_Leng    SHAPE_Leng    SHAPE_Leng    
+SURVEYOR_G    SURVEYOR_G    SURVEYOR_G    
+Shape    Shape    Shape    
+

@@ -1,0 +1,18 @@
+- model: biodivmap.SpeciesYear
+  fields:
+    species: Corvus caurinus
+    year_1990: 1
+    year_1991: 1
+    year_1992: 1
+- model: biodivmap.SpeciesYear
+  fields:
+    species: Larus glaucescens
+    year_1990: 1
+    year_1991: 1
+    year_1992: 1
+- model: biodivmap.SpeciesYear
+  fields:
+    species: Turdus migratorius
+    year_1990: 1
+    year_1991: 1
+    year_1992: 1
