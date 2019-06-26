@@ -23,8 +23,12 @@ def index(request):
     # form = SpeciesForm
 
     # select2_species = "[{id: 'rag', text: 'rag'}, {id: 'raggie', text: 'raggie'}]"
+    # lim = 1000
     select2_species = "["
     for obj in SpeciesYear.objects.all():
+        # lim = lim - 1
+        # if (lim <= 0):
+        #     break
         select2_species += obj.select2element()
         select2_species+=","
     select2_species += "]"
@@ -34,9 +38,19 @@ def index(request):
 def ajax_species(request):
     if request.method == 'POST':
         if request.body:
-            selected_species = json.loads(request.body)
+            selected_species_years = json.loads(request.body)
+            selected_years = selected_species_years['years']
+            selected_species = selected_species_years['species']
+            species_path = []
             for species in selected_species:
-                print(species['text'])
+                species_dict = SpeciesYear.objects.filter(species=species['text']).values()[0]
+                for year in selected_years:
+                    if species_dict["year_" + year['text']]:
+                        species_path.append(
+                            {'path':species_dict["year_" + year['text']] + "points.geojson",
+                             'species': species['text']})
 
-    return JsonResponse({'foo': 'bar'})
+
+
+    return JsonResponse(species_path, safe=False)
 

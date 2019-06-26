@@ -323,19 +323,19 @@ var clusters = L.markerClusterGroup(
         );
 clusters.addTo(map);
 
-points_layers = [];
+// points_layers = [];
 
-function loadPointsJson(year) {
-        $.getJSON(static_path + "gbif/"+ year.toString() + ".geojson", function (data) {
-        points_layers[year] = L.geoJSON(data, points_layer_options);
-        clusters.addLayer(points_layers[year]);
-    });
-}
-
-function deletePointsLayer(year) {
-    clusters.removeLayer(points_layers[year]);
-    points_layers[year] = null;
-}
+// function loadPointsJson(year) {
+//         $.getJSON(static_path + "gbif/"+ year.toString() + ".geojson", function (data) {
+//         points_layers[year] = L.geoJSON(data, points_layer_options);
+//         clusters.addLayer(points_layers[year]);
+//     });
+// }
+//
+// function deletePointsLayer(year) {
+//     clusters.removeLayer(points_layers[year]);
+//     points_layers[year] = null;
+// }
 
 var init_year = 1990;
 
@@ -356,34 +356,57 @@ select2_element = $(".select2-year").select2({
     closeOnSelect: false,
 });
 
-selections = [];
+// selections = [];
+//
+// function plotGbif() {
+//     selections.forEach(function(sel) {
+//         deletePointsLayer(parseInt(sel.text));
+//     });
+//     selections = select2_element.select2('data');
+//     selections.forEach(function(sel) {
+//         loadPointsJson(parseInt(sel.text));
+//     })
+// }
 
-function plotGbif() {
-    selections.forEach(function(sel) {
-        deletePointsLayer(parseInt(sel.text));
-    });
-    selections = select2_element.select2('data');
-    selections.forEach(function(sel) {
-        loadPointsJson(parseInt(sel.text));
-    })
-}
-
+layers_array = [];
 function plotSpecies() {
     $.ajax({
             processData: false,
             type: 'POST',
             url: 'species/',
 
-            data: JSON.stringify($(".select2-species").select2('data')),
+            data: JSON.stringify({species: $(".select2-species").select2('data'),
+                                        years: $(".select2-year").select2('data')}),
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
             success: function (data) {
-                alert(JSON.stringify(data));
+                layers_array.forEach(function(prev_layer) {
+                    clusters.removeLayer(prev_layer);
+                    prev_layer = null
+                });
+                data.forEach(function(species_path) {
+                    $.getJSON(static_path + species_path.path, function (geodata) {
+                        geodata = filterSpecies(geodata, species_path.species);
+                        var layer_curr = L.geoJSON(geodata, points_layer_options);
+                        layers_array.push(layer_curr);
+                    clusters.addLayer(layer_curr);
+                    });
+                });
+
             },
             error: function(data) {
                 alert('Form submission failed');
             }})
 }
 
-
+function filterSpecies(geodata, species) {
+    features = [];
+    geodata.features.forEach(function(row) {
+        if (row.properties.species == species) {
+            features.push(row);
+        }
+    });
+    geodata.features = features;
+    return features;
+}
 
