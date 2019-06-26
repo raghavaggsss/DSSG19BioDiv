@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'biodivmap.apps.BiodivmapConfig'
+    'biodivmap.apps.BiodivmapConfig',
+    'django_select2'
 ]
 
 MIDDLEWARE = [

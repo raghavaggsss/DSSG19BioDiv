@@ -368,5 +368,22 @@ function plotGbif() {
     })
 }
 
+function plotSpecies() {
+    $.ajax({
+            processData: false,
+            type: 'POST',
+            url: 'species/',
+
+            data: JSON.stringify($(".select2-species").select2('data')),
+            // data: {species_selected: $(".select2-species").select2('data')},
+            contentType: false,  // add this to indicate 'multipart/form-data'
+            success: function (data) {
+                alert(JSON.stringify(data));
+            },
+            error: function(data) {
+                alert('Form submission failed');
+            }})
+}
+
 
 

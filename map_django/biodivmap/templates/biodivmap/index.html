@@ -23,6 +23,7 @@
     var static_path = "{% static "/biodivmap/" %}"
     </script>
 
+<!--    {{ form.media.css }}-->
 
 </head>
 <body>
@@ -40,8 +41,61 @@
 </select>
 
 <button onclick="plotGbif()">Plot gbif</button>
+<br>
+
+<select class="select2-species" multiple="multiple" style="width:500px"> Select Species
+</select>
+
+<button onclick="plotSpecies()"> Plot species</button>
+
+
+
+<script>
+    select2_element = $(".select2-species").select2({
+      data: {{select2_species|safe}},
+      width: 'resolve',
+        closeOnSelect: false,
+    });
+</script>
+
+
+<!--<form method='post' id="species_form">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <input type='button' value='select species' id="species_form_button">-->
+<!--</form>-->
+
+<!--<script type="text/javascript">-->
+<!--    var frm = $('#species_form');-->
+<!--    var btn = $('#species_form_button');-->
+<!--    btn.bind('click', function (event) {-->
+<!--        event.preventDefault();-->
+<!--        $.ajax({-->
+<!--            processData: false,-->
+<!--            type: frm.attr('method'),-->
+<!--            url: 'species/',-->
+<!--            data: $('#species_form').djangoSelect2(),-->
+<!--            contentType: false,  // add this to indicate 'multipart/form-data'-->
+<!--            success: function (data) {-->
+<!--                alert('Form Submitted');-->
+<!--            },-->
+<!--            error: function(data) {-->
+<!--                alert('Form submission failed');-->
+<!--            }-->
+<!--         })-->
+<!--    });-->
+<!--    // var formData = new FormData(); // Use FormData instead-->
+<!--    // formData.append('species', frm.files) // The first argument is the 'key' of the form data so change it to whatever works.-->
+
+<!--</script>-->
+
+
 
 <script src="{% static 'biodivmap/leaflet_map.js' %}"></script>
+
+
+
+<!--{{ form.media.js }}-->
 
 </body>
 </html>
