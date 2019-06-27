@@ -8,6 +8,10 @@ output: html_notebook
 ```{r}
 library(plyr)
 library(tidyverse)
+library(scales)
+library(ggthemes)
+library(VennDiagram)
+library(gridExtra)
 ```
 
 # Load the datasets
@@ -27,11 +31,11 @@ trimmed_gbif <- select(trimmed_gbif, c(datasetKey,kingdom, phylum, class, order,
                                        family,genus,species,taxonRank,locality, decimalLatitude,decimalLongitude,
                                        month, year, basisOfRecord))
 
-# Drop any NAs from the species and simplified names columns 
-trimmed_gbif <- drop_na(trimmed_gbif, species, simplified_names)
-
 # Add a column that strips the var. from any species name 
 trimmed_gbif <- mutate(trimmed_gbif, simplified_names = gsub(pattern = " var.*", replacement = "", x = trimmed_gbif$species))
+
+# Drop any NAs from the species and simplified names columns 
+trimmed_gbif <- drop_na(trimmed_gbif, species, simplified_names)
 ```
 
 ```{r}
@@ -70,7 +74,7 @@ gbif_unique_names <- unique(trimmed_gbif$simplified_names)
 rainbow_unique_names <- unique(rainbow_list$simplified_names)
 
 # How many of the unique GBIF species are found on the rainbow list? 
-gbif_rainbow_intersect <- sum(gbif_unique_names%in%rainbow_unique_names);num_gbif_on_rainbow
+gbif_rainbow_intersect <- sum(gbif_unique_names%in%rainbow_unique_names);gbif_rainbow_intersect
 ```
 
 ```{r}
@@ -80,10 +84,57 @@ gbif_rainbow_intersect/length(gbif_unique_names)*100
 # What percent of the rainbow list is found on GBIF?
 gbif_rainbow_intersect/nrow(rainbow_list)*100
 ```
+```{r}
+# Plot a venn diagram showing the overlap between unique species on  GBIF and rainbow lists 
+gbif_rainbow_overlap <- draw.pairwise.venn(area1 = length(gbif_unique_names),
+                                           area2 = length(rainbow_unique_names),
+                                           cross.area = gbif_rainbow_intersect,
+                                            category = c("GBIF", "Rainbow"),
+                                           lty = rep("blank", 2),
+                                           fill = c("purple", "cyan"),
+                                            alpha = rep(0.5,2),
+                                            cat.dist = rep(0.025, 2),
+                                           scaled = T,
+                                           cat.fontface = rep("bold", 2))
+
+# make the ven diagram plot titles 
+title1 <- textGrob("GBIF and BC Rainbow", gp=gpar(fontface = "bold"))
+subtitle1 <- textGrob("Overall overlap of unique species", gp=gpar(fontface = "bold"))
+
+grid.arrange(gTree(children = gbif_rainbow_overlap), top = title1, bottom = subtitle1)
+```
+
+```{r}
+# Record the number of unqiue species that do not overlap with the other list (ie rainbow or gbif)
+num_gbif_non_overlap <- (length(gbif_unique_names)-gbif_rainbow_intersect)/length(gbif_unique_names)
+num_rainbow_non_overlap <- (length(rainbow_unique_names)-gbif_rainbow_intersect)/length(rainbow_unique_names)
+
+# make a data frame of the relative proportions 
+prop_data <- data.frame(dataset = c(rep("GBIF",2), rep("Rainbow",2)), catetory = c(rep( c("Unique","Overlap"), 2)), 
+           prop = c(num_gbif_non_overlap, gbif_rainbow_intersect/length(gbif_unique_names), num_rainbow_non_overlap, gbif_rainbow_intersect/length(rainbow_unique_names)))
+```
+
+```{r}
+# Make a stacked bar chart indicating the proportion of each list is devoted to the overlap between GBIF and rainbow
+ggplot(prop_data, aes(x = dataset, y = prop, fill = catetory))+
+      geom_bar(stat = "identity", position = "fill")+
+      scale_y_continuous(labels = percent)+
+      scale_color_few("Dark", drop = FALSE)+
+      labs(x = "Species Lists", y= "Percentage", fill = "Category", 
+           title = "Proportions of unique and overlapping")+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+```
+
 In addition to looking at the proportion of the rainbow list that is included on GBIF, one can also consider the proportion of the Red/Blue listed species alone that are found on GBIF. 
 ```{r}
+# Get the unique species names on the BC red/blue list 
+red_blue_unique_names <- unique(bc_red_blue$simplified_names)
+
 # How many of GBIF unique species are found on bc_red_blue list?
-num_gbif_on_redBlue <- sum(gbif_unique_names%in%bc_red_blue$simplified_names);num_gbif_on_redBlue
+gbif_red_blue_intersect <- sum(gbif_unique_names%in%bc_red_blue$simplified_names);num_gbif_on_redBlue
 
 # What percent of unique GBIF species are found on bc_red_blue list? 
 num_gbif_on_redBlue/length(gbif_unique_names)*100
@@ -91,6 +142,34 @@ num_gbif_on_redBlue/length(gbif_unique_names)*100
 # What percent of the bc_red_blue list species are found on GBIF?
 num_gbif_on_redBlue/nrow(bc_red_blue)*100
 ```
+
+```{r}
+# Plot a venn diagram showing the overlap between unique species on GBIF and BC red/blue lists 
+gbif_red_blue_overlap <- draw.pairwise.venn(area1 = length(gbif_unique_names),
+                                           area2 = length(red_blue_unique_names),
+                                           cross.area = gbif_red_blue_intersect,
+                                            category = c("GBIF", "Red/Blue"),
+                                           lty = rep("blank", 2),
+                                           fill = c("purple", "cyan"),
+                                            alpha = rep(0.5,2),
+                                            cat.dist = rep(0.025, 2),
+                                           scaled = T,
+                                           cat.fontface = rep("bold", 2),
+                                           ext.text = F, 
+                                           cat.pos = c(-25, -15))
+
+# make the ven diagram plot titles 
+title2 <- textGrob("GBIF and BC Red & Blue", gp=gpar(fontface = "bold"))
+subtitle2 <- textGrob("Overlap of unique species", gp=gpar(fontface = "bold"))
+
+grid.arrange(gTree(children = gbif_red_blue_overlap), top = title2, bottom = subtitle2)
+
+```
+```{r}
+
+```
+ 
+
 ### Summary 
 The majority of GBIF species as a whole , ~ 75% are not found on the rainbow list. This top level comparison implies that the BC rainbow list does not represent most of the species in BC. 
 When considering the Red/Blue list separately, ~ 20% of the Red/Blue species are found on GBIF. However, out of the GBIF species, ~ 2% are found on the Red/Blue list. 
