@@ -178,3 +178,54 @@ write.csv(total_unq, "GBif Trim June19.csv", row.names = FALSE)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+library(tidyverse)
+
+total = read.csv("GBif Lesley.csv", stringsAsFactors = FALSE)
+
+unq_rows = as.numeric(rownames(unique(total[c("species","decimalLatitude","decimalLongitude")])))
+total_unq = total[unq_rows,]
+
+recency = function(x) {
+  if (any(na.omit(x) >= 2000)) {
+    if (any(na.omit(x) < 2000)) {return("both")}
+    else {return("recent")}
+  }
+  else {return("old")}
+}
+
+y = total %>% group_by(species, decimalLatitude, decimalLongitude) %>% summarise(recency(year))
+colnames(y)[ncol(y)] = "years"
+
+total_unq = total_unq[order(total_unq$species, total_unq$decimalLatitude, total_unq$decimalLongitude),]
+y = y[order(y$species, y$decimalLatitude, y$decimalLongitude),]
+total_unq$recency = y$years
+total_unq$year = NULL
+
+seas = aggregate(cbind(Winter,Spring,Summer,Fall) ~ species + decimalLatitude + decimalLongitude, FUN = sum, data = total)
+total_unq[,c("Winter","Spring","Summer","Fall")] = seas[,c("Winter","Spring","Summer","Fall")]
+
+# This is just to drop rows without species
+x = total_unq[total_unq$species!="",]
+
+write.csv(total_unq, "GBif June26.csv")
+
+
