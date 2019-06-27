@@ -254,8 +254,6 @@ $.getJSON(static_path + "SEI.topojson", function (data) {
     }
 });
 
-
-
 var points_layer_options = {
     pointToLayer: function (feature, latlng) {
         var marker = L.marker(latlng, {icon: dotIcon});

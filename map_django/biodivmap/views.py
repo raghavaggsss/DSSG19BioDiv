@@ -54,3 +54,5 @@ def ajax_species(request):
 
     return JsonResponse(species_path, safe=False)
 
+def taxontree(request):
+    return render(request, 'taxontree/index.html')

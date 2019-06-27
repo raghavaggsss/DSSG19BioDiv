@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="152116f2-05c9-4636-baf3-b7d5c59ba23d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/DSSG19BioDiv.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/map_django.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../Geopandas to GeoJson.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../d3_tree/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../d3_tree/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inat_small/inat_small.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../inat_small/inat_small.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+            <state relative-caret-position="285">
+              <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -38,14 +37,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/biodivmap/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="788" />
     <option name="y" value="217" />
     <option name="width" value="1021" />
@@ -82,6 +81,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -135,15 +135,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561655537898</updated>
-      <workItem from="1561655541235" duration="1282000" />
+      <workItem from="1561655541235" duration="1838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1282000" />
+    <option name="totallyTimeSpent" value="1838000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="788" y="217" width="1021" height="791" extended-state="0" />
+    <frame x="788" y="217" width="1021" height="791" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -185,8 +185,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        <state relative-caret-position="285">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
