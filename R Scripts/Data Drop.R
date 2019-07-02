@@ -110,7 +110,7 @@ total_unq = total[unq_rows,]
 
 total_unq_trim = total_unq[,c(2,4:10,17:18,25:28)]
 
-write.csv(total_unq_trim, "GBIF Total No-Dupe Trim.csv")
+write.csv(total_unq_trim, "GBIF Total No-Dupe Trim.csv", row.names = FALSE)
 
 
 
@@ -220,12 +220,14 @@ y = y[order(y$species, y$decimalLatitude, y$decimalLongitude),]
 total_unq$recency = y$years
 total_unq$year = NULL
 
-seas = aggregate(cbind(Winter,Spring,Summer,Fall) ~ species + decimalLatitude + decimalLongitude, FUN = sum, data = total)
+seas = aggregate(cbind(Winter,Spring,Summer,Fall) ~ species + decimalLatitude + decimalLongitude, FUN = any, data = total)
 total_unq[,c("Winter","Spring","Summer","Fall")] = seas[,c("Winter","Spring","Summer","Fall")]
 
-# This is just to drop rows without species
-x = total_unq[total_unq$species!="",]
+total_unq$X = NULL
 
-write.csv(total_unq, "GBif June26.csv")
+# This is just to drop rows without species
+total_unq = total_unq[total_unq$species!="",]
+
+write.csv(total_unq, "GBif June27.csv", row.names = FALSE)
 
 
