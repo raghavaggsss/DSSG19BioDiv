@@ -2,7 +2,8 @@ library(tidyverse)
 
 ## ACTUAL USAGE 2 ##
 
-total = read.csv("GBif_Original.csv", stringsAsFactors = FALSE, row.names=NULL)
+total = read.csv("/Users/raghav/Desktop/DSSG19BioDiv/
+                 GBif_Original.csv", stringsAsFactors = FALSE, row.names=NULL)
 
 unq_rows = as.numeric(rownames(unique(total[c("species","year","decimalLatitude","decimalLongitude")])))
 total_unq = total[unq_rows,]

@@ -7,6 +7,11 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+class SpeciesRecency(models.Model):
+    species = models.TextField(primary_key=True)
+    recent = models.TextField(blank=True, null=True)
+    old = models.TextField(blank=True, null=True)
+    both = models.TextField(blank=True, null=True)
 
 class SpeciesYear(models.Model):
     species = models.TextField(primary_key=True)

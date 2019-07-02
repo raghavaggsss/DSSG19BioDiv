@@ -90,7 +90,8 @@ label {
 .fixed_labels
 {
     position: fixed;
-    top: 520px;
+    /*top: 520px;*/
+    margin-top: 20px;
     font: 10px sans-serif;
     line-height: 10px;
 

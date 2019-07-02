@@ -7,3 +7,4 @@ urlpatterns = [
     path('species/', views.ajax_species, name="species"),
     path('taxontree/', views.taxontree, name="taxontree")
 ]
+
