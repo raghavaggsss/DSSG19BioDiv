@@ -48,8 +48,7 @@
 <!--<select class="select2-species" multiple="multiple" style="width:500px"> Select Species-->
 <!--</select>-->
 
-<!--<button onclick="plotSpecies()"> Plot species</button>-->
-
+<button onclick="plotSpecies()"> Plot species</button>
 
 <!--<script>-->
 <!--    select2_element = $(".select2-species").select2({-->
@@ -68,7 +67,7 @@
 
         <script>
 
-            var static_path = "{% static "/taxontree/" %}";
+            var d_desc;
 
             var margin = {top: 30, right: 20, bottom: 30, left: 20},
                 width = 960,
@@ -102,15 +101,22 @@
                 for (i = 0; i < desc.length; i++) {
                     desc[i]._children = desc[i].children;
                     desc[i].children = null;
+                    desc[i].selected = 0;
                 }
                 update(root);
-
-                // walkTheDOM(root);
 
             });
 
             var min_width = 5;
             var taxons_selected = {};
+            {#taxons_selected['organisms'] = {};#}
+            {#taxons_selected['kingdom'] = {};#}
+            {#taxons_selected['phylum'] = {};#}
+            {#taxons_selected['class'] = {};#}
+            {#taxons_selected['order'] = {};#}
+            {#taxons_selected['family'] = {};#}
+            {#taxons_selected['genus'] = {};#}
+            {#taxons_selected['species'] = {};#}
 
             function update(source) {
 
@@ -168,29 +174,38 @@
                         return (d.data.types + " " + d.data.name + " : " + d.data.size)
                     });
 
+
+                // text is taxonomy level, value is the actual taxonomy name
                 nodeEnter.append("circle")
                     .attr("cy", 0)
                     .attr("cx", -5)
-                    .text(function (d) {
-                        return d.data.taxLevel + "_" + d.data.name;
-                    })
+                    //.text(function (d) {
+                    //    return d.data.taxLevel;
+                    //})
                     .attr("r", 3)
-                    .attr("value", "unselected")
+                    //.attr("value", function(d) {
+                    //    return d.data.name;
+                    //})
                     .attr("fill", "white")
-                    .on("click", function () {
+                    .on("click", function (d) {
                         var elem = d3.select(this);
-                        var taxonLevelName = elem.text();
-                        if (elem.attr("fill") == "white") {
-                            elem.attr("fill", "red");
-                            taxons_selected[taxonLevelName] = 1;
-                        } else {
+                        {#var taxonLevelName = elem.text();#}
+                        // if unselect
+                        {#console.log(d.selected);#}
+                        if (d.selected) {
                             elem.attr("fill", "white");
-                            delete taxons_selected[taxonLevelName];
+                            delete taxons_selected[d.data.name];
+                            d.selected = 0;
+                        } else {
+                            elem.attr("fill", "red");
+                            // make it equal to d.data.id
+                            taxons_selected[d.data.name] = {"index": d.data.index, "taxLevel": d.data.taxLevel};
+                            d.selected = 1;
                         }
-                        // console.log(elem.text());
 
+                        //console.log(elem.text());
+                        //console.log(elem.attr("value"));
                         // var taxon_name = d3.select(this).text();
-
                     });
 
                 // Transition nodes to their new position.

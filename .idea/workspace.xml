@@ -3,14 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R_preprocess.R" beforeDir="false" afterPath="$PROJECT_DIR$/R_preprocess.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/D3 Taxon Tree maker-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/D3 Taxon Tree maker-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/D3 Taxon Tree maker.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/D3 Taxon Tree maker.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/taxontree/treedata.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,11 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="73" column="11" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-489">
+              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -68,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
-              <caret line="359" selection-start-line="359" selection-end-line="359" />
+              <caret line="374" selection-start-line="374" selection-end-line="374" />
             </state>
           </provider>
         </entry>
@@ -162,7 +158,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="469" />
     <option name="y" value="98" />
     <option name="width" value="1021" />
@@ -184,70 +180,7 @@
             <path>
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="gbif" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="gbif" type="462c0819:PsiDirectoryNode" />
-              <item name="recent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="gbif" type="462c0819:PsiDirectoryNode" />
-              <item name="recent" type="462c0819:PsiDirectoryNode" />
-              <item name="Animalia" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="gbif" type="462c0819:PsiDirectoryNode" />
-              <item name="recent" type="462c0819:PsiDirectoryNode" />
-              <item name="Animalia" type="462c0819:PsiDirectoryNode" />
-              <item name="Annelida" type="462c0819:PsiDirectoryNode" />
+              <item name="python_helpers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -259,7 +192,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/map_django" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/map_django/biodivmap" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -272,6 +205,7 @@
       <recent name="$PROJECT_DIR$/leaflet" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/map_django/biodivmap" />
       <recent name="$PROJECT_DIR$/map_django" />
       <recent name="$PROJECT_DIR$/leaflet" />
     </key>
@@ -321,10 +255,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142893000" />
+    <option name="totallyTimeSpent" value="144328000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="469" y="98" width="1021" height="791" extended-state="1" />
+    <frame x="469" y="98" width="1021" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2226762" />
@@ -439,9 +373,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="remove separate button for loading image; marker onclick instead" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1889/Cypseloides niger.geojson">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1903/Platanthera stricta.geojson">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -612,7 +543,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/taxontree/treedata.json">
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/treedata.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
@@ -646,7 +577,7 @@
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="359" selection-start-line="359" selection-end-line="359" />
+          <caret line="374" selection-start-line="374" selection-end-line="374" />
         </state>
       </provider>
     </entry>
@@ -692,19 +623,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_helpers/geojson_helpers.py">
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/recent/Animalia/Annelida/points.geojson">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/recent/Animalia/Annelida/points.geojson">
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/GBif June27.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_helpers/geojson_helpers.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="73" column="11" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-489">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="23" />
         </state>
       </provider>
     </entry>

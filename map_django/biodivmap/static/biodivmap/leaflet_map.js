@@ -126,7 +126,7 @@ function loadImg(speciesName) { //AJAX request
         success: function (response) {
             // console.log(response.query);
             if (response.query.searchinfo.totalhits === 0) {
-                alert("No results");
+                alert("Couldn't find wiki");
             } else {
                 wikiImg(response.query.search[0].title, speciesName);
                 openWiki(response, speciesName);
@@ -373,23 +373,32 @@ function plotSpecies() {
             type: 'POST',
             url: 'species/',
 
-            data: JSON.stringify({species: $(".select2-species").select2('data'),
-                                        years: $(".select2-year").select2('data')}),
+            data: JSON.stringify(taxons_selected),
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
             success: function (data) {
+                // layers_array.forEach(function(prev_layer) {
+                //     clusters.removeLayer(prev_layer);
+                //     prev_layer = null
+                // });
+                // data.forEach(function(species_path) {
+                //     $.getJSON(static_path + species_path.path, function (geodata) {
+                //         geodata = filterSpecies(geodata, species_path.species);
+                //         var layer_curr = L.geoJSON(geodata, points_layer_options);
+                //         layers_array.push(layer_curr);
+                //     clusters.addLayer(layer_curr);
+                //     });
+                // });
                 layers_array.forEach(function(prev_layer) {
                     clusters.removeLayer(prev_layer);
                     prev_layer = null
                 });
-                data.forEach(function(species_path) {
-                    $.getJSON(static_path + species_path.path, function (geodata) {
-                        geodata = filterSpecies(geodata, species_path.species);
-                        var layer_curr = L.geoJSON(geodata, points_layer_options);
+                $.getJSON(static_path + "curr.geojson", function(geodata) {
+                    var layer_curr = L.geoJSON(geodata, points_layer_options);
                         layers_array.push(layer_curr);
                     clusters.addLayer(layer_curr);
-                    });
                 });
+
 
             },
             error: function(data) {
@@ -407,4 +416,7 @@ function filterSpecies(geodata, species) {
     geodata.features = features;
     return features;
 }
+
+
+
 
