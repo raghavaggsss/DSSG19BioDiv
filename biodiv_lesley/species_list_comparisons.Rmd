@@ -18,7 +18,7 @@ library(gridExtra)
 
 ```{r}
 # load complete GBIF data for MetroVan
-gbif <- read.csv("./datasets/gbif_complete.csv", sep = "\t", stringsAsFactors = FALSE, na.strings = "")
+gbif <- read.csv("./datasets/gbif_complete.csv", sep = "\t", stringsAsFactors = FALSE, na.strings = c("", " "))
 ```
 
 ```{r}
@@ -40,7 +40,7 @@ trimmed_gbif <- drop_na(trimmed_gbif, species, simplified_names)
 
 ```{r}
 # load BC Red+Blue+ Yellow list (Rainbow list)
-rainbow_list <- read.delim("./datasets/bc_rainbow_list.tsv", sep = "\t", stringsAsFactors = FALSE, na.strings = "")
+rainbow_list <- read.delim("./datasets/bc_rainbow_list.tsv", sep = "\t", stringsAsFactors = FALSE, na.strings = c("", " "))
 
 # select the most relevant columns
 rainbow_list <- select(rainbow_list, c(Scientific.Name, Global.Status, Prov.Status, 
@@ -67,23 +67,16 @@ The BC Red + Blue + Yellow list (the rainbow list) is assumed to represent most 
 
 ### GBIF on Rainbow 
 ```{r}
-# get the unique GBIF species names 
+# Get the unique GBIF species names 
 gbif_unique_names <- unique(trimmed_gbif$simplified_names)
 
-# get the unique rainbow list species names 
+# Get the unique rainbow list species names 
 rainbow_unique_names <- unique(rainbow_list$simplified_names)
 
 # How many of the unique GBIF species are found on the rainbow list? 
 gbif_rainbow_intersect <- sum(gbif_unique_names%in%rainbow_unique_names);gbif_rainbow_intersect
 ```
 
-```{r}
-# What percent of unique GBIF species are found on rainbow list? 
-gbif_rainbow_intersect/length(gbif_unique_names)*100
-
-# What percent of the rainbow list is found on GBIF?
-gbif_rainbow_intersect/nrow(rainbow_list)*100
-```
 ```{r}
 # Plot a venn diagram showing the overlap between unique species on  GBIF and rainbow lists 
 gbif_rainbow_overlap <- draw.pairwise.venn(area1 = length(gbif_unique_names),
@@ -105,9 +98,17 @@ grid.arrange(gTree(children = gbif_rainbow_overlap), top = title1, bottom = subt
 ```
 
 ```{r}
-# Record the number of unqiue species that do not overlap with the other list (ie rainbow or gbif)
-num_gbif_non_overlap <- (length(gbif_unique_names)-gbif_rainbow_intersect)/length(gbif_unique_names)
-num_rainbow_non_overlap <- (length(rainbow_unique_names)-gbif_rainbow_intersect)/length(rainbow_unique_names)
+# What percent of unique GBIF species are found on rainbow list? 
+gbif_rainbow_intersect/length(gbif_unique_names)*100
+
+# What percent of the rainbow list is found on GBIF?
+gbif_rainbow_intersect/nrow(rainbow_list)*100
+```
+
+```{r}
+# Record the proportion of unqiue species that do not overlap with the other list (ie rainbow or gbif)
+prop_gbif_non_overlap <- (length(gbif_unique_names)-gbif_rainbow_intersect)/length(gbif_unique_names)
+prop_rainbow_non_overlap <- (length(rainbow_unique_names)-gbif_rainbow_intersect)/length(rainbow_unique_names)
 
 # make a data frame of the relative proportions 
 prop_data <- data.frame(dataset = c(rep("GBIF",2), rep("Rainbow",2)), catetory = c(rep( c("Unique","Overlap"), 2)), 
@@ -121,26 +122,22 @@ ggplot(prop_data, aes(x = dataset, y = prop, fill = catetory))+
       scale_y_continuous(labels = percent)+
       scale_color_few("Dark", drop = FALSE)+
       labs(x = "Species Lists", y= "Percentage", fill = "Category", 
-           title = "Proportions of unique and overlapping")+
+           title = "Proportions of unique and overlapping",
+           subtitle = "GBIF vs Rainbow")+
       theme(plot.title = element_text(face = "bold"),
             axis.title.x = element_text(face = "bold"),
             axis.title.y = element_text(face = "bold"),
             axis.text = element_text(face = "bold"))
 ```
 
+### GBIF and BC Red/Blue
 In addition to looking at the proportion of the rainbow list that is included on GBIF, one can also consider the proportion of the Red/Blue listed species alone that are found on GBIF. 
 ```{r}
 # Get the unique species names on the BC red/blue list 
 red_blue_unique_names <- unique(bc_red_blue$simplified_names)
 
 # How many of GBIF unique species are found on bc_red_blue list?
-gbif_red_blue_intersect <- sum(gbif_unique_names%in%bc_red_blue$simplified_names);num_gbif_on_redBlue
-
-# What percent of unique GBIF species are found on bc_red_blue list? 
-num_gbif_on_redBlue/length(gbif_unique_names)*100
-
-# What percent of the bc_red_blue list species are found on GBIF?
-num_gbif_on_redBlue/nrow(bc_red_blue)*100
+gbif_red_blue_intersect <- sum(gbif_unique_names%in%red_blue_unique_names);gbif_red_blue_intersect
 ```
 
 ```{r}
@@ -156,7 +153,7 @@ gbif_red_blue_overlap <- draw.pairwise.venn(area1 = length(gbif_unique_names),
                                            scaled = T,
                                            cat.fontface = rep("bold", 2),
                                            ext.text = F, 
-                                           cat.pos = c(-25, -15))
+                                           cat.pos = c(-25, 10))
 
 # make the ven diagram plot titles 
 title2 <- textGrob("GBIF and BC Red & Blue", gp=gpar(fontface = "bold"))
@@ -165,13 +162,47 @@ subtitle2 <- textGrob("Overlap of unique species", gp=gpar(fontface = "bold"))
 grid.arrange(gTree(children = gbif_red_blue_overlap), top = title2, bottom = subtitle2)
 
 ```
+
+
 ```{r}
+# What percent of unique GBIF species are found on bc_red_blue list? 
+num_gbif_on_redBlue/length(gbif_unique_names)*100
+
+# What percent of the bc_red_blue list species are found on GBIF?
+num_gbif_on_redBlue/length(red_blue_unique_names)*100
+```
+
+```{r}
+# Record the proportion of unqiue species that do not overlap with the other list (ie BC red/blue or gbif)
+prop_gbif_non_overlap2 <- (length(gbif_unique_names)-gbif_red_blue_intersect)/length(gbif_unique_names)
+prop_redBlue_non_overlap <- (length(red_blue_unique_names)-gbif_red_blue_intersect)/length(red_blue_unique_names)
+
+# make a data frame of the relative proportions 
+prop_data2 <- data.frame(dataset = c(rep("GBIF",2), rep("Red/Blue",2)), catetory = c(rep( c("Unique","Overlap"), 2)), 
+           prop = c(num_gbif_non_overlap2, gbif_red_blue_intersect/length(gbif_unique_names), num_redBlue_non_overlap, gbif_red_blue_intersect/length(red_blue_unique_names)))
+
+```
+
+```{r}
+# Make a stacked bar chart indicating the proportion of each list is devoted to the overlap between GBIF and BC red/blue
+ggplot(prop_data2, aes(x = dataset, y = prop, fill = catetory))+
+      geom_bar(stat = "identity", position = "fill")+
+      scale_y_continuous(labels = percent)+
+      scale_color_few("Dark", drop = FALSE)+
+      labs(x = "Species Lists", y= "Percentage", fill = "Category", 
+           title = "Proportions of unique and overlapping",
+           subtitle = "GBIF vs Red/Blue")+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
 
 ```
  
 
 ### Summary 
-The majority of GBIF species as a whole , ~ 75% are not found on the rainbow list. This top level comparison implies that the BC rainbow list does not represent most of the species in BC. 
+The majority of GBIF species as a whole , ~ 75% are not found on the rainbow list. This top level comparison implies that the BC rainbow list does not represent most of the species in BC. However, there is a sizeable portion of the BC rainbow list that are not found on GBIF. 
 When considering the Red/Blue list separately, ~ 20% of the Red/Blue species are found on GBIF. However, out of the GBIF species, ~ 2% are found on the Red/Blue list. 
 
 ### GBIF Plants on Rainbow
@@ -182,7 +213,43 @@ plants_gbif <- filter(trimmed_gbif, kingdom=="Plantae")
 
 
 # get the unique plant names 
-plants_gbif_unique_names <- unique(plants_gbif$simplified_names)
+plant_gbif_unique_names <- unique(plants_gbif$simplified_names)
+
+# Subset rainbow plants 
+plants_rainbow <- filter(rainbow_list, Kingdom=="Plantae") %>% 
+      filter(Phylum!="Mitosporic fungi" & Phylum!="Ascomycota")
+
+# Get unique rainbow plant names 
+plant_rainbow_unique_names <- unique(plants_rainbow$simplified_names)
+```
+
+```{r}
+# Calculate the composition of GBIF and Rainbow in terms of how many plants they have.
+
+# Record the number of unqiue species that are not plants on either list  (ie rainbow or gbif)
+prop_gbif_not_plant <- (length(gbif_unique_names)-length(plant_gbif_unique_names))/length(gbif_unique_names)
+prop_rainbow_not_plant <- (length(rainbow_unique_names)-length(plant_rainbow_unique_names))/length(rainbow_unique_names)
+
+# make a data frame of the relative proportions 
+prop_data3 <- data.frame(dataset = c(rep("GBIF",2), rep("Rainbow",2)), catetory = c(rep( c("Non-Plant","Plant"), 2)), 
+           prop = c(prop_gbif_not_plant, length(plant_gbif_unique_names)/length(gbif_unique_names), prop_rainbow_not_plant, 
+                    length(plant_rainbow_unique_names)/length(rainbow_unique_names)))
+
+```
+
+```{r}
+# Make a stacked bar chart indicating the proportion of each list is devoted to plants on GBIF and rainbow  
+ggplot(prop_data3, aes(x = dataset, y = prop, fill = catetory))+
+      geom_bar(stat = "identity", position = "fill")+
+      scale_y_continuous(labels = percent)+
+      scale_color_few("Dark", drop = FALSE)+
+      labs(x = "Species Lists", y= "Percentage", fill = "Category", 
+           title = "Proportions of Plant and Non-plant",
+           subtitle = "GBIF vs Rainbow")+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
 ```
 
 ```{r}
@@ -191,10 +258,65 @@ gbif_plant_on_rainbow <- sum(plants_gbif_unique_names%in%rainbow_unique_names);g
 ```
 
 ```{r}
+# Plot a venn diagram showing the overlap between unique species on GBIF plant and rainbow plants  
+gbif_plant_rainbow_overlap <- draw.pairwise.venn(area1 = length(plant_gbif_unique_names),
+                                           area2 = length(plant_rainbow_unique_names),
+                                           cross.area = gbif_plant_on_rainbow,
+                                            category = c("GBIF Plant", "Rainbow Plant"),
+                                           lty = rep("blank", 2),
+                                           fill = c("purple", "cyan"),
+                                            alpha = rep(0.5,2),
+                                            cat.dist = rep(0.025, 2),
+                                           scaled = T,
+                                           cat.fontface = rep("bold", 2),
+                                           ext.text = F, 
+                                           cat.pos = c(-25, 20))
+
+# make the ven diagram plot titles 
+title3 <- textGrob("GBIF and Rainbow Plants", gp=gpar(fontface = "bold"))
+subtitle3 <- textGrob("Overlap of unique plant species", gp=gpar(fontface = "bold"))
+
+grid.arrange(gTree(children = gbif_plant_rainbow_overlap), top = title3, bottom = subtitle3)
+```
+
+```{r}
 # What percent of GBIF plants are found on rainbow?
-gbif_plant_on_rainbow/length(plants_gbif_unique_names)*100
+gbif_plant_on_rainbow/length(plant_gbif_unique_names)*100
+
+# What percent of rainbow plants are found on GBIF?
+gbif_plant_on_rainbow/length(plant_rainbow_unique_names)*100
+```
+
+
+```{r}
+# Record the number of unqiue species that do not overlap with the other list (ie rainbow plant or gbif plant)
+prop_gbif_non_overlap4 <- (length(plant_gbif_unique_names)-gbif_plant_on_rainbow)/length(plant_gbif_unique_names)
+prop_rainbow_non_overlap4 <- (length(plant_rainbow_unique_names)-gbif_plant_on_rainbow)/length(plant_rainbow_unique_names)
+
+# make a data frame of the relative proportions 
+prop_data4 <- data.frame(dataset = c(rep("GBIF Plant",2), rep("Rainbow Plant",2)), catetory = c(rep( c("Unique","Overlap"), 2)), 
+           prop = c(num_gbif_non_overlap4, gbif_plant_on_rainbow/length(plant_gbif_unique_names), num_rainbow_non_overlap4, 
+                    gbif_plant_on_rainbow/length(plant_rainbow_unique_names)))
 
 ```
+
+```{r}
+# Make a stacked bar chart indicating the proportion of each list is devoted to the overlap between GBIF and rainbow plants 
+ggplot(prop_data4, aes(x = dataset, y = prop, fill = catetory))+
+      geom_bar(stat = "identity", position = "fill")+
+      scale_y_continuous(labels = percent)+
+      scale_color_few("Dark", drop = FALSE)+
+      labs(x = "Species Lists", y= "Percentage", fill = "Category", 
+           title = "Proportions of unique and overlapping",
+           subtitle = "GBIF Plant vs Rainbow Plant")+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+```
+
+
 
 ```{r}
 # What percent of GBIF as a whole are the plants found on rainbow?
@@ -203,6 +325,7 @@ gbif_plant_on_rainbow/length(na.omit(unique(trimmed_gbif$species)))*100
 # What percent of rainbow are the plants found on GBIF?
 gbif_plant_on_rainbow/nrow(rainbow_list)*100
 ```
+
 ### GBIF Animals on Rainbow
 ```{r}
 # Subset the GBIF animals 
@@ -210,6 +333,50 @@ animal_gbif <- filter(trimmed_gbif, kingdom=="Animalia")
 
 # Get unique animal names 
 animal_gbif_unique_names <- unique(animal_gbif$simplified_names)
+
+# Subset the rainbow animals
+animal_rainbow <- filter(rainbow_list, Kingdom=="Animalia")
+
+# Get unique animal names from rainbow 
+animal_rainbow_unique_names <- unique(animal_rainbow$simplified_names)
+```
+
+# Is this a useful proportion to think about? 
+```{r}
+# Animals found on rainbow are what percent of GBIF species?
+gbif_animal_on_rainbow/length(gbif_unique_names)*100
+
+# Animals found on GBIF are what percent of Rainbow species?
+gbif_animal_on_rainbow/length(rainbow_unique_names)*100
+```
+
+```{r}
+# Calculate the composition of GBIF and Rainbow in terms of how many animals they have.
+
+# Record the number of unqiue species that are not animals on either list  (ie rainbow or gbif)
+prop_gbif_not_animal <- (length(gbif_unique_names)-length(animal_gbif_unique_names))/length(gbif_unique_names)
+prop_rainbow_not_animal <- (length(rainbow_unique_names)-length(animal_rainbow_unique_names))/length(rainbow_unique_names)
+
+# make a data frame of the relative proportions 
+prop_data5 <- data.frame(dataset = c(rep("GBIF",2), rep("Rainbow",2)), catetory = c(rep( c("Non-Animal","Animal"), 2)), 
+           prop = c(prop_gbif_not_animal, length(animal_gbif_unique_names)/length(gbif_unique_names), prop_rainbow_not_animal, 
+                    length(animal_rainbow_unique_names)/length(rainbow_unique_names)))
+
+```
+
+```{r}
+# Make a stacked bar chart indicating the proportion of each list is devoted to animals on GBIF and rainbow  
+ggplot(prop_data5, aes(x = dataset, y = prop, fill = catetory))+
+      geom_bar(stat = "identity", position = "fill")+
+      scale_y_continuous(labels = percent)+
+      scale_color_few("Dark", drop = FALSE)+
+      labs(x = "Species Lists", y= "Percentage", fill = "Category", 
+           title = "Proportions of Animal and Non-animal",
+           subtitle = "GBIF vs Rainbow")+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
 ```
 
 ```{r}
@@ -218,18 +385,65 @@ gbif_animal_on_rainbow <- sum(animal_gbif_unique_names%in%rainbow_unique_names);
 ```
 
 ```{r}
+# Plot a venn diagram showing the overlap between unique species on GBIF animal and rainbow animals 
+gbif_animal_rainbow_overlap <- draw.pairwise.venn(area1 = length(animal_gbif_unique_names),
+                                           area2 = length(animal_rainbow_unique_names),
+                                           cross.area = gbif_animal_on_rainbow,
+                                            category = c("GBIF Animal", "Rainbow Animal"),
+                                           lty = rep("blank", 2),
+                                           fill = c("purple", "cyan"),
+                                            alpha = rep(0.5,2),
+                                            cat.dist = rep(0.025, 2),
+                                           scaled = T,
+                                           cat.fontface = rep("bold", 2),
+                                           ext.text = F, 
+                                           cat.pos = c(-20, 10))
+
+# make the ven diagram plot titles 
+title4 <- textGrob("GBIF and Rainbow Animals", gp=gpar(fontface = "bold"))
+subtitle4 <- textGrob("Overlap of unique animal species", gp=gpar(fontface = "bold"))
+
+grid.arrange(gTree(children = gbif_animal_rainbow_overlap), top = title4, bottom = subtitle4)
+```
+
+
+```{r}
 # What percent of GBIF animal are found on rainbow?
 gbif_animal_on_rainbow/length(animal_gbif_unique_names)*100
+
+# What percent of Rainbow animal list is the overlap with GBIF?
+gbif_animal_on_rainbow/length(animal_rainbow_unique_names)*100
 
 ```
 
 ```{r}
-# Plants found on rainbow are what percent of GBIF species?
-gbif_animal_on_rainbow/length(gbif_unique_names)*100
+# Record the number of unqiue species that do not overlap with the other list (ie rainbow animal or gbif animal)
+prop_gbif_non_overlap6 <- (length(animal_gbif_unique_names)-gbif_animal_on_rainbow)/length(animal_gbif_unique_names)
+prop_rainbow_non_overlap6 <- (length(animal_rainbow_unique_names)-gbif_animal_on_rainbow)/length(animal_rainbow_unique_names)
 
-# What percent of the rainbow list are the animals found on GBIF
-gbif_animal_on_rainbow/nrow(rainbow_list)*100
+# make a data frame of the relative proportions 
+prop_data6 <- data.frame(dataset = c(rep("GBIF Animal",2), rep("Rainbow Animal",2)), catetory = c(rep( c("Unique","Overlap"), 2)), 
+           prop = c(num_gbif_non_overlap4, gbif_animal_on_rainbow/length(animal_gbif_unique_names), num_rainbow_non_overlap4, 
+                    gbif_animal_on_rainbow/length(animal_rainbow_unique_names)))
+
 ```
+
+```{r}
+# Make a stacked bar chart indicating the proportion of each list is devoted to the overlap between GBIF and rainbow animals 
+ggplot(prop_data6, aes(x = dataset, y = prop, fill = catetory))+
+      geom_bar(stat = "identity", position = "fill")+
+      scale_y_continuous(labels = percent)+
+      scale_color_few("Dark", drop = FALSE)+
+      labs(x = "Species Lists", y= "Percentage", fill = "Category", 
+           title = "Proportions of unique and overlapping",
+           subtitle = "GBIF Animal vs Rainbow Animal")+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+```
+
 
 ### GBIF Fungi on Rainbow
 ```{r}
@@ -238,6 +452,12 @@ fungi_gbif <- filter(trimmed_gbif, kingdom=="Fungi")
 
 # Get the unqiue fungi names 
 fungi_gbif_unique_names <- unique(fungi_gbif$simplified_names)
+
+# Subst the rainbow fungi 
+fungi_rainbow <- filter(rainbow_list, Phylum=="Mitosporic fungi" | Phylum=="Ascomycota")
+
+# Get the unique fungi names 
+fungi_rainbow_unique_names <- unique(fungi_rainbow$simplified_names)
 ```
 
 ```{r}
@@ -247,22 +467,106 @@ length(fungi_gbif_unique_names)/length(gbif_unique_names)*100
 
 
 ```{r}
+# Calculate the composition of GBIF and Rainbow in terms of how many fungi they have.
+
+# Record the number of unqiue species that are not fungi on either list  (ie rainbow or gbif)
+prop_gbif_not_fungi <- (length(gbif_unique_names)-length(fungi_gbif_unique_names))/length(gbif_unique_names)
+prop_rainbow_not_fungi <- (length(rainbow_unique_names)-length(fungi_rainbow_unique_names))/length(rainbow_unique_names)
+
+# make a data frame of the relative proportions 
+prop_data7 <- data.frame(dataset = c(rep("GBIF",2), rep("Rainbow",2)), catetory = c(rep( c("Non-Fungi","Fungi"), 2)), 
+           prop = c(prop_gbif_not_fungi, length(fungi_gbif_unique_names)/length(gbif_unique_names), prop_rainbow_not_fungi, 
+                    length(fungi_rainbow_unique_names)/length(rainbow_unique_names)))
+
+```
+
+```{r}
+# Make a stacked bar chart indicating the proportion of each list is devoted to plants on GBIF and rainbow  
+ggplot(prop_data7, aes(x = dataset, y = prop, fill = catetory))+
+      geom_bar(stat = "identity", position = "fill")+
+      scale_y_continuous(labels = percent)+
+      scale_color_few("Dark", drop = FALSE)+
+      labs(x = "Species Lists", y= "Percentage", fill = "Category", 
+           title = "Proportions of Fungi and Non-fungi",
+           subtitle = "GBIF vs Rainbow")+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+```
+
+
+
+```{r}
 # How many of the unique GBIF fungi species are found on rainbow list?
 gbif_fungi_on_rainbow <- sum(na.omit(unique(fungi_gbif$species))%in%rainbow_list$Scientific.Name);gbif_fungi_on_rainbow
 ```
 
 ```{r}
+# Plot a venn diagram showing the overlap between unique species on GBIF fungi and rainbow fungi  
+gbif_fungi_rainbow_overlap <- draw.pairwise.venn(area1 = length(fungi_gbif_unique_names),
+                                           area2 = length(fungi_rainbow_unique_names),
+                                           cross.area = gbif_fungi_on_rainbow,
+                                            category = c("GBIF Fungi", "Rainbow Fungi"),
+                                           lty = rep("blank", 2),
+                                           fill = c("purple", "cyan"),
+                                            alpha = rep(0.5,2),
+                                            cat.dist = rep(0.025, 2),
+                                           scaled = T,
+                                           cat.fontface = rep("bold", 2),
+                                           ext.text = F, 
+                                           cat.pos = c(-25, 20))
+
+# make the ven diagram plot titles 
+title5 <- textGrob("GBIF and Rainbow Fungi", gp=gpar(fontface = "bold"))
+subtitle5 <- textGrob("Overlap of unique fungal species", gp=gpar(fontface = "bold"))
+
+grid.arrange(gTree(children = gbif_fungi_rainbow_overlap), top = title5, bottom = subtitle5)
+```
+
+
+```{r}
 # What percent of GBIF fungi are found on rainbow?
-gbif_fungi_on_rainbow/length(na.omit(unique(fungi_gbif$species)))*100
+gbif_fungi_on_rainbow/length(fungi_gbif_unique_names)*100
+
+# What percent of Rainbow fungi are found on GBIF?
+gbif_fungi_on_rainbow/length(fungi_rainbow_unique_names)*100
+```
+```{r}
+# Record the proportion of unqiue species that do not overlap with the other list (ie rainbow fungi or gbif fungi)
+prop_gbif_non_overlap8 <- (length(fungi_gbif_unique_names)-gbif_fungi_on_rainbow)/length(fungi_gbif_unique_names)
+prop_rainbow_non_overlap8 <- (length(fungi_rainbow_unique_names)-gbif_fungi_on_rainbow)/length(fungi_rainbow_unique_names)
+
+# make a data frame of the relative proportions 
+prop_data8 <- data.frame(dataset = c(rep("GBIF Fungi",2), rep("Rainbow Fungi",2)), catetory = c(rep( c("Unique","Overlap"), 2)), 
+           prop = c(prop_gbif_non_overlap8, gbif_fungi_on_rainbow/length(fungi_gbif_unique_names), prop_rainbow_non_overlap8, 
+                    gbif_fungi_on_rainbow/length(fungi_rainbow_unique_names)))
 
 ```
 
 ```{r}
+# Make a stacked bar chart indicating the proportion of each list is devoted to the overlap between GBIF and rainbow fungi
+ggplot(prop_data8, aes(x = dataset, y = prop, fill = catetory))+
+      geom_bar(stat = "identity", position = "fill")+
+      scale_y_continuous(labels = percent)+
+      scale_color_few("Dark", drop = FALSE)+
+      labs(x = "Species Lists", y= "Percentage", fill = "Category", 
+           title = "Proportions of unique and overlapping",
+           subtitle = "GBIF Fungi vs Rainbow Fungi")+
+      theme(plot.title = element_text(face = "bold"),
+            axis.title.x = element_text(face = "bold"),
+            axis.title.y = element_text(face = "bold"),
+            axis.text = element_text(face = "bold"))
+
+```
+
+# is this a useful proportion?
+```{r}
 # Fungi found on rainbow are what percent of GBIF species?
-gbif_fungi_on_rainbow/length(na.omit(unique(trimmed_gbif$species)))*100
+gbif_fungi_on_rainbow/length(fungi_gbif_unique_names)*100
 
 # What percent of the rainbow list are the fungi species found on GBIF?
-gbif_fungi_on_rainbow/nrow(rainbow_list)*100
+gbif_fungi_on_rainbow/length(fungi_rainbow_unique_names)*100
 ```
 
 # Conclusion: 
