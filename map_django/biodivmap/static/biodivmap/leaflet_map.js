@@ -247,7 +247,6 @@ $.getJSON(static_path + "SEI.topojson", function (data) {
             })
         }
     })
-        .addTo(map);
     overlays.SEI = shapes_layer;
     if (countKeys(overlays) == num_overlays) {
         L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
@@ -368,11 +367,18 @@ select2_element = $(".select2-year").select2({
 
 layers_array = [];
 function plotSpecies() {
+    $('#points-loader').show();
+    taxons_selected = {};
+    for (i = 0; i < init_desc.length; i++) {
+        if (init_desc[i].selected) {
+            taxons_selected[init_desc[i].data.name] = {"index": init_desc[i].data.index, "taxLevel": init_desc[i].data.taxLevel};
+        }
+    }
+
     $.ajax({
             processData: false,
             type: 'POST',
             url: 'species/',
-
             data: JSON.stringify(taxons_selected),
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
@@ -398,8 +404,7 @@ function plotSpecies() {
                         layers_array.push(layer_curr);
                     clusters.addLayer(layer_curr);
                 });
-
-
+                $('#points-loader').hide();
             },
             error: function(data) {
                 alert('Form submission failed');

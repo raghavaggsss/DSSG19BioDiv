@@ -50,6 +50,8 @@
 
 <button onclick="plotSpecies()"> Plot species</button>
 
+<img id="points-loader" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
+
 <!--<script>-->
 <!--    select2_element = $(".select2-species").select2({-->
 <!--      data: {{select2_species|safe}},-->
@@ -67,7 +69,7 @@
 
         <script>
 
-            var d_desc;
+            var init_desc;
 
             var margin = {top: 30, right: 20, bottom: 30, left: 20},
                 width = 960,
@@ -97,6 +99,7 @@
                 root.y0 = 0;
                 // open the tree collapsed
                 desc = root.descendants();
+                init_desc = root.descendants();
                 var i = 0;
                 for (i = 0; i < desc.length; i++) {
                     desc[i]._children = desc[i].children;
@@ -108,7 +111,7 @@
             });
 
             var min_width = 5;
-            var taxons_selected = {};
+            {#var taxons_selected = {};#}
             {#taxons_selected['organisms'] = {};#}
             {#taxons_selected['kingdom'] = {};#}
             {#taxons_selected['phylum'] = {};#}
@@ -194,12 +197,12 @@
                         {#console.log(d.selected);#}
                         if (d.selected) {
                             elem.attr("fill", "white");
-                            delete taxons_selected[d.data.name];
+                            {#delete taxons_selected[d.data.name];#}
                             d.selected = 0;
                         } else {
                             elem.attr("fill", "red");
                             // make it equal to d.data.id
-                            taxons_selected[d.data.name] = {"index": d.data.index, "taxLevel": d.data.taxLevel};
+                            {#taxons_selected[d.data.name] = {"index": d.data.index, "taxLevel": d.data.taxLevel};#}
                             d.selected = 1;
                         }
 
@@ -274,7 +277,12 @@
 
             // Toggle children on click.
             function click(d) {
+                {#var curr_children = d.children;#}
                 if (d.children) {
+                    curr_desc = d.descendants();
+                    for (i = 1; i < curr_desc.length; i++) {
+                        curr_desc[i].selected = 0;
+                    }
                     d._children = d.children;
                     d.children = null;
                 } else {

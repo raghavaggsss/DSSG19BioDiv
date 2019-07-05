@@ -44,7 +44,7 @@ def ajax_species(request):
     if request.method == 'POST':
         if request.body:
             selected_taxons = json.loads(request.body)
-            # print(selected_taxons)
+            print(selected_taxons)
 
             df = pd.read_csv("biodivmap/GBif June27.csv", encoding="latin1")
             df = df.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
