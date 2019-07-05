@@ -1,3 +1,4 @@
+*.pyc
 *.geojson
 *.sqlite3
 *.topojson

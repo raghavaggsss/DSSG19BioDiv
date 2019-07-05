@@ -29,15 +29,16 @@ def index(request):
 
     # select2_species = "[{id: 'rag', text: 'rag'}, {id: 'raggie', text: 'raggie'}]"
     # lim = 1000
-    select2_species = "["
-    for obj in SpeciesYear.objects.all():
-        # lim = lim - 1
-        # if (lim <= 0):
-        #     break
-        select2_species += obj.select2element()
-        select2_species+=","
-    select2_species += "]"
-    return render(request, 'biodivmap/index.html', {'select2_species': select2_species})
+    # select2_species = "["
+    # for obj in SpeciesYear.objects.all():
+        # # lim = lim - 1
+        # # if (lim <= 0):
+        # #     break
+        # select2_species += obj.select2element()
+        # select2_species+=","
+    # select2_species += "]"
+    # return render(request, 'biodivmap/index.html', {'select2_species': select2_species})
+    return render(request, 'biodivmap/index.html')
 
 @csrf_exempt
 def ajax_species(request):
