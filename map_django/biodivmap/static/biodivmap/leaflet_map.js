@@ -94,7 +94,7 @@ var baseLayers = {
 };
 
 var overlays = {};
-var num_overlays = 1;
+var num_overlays = 2;
 
 var map = L.map('map', {
     center: [49.263710, -123.259378],
@@ -117,6 +117,10 @@ function openWiki(callback, speciesName) {
     };
     wikiButton.value = "Wikipedia";
 }
+
+
+
+var wmsLayer = L.tileLayer.betterWms('http://localhost:8080/geoserver/biodiv/wms?', {layers: "MVSEI2014", opacity: 0.5}).addTo(map).setZIndex(5);
 
 
 function loadImg(speciesName) { //AJAX request
@@ -189,11 +193,8 @@ var dotIcon = L.icon({
     iconSize: [10, 10]
 });
 
-
-var shapes_layer;
-$.getJSON(static_path + "SEI.topojson", function (data) {
-    shapes_layer = L.topoJson(data, {
-
+$.getJSON(static_path + "SEI.geojson", function (data) {
+    sei_layer = L.geoJson(data, {
         style: function (feature) {
             sstyle = remove_highlight;
             if (feature.properties.SE_ME_1 != "SE") {
@@ -247,11 +248,75 @@ $.getJSON(static_path + "SEI.topojson", function (data) {
             })
         }
     })
-    overlays.SEI = shapes_layer;
+    overlays.SEI = sei_layer;
     if (countKeys(overlays) == num_overlays) {
         L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
     }
 });
+
+
+$.getJSON(static_path + "Municipalities.geojson", function (data) {
+    mun_layer = L.geoJson(data, {
+        // style: function (feature) {
+        //     sstyle = remove_highlight;
+        //     if (feature.properties.SE_ME_1 != "SE") {
+        //         sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+        //     } else {
+        //         sstyle.fillColor = typeSE[feature.properties.SECl_1];
+        //     }
+        //
+        //     return sstyle;
+        // },
+        // onEachFeature: function (feature, layer) {
+        //     var popUpInfo = feature.properties.Comp1Lgnd_;
+        //     if (feature.properties.Comp2Lgnd_) {
+        //         popUpInfo += "<br/>" + feature.properties.Comp2Lgnd_;
+        //         if (feature.properties.Comp3Lgnd_) {
+        //             popUpInfo += "<br/>" + feature.properties.Comp3Lgnd_;
+        //         }
+        //     }
+        //     popUpInfo += "</br> Quality: " + feature.properties.QualityNo_ + "/5.0";
+        //     if (feature.properties.Location) {
+        //         popUpInfo += "</br> Location: " + feature.properties.Location;
+        //     }
+        //     // var popUp = layer.bindPopup(popUpInfo);
+        //     // popUp.on('popupclose', function() {
+        //     //     // layer.setStyle(remove_highlight);
+        //     // });
+        //     layer.on('click', function () {
+        //         layer.bringToFront();
+        //         if (layer.selected) {
+        //             sstyle = remove_highlight;
+        //             if (feature.properties.SE_ME_1 != "SE") {
+        //                 sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+        //             } else {
+        //                 sstyle.fillColor = typeSE[feature.properties.SECl_1];
+        //             }
+        //             layer.setStyle(sstyle);
+        //             layer.selected = 0;
+        //             layer.unbindPopup();
+        //         } else {
+        //             sstyle = highlight;
+        //             // if (feature.properties.SE_ME_1 != "SE") {
+        //             //     sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+        //             // }
+        //             // else {
+        //             //     sstyle.fillColor = typeSE[feature.properties.SECl_1];
+        //             // }
+        //             layer.setStyle(sstyle);
+        //             layer.selected = 1;
+        //             layer.bindPopup(popUpInfo).openPopup();
+        //         }
+        //     })
+        // }
+    })
+    overlays.Municipalities = mun_layer;
+    if (countKeys(overlays) == num_overlays) {
+        L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
+    }
+});
+
+
 
 var points_layer_options = {
     pointToLayer: function (feature, latlng) {

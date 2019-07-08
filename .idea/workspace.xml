@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,21 +31,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="383" column="60" selection-start-line="383" selection-start-column="60" selection-end-line="383" selection-end-column="60" />
+            <state relative-caret-position="384">
+              <caret line="122" column="50" selection-start-line="122" selection-start-column="50" selection-end-line="122" selection-end-column="50" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#88#94#1" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -71,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
-              <caret line="380" selection-start-line="380" selection-end-line="380" />
+              <caret line="382" selection-start-line="382" selection-end-line="382" />
             </state>
           </provider>
         </entry>
@@ -88,6 +79,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>points_data</find>
+      <find>collapsed</find>
       <find>clusters_layer</find>
       <find>clusters</find>
       <find>loadPo</find>
@@ -116,8 +109,6 @@
       <find>sei_layer</find>
       <find>layer</find>
       <find>topojs</find>
-      <find>wms</find>
-      <find>muni</find>
     </findStrings>
     <replaceStrings>
       <replace>TextField</replace>
@@ -145,6 +136,7 @@
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.css" />
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.js" />
         <option value="$PROJECT_DIR$/leaflet/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/map_django/models_file.py" />
         <option value="$PROJECT_DIR$/map_django/models_db.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/fixtures/1990-1993.yaml" />
@@ -161,7 +153,6 @@
         <option value="$PROJECT_DIR$/map_django/biodivmap/models.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/urls.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -283,7 +274,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146614000" />
+    <option name="totallyTimeSpent" value="146265000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="295" y="40" width="1021" height="791" extended-state="0" />
@@ -414,6 +405,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -589,7 +587,7 @@
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="380" selection-start-line="380" selection-end-line="380" />
+          <caret line="382" selection-start-line="382" selection-end-line="382" />
         </state>
       </provider>
     </entry>
@@ -656,17 +654,10 @@
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/Municipalities.geojson">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="383" column="60" selection-start-line="383" selection-start-column="60" selection-end-line="383" selection-end-column="60" />
+        <state relative-caret-position="384">
+          <caret line="122" column="50" selection-start-line="122" selection-start-column="50" selection-end-line="122" selection-end-column="50" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#88#94#1" expanded="true" />
