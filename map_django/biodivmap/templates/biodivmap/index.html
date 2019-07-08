@@ -166,7 +166,7 @@
                         return curr_width;
                     }))
                     .style("fill", color)
-                    .on("click", click);
+                    .on("click", clickTree);
 
                 nodeEnter.append("text")
                     .attr("dy", 3.5)
@@ -274,7 +274,7 @@
             }
 
             // Toggle children on click.
-            function click(d) {
+            function clickTree(d) {
                 {#var curr_children = d.children;#}
                 if (d.children) {
                     curr_desc = d.descendants();
@@ -381,8 +381,8 @@
 </div>
     <button onclick="plotSpecies()" style="margin-left: 900px;"> Plot species</button>
     <img id="points-loader" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
-
-
+<input id="taxon-search-field">
+<button id="taxon-search-button" onclick="searchTaxon()">Search</button>
 
 <!--{{ form.media.js }}-->
 

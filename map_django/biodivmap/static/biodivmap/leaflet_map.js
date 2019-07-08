@@ -253,58 +253,14 @@ $.getJSON(static_path + "SEI.geojson", function (data) {
 
 $.getJSON(static_path + "Municipalities.geojson", function (data) {
     mun_layer = L.geoJson(data, {
-        // style: function (feature) {
-        //     sstyle = remove_highlight;
-        //     if (feature.properties.SE_ME_1 != "SE") {
-        //         sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
-        //     } else {
-        //         sstyle.fillColor = typeSE[feature.properties.SECl_1];
-        //     }
-        //
-        //     return sstyle;
-        // },
-        // onEachFeature: function (feature, layer) {
-        //     var popUpInfo = feature.properties.Comp1Lgnd_;
-        //     if (feature.properties.Comp2Lgnd_) {
-        //         popUpInfo += "<br/>" + feature.properties.Comp2Lgnd_;
-        //         if (feature.properties.Comp3Lgnd_) {
-        //             popUpInfo += "<br/>" + feature.properties.Comp3Lgnd_;
-        //         }
-        //     }
-        //     popUpInfo += "</br> Quality: " + feature.properties.QualityNo_ + "/5.0";
-        //     if (feature.properties.Location) {
-        //         popUpInfo += "</br> Location: " + feature.properties.Location;
-        //     }
-        //     // var popUp = layer.bindPopup(popUpInfo);
-        //     // popUp.on('popupclose', function() {
-        //     //     // layer.setStyle(remove_highlight);
-        //     // });
-        //     layer.on('click', function () {
-        //         layer.bringToFront();
-        //         if (layer.selected) {
-        //             sstyle = remove_highlight;
-        //             if (feature.properties.SE_ME_1 != "SE") {
-        //                 sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
-        //             } else {
-        //                 sstyle.fillColor = typeSE[feature.properties.SECl_1];
-        //             }
-        //             layer.setStyle(sstyle);
-        //             layer.selected = 0;
-        //             layer.unbindPopup();
-        //         } else {
-        //             sstyle = highlight;
-        //             // if (feature.properties.SE_ME_1 != "SE") {
-        //             //     sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
-        //             // }
-        //             // else {
-        //             //     sstyle.fillColor = typeSE[feature.properties.SECl_1];
-        //             // }
-        //             layer.setStyle(sstyle);
-        //             layer.selected = 1;
-        //             layer.bindPopup(popUpInfo).openPopup();
-        //         }
-        //     })
-        // }
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.FullName);
+
+            layer.on('click', function () {
+                alert(feature.properties.MunNum);
+            });
+        }
+
     })
     overlays.Municipalities = mun_layer;
     if (countKeys(overlays) == num_overlays) {
@@ -482,6 +438,29 @@ function filterSpecies(geodata, species) {
     geodata.features = features;
     return features;
 }
+
+function searchTaxon() {
+    term = $("#taxon-search-field").val()
+    results = [];
+    for (i = 0; i < init_desc.length; i++) {
+        if (term == init_desc[i].data.name) {
+            results.push(init_desc[i])
+        }
+
+    }
+    results.forEach( function(result) {
+            while (result.parent) {
+                if (result.parent._children) {
+                    clickTree(result.parent);
+                }
+                result = result.parent;
+            }
+        }
+    )
+
+}
+
+
 
 
 
