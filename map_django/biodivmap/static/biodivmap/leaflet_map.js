@@ -443,7 +443,7 @@ function searchTaxon() {
     term = $("#taxon-search-field").val()
     results = [];
     for (i = 0; i < init_desc.length; i++) {
-        if (term == init_desc[i].data.name) {
+        if (term.toLowerCase() == init_desc[i].data.name.toLowerCase()) {
             results.push(init_desc[i])
         }
 

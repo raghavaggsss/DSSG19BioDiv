@@ -175,7 +175,6 @@
                         return (d.data.types + " " + d.data.name + " : " + d.data.size)
                     });
 
-
                 // text is taxonomy level, value is the actual taxonomy name
                 nodeEnter.append("circle")
                     .attr("cy", 0)
@@ -188,6 +187,12 @@
                     //    return d.data.name;
                     //})
                     .attr("fill", "white")
+                    .style("stroke", function(d) {
+                        if (d.data.redList) {
+                            return "red";
+                        }
+                        return "black";
+                    })
                     .on("click", function (d) {
                         var elem = d3.select(this);
                         {#var taxonLevelName = elem.text();#}
@@ -198,7 +203,7 @@
                             {#delete taxons_selected[d.data.name];#}
                             d.selected = 0;
                         } else {
-                            elem.attr("fill", "red");
+                            elem.attr("fill", "black");
                             // make it equal to d.data.id
                             {#taxons_selected[d.data.name] = {"index": d.data.index, "taxLevel": d.data.taxLevel};#}
                             d.selected = 1;
