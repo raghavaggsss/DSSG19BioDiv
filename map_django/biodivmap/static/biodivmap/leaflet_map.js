@@ -119,10 +119,6 @@ function openWiki(callback, speciesName) {
 }
 
 
-
-var wmsLayer = L.tileLayer.betterWms('http://localhost:8080/geoserver/biodiv/wms?', {layers: "MVSEI2014", opacity: 0.5}).addTo(map).setZIndex(5);
-
-
 function loadImg(speciesName) { //AJAX request
     $.ajax({
         url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + speciesName + "&prop=info&inprop=url&utf8=&format=json",
