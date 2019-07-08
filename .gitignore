@@ -1,3 +1,4 @@
+*.DS_Store
 *.pyc
 *.geojson
 *.sqlite3
@@ -16,3 +17,6 @@
 *.shp.xml
 *.shx
 *.lyr
+
+.idea/
+map_django/.idea/

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3795">
-              <caret line="253" column="3" selection-start-line="253" selection-start-column="3" selection-end-line="253" selection-end-column="3" />
+            <state relative-caret-position="236">
+              <caret line="383" column="60" selection-start-line="383" selection-start-column="60" selection-end-line="383" selection-end-column="60" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#88#94#1" expanded="true" />
@@ -41,15 +42,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python_helpers/geojson_helpers.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-489">
-              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="23" />
+            <state relative-caret-position="255">
+              <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,12 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pol</find>
-      <find>image</find>
-      <find>highlight</find>
-      <find>geojson</find>
-      <find>points_data</find>
-      <find>collapsed</find>
       <find>clusters_layer</find>
       <find>clusters</find>
       <find>loadPo</find>
@@ -105,6 +112,12 @@
       <find>year</find>
       <find>svg</find>
       <find>static</find>
+      <find>sei</find>
+      <find>sei_layer</find>
+      <find>layer</find>
+      <find>topojs</find>
+      <find>wms</find>
+      <find>muni</find>
     </findStrings>
     <replaceStrings>
       <replace>TextField</replace>
@@ -132,7 +145,6 @@
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.css" />
         <option value="$PROJECT_DIR$/leaflet/leaflet_map.js" />
         <option value="$PROJECT_DIR$/leaflet/index.html" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/map_django/models_file.py" />
         <option value="$PROJECT_DIR$/map_django/models_db.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/fixtures/1990-1993.yaml" />
@@ -143,18 +155,19 @@
         <option value="$PROJECT_DIR$/d3_tree/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/taxontree/treedata.json" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/views.py" />
-        <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/templates/taxontree/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/models.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/urls.py" />
+        <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="469" />
-    <option name="y" value="98" />
+    <option name="x" value="295" />
+    <option name="y" value="40" />
     <option name="width" value="1021" />
     <option name="height" value="791" />
   </component>
@@ -174,7 +187,28 @@
             <path>
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="python_helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -249,10 +283,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144328000" />
+    <option name="totallyTimeSpent" value="146614000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="469" y="98" width="1021" height="791" extended-state="0" />
+    <frame x="295" y="40" width="1021" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2226762" />
@@ -367,15 +401,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="remove separate button for loading image; marker onclick instead" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1903/Platanthera stricta.geojson">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/1908/Vireo huttoni.geojson">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/2017/Bucephala clangula.geojson">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/leaflet/gbif_year_species/2018/Euphagus carolinus.geojson">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -389,13 +414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -606,17 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3795">
-          <caret line="253" column="3" selection-start-line="253" selection-start-column="3" selection-end-line="253" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#6#0" expanded="true" />
-            <element signature="e#88#94#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/recent/Animalia/Annelida/points.geojson">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -628,8 +635,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-489">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="255">
+          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/SEI.topojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/Municipalities.topojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret column="189" selection-start-column="189" selection-end-column="189" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/Municipalities.geojson">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="383" column="60" selection-start-line="383" selection-start-column="60" selection-end-line="383" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#88#94#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
