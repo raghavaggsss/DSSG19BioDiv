@@ -17,6 +17,7 @@
 *.shp.xml
 *.shx
 *.lyr
+*.qpj
 
 .idea/
 map_django/.idea/
