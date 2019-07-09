@@ -612,6 +612,26 @@ num_gbif_on_IUCN/length(IUCN_list$simplified_names)*100
 num_gbif_on_IUCN/length(na.omit(unique(trimmed_gbif$simplified_names)))*100
 ```
 
+# GBIF and Metro Vancouver Rainbow 
+length(grep("MVRD", rainbow_list$Regional.Dist))
+
+# BC rainbow species that are known to occur in Metro Van
+MV_rainbow <- rainbow_list[grep("MVRD", rainbow_list$Regional.Dist),]
+
+# add simplified names column by stripping var. from scientific names 
+MV_rainbow <- mutate(MV_rainbow, simplified_names = gsub("var", replacement = "", x = MV_rainbow$Scientific.Name))
+
+# compare the MV rainbow names to gbif 
+sum(unique(MV_rainbow$simplified_names)%in%gbif_unique_names)
+
+
+sum(unique(MV_rainbow$simplified_names)%in%gbif_unique_names)/nrow(MV_rainbow)*100
+
+
+
+
+
+
 # Taxonomic Name Resolution 
 ```{r}
 # GBIF plant species list fed into TNRS 
@@ -628,7 +648,7 @@ rainbow_plant_names <- rainbow_plants$Scientific.Name
 
 ```{r}
 # read in the GBIF TNRS results 
-gbif_tnrs <- read.csv("gbif_plant_tnrs_results.csv", na.strings = c("", " "), stringsAsFactors = F)
+gbif_tnrs <- read.csv("./gap_analysis/gbif_plant_tnrs_results.csv", na.strings = c("", " "), stringsAsFactors = F)
 
 # select most relevant columns 
 gbif_tnrs_trim <- select(gbif_tnrs, c(Name_number, 
@@ -649,11 +669,14 @@ gbif_tnrs_trim <- select(gbif_tnrs, c(Name_number,
 # strip out var. from all Accepted_names 
 gbif_tnrs_trim <- mutate(gbif_tnrs_trim, simplified_accepted_names = gsub(pattern = " var.*", replacement = "", 
                                                                                 x = gbif_tnrs_trim$Accepted_name))
+
+# Get the unqiue simplified accepted GBIF names 
+gbif_tnrs_unique_names <- unique(gbif_tnrs_trim$simplified_accepted_names)
 ```
 
 ```{r}
 # Read in the rainbow TNRS results 
-rainbow_tnrs <- read.csv("rainbow_plant_tnrs.csv", na.strings = c("", " "), stringsAsFactors = F)
+rainbow_tnrs <- read.csv("./gap_analysis/rainbow_plant_tnrs.csv", na.strings = c("", " "), stringsAsFactors = F)
 
 # select the most relevant colums 
 rainbow_tnrs_trim <- select(rainbow_tnrs, c(Name_number, 
@@ -676,30 +699,70 @@ rainbow_tnrs_trim <- select(rainbow_tnrs, c(Name_number,
 rainbow_tnrs_trim <- mutate(rainbow_tnrs_trim, simplified_accepted_names = gsub(pattern = " var.*", replacement = "", 
                                                                                 x = rainbow_tnrs_trim$Accepted_name))
 
+# Get the unqiue simplified accepted rainbow names 
+rainbow_tnrs_unique_names <- unique(rainbow_tnrs_trim$simplified_accepted_names)
+
+```
+### Evaluating GBIF and Rainbow Plant Names 
+```{r}
+# Note: Overall score of 100% means submitted name matched genus and specific epithet of a name in the TNRS database 
+
+# What percent of unique GBIF species names have an Overall Score of 100%
+gbif_match <- filter(gbif_tnrs_trim, Overall_score==1)
+length(unique(gbif_match$simplified_accepted_names))/length(gbif_tnrs_unique_names)*100
+
+# What percent of unique rainbow species names have an Overall Score of 100%
+rainbow_match <- filter(rainbow_tnrs_trim, Overall_score==1)
+length(unique(rainbow_match$simplified_accepted_names))/length(rainbow_tnrs_unique_names)*100
+
+# What pecent of the GBIF names had an Overall score of 100% AND had a taxon status of "Accepted"?
+#subset by overall score and taxon status 
+gbif_match2 <- filter(gbif_tnrs_trim, Overall_score==1 & Taxonomic_status=="Accepted")
+length(unique(gbif_match2$simplified_accepted_names))/length(gbif_tnrs_unique_names)*100
+              
+
+# What percent of the GBIF names had an Overall score of 100% AND had taxon status of "Synonym"?
+#subset by overall score and taxon status 
+gbif_match3 <- filter(gbif_tnrs_trim, Overall_score==1 & Taxonomic_status=="Synonym")
+length(unique(gbif_match3$simplified_accepted_names))/length(gbif_tnrs_unique_names)*100
+
 ```
 
 ```{r}
-# How many of the rainbow_tnrs "Accepted names" are on the gbif_tnrs "Accepted names" ? 
-sum(unique(rainbow_tnrs_trim$Accepted_name)%in%unique(gbif_tnrs_trim$Accepted_name))
+
+```
+
+
+```{r}
+# Out of the names that have a match of 100%, how many of the rainbow_tnrs "Accepted names" are on the gbif_tnrs "Accepted names" ? 
+sum(unique(gbif_match$simplified_accepted_names)%in%unique(rainbow_match$simplified_accepted_names))
 
 # What percent of the rainbow plant names are mapped to "Accepted_names" that are also found on gbif_tnrs "Accepted_names"?
-sum(unique(rainbow_tnrs_trim$Accepted_name)%in%unique(gbif_tnrs_trim$Accepted_name))/length(rainbow_plant_names)*100
+sum(unique(gbif_match$simplified_accepted_names)%in%unique(rainbow_match$simplified_accepted_names))/length(rainbow_tnrs_unique_names)*100
 
 
 # What percent of the gbif plants map to "Accepted_names" that are found on rainbow_tnrs "Accepted_names"?
-sum(unique(rainbow_tnrs_trim$Accepted_name)%in%unique(gbif_tnrs_trim$Accepted_name))/length(plant_species)*100
-
+sum(unique(gbif_match$simplified_accepted_names)%in%unique(rainbow_match$simplified_accepted_names))/length(gbif_tnrs_unique_names)*100
 
 # What percent of gbif plants matched with rainbow before name correction?
-sum(plant_species%in%rainbow_list$Scientific.Name)/length(plant_species)*100
+sum(unique(plants_gbif$simplified_names)%in%unique(plants_rainbow$simplified_names))/length(unique(plants_gbif$simplified_names))*100
+
+# Note: after name correction, there is only a 3% increase in matching 
 
 
 # after stripping out var. from both rainbow and gbif, what percent of rainbow match?
-sum(unique(rainbow_tnrs_trim$simplified_accepted_names)%in%unique(gbif_tnrs_trim$simplified_accepted_names))/length(rainbow_plant_names)*100
+sum(unique(plants_rainbow$simplified_names)%in%unique(plants_gbif$simplified_names))/length(unique(plants_rainbow$simplified_names))*100
 
-# Note: stripping out var. only increased the matching by 1.6%
+# prior to stripping out var. what was the percent of rainbow plants  match for GBIF?
+sum(rainbow_plant_names%in%plant_species)/length(rainbow_plant_names)*100
+
+# Note: stripping out var. increasing the match by ~7.5%
 
 ```
+
+# GBIF and BC Rainbow (Metro Vancouver specific)
+
+
 ### Add corrected GBIF names to rainbow list
 ```{r}
 # Get the gbif_tnrs that have a taxon_status of "Synonym"
