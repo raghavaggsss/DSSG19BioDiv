@@ -15,4 +15,5 @@
 *.shp.xml
 *.shx
 *.lyr
+*.Rdata
 .Rproj.user
