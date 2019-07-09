@@ -177,6 +177,22 @@ L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
 
 grayScaleBaseMap.addTo(map);
 
+map.on('overlayadd', function(l) {
+    if (l.layer == mun_layer) {
+        json_path = "Municipalities.geojson";
+    }
+    else if (l.layer == sei_layer) {
+        json_path = "SEI.geojson";
+    }
+
+    if (l.layer.toGeoJSON().features.length == 0) {
+        $.getJSON(static_path + json_path, function (data) {
+            l.layer.addData(data);
+        });
+    }
+
+});
+
 function openWiki(callback, speciesName) {
     var title = callback.query.search[0].title;
 
@@ -262,21 +278,7 @@ var dotIcon = L.icon({
     iconSize: [10, 10]
 });
 
-map.on('overlayadd', function(l) {
-    if (l.layer == mun_layer) {
-        json_path = "Municipalities.geojson";
-    }
-    else if (l.layer == sei_layer) {
-        json_path = "SEI.geojson";
-    }
 
-    if (l.layer.toGeoJSON().features.length == 0) {
-        $.getJSON(static_path + json_path, function (data) {
-            l.layer.addData(data);
-        });
-    }
-    
-});
 
 var points_layer_options = {
     pointToLayer: function (feature, latlng) {
@@ -345,50 +347,6 @@ var clusters = L.markerClusterGroup(
         );
 clusters.addTo(map);
 
-// points_layers = [];
-
-// function loadPointsJson(year) {
-//         $.getJSON(static_path + "gbif/"+ year.toString() + ".geojson", function (data) {
-//         points_layers[year] = L.geoJSON(data, points_layer_options);
-//         clusters.addLayer(points_layers[year]);
-//     });
-// }
-//
-// function deletePointsLayer(year) {
-//     clusters.removeLayer(points_layers[year]);
-//     points_layers[year] = null;
-// }
-
-var init_year = 1990;
-
-data_select2 = [];
-
-for (let i = init_year; i <= 2019; i++) {
-
-    //select2 data
-    data_select2.push( {
-        id: "year-" + i.toString(),
-        text: i.toString()
-    });
-}
-
-select2_element = $(".select2-year").select2({
-  data: data_select2,
-  width: 'resolve',
-    closeOnSelect: false,
-});
-
-// selections = [];
-//
-// function plotGbif() {
-//     selections.forEach(function(sel) {
-//         deletePointsLayer(parseInt(sel.text));
-//     });
-//     selections = select2_element.select2('data');
-//     selections.forEach(function(sel) {
-//         loadPointsJson(parseInt(sel.text));
-//     })
-// }
 
 layers_array = [];
 function plotSpecies() {
