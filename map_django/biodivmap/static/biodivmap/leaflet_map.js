@@ -93,7 +93,74 @@ var baseLayers = {
     "Streets": streetsBaseMap
 };
 
-var overlays = {};
+sei_layer = L.geoJson(false, {
+        style: function (feature) {
+            sstyle = remove_highlight;
+            if (feature.properties.SE_ME_1 != "SE") {
+                sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+            } else {
+                sstyle.fillColor = typeSE[feature.properties.SECl_1];
+            }
+
+            return sstyle;
+        },
+        onEachFeature: function (feature, layer) {
+            var popUpInfo = feature.properties.Comp1Lgnd_;
+            if (feature.properties.Comp2Lgnd_) {
+                popUpInfo += "<br/>" + feature.properties.Comp2Lgnd_;
+                if (feature.properties.Comp3Lgnd_) {
+                    popUpInfo += "<br/>" + feature.properties.Comp3Lgnd_;
+                }
+            }
+            popUpInfo += "</br> Quality: " + feature.properties.QualityNo_ + "/5.0";
+            if (feature.properties.Location) {
+                popUpInfo += "</br> Location: " + feature.properties.Location;
+            }
+            // var popUp = layer.bindPopup(popUpInfo);
+            // popUp.on('popupclose', function() {
+            //     // layer.setStyle(remove_highlight);
+            // });
+            layer.on('click', function () {
+                layer.bringToFront();
+                if (layer.selected) {
+                    sstyle = remove_highlight;
+                    if (feature.properties.SE_ME_1 != "SE") {
+                        sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+                    } else {
+                        sstyle.fillColor = typeSE[feature.properties.SECl_1];
+                    }
+                    layer.setStyle(sstyle);
+                    layer.selected = 0;
+                    layer.unbindPopup();
+                } else {
+                    sstyle = highlight;
+                    // if (feature.properties.SE_ME_1 != "SE") {
+                    //     sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+                    // }
+                    // else {
+                    //     sstyle.fillColor = typeSE[feature.properties.SECl_1];
+                    // }
+                    layer.setStyle(sstyle);
+                    layer.selected = 1;
+                    layer.bindPopup(popUpInfo).openPopup();
+                }
+            })
+        }
+    });
+
+mun_layer = L.geoJson(false, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.FullName);
+
+            layer.on('click', function () {
+                alert(feature.properties.MunNum);
+            });
+        }
+
+    });
+
+
+var overlays = {Municipalities: mun_layer, SEI: sei_layer};
 var num_overlays = 2;
 
 var map = L.map('map', {
@@ -101,6 +168,12 @@ var map = L.map('map', {
     zoom: 10,
     layers: [streetsBaseMap, grayScaleBaseMap]
 });
+
+map.on('moveend', function() {
+     console.log(map.getBounds());
+});
+
+L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
 
 grayScaleBaseMap.addTo(map);
 
@@ -189,86 +262,21 @@ var dotIcon = L.icon({
     iconSize: [10, 10]
 });
 
-$.getJSON(static_path + "SEI.geojson", function (data) {
-    sei_layer = L.geoJson(data, {
-        style: function (feature) {
-            sstyle = remove_highlight;
-            if (feature.properties.SE_ME_1 != "SE") {
-                sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
-            } else {
-                sstyle.fillColor = typeSE[feature.properties.SECl_1];
-            }
-
-            return sstyle;
-        },
-        onEachFeature: function (feature, layer) {
-            var popUpInfo = feature.properties.Comp1Lgnd_;
-            if (feature.properties.Comp2Lgnd_) {
-                popUpInfo += "<br/>" + feature.properties.Comp2Lgnd_;
-                if (feature.properties.Comp3Lgnd_) {
-                    popUpInfo += "<br/>" + feature.properties.Comp3Lgnd_;
-                }
-            }
-            popUpInfo += "</br> Quality: " + feature.properties.QualityNo_ + "/5.0";
-            if (feature.properties.Location) {
-                popUpInfo += "</br> Location: " + feature.properties.Location;
-            }
-            // var popUp = layer.bindPopup(popUpInfo);
-            // popUp.on('popupclose', function() {
-            //     // layer.setStyle(remove_highlight);
-            // });
-            layer.on('click', function () {
-                layer.bringToFront();
-                if (layer.selected) {
-                    sstyle = remove_highlight;
-                    if (feature.properties.SE_ME_1 != "SE") {
-                        sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
-                    } else {
-                        sstyle.fillColor = typeSE[feature.properties.SECl_1];
-                    }
-                    layer.setStyle(sstyle);
-                    layer.selected = 0;
-                    layer.unbindPopup();
-                } else {
-                    sstyle = highlight;
-                    // if (feature.properties.SE_ME_1 != "SE") {
-                    //     sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
-                    // }
-                    // else {
-                    //     sstyle.fillColor = typeSE[feature.properties.SECl_1];
-                    // }
-                    layer.setStyle(sstyle);
-                    layer.selected = 1;
-                    layer.bindPopup(popUpInfo).openPopup();
-                }
-            })
-        }
-    })
-    overlays.SEI = sei_layer;
-    if (countKeys(overlays) == num_overlays) {
-        L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
+map.on('overlayadd', function(l) {
+    if (l.layer == mun_layer) {
+        json_path = "Municipalities.geojson";
     }
-});
-
-
-$.getJSON(static_path + "Municipalities.geojson", function (data) {
-    mun_layer = L.geoJson(data, {
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup(feature.properties.FullName);
-
-            layer.on('click', function () {
-                alert(feature.properties.MunNum);
-            });
-        }
-
-    })
-    overlays.Municipalities = mun_layer;
-    if (countKeys(overlays) == num_overlays) {
-        L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
+    else if (l.layer == sei_layer) {
+        json_path = "SEI.geojson";
     }
+
+    if (l.layer.toGeoJSON().features.length == 0) {
+        $.getJSON(static_path + json_path, function (data) {
+            l.layer.addData(data);
+        });
+    }
+    
 });
-
-
 
 var points_layer_options = {
     pointToLayer: function (feature, latlng) {
