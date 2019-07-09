@@ -1,19 +1,24 @@
 server <- function(input,output, session){
   
-  data <- reactive({
-    x <- df
-  })
+  #data <- reactive({
+  #  switch(df_yearagg,
+  #         "year" = year,
+  #         "freq" = freq)
+  #})
   
-  output$mymap <- renderLeaflet({
-    df <- data()
-    
-    m <- leaflet(data = df) %>%
-      addTiles() %>%
-      addMarkers(lng = ~Longitude,
-                 lat = ~Latitude,
-                 popup = paste("Species", df$species, "<br>",
-                               "Common Name:", df$common),
-                 clusterOptions = markerClusterOptions())
-    m
+  
+  
+  output$plot1 = renderPlot({
+    #hist(df_yearagg$year[which(df_yearagg$year>input$year)], breaks = seq(1800, 2020, length.out = 100))
+    df %>%
+      filter(species == input$species) %>%
+      group_by(year) %>%
+      tally() %>%
+      ggplot(aes(x=year, y=n)) + geom_line() + scale_x_discrete(limits=seq(1800,2020,5))
   })
 }
+
+
+#,
+#year >= input$year[1],
+#year <= input$year[2]
