@@ -9,7 +9,7 @@ library(grid)
 # Load in the data 
 
 # load complete GBIF data for MetroVan
-gbif <- read.csv("./datasets/gbif_complete.csv", sep = "\t", stringsAsFactors = FALSE, na.strings = c("", " "))
+gbif <- read.csv("", sep = "\t", stringsAsFactors = FALSE, na.strings = c("", " "))
 
 # filter out the observations that have NA, unknown placement, viruses and archaea for kingdom
 trimmed_gbif <- filter(gbif, 
@@ -27,6 +27,29 @@ trimmed_gbif <- mutate(trimmed_gbif, simplified_names = gsub(pattern = " var.*",
 trimmed_gbif <- drop_na(trimmed_gbif, species, simplified_names, year)
 
 
+
+ui <- fluidPage(
+      titlePanel(title = "Biodiversity Distributions")
+)
+
+server <- function(input, output){
+      
+}
+
+shinyApp(ui = ui, server = server)
+
+
+
+
+
+
+
+
+
+
+
+
+# can't get this app to work:
 ui <- fluidPage(
       selectInput(inputId = "kingdom",
                   label = "Select Kingdom",
@@ -51,8 +74,7 @@ server <- function(input, output){
                   geom_col(show.legend = F)+
                   labs(x = x_label, 
                        y = y_label,
-                       title = title,
-                       subtitle = input$year)+
+                       title = title)+
                   theme_dark()+
                   theme(plot.title = element_text(face = "bold"),
                         axis.title.x = element_text(face = "bold"),
@@ -63,7 +85,7 @@ server <- function(input, output){
 
 shinyApp(ui = ui, server = server)
 
-
+#  subtitle = input$year
 
 
 
