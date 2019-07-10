@@ -20,6 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
     <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/stdlib"></script>
 
     <script>
         var static_path = "{% static "/biodivmap/" %}"
@@ -391,5 +392,25 @@
 
 <!--{{ form.media.js }}-->
 
+
+<br>
+
+<div id="sunburst" >
+    <svg id="partitionSVG" width="400" height="400"></svg>
+</div>
+    <script src="{% static 'biodivmap/sunburst.js' %}"></script>
+
+<div id="bar-chart">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/bar_chart/inspector.css' %}">
+    <script type="module">
+
+        import {Runtime, Inspector} from "{% static 'biodivmap/bar_chart/runtime.js' %}";
+        import define from "{% static 'biodivmap/bar_chart/hierarchical-bar-chart.js' %}";
+        const runtime = new Runtime();
+        const main = runtime.module(define, Inspector.into(document.getElementById("bar-chart")));
+
+    </script>
+</div>
 </body>
 </html>
