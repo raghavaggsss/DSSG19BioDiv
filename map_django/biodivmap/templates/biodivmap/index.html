@@ -20,6 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
     <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/stdlib"></script>
 
     <script>
         var static_path = "{% static "/biodivmap/" %}"
@@ -391,5 +392,40 @@
 
 <!--{{ form.media.js }}-->
 
+
+<br>
+
+<div>
+
+    <div id="sunburst" style="float:left; margin-left:50px">
+        <svg id="partitionSVG" viewBox="0 0 932 932"></svg>
+        <script src="{% static 'biodivmap/sunburst.js' %}"></script>
+    </div>
+
+
+    <div id="bar-chart" style="float:right; margin-right:50px; margin-left:50px">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/bar_chart/inspector.css' %}">
+        <script type="module">
+
+            import {Runtime, Inspector} from "{% static 'biodivmap/bar_chart/runtime.js' %}";
+            import define1 from "{% static 'biodivmap/bar_chart/hierarchical-bar-chart.js' %}";
+
+            export default function define(runtime, observer) {
+              const main = runtime.module();
+              const child1 = runtime.module(define1);
+              main.import("chart", child1);
+              main.variable(observer()).define(["chart"], function(chart){return(
+            chart
+            )});
+              return main;
+            }
+
+            const runtime = new Runtime();
+            const main = runtime.module(define, Inspector.into(document.getElementById("bar-chart")));
+
+        </script>
+    </div>
+</div>
 </body>
 </html>

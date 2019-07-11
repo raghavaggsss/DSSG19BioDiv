@@ -2,6 +2,7 @@ library(shiny)
 library(leaflet)
 library(tidyverse)
 library(dplyr)
+library(tidyverse)
 
 # Read in the data 
 df2 <- readRDS( "/Users/lesley/Desktop/datasets/gbif_complete.rds")
@@ -27,3 +28,4 @@ add_zeros = function(data) {
   }
   return(data)
 }
+

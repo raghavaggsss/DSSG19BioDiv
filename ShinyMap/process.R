@@ -1,6 +1,4 @@
-df = read.csv("./GBif_recency.csv", stringsAsFactors = F)
-colnames(df)[colnames(df)=="decimalLatitude"] <- "Latitude"
-colnames(df)[colnames(df)=="decimalLongitude"] <- "Longitude"
+df = read.csv("GBif with Municipalities and Years.csv", stringsAsFactors = F)
 
 df_sub <- head(df, 1000)
 
@@ -31,3 +29,4 @@ df2 <- mutate(df2, simplified_names = gsub(pattern = " var.*", replacement = "",
 df2 <- drop_na(df2, species, simplified_names)
 
 saveRDS(df2, "/Users/lesley/Desktop/datasets/gbif_complete.rds")
+
