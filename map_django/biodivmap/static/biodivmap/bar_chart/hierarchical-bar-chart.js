@@ -58,6 +58,11 @@ function bar(svg, down, d, selector) {
   return g;
 }
 )});
+
+  main.variable(observer("viewof bar")).define("viewof bar", ["html"], function(html){return(
+html`<input type=range min=0 max=1 step=any>`
+)});
+
   main.variable(observer("down")).define("down", ["d3","duration","bar","stack","stagger","x","xAxis","barStep","color"], function(d3,duration,bar,stack,stagger,x,xAxis,barStep,color){return(
 function down(svg, d) {
   if (!d.children || d3.active(svg.node())) return;
@@ -241,6 +246,9 @@ d3.scaleOrdinal([true, false], ["steelblue", "#aaa"])
   main.variable(observer("duration")).define("duration", function(){return(
 750
 )});
+//   main.variable(observer("width")).define("width", function(){return(
+// 750
+// )});
   main.variable(observer("height")).define("height", ["root","barStep","margin"], function(root,barStep,margin)
 {
   let max = 1;

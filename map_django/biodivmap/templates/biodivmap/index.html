@@ -406,7 +406,18 @@
     <script type="module">
 
         import {Runtime, Inspector} from "{% static 'biodivmap/bar_chart/runtime.js' %}";
-        import define from "{% static 'biodivmap/bar_chart/hierarchical-bar-chart.js' %}";
+        import define1 from "{% static 'biodivmap/bar_chart/hierarchical-bar-chart.js' %}";
+
+        export default function define(runtime, observer) {
+          const main = runtime.module();
+          const child1 = runtime.module(define1);
+          main.import("chart", child1);
+          main.variable(observer()).define(["chart"], function(chart){return(
+        chart
+        )});
+          return main;
+        }
+
         const runtime = new Runtime();
         const main = runtime.module(define, Inspector.into(document.getElementById("bar-chart")));
 
