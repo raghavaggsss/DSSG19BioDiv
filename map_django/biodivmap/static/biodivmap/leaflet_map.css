@@ -119,3 +119,6 @@ label {
 circle
 {stroke:black;fill-opacity:1;}
 
+.hist {
+    width: 50%;
+}

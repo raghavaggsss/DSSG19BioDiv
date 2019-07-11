@@ -45,7 +45,7 @@ function labelTransform(d) {
  */
 
 //var data_url = "https://gist.githubusercontent.com/mbostock/1093025/raw/b40b9fc5b53b40836ead8aa4b4a17d948b491126/flare.json"; // network error!
-var dataURL = static_path + "sunburst.json";
+var dataURL = static_path + "bar_sunburst.json";
 //const {require} = new observablehq.Library;
 //require()('@observablehq/flare').then((data, error) => { // works!
 d3.json(dataURL).then((data, error) => { // works behind proxy!
@@ -59,9 +59,9 @@ d3.json(dataURL).then((data, error) => { // works behind proxy!
     root.each(d => d.current = d);
 
     const svg = d3.select('#partitionSVG')
-            .style("width", "100%")
-            .style("height", "auto")
-            .style("font", "9px sans-serif");
+            .style("width", "auto")
+            .style("height", "50%")
+            .style("font", "18px sans-serif");
 
     const g = svg.append("g")
                  .attr("transform", `translate(${width_sunburst / 2},${width_sunburst / 2})`);

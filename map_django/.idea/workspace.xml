@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="152116f2-05c9-4636-baf3-b7d5c59ba23d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShinyMap/.Rproj.user/EA53139C/sources/prop/INDEX" beforeDir="false" afterPath="$PROJECT_DIR$/../ShinyMap/.Rproj.user/EA53139C/sources/prop/INDEX" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/D3 Taxon Tree maker-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../.ipynb_checkpoints/D3 Taxon Tree maker-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D3 Taxon Tree maker.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../D3 Taxon Tree maker.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/sunburst.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/sunburst.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -232,6 +235,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="395" y="23" width="1211" height="849" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1924722" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
