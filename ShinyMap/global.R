@@ -11,12 +11,13 @@ df2 <- readRDS( "/Users/lesley/Desktop/datasets/gbif_complete.rds")
 yearly_obs <- group_by(df2, year) %>% tally() %>% drop_na()
 
 
+##~~ FUNCTIONS ~~##
 # Function for adding 0-value rows to aggregate tally dataframes to fill out the years between the first and last years
 # Note: "data" must have exactly columns "species", "year", and "n"
 add_zeros = function(data) {
   if (class(data)[1] != "data.frame") {data = as.data.frame(data)}
-  if (nrow(data) > 1) {
-    for (sp in unique(data$species)) {
+  for (sp in unique(data$species)) {
+    if(nrow(data[which(data$species==sp),]) > 1) {
       min = min(data$year[which(data$species == sp)], na.rm = T)
       max = max(data$year[which(data$species == sp)], na.rm = T)
       for (yea in (min+1):(max-1)) {
@@ -28,4 +29,5 @@ add_zeros = function(data) {
   }
   return(data)
 }
-
+# Function for removing decimal places for the sake of labels
+no_dec = function(x) {sprintf("%.0f", x)}
