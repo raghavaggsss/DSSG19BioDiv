@@ -15,7 +15,7 @@ server <- function(input,output, session){
         geom_point() + 
         scale_x_continuous() + 
         scale_y_continuous() + 
-        labs(main = "Reported Species Occurrence Over Time",
+        labs(title = "Reported Species Occurrence Over Time",
              x = "Year",
              y = "Reported Sightings")
     }else {
@@ -23,7 +23,7 @@ server <- function(input,output, session){
         geom_point() + 
         scale_x_continuous() +
         scale_y_continuous() + 
-        labs(main = "Reported Species Occurence Over Time",
+        labs(title = "Reported Species Occurence Over Time",
              x = "Year",
              y = "Reported Sightings"
         )
