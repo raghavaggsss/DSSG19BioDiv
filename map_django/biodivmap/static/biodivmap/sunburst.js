@@ -48,9 +48,7 @@ function labelTransform(d) {
 var dataURL = static_path + "bar_sunburst.json";
 //const {require} = new observablehq.Library;
 //require()('@observablehq/flare').then((data, error) => { // works!
-d3.json(dataURL).then((data, error) => { // works behind proxy!
-//d3.json("flare.json").then((data, error) => { // works!
-    console.log(data);
+function createSunburst(data){
     const root = partition(data);
     const color = d3.scaleOrdinal()
                     .range(d3.quantize(d3.interpolateRainbow,
@@ -137,4 +135,4 @@ d3.json(dataURL).then((data, error) => { // works behind proxy!
           .attr("fill-opacity", d => +labelVisible(d.target))
           .attrTween("transform", d => () => labelTransform(d.current));
     }
-});
+}

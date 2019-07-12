@@ -213,7 +213,7 @@ d3.hierarchy(data)
     .eachAfter(d => d.index = d.parent ? d.parent.index = d.parent.index + 1 || 0 : 0)
 )});
   main.variable(observer("data")).define("data", ["d3"], function(d3){return(
-d3.json(static_path + "bar_sunburst.json")
+      {}
 )});
   main.variable(observer("x")).define("x", ["d3","margin","width"], function(d3,margin,width){return(
 d3.scaleLinear().range([margin.left, width - margin.right])

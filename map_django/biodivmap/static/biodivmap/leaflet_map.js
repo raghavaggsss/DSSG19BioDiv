@@ -1,3 +1,5 @@
+var bar_chart_ref;
+
 L.TopoJSON = L.GeoJSON.extend({
     addData: function (data) {
         var geojson, key;
@@ -153,7 +155,8 @@ mun_layer = L.geoJson(false, {
             layer.bindPopup(feature.properties.FullName);
 
             layer.on('click', function () {
-                alert(feature.properties.MunNum);
+                // change to newID
+                showSummary(feature.properties.newID);
             });
         }
 
@@ -394,16 +397,35 @@ function plotSpecies() {
             }})
 }
 
-function filterSpecies(geodata, species) {
-    features = [];
-    geodata.features.forEach(function(row) {
-        if (row.properties.species == species) {
-            features.push(row);
-        }
-    });
-    geodata.features = features;
-    return features;
+function showSummary(mun_id) {
+    $.ajax({
+            processData: false,
+            type: 'POST',
+            url: 'summary/',
+            data: JSON.stringify({"municipality": mun_id}),
+            // data: {species_selected: $(".select2-species").select2('data')},
+            contentType: false,  // add this to indicate 'multipart/form-data'
+            success: function (data) {
+                $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
+                    createSunburst(summary_json);
+                    bar_chart_ref.redefine("data", summary_json);
+                });
+            },
+            error: function(data) {
+                alert('Form submission failed');
+            }})
 }
+
+// function filterSpecies(geodata, species) {
+//     features = [];
+//     geodata.features.forEach(function(row) {
+//         if (row.properties.species == species) {
+//             features.push(row);
+//         }
+//     });
+//     geodata.features = features;
+//     return features;
+// }
 
 function searchTaxon() {
     term = $("#taxon-search-field").val()
@@ -425,6 +447,8 @@ function searchTaxon() {
     )
 
 }
+
+
 
 
 

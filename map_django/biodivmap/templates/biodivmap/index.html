@@ -413,16 +413,16 @@
 
             export default function define(runtime, observer) {
               const main = runtime.module();
-              const child1 = runtime.module(define1);
-              main.import("chart", child1);
+              bar_chart_ref = runtime.module(define1);
+              main.import("chart", bar_chart_ref);
               main.variable(observer()).define(["chart"], function(chart){return(
             chart
             )});
               return main;
             }
-
             const runtime = new Runtime();
             const main = runtime.module(define, Inspector.into(document.getElementById("bar-chart")));
+
 
         </script>
     </div>
