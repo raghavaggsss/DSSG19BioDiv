@@ -15,7 +15,7 @@ server <- function(input,output, session){
         geom_point() + 
         scale_x_continuous() + 
         scale_y_continuous() + 
-        labs(main = "Reported Species Occurrence Over Time",
+        labs(title = "Reported Species Occurrence Over Time",
              x = "Year",
              y = "Reported Sightings")
     }else {
@@ -25,10 +25,14 @@ server <- function(input,output, session){
         geom_point() + 
         scale_x_continuous() +
         scale_y_continuous() + 
+<<<<<<< HEAD
         scale_x_discrete(breaks = year_seq, limits = year_seq) +
         scale_y_discrete(breaks = obsr_seq, limits = obsr_seq) +
         coord_cartesian(xlim = year_seq, ylim = obsr_seq) +
         labs(main = "Reported Species Occurence Over Time",
+=======
+        labs(title = "Reported Species Occurence Over Time",
+>>>>>>> 1ec3d6333cf02c0dcf3cad69b2e33323a4417bb2
              x = "Year",
              y = "Reported Sightings"
         )
