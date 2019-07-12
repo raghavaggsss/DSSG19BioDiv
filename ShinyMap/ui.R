@@ -1,4 +1,5 @@
 ui <- fluidPage(
+  titlePanel(title = "Species Occurrence Trends"),
   sidebarLayout(
     sidebarPanel(
       sliderInput(inputId = "year",
