@@ -7,7 +7,8 @@ from .models import SpeciesYear
 # from .views_helpers import geojson_creater
 
 import json
-import numpy as np
+from shapely.geometry import Polygon
+import geopandas as gpd
 # Create your views here.
 
 import pandas as pd
@@ -112,17 +113,32 @@ def show_summary(request):
             # assume municipality json created as bar_sunburst.json
             #filter dataframe with municipality
             df_obs = pd.read_csv("biodivmap/gbif_summary.csv", encoding="latin1")
-            df_obs_mun = df_obs[df_obs['municipality'] == selected_regions["municipality"]]
             df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
-            df_taxon_mun = df_taxon[df_taxon["species"].isin(df_obs_mun['species'])]
-            df_taxon_mun = df_taxon_mun.set_index("species")
+
+            if "municipality" in selected_regions.keys():
+                df_obs_region = df_obs[df_obs['municipality'] == selected_regions["municipality"]]
+
+            else:
+                bbox = selected_regions["bbox"]
+                min_x = min([bbox[0], bbox[2]])
+                max_x = max([bbox[0], bbox[2]])
+                min_y = min([bbox[1], bbox[3]])
+                max_y = max([bbox[1], bbox[3]])
+
+                bbox_poly = Polygon([(min_x, min_y), (max_x, min_y), (max_x, max_y), (min_x, max_y)])
+                geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
+                geo_df = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
+                df_obs_region = geo_df[geo_df.geometry.within(bbox_poly)]
+
+            df_taxon_region = df_taxon[df_taxon["species"].isin(df_obs_region['species'])]
+            df_taxon_region = df_taxon_region.set_index("species")
             # species_gp = df_obs_mun.groupby(["species"])
             # for spec, gp_spec in species_gp:
             #     df_taxon_mun.loc[df_taxon_mun.loc[df_taxon_mun['species'] == spec].index, "freq"] = len(gp_spec)
             # print(df_taxon_mun.shape)
-            df_freq = df_obs_mun["species"].value_counts().to_frame()
+            df_freq = df_obs_region["species"].value_counts().to_frame()
             df_freq.columns = ["mun_freq"]
-            df = pd.merge(df_taxon_mun, df_freq, left_index=True, right_index=True)
+            df = pd.merge(df_taxon_region, df_freq, left_index=True, right_index=True)
 
             # create jsons for sunburst and bar chart
             df["species"] = df.index
