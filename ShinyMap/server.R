@@ -1,6 +1,16 @@
 server <- function(input,output, session){
+  df_region <- reactiveValues(df=df_orig)
+  
+  observe({
+    query <- parseQueryString(session$clientData$url_search)
+    print(query['municipality'][[1]])
+    if (!is.null(query['municipality'][[1]])) {
+      df_region$df = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
+    }
+  })
+
   output$plot1 = renderPlot({
-    raw = df2 %>%
+    raw = df_region$df %>%
       filter(species %in% input$species, year>=input$year[1], year<=input$year[2]) %>%
       group_by(species, year) %>%
       tally() %>%

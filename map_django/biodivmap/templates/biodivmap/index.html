@@ -62,7 +62,7 @@
 
 <script src="{% static 'biodivmap/leaflet_map.js' %}"></script>
 
-<div style="overflow:scroll; height:500px; width:400px; background-color:#ffffff; float: left" >
+<div style="overflow:auto; height:500px; width:400px; background-color:#ffffff; float: left" >
 
     <svg id="d3_graphs" style="float:left" width="400">
 
@@ -401,7 +401,7 @@
     </div>
 
 
-    <div id="bar-chart" style="float:right; margin-right:50px; margin-left:25px">
+    <div id="bar-chart" style="height:500px; overflow:auto; float:right; margin-right:50px; margin-left:25px">
 
         <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/bar_chart/inspector.css' %}">
         <script type="module">
@@ -438,5 +438,12 @@
         </script>
     </div>
 </div>
+
+<br>
+<div class="row-container">
+  <iframe id="shiny" src="http://127.0.0.1:7125" class="second-row"></iframe>
+</div>
+
+
 </body>
 </html>

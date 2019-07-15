@@ -407,10 +407,14 @@ function showSummary(mun_id) {
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
             success: function (data) {
+                console.log("http://127.0.0.1:7125/?municipality=" + mun_id);
+                document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
+
                 $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
                     // createSunburst(summary_json);
                     bar_chart_ref.redefine("data", summary_json);
                     sunburst_ref.redefine("data", summary_json);
+                    document.getElementById('shiny').contentWindow.location.reload();
                 });
             },
             error: function(data) {

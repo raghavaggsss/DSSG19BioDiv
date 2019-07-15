@@ -119,3 +119,7 @@ label {
 circle
 {stroke:black;fill-opacity:1;}
 
+body, html {width: 100%; height: 100%; margin: 5px; padding: 0}
+.row-container {display: flex; width: 100%; height: 100%; flex-direction: column; overflow: hidden;}
+.first-row {background-color: lime; }
+.second-row { flex-grow: 1; border: none; margin: 0; padding: 0; }

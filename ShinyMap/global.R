@@ -5,7 +5,7 @@ library(dplyr)
 library(tidyverse)
 
 # Read in the data 
-df2 <- read.csv("gbif_summary.csv", stringsAsFactors = F)
+df_orig <- readRDS("gbif_summary.rds")
 
 # create a dataframe containing total num of observations for each year 
 yearly_obs <- group_by(df2, year) %>% tally() %>% drop_na()
