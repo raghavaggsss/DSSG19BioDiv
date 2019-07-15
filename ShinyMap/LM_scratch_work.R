@@ -1,4 +1,35 @@
-#x <- filter(df2, species=="Selasphorus rufus" | species=="Abeliophyllum distichum")
+# plotting improvements
+
+# data processing 
+a <- filter(df2, species=="Selasphorus rufus" & year>=2010 & year<=2018)
+b <- as.data.frame(table(a$year))
+gbif_count <- c()  
+for(i in seq(from = 2010, to = 2018, by = 1)){
+  c <-  nrow(filter(df2, year==i))
+  gbif_count <- c(gbif_count, c)
+  
+}
+b <- cbind(b, gbif_count)
+
+b <- mutate(b, normalized = Freq/gbif_count)
+
+# the plot 
+ggplot(b, aes(x = Var1, y = normalized, group = 1))+
+  geom_line()+
+  geom_point()+
+  labs(title = "Reported Species Occurrence Over Time",
+       x = "Year",
+       y = "Reported Sightings")+
+  theme(plot.title = element_text(face = "bold", size = 20),
+        axis.title.x = element_text(face = "bold", size = 14),
+        axis.title.y = element_text(face = "bold", size = 14),
+        axis.text = element_text(face = "bold", size = 14))
+
+
+
+
+
+
 
 # group 1
 x <- filter(df2, species=="Selasphorus rufus" & year>=2010 & year<=2018)
@@ -12,6 +43,9 @@ for(i in seq(from = 2010, to = 2018, by = 1)){
 y <- cbind(y, gbif_count)
 
 y <- mutate(y, normalized = Freq/gbif_count)
+
+
+
 
 
 
