@@ -6,7 +6,7 @@ export default function define(runtime, observer) {
   const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)
-      .attr("id", "hist");
+      .attr("id", "hist")
 
   x.domain([0, root.value]);
 
@@ -213,7 +213,7 @@ d3.hierarchy(data)
     .eachAfter(d => d.index = d.parent ? d.parent.index = d.parent.index + 1 || 0 : 0)
 )});
   main.variable(observer("data")).define("data", ["d3"], function(d3){return(
-      {}
+      {name: "select region", children: [{name: "select region", value:1 }]}
 )});
   main.variable(observer("x")).define("x", ["d3","margin","width"], function(d3,margin,width){return(
 d3.scaleLinear().range([margin.left, width - margin.right])

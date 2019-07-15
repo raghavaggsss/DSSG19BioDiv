@@ -1,4 +1,5 @@
 var bar_chart_ref;
+var sunburst_ref;
 
 L.TopoJSON = L.GeoJSON.extend({
     addData: function (data) {
@@ -407,8 +408,9 @@ function showSummary(mun_id) {
             contentType: false,  // add this to indicate 'multipart/form-data'
             success: function (data) {
                 $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
-                    createSunburst(summary_json);
+                    // createSunburst(summary_json);
                     bar_chart_ref.redefine("data", summary_json);
+                    sunburst_ref.redefine("data", summary_json);
                 });
             },
             error: function(data) {

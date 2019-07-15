@@ -397,31 +397,42 @@
 
 <div>
 
-    <div id="sunburst" style="float:left; margin-left:50px">
-        <svg id="partitionSVG" viewBox="0 0 932 932"></svg>
-        <script src="{% static 'biodivmap/sunburst.js' %}"></script>
+    <div id="sunburst" style="float:left; margin-right:25px; margin-left:50px">
     </div>
 
 
-    <div id="bar-chart" style="float:right; margin-right:50px; margin-left:50px">
+    <div id="bar-chart" style="float:right; margin-right:50px; margin-left:25px">
 
         <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/bar_chart/inspector.css' %}">
         <script type="module">
 
             import {Runtime, Inspector} from "{% static 'biodivmap/bar_chart/runtime.js' %}";
-            import define1 from "{% static 'biodivmap/bar_chart/hierarchical-bar-chart.js' %}";
+            import bar_chart from "{% static 'biodivmap/bar_chart/hierarchical-bar-chart.js' %}";
+            import sunburst from "{% static 'biodivmap/bar_chart/zoomable-sunburst.js' %}";
 
-            export default function define(runtime, observer) {
+            function define_bar_chart(runtime, observer) {
               const main = runtime.module();
-              bar_chart_ref = runtime.module(define1);
+              bar_chart_ref = runtime.module(bar_chart);
               main.import("chart", bar_chart_ref);
               main.variable(observer()).define(["chart"], function(chart){return(
             chart
             )});
               return main;
             }
+
+            function define_sunburst(runtime, observer) {
+              const main = runtime.module();
+              sunburst_ref = runtime.module(sunburst);
+              main.import("chart", sunburst_ref);
+              main.variable(observer()).define(["chart"], function(chart){return(
+            chart
+            )});
+              return main;
+            }
             const runtime = new Runtime();
-            const main = runtime.module(define, Inspector.into(document.getElementById("bar-chart")));
+            const main = runtime.module(define_bar_chart, Inspector.into(document.getElementById("bar-chart")));
+            runtime.module(define_sunburst,Inspector.into(document.getElementById("sunburst")));
+
 
 
         </script>
