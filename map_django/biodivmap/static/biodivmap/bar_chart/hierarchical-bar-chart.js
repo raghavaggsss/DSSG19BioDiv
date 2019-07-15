@@ -6,7 +6,7 @@ export default function define(runtime, observer) {
   const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)
-      .attr("id", "hist")
+      .attr("id", "hist");
 
   x.domain([0, root.value]);
 
@@ -257,7 +257,7 @@ d3.scaleOrdinal([true, false], ["steelblue", "#aaa"])
 }
 );
   main.variable(observer("margin")).define("margin", function(){return(
-{top: 30, right: 30, bottom: 0, left: 100}
+{top: 30, right: 30, bottom: 0, left: 120}
 )});
   main.variable(observer("d3")).define("d3", ["require"], function(require){return(
 require("d3@5")

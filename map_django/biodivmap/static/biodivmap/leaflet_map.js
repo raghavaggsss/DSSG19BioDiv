@@ -45,6 +45,14 @@ var remove_highlight = {
     'fillOpacity': 1
 };
 
+var municipality_style = {
+    'color': 'rgb(94,94,94)',
+    'weight': 2,
+    'opacity': 1,
+    'fillColor': '#ffffff',
+    'fillOpacity': 0.5
+};
+
 
 var typeEco = {
     "ME": "#F012BE",
@@ -157,8 +165,9 @@ mun_layer = L.geoJson(false, {
 
             layer.on('click', function () {
                 // change to newID
-                showSummary(feature.properties.newID);
+                showSummary(feature.properties.newID, null);
             });
+            layer.setStyle(municipality_style);
         }
 
     });
@@ -173,9 +182,9 @@ var map = L.map('map', {
     layers: [streetsBaseMap, grayScaleBaseMap]
 });
 
-map.on('moveend', function() {
-     console.log(map.getBounds());
-});
+// map.on('moveend', function() {
+//      console.log(map.getBounds());
+// });
 
 L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
 
@@ -398,12 +407,18 @@ function plotSpecies() {
             }})
 }
 
-function showSummary(mun_id) {
+function showSummary(mun_id, bbox) {
+    if (mun_id) {
+        var curr_data = {"municipality": mun_id};
+    }
+    else {
+        var curr_data = {"bbox": bbox};
+    }
     $.ajax({
             processData: false,
             type: 'POST',
             url: 'summary/',
-            data: JSON.stringify({"municipality": mun_id}),
+            data: JSON.stringify(curr_data),
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
             success: function (data) {
@@ -411,11 +426,21 @@ function showSummary(mun_id) {
                     // createSunburst(summary_json);
                     bar_chart_ref.redefine("data", summary_json);
                     sunburst_ref.redefine("data", summary_json);
+                    document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
+                    document.getElementById('shiny').contentWindow.location.reload();
                 });
             },
             error: function(data) {
                 alert('Form submission failed');
             }})
+}
+
+function summariseSelection() {
+    // return as x_min, ymin, x_max, y_max
+    var curr_bounds = map.getBounds();
+    showSummary( null,[curr_bounds.getNorthEast().lng, curr_bounds.getNorthEast().lat,
+        curr_bounds.getSouthWest().lng, curr_bounds.getSouthWest().lat]);
+
 }
 
 // function filterSpecies(geodata, species) {
