@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore.save" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/R Scripts/municipalities.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShinyMap/LM_scratch_work.R" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShinyMap/gbif_summary_creation.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/.RData" beforeDir="false" afterPath="$PROJECT_DIR$/ShinyMap/.RData" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/.Rhistory" beforeDir="false" afterPath="$PROJECT_DIR$/ShinyMap/.Rhistory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/.Rproj.user/shared/notebooks/75B35AE6-README/1/EA53139C9C07A3E9/chunks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/.Rproj.user/shared/notebooks/75B35AE6-README/1/s/chunks.json" beforeDir="false" afterPath="$PROJECT_DIR$/ShinyMap/.Rproj.user/shared/notebooks/75B35AE6-README/1/s/chunks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/.Rproj.user/shared/notebooks/paths" beforeDir="false" afterPath="$PROJECT_DIR$/ShinyMap/.Rproj.user/shared/notebooks/paths" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/global.R" beforeDir="false" afterPath="$PROJECT_DIR$/ShinyMap/global.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/process.R" beforeDir="false" afterPath="$PROJECT_DIR$/ShinyMap/process.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/server.R" beforeDir="false" afterPath="$PROJECT_DIR$/ShinyMap/server.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShinyMap/ui.R" beforeDir="false" afterPath="$PROJECT_DIR$/ShinyMap/ui.R" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="125">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -167,7 +172,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="381" />
     <option name="y" value="51" />
     <option name="width" value="1021" />
@@ -272,7 +277,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="381" y="51" width="1021" height="791" extended-state="1" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.226762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -603,7 +607,7 @@
     <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

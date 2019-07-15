@@ -1,18 +1,33 @@
 library(shiny)
 library(leaflet)
+library(tidyverse)
 library(dplyr)
 library(tidyverse)
 
-df <- readRDS("./mun_years.rds")
+# Read in the data 
+df2 <- read.csv("gbif_summary.csv", stringsAsFactors = F)
 
-df = df[1:1000,]
-#no_year_info = function(x) {
-#  lis = c()
-#  for (sp in unique(x$species)) {
-#    if (sum(!is.na(x$year[which(x$species == sp)]) == 0)) {lis = c(lis, sp)}
-#  }
-#  return(lis)
-#}
-df = df[!is.na(df$year),]
+# create a dataframe containing total num of observations for each year 
+yearly_obs <- group_by(df2, year) %>% tally() %>% drop_na()
 
-df_yearagg = plyr::count(df, c('year'))
+
+##~~ FUNCTIONS ~~##
+# Function for adding 0-value rows to aggregate tally dataframes to fill out the years between the first and last years
+# Note: "data" must have exactly columns "species", "year", and "n"
+add_zeros = function(data) {
+  if (class(data)[1] != "data.frame") {data = as.data.frame(data)}
+  for (sp in unique(data$species)) {
+    if(nrow(data[which(data$species==sp),]) > 1) {
+      min = min(data$year[which(data$species == sp)], na.rm = T)
+      max = max(data$year[which(data$species == sp)], na.rm = T)
+      for (yea in (min+1):(max-1)) {
+        if (!(yea %in% data$year[which(data$species == sp)])) {
+          data = rbind(data, data.frame(species = sp, year = as.integer(yea), n = as.integer(0), stringsAsFactors = F))
+        }
+      }
+    }
+  }
+  return(data)
+}
+# Function for removing decimal places for the sake of labels
+no_dec = function(x) {sprintf("%.0f", x)}
