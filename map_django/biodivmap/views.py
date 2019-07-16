@@ -7,15 +7,16 @@ from .models import SpeciesYear
 # from .views_helpers import geojson_creater
 
 import json
-from shapely.geometry import Polygon
-import geopandas as gpd
-# Create your views here.
-
 import pandas as pd
 from shapely.geometry import Point
 import geopandas as gpd
 
 taxLevel = ['kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'end']
+df_map = pd.read_pickle("biodivmap/gbif_map.pkl")
+df_map = df_map.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
+df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
+df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
+
 def getDict(df, taxLevelIndex, prevIndex):
     list_dicts = []
     if taxLevel[taxLevelIndex] == 'end':
@@ -89,12 +90,10 @@ def ajax_species(request):
         if request.body:
             selected_taxons = json.loads(request.body)
             print(selected_taxons)
-
-            df = pd.read_csv("biodivmap/gbif_map.csv", encoding="latin1")
-            df = df.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
-            df_out = pd.DataFrame(columns=df.columns)
+            df_out = pd.DataFrame(columns=df_map.columns)
             for taxon_name, info_dict in selected_taxons.items():
-                df_out = df_out.merge(df[df[info_dict["taxLevel"]] == taxon_name], how="outer")
+                df_out = df_out.merge(df_map[df_map[info_dict["taxLevel"]] == taxon_name], how="outer")
+
             geometry = [Point(xy) for xy in zip(df_out['decimalLongitude'], df_out['decimalLatitude'])]
             # fix coordinate system
             geo_df = gpd.GeoDataFrame(df_out, geometry=geometry, crs={'init': 'epsg:4326'})
@@ -112,8 +111,6 @@ def show_summary(request):
             print(selected_regions)
             # assume municipality json created as bar_sunburst.json
             #filter dataframe with municipality
-            df_obs = pd.read_csv("biodivmap/gbif_summary.csv", encoding="latin1")
-            df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
 
             if "municipality" in selected_regions.keys():
                 df_obs_region = df_obs[df_obs['municipality'] == selected_regions["municipality"]]
@@ -124,11 +121,13 @@ def show_summary(request):
                 max_x = max([bbox[0], bbox[2]])
                 min_y = min([bbox[1], bbox[3]])
                 max_y = max([bbox[1], bbox[3]])
+                df_obs_region = df_obs[(df_obs["decimalLatitude"] > min_y) & (df_obs["decimalLongitude"] > min_x) &
+                                       (df_obs["decimalLatitude"] < max_y) & (df_obs["decimalLongitude"] < max_x)]
 
-                bbox_poly = Polygon([(min_x, min_y), (max_x, min_y), (max_x, max_y), (min_x, max_y)])
-                geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
-                geo_df = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
-                df_obs_region = geo_df[geo_df.geometry.within(bbox_poly)]
+                # bbox_poly = Polygon([(min_x, min_y), (max_x, min_y), (max_x, max_y), (min_x, max_y)])
+                # geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
+                # geo_df = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
+                # df_obs_region = geo_df[geo_df.geometry.within(bbox_poly)]
 
             df_taxon_region = df_taxon[df_taxon["species"].isin(df_obs_region['species'])]
             df_taxon_region = df_taxon_region.set_index("species")

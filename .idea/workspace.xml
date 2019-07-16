@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +45,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
+            <state relative-caret-position="1830">
               <caret line="122" column="90" selection-start-line="122" selection-start-column="82" selection-end-line="122" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -200,6 +200,11 @@
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name=".ipynb_checkpoints" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -218,15 +223,15 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/map_django/biodivmap" />
+      <recent name="$PROJECT_DIR$/map_django" />
+      <recent name="$PROJECT_DIR$/leaflet" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart" />
       <recent name="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/leaflet" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/map_django/biodivmap" />
-      <recent name="$PROJECT_DIR$/map_django" />
       <recent name="$PROJECT_DIR$/leaflet" />
     </key>
   </component>
@@ -279,8 +284,7 @@
     <option name="totallyTimeSpent" value="184746000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="588" y="86" width="1142" height="834" extended-state="1" />
-    <editor active="true" />
+    <frame x="588" y="86" width="1142" height="834" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20181818" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -493,8 +497,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="4" />
+        <state relative-caret-position="300">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -519,13 +523,7 @@
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/inspector.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/index.html" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17198" />
@@ -620,7 +618,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
+        <state relative-caret-position="1830">
           <caret line="122" column="90" selection-start-line="122" selection-start-column="82" selection-end-line="122" selection-end-column="90" />
         </state>
       </provider>
