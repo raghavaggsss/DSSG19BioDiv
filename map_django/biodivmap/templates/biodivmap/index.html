@@ -35,7 +35,10 @@
 
 <div id="map" style="float: left;">
     <div class="leaflet-bottom leaflet-right">
-
+        <div style="margin: 20px">
+        <img id="loader-summary" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
+        <button onclick="summariseSelection()"> Summarise</button>
+    </div>
     </div>
 </div>
 
@@ -63,6 +66,13 @@
 <script src="{% static 'biodivmap/leaflet_map.js' %}"></script>
 
 <div style="overflow:auto; height:500px; width:400px; background-color:#ffffff; float: left" >
+
+    <div>
+        <img id="loader-plot" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
+        <button onclick="plotSpecies()"> Plot species</button>
+        <input id="taxon-search-field">
+        <button id="taxon-search-button" onclick="searchTaxon()">Search</button>
+    </div>
 
     <svg id="d3_graphs" style="float:left" width="400">
 
@@ -385,11 +395,9 @@
 
     </div>
 </div>
-    <button onclick="summariseSelection()"> Summarise</button>
-    <button onclick="plotSpecies()" style="margin-left: 900px;"> Plot species</button>
-    <img id="points-loader" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
-<input id="taxon-search-field">
-<button id="taxon-search-button" onclick="searchTaxon()">Search</button>
+
+
+
 
 <!--{{ form.media.js }}-->
 

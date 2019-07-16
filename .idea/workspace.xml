@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="387" column="62" selection-start-line="387" selection-start-column="62" selection-end-line="387" selection-end-column="62" />
+            <state relative-caret-position="31">
+              <caret line="397" selection-start-line="397" selection-end-line="397" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -38,8 +43,6 @@
                 <element signature="n#style#0;n#svg#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#svg#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -51,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1830">
-              <caret line="122" column="90" selection-start-line="122" selection-start-column="82" selection-end-line="122" selection-end-column="90" />
+              <caret line="128" column="90" selection-start-line="128" selection-start-column="82" selection-end-line="128" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -59,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="315">
+              <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -169,7 +172,6 @@
         <option value="$PROJECT_DIR$/map_django/biodivmap/templates/taxontree/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/models.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/urls.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/untitled.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar_chart.js" />
@@ -179,6 +181,7 @@
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -283,10 +286,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184746000" />
+    <option name="totallyTimeSpent" value="185756000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="588" y="86" width="1142" height="834" extended-state="0" />
+    <frame x="588" y="86" width="1142" height="834" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20181818" />
@@ -500,8 +503,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="315">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -591,8 +594,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="387" column="62" selection-start-line="387" selection-start-column="62" selection-end-line="387" selection-end-column="62" />
+        <state relative-caret-position="31">
+          <caret line="397" selection-start-line="397" selection-end-line="397" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -600,8 +603,6 @@
             <element signature="n#style#0;n#svg#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#svg#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -622,7 +623,7 @@
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1830">
-          <caret line="122" column="90" selection-start-line="122" selection-start-column="82" selection-end-line="122" selection-end-column="90" />
+          <caret line="128" column="90" selection-start-line="128" selection-start-column="82" selection-end-line="128" selection-end-column="90" />
         </state>
       </provider>
     </entry>

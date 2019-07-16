@@ -363,7 +363,7 @@ clusters.addTo(map);
 
 layers_array = [];
 function plotSpecies() {
-    $('#points-loader').show();
+    $('#loader-plot').show();
     taxons_selected = {};
     for (i = 0; i < init_desc.length; i++) {
         if (init_desc[i].selected) {
@@ -400,14 +400,18 @@ function plotSpecies() {
                         layers_array.push(layer_curr);
                     clusters.addLayer(layer_curr);
                 });
-                $('#points-loader').hide();
+                $('#loader-plot').hide();
+
             },
             error: function(data) {
                 alert('Form submission failed');
-            }})
+                $('#loader-plot').hide();
+            }});
+
 }
 
 function showSummary(mun_id, bbox) {
+    $('#loader-summary').show();
     if (mun_id) {
         var curr_data = {"municipality": mun_id};
     }
@@ -429,10 +433,13 @@ function showSummary(mun_id, bbox) {
                     document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
                     document.getElementById('shiny').contentWindow.location.reload();
                 });
+                $('#loader-summary').hide();
             },
             error: function(data) {
                 alert('Form submission failed');
-            }})
+                $('#loader-summary').hide();
+            }});
+
 }
 
 function summariseSelection() {
