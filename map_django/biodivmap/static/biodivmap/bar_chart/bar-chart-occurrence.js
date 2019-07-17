@@ -6,7 +6,6 @@ export default function define(runtime, observer) {
   const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)
-      .attr("id", "hist");
 
   x.domain([0, root.value]);
 

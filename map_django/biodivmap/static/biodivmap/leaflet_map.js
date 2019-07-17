@@ -1,4 +1,5 @@
-var bar_chart_ref;
+var bar_chart_occurrence_ref;
+var bar_chart_species_ref;
 var sunburst_ref;
 
 L.TopoJSON = L.GeoJSON.extend({
@@ -430,7 +431,8 @@ function showSummary(mun_id, bbox) {
             success: function (data) {
                 $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
                     // createSunburst(summary_json);
-                    bar_chart_ref.redefine("data", summary_json);
+                    bar_chart_occurrence_ref.redefine("data", summary_json);
+                    bar_chart_species_ref.redefine("data", summary_json);
                     sunburst_ref.redefine("data", summary_json);
                     document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
                     document.getElementById('shiny').contentWindow.location.reload();

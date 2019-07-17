@@ -21,6 +21,7 @@
 
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/stdlib"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/bar_chart/inspector.css' %}">
 
     <script>
         var static_path = "{% static "/biodivmap/" %}"
@@ -407,23 +408,36 @@
 
 <div>
 
-    <div id="sunburst" style="float:left; margin-right:25px; margin-left:50px">
+
+    <div id="bar-chart-species" style="height:500px; overflow:auto; float:left;">
+        <p> Unique species distribution</p>
     </div>
 
+    <div id="bar-chart-occurrence" style="height:500px; overflow:auto; float:right; margin-right:50px; margin-left:25px">
+        <p> Species occurrence distribution</p>
+    </div>
 
-    <div id="bar-chart" style="height:500px; overflow:auto; float:right; margin-right:50px; margin-left:25px">
-
-        <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/bar_chart/inspector.css' %}">
         <script type="module">
 
             import {Runtime, Inspector} from "{% static 'biodivmap/bar_chart/runtime.js' %}";
-            import bar_chart from "{% static 'biodivmap/bar_chart/hierarchical-bar-chart.js' %}";
+            import bar_chart_occurrence from "{% static 'biodivmap/bar_chart/bar-chart-occurrence.js' %}";
+            import bar_chart_species from "{% static 'biodivmap/bar_chart/bar-chart-species.js' %}";
             import sunburst from "{% static 'biodivmap/bar_chart/zoomable-sunburst.js' %}";
 
-            function define_bar_chart(runtime, observer) {
+            function define_bar_chart_occurence(runtime, observer) {
               const main = runtime.module();
-              bar_chart_ref = runtime.module(bar_chart);
-              main.import("chart", bar_chart_ref);
+              bar_chart_occurrence_ref = runtime.module(bar_chart_occurrence);
+              main.import("chart", bar_chart_occurrence_ref);
+              main.variable(observer()).define(["chart"], function(chart){return(
+            chart
+            )});
+              return main;
+            }
+
+            function define_bar_chart_species(runtime, observer) {
+              const main = runtime.module();
+              bar_chart_species_ref = runtime.module(bar_chart_species);
+              main.import("chart", bar_chart_species_ref);
               main.variable(observer()).define(["chart"], function(chart){return(
             chart
             )});
@@ -440,14 +454,16 @@
               return main;
             }
             const runtime = new Runtime();
-            const main = runtime.module(define_bar_chart, Inspector.into(document.getElementById("bar-chart")));
+            const main = runtime.module(define_bar_chart_occurence, Inspector.into(document.getElementById("bar-chart-occurrence")));
+            runtime.module(define_bar_chart_species,Inspector.into(document.getElementById("bar-chart-species")));
             runtime.module(define_sunburst,Inspector.into(document.getElementById("sunburst")));
 
-
-
         </script>
-    </div>
+
 </div>
+
+<div id="sunburst" style="float:left; margin-right:25px; margin-left:50px">
+    </div>
 
 <br>
 <div class="row-container">
