@@ -1,8 +1,8 @@
-df = read.csv("GBif with Municipalities and Years.csv", stringsAsFactors = F)
+df = read.csv("gbif_summary.csv", stringsAsFactors = F)
 
 df_sub <- head(df, 1000)
 
-saveRDS(df, "./GBif_recency.rds")
+saveRDS(df, "./gbif_summary.rds")
 
 
 

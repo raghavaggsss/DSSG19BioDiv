@@ -16,8 +16,8 @@ This variant of a [sunburst diagram](/@d3/sunburst) shows only two layers of the
       .attr("viewBox", [0, 0, width, width])
       .style("font", "16px sans-serif")
       .attr("id", "sun")
-      .attr("max-width", "50%")
-      .attr("height", "50%");
+      .attr("max-width", "500px")
+      .attr("height", "500px");
 
   const g = svg.append("g")
       .attr("transform", `translate(${width / 2},${width / 2})`);

@@ -35,7 +35,11 @@
 
 <div id="map" style="float: left;">
     <div class="leaflet-bottom leaflet-right">
-
+        <div style="margin: 20px">
+        <img id="loader-summary" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
+{#        <button onclick="summariseSelection()"> Summarise</button>#}
+        <button onclick="drawRectangle()"> Select</button>
+    </div>
     </div>
 </div>
 
@@ -62,7 +66,14 @@
 
 <script src="{% static 'biodivmap/leaflet_map.js' %}"></script>
 
-<div style="overflow:scroll; height:500px; width:400px; background-color:#ffffff; float: left" >
+<div style="overflow:auto; height:500px; width:400px; background-color:#ffffff; float: left" >
+
+    <div>
+        <img id="loader-plot" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
+        <button onclick="plotSpecies()"> Plot species</button>
+        <input id="taxon-search-field">
+        <button id="taxon-search-button" onclick="searchTaxon()">Search</button>
+    </div>
 
     <svg id="d3_graphs" style="float:left" width="400">
 
@@ -385,10 +396,9 @@
 
     </div>
 </div>
-    <button onclick="plotSpecies()" style="margin-left: 900px;"> Plot species</button>
-    <img id="points-loader" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
-<input id="taxon-search-field">
-<button id="taxon-search-button" onclick="searchTaxon()">Search</button>
+
+
+
 
 <!--{{ form.media.js }}-->
 
@@ -401,7 +411,7 @@
     </div>
 
 
-    <div id="bar-chart" style="float:right; margin-right:50px; margin-left:25px">
+    <div id="bar-chart" style="height:500px; overflow:auto; float:right; margin-right:50px; margin-left:25px">
 
         <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/bar_chart/inspector.css' %}">
         <script type="module">
@@ -438,5 +448,12 @@
         </script>
     </div>
 </div>
+
+<br>
+<div class="row-container">
+  <iframe id="shiny" src="http://127.0.0.1:7125" class="second-row"></iframe>
+</div>
+
+
 </body>
 </html>

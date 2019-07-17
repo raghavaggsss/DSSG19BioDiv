@@ -1,5 +1,4 @@
 server <- function(input,output, session){
-  
   # This observe statement changes the options provided to the user in the "Members" dropdown menu based on what they have selected from the "Category" dropdown menu
   observe({
     # Retrieve the selected category
@@ -21,9 +20,20 @@ server <- function(input,output, session){
     }
   })
   
+  df_region <- reactiveValues(df=df_orig)
+  
+  # This is the observer that keeps track of the url and grabs any municipality information being transmitted through it for use down the line - it then filters the data into 
+  observe({
+    query <- parseQueryString(session$clientData$url_search)
+    print(query['municipality'][[1]])
+    if (!is.null(query['municipality'][[1]])) {
+      df_region$df = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
+    }
+  })
+  
   # df1 changes only with "category" and adds columns that gives member values for each category that could be chosen
   df1 = reactive({
-    df1 = df_orig
+    df1 = df_region$df
     # This if branch applies specifically for Custom Tags, since they work differently
     if (input$category == "Custom Tags") {
       sp_col = which(colnames(dfsp)=="species")

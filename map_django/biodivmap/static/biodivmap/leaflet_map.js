@@ -45,6 +45,14 @@ var remove_highlight = {
     'fillOpacity': 1
 };
 
+var municipality_style = {
+    'color': 'rgb(94,94,94)',
+    'weight': 2,
+    'opacity': 1,
+    'fillColor': '#ffffff',
+    'fillOpacity': 0.5
+};
+
 
 var typeEco = {
     "ME": "#F012BE",
@@ -157,8 +165,9 @@ mun_layer = L.geoJson(false, {
 
             layer.on('click', function () {
                 // change to newID
-                showSummary(feature.properties.newID);
+                showSummary(feature.properties.newID, null);
             });
+            layer.setStyle(municipality_style);
         }
 
     });
@@ -173,9 +182,12 @@ var map = L.map('map', {
     layers: [streetsBaseMap, grayScaleBaseMap]
 });
 
-map.on('moveend', function() {
-     console.log(map.getBounds());
-});
+var curr_rectangle = L.rectangle([[49.29127137605795, -123.12775596997044], [49.23525962123947, -123.28225120922825]],
+    {color: 'grey', weight: 1}).addTo(map);
+
+// map.on('moveend', function() {
+//      console.log(map.getBounds());
+// });
 
 L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
 
@@ -354,56 +366,65 @@ clusters.addTo(map);
 
 layers_array = [];
 function plotSpecies() {
-    $('#points-loader').show();
+    var curr_bounds = curr_rectangle.getBounds();
+    var bounds_array = [curr_bounds.getNorthEast().lng, curr_bounds.getNorthEast().lat,
+        curr_bounds.getSouthWest().lng, curr_bounds.getSouthWest().lat];
+    $('#loader-plot').show();
     taxons_selected = {};
     for (i = 0; i < init_desc.length; i++) {
         if (init_desc[i].selected) {
             taxons_selected[init_desc[i].data.name] = {"index": init_desc[i].data.index, "taxLevel": init_desc[i].data.taxLevel};
         }
     }
+    var region_taxons = {"taxons": taxons_selected, "bbox": bounds_array};
 
     $.ajax({
             processData: false,
             type: 'POST',
             url: 'species/',
-            data: JSON.stringify(taxons_selected),
+            data: JSON.stringify(region_taxons),
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
-            success: function (data) {
-                // layers_array.forEach(function(prev_layer) {
-                //     clusters.removeLayer(prev_layer);
-                //     prev_layer = null
-                // });
-                // data.forEach(function(species_path) {
-                //     $.getJSON(static_path + species_path.path, function (geodata) {
-                //         geodata = filterSpecies(geodata, species_path.species);
-                //         var layer_curr = L.geoJSON(geodata, points_layer_options);
-                //         layers_array.push(layer_curr);
-                //     clusters.addLayer(layer_curr);
-                //     });
-                // });
+            success: function (response) {
+                console.log(response);
                 layers_array.forEach(function(prev_layer) {
                     clusters.removeLayer(prev_layer);
                     prev_layer = null
                 });
-                $.getJSON(static_path + "curr.geojson", function(geodata) {
-                    var layer_curr = L.geoJSON(geodata, points_layer_options);
-                        layers_array.push(layer_curr);
-                    clusters.addLayer(layer_curr);
-                });
-                $('#points-loader').hide();
+                if (response == "success") {
+                    $.getJSON(static_path + "curr.geojson", function(geodata) {
+                        var layer_curr = L.geoJSON(geodata, points_layer_options);
+                            layers_array.push(layer_curr);
+                        clusters.addLayer(layer_curr);
+                    });
+                }
+                else if (response == "no occurrence"){
+                    alert("Selected organisms do not occur in the selected region")
+                }
+                $('#loader-plot').hide();
+
+
             },
             error: function(data) {
-                alert('Form submission failed');
-            }})
+                alert('Plot species failed');
+                $('#loader-plot').hide();
+            }});
+
 }
 
-function showSummary(mun_id) {
+function showSummary(mun_id, bbox) {
+    $('#loader-summary').show();
+    if (mun_id) {
+        var curr_data = {"municipality": mun_id};
+    }
+    else {
+        var curr_data = {"bbox": bbox};
+    }
     $.ajax({
             processData: false,
             type: 'POST',
             url: 'summary/',
-            data: JSON.stringify({"municipality": mun_id}),
+            data: JSON.stringify(curr_data),
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
             success: function (data) {
@@ -411,11 +432,24 @@ function showSummary(mun_id) {
                     // createSunburst(summary_json);
                     bar_chart_ref.redefine("data", summary_json);
                     sunburst_ref.redefine("data", summary_json);
+                    document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
+                    document.getElementById('shiny').contentWindow.location.reload();
                 });
+                $('#loader-summary').hide();
             },
             error: function(data) {
-                alert('Form submission failed');
-            }})
+                alert('summary failed');
+                $('#loader-summary').hide();
+            }});
+
+}
+
+function summariseSelection() {
+    // return as x_min, ymin, x_max, y_max
+    var curr_bounds = curr_rectangle.getBounds();
+    showSummary( null,[curr_bounds.getNorthEast().lng, curr_bounds.getNorthEast().lat,
+        curr_bounds.getSouthWest().lng, curr_bounds.getSouthWest().lat]);
+
 }
 
 // function filterSpecies(geodata, species) {
@@ -430,7 +464,7 @@ function showSummary(mun_id) {
 // }
 
 function searchTaxon() {
-    term = $("#taxon-search-field").val()
+    term = $("#taxon-search-field").val();
     results = [];
     for (i = 0; i < init_desc.length; i++) {
         if (term.toLowerCase() == init_desc[i].data.name.toLowerCase()) {
@@ -448,6 +482,15 @@ function searchTaxon() {
         }
     )
 
+}
+
+function drawRectangle() {
+    if (curr_rectangle) {
+        curr_rectangle.remove();
+    }
+    curr_rectangle = L.rectangle(map.getBounds(), {color: 'grey', weight: 1}).addTo(map);
+    plotSpecies();
+    summariseSelection();
 }
 
 

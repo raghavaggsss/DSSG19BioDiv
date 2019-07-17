@@ -6,7 +6,8 @@ library(tidyverse)
 
 # Read in the data 
 dfsp <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
-df_orig = readRDS("gbif_summary.rds")
+df_orig <- readRDS("gbif_summary.rds")
+
 
 # create a dataframe containing total num of observations for each year 
 yearly_obs <- group_by(df_orig, year) %>% tally() %>% drop_na()
