@@ -1,13 +1,16 @@
 library(shiny)
-library(leaflet)
 library(tidyverse)
-library(dplyr)
-library(tidyverse)
+library(stringr)
 
 # Read in the data 
 dfsp <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
 df_orig <- readRDS("gbif_summary.rds")
 
+# Record which columns in dfsp should be treated as taxonomies and which should be treated as custom tags
+tax_columns = which(colnames(dfsp) %in% c("kingdom","phylum","order","class","family","genus","species"))
+tag_columns = grep("*_binary", colnames(dfsp))
+tag_list = colnames(dfsp)[tag_columns]
+names(tag_list) = sub("*_binary", "", colnames(dfsp)[tag_columns])
 
 # create a dataframe containing total num of observations for each year 
 yearly_obs <- group_by(df_orig, year) %>% tally() %>% drop_na()

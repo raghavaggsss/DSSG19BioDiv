@@ -9,20 +9,21 @@ server <- function(input,output, session){
     # Change the member choices based on the category selection
     if (cat == "Custom Tags") {
       updateSelectInput(session, "member",
-                        choices = sort(colnames(dfsp)[19:ncol(dfsp)]),
-                        selected = head(colnames(dfsp)[19:ncol(dfsp)], 1)
+                        choices = tag_list,
+                        selected = head(colnames(dfsp)[tag_columns], 1)
       )
     } else {
+      # If "species" is selected, load Anna's Hummingbird by default
+      if (input$category == "species") {ch = "Calypte anna"} else {ch = head(dfsp[,cat], 1)}
       updateSelectInput(session, "member",
                         choices = sort(unique(dfsp[,cat])),
-                        selected = head(dfsp[,cat], 1)
+                        selected = ch
                         )
     }
   })
   
-  df_region <- reactiveValues(df=df_orig)
-  
   # This is the observer that keeps track of the url and grabs any municipality information being transmitted through it for use down the line - it then filters the data into 
+  df_region <- reactiveValues(df=df_orig)
   observe({
     query <- parseQueryString(session$clientData$url_search)
     print(query['municipality'][[1]])
