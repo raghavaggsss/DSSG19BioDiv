@@ -12,8 +12,9 @@ for (sp in 1:nrow(spdata)) {
 }
 
 ####
-# Add BC RainbowList Information Here
+# Add BC RainbowList Information Here to the species specific info 
 ####
+rainbow_list <- 
 
 # create new column with variety portion of each species name removed 
 spdata = mutate(spdata, simplified_names = gsub(pattern = " var.*", replacement = "", x = spdata$species))
@@ -27,4 +28,4 @@ spdata = merge(x = spdata, y = rainbow_list, by = "simplified_names", all.x = T,
 spdata = select(spdata, c(1:12, 25, 49, 46, 49, 50, 52, 54))
 
 # make new csv
-write.csv(spdata, "Taxonomy Freq.csv", row.names = FALSE)
+write.csv(spdata, "Taxonomy_Freq.csv", row.names = FALSE)
