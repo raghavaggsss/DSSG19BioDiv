@@ -21,4 +21,5 @@
 
 .idea/
 map_django/.idea/
+*.Rproj.user/
 .Rproj.user
