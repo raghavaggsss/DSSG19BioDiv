@@ -11,6 +11,7 @@ for (sp in 1:nrow(spdata)) {
   spdata$freq = tab[which(rownames(tab)==spdata$species)]
 }
 
+
 ####
 # Add BC RainbowList Information Here to the species specific info 
 
