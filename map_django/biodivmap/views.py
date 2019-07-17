@@ -88,27 +88,40 @@ def index(request):
 def ajax_species(request):
     if request.method == 'POST':
         if request.body:
-            selected_taxons = json.loads(request.body)
-            print(selected_taxons)
-            df_out = pd.DataFrame(columns=df_map.columns)
-            for taxon_name, info_dict in selected_taxons.items():
-                df_out = df_out.merge(df_map[df_map[info_dict["taxLevel"]] == taxon_name], how="outer")
+            taxons_regions = json.loads(request.body)
+            print(taxons_regions)
+            if not bool(taxons_regions["taxons"]):
+                return JsonResponse("no selection", safe=False)
+            bbox = taxons_regions["bbox"]
+            min_x = min([bbox[0], bbox[2]])
+            max_x = max([bbox[0], bbox[2]])
+            min_y = min([bbox[1], bbox[3]])
+            max_y = max([bbox[1], bbox[3]])
+            df_region = df_map[(df_map["decimalLatitude"] > min_y) & (df_map["decimalLongitude"] > min_x) &
+                                       (df_map["decimalLatitude"] < max_y) & (df_map["decimalLongitude"] < max_x)]
+            df_out = pd.DataFrame(columns=df_region.columns)
+            for taxon_name, info_dict in taxons_regions["taxons"].items():
+                if df_region[df_region[info_dict["taxLevel"]] == taxon_name].shape[0] > 0:
+                    df_out = df_out.merge(df_region[df_region[info_dict["taxLevel"]] == taxon_name], how="outer")
 
             geometry = [Point(xy) for xy in zip(df_out['decimalLongitude'], df_out['decimalLatitude'])]
             # fix coordinate system
             geo_df = gpd.GeoDataFrame(df_out, geometry=geometry, crs={'init': 'epsg:4326'})
             geo_df = geo_df.drop(["decimalLongitude", "decimalLatitude", 'kingdom', 'phylum', 'class',
                         'order', 'family', 'genus'], 1)
-            geo_df.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
+            if geo_df.shape[0] > 0:
+                geo_df.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
+                return JsonResponse("success", safe=False)
+            else:
+                return JsonResponse("no occurrence", safe=False)
 
-    return JsonResponse(["yo"], safe=False)
+    return JsonResponse("success", safe=False)
 
 @csrf_exempt
 def show_summary(request):
     if request.method == 'POST':
         if request.body:
             selected_regions = json.loads(request.body)
-            print(selected_regions)
             # assume municipality json created as bar_sunburst.json
             #filter dataframe with municipality
 
