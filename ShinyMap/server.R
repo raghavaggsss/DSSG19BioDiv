@@ -11,21 +11,21 @@ server <- function(input, output, session){
       updateSelectInput(session, "member",
                         choices = tag_list,
                         selected = tag_list[[1]]
-                        #selected = head(colnames(dfsp)[tag_columns], 1)
+                        #selected = head(colnames(df_region$dfsp)[tag_columns], 1)
       )
     } 
     else {
       # If "species" is selected, load Anna's Hummingbird by default
-      if (input$category == "species") {ch = "Calypte anna"} else {ch = head(dfsp[,cat], 1)}
+      if (input$category == "species") {ch = "Calypte anna"} else {ch = head(df_region$dfsp[,cat], 1)}
       updateSelectInput(session, "member",
-                        choices = sort(unique(dfsp[,cat])),
+                        choices = sort(unique(df_region$dfsp[,cat])),
                         selected = ch
                         )
     }
   })
   
   # This is the observer that keeps track of the url and grabs any municipality information being transmitted through it for use down the line - it then filters the data into 
-  df_region <- reactiveValues(df=df_orig)
+  df_region <- reactiveValues(df=df_orig, dfsp=dfsp)
   observe({
     query <- parseQueryString(session$clientData$url_search)
     print(query['municipality'][[1]])
@@ -41,6 +41,7 @@ server <- function(input, output, session){
       maxy = max(coord[c(2,4)])
       df_region$df = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
     }
+    df_region$dfsp = dfsp[which(dfsp[,"species"] %in% df_region$df[,"species"]),]
   })
   
   # df1 changes only with "category" and adds columns that gives member values for each category that could be chosen
@@ -51,10 +52,10 @@ server <- function(input, output, session){
     df1 = df_region$df
     # This if branch applies specifically for Custom Tags, since they work differently
     if (input$category == "Custom Tags") {
-      sp_col = which(colnames(dfsp)=="species")
+      sp_col = which(colnames(df_region$dfsp)=="species")
       # Each member results in its own column filled with True and False values
       for (mem in input$member) {
-        compat_sp = dfsp[which(dfsp[,mem] == 1),sp_col]
+        compat_sp = df_region$dfsp[which(df_region$dfsp[,mem] == 1),sp_col]
         df1[which(df1$species %in% compat_sp),ncol(df1)+1] = TRUE
         df1[which(is.na(df1[,ncol(df1)])),ncol(df1)] = FALSE
         colnames(df1)[ncol(df1)] = mem
@@ -69,7 +70,7 @@ server <- function(input, output, session){
       df1$member = NA
       # Unlike above, only one column is produced - the number of members determines the number of unique possible string values in rows can possess within this column
       for (mem in input$member) {
-        compat_sp = dfsp[which(dfsp[,input$category] == mem),"species"]
+        compat_sp = df_region$dfsp[which(df_region$dfsp[,input$category] == mem),"species"]
         df1$member[which(df1$species %in% compat_sp)] = mem
       }
       return(df1[which(!is.na(df1$member)),])        
@@ -119,14 +120,14 @@ server <- function(input, output, session){
       x = rbind(x, sdf)
     }
     # This line is debateable - in order both to ensure a continuous line plot and to prevent Shiny from throwing an error message, the normalized values of NA (years in which there were no observations at all and thus 0/0 = NA) are changed to values of 0
-    #if (any(is.na(x$normalized))) {x[which(is.na(x$normalized)),"normalized"] = 0}
+    if (any(is.na(x$normalized))) {x[which(is.na(x$normalized)),"normalized"] = 0}
     return(x)
   })
   
   
   output$plot1 = renderPlot({
     
-    #if (is.null(df3())) {return()}
+    if (is.null(df3())) {return()}
     
     # Based on the radio button clicked, uses different y aesthetics and labels
     if (input$counts == "Total Species Observations per Year") {
@@ -139,22 +140,23 @@ server <- function(input, output, session){
     }
     
     if(nrow(df3()) > 1) {
-      if (nrow(df3()) > 1) {
-        ggplot(df3(), aesthetic) + 
-          geom_line() + 
-          geom_point() + 
-          scale_x_continuous() + 
-          scale_y_continuous() + 
-          labs(title = "Reported Species Occurrence Over Time",
-               x = "Year",
-               y = yl)+
-          theme(plot.title = element_text(face = "bold", size = 18),
-                axis.title.x = element_text(face = "bold", size = 14),
-                axis.title.y = element_text(face = "bold", size = 14),
-                axis.text = element_text(face = "bold", size = 14),
-                legend.title = element_text(face = "bold", size = 12),
-                legend.text = element_text(size = 12))
-      } else {
+      ggplot(df3(), aesthetic) + 
+        geom_line() + 
+        geom_point() + 
+        scale_x_continuous() + 
+        scale_y_continuous() + 
+        labs(title = "Reported Species Occurrence Over Time",
+             x = "Year",
+             y = yl)+
+        theme(plot.title = element_text(face = "bold", size = 18),
+              axis.title.x = element_text(face = "bold", size = 14),
+              axis.title.y = element_text(face = "bold", size = 14),
+              axis.text = element_text(face = "bold", size = 14),
+              legend.title = element_text(face = "bold", size = 12),
+              legend.text = element_text(size = 12))
+      } 
+      
+      else {
         year_seq = (df3()$year-1):(df3()$year+1)
         obsr_seq = 0:(df3()$n+1)
         ggplot(df3(), aesthetic) + 
@@ -172,7 +174,6 @@ server <- function(input, output, session){
                 legend.title = element_text(face = "bold", size = 12),
                 legend.text = element_text(size = 12))
       }
-    }
-  })
+    })
 }
 

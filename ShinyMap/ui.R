@@ -16,7 +16,7 @@ ui <- fluidPage(
                   multiple = F),
       selectInput(inputId = "member", 
                   label = "Select an Option to Plot", 
-                  choices = sort(unique(df_orig$species)),
+                  choices = sort(unique(df_region$df$species)),
                   selected = "Calypte anna",
                   multiple = T),
       radioButtons(inputId = "counts",
