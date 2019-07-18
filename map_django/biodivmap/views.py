@@ -47,11 +47,13 @@ def getDict(df, taxLevelIndex, prevIndex):
             list_dicts.append({"name": index,
                                "value": int(curr_gp.iloc[0].mun_freq),
                                "size": int(value), "children": next_data,
+                               "taxLevel": taxLevel[taxLevelIndex]
                                })
         else:
             list_dicts.append({"name": index,
 
                                "children": next_data,
+                               "taxLevel": taxLevel[taxLevelIndex]
                                })
 
     return (list_dicts, num_types)
@@ -159,7 +161,7 @@ def show_summary(request):
                                                               'phylum', 'class', 'order', 'family',
                                                    'genus', 'species']].fillna(value="Unknown")
             json_dict, num_types = getDict(df, 0, "blah")
-            json_dict = {"name": "Organisms", "children": json_dict}
+            json_dict = {"name": "Organisms", "children": json_dict, "taxLevel": "organisms"}
 
             with open('biodivmap/static/biodivmap/bar_sunburst.json', 'w') as fp:
                 json.dump(json_dict, fp)
