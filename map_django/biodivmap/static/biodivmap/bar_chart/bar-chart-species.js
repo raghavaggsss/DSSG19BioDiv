@@ -52,7 +52,8 @@ function bar(svg, down, d, selector) {
   bar.append("rect")
       .attr("x", x(0))
       .attr("width", d => x(d.value) - x(0))
-      .attr("height", barStep * (1 - barPadding));
+      .attr("height", barStep * (1 - barPadding))
+      .style('fill-opacity', 0.5);
 
   return g;
 }
@@ -114,10 +115,10 @@ function down(svg, d) {
 
   // Color the bars as parents; they will fade to children if appropriate.
   enter.selectAll("rect")
-      .attr("fill", color(true))
+      .attr("fill", d=> color(d.parent.data.taxLevel))
       .attr("fill-opacity", 1)
     .transition(transition2)
-      .attr("fill", d => color(!!d.children))
+      .attr("fill", d => color(d.data.taxLevel))
       .attr("width", d => x(d.value) - x(0));
 }
 )});
@@ -154,7 +155,7 @@ function up(svg, d) {
   // Transition exiting rects to the new scale and fade to parent color.
   exit.selectAll("rect").transition(transition1)
       .attr("width", d => x(d.value) - x(0))
-      .attr("fill", color(true));
+      .attr("fill", d=> color(d.parent.data.taxLevel));
 
   // Transition exiting text to fade out.
   // Remove exiting nodes.
@@ -178,7 +179,7 @@ function up(svg, d) {
   // Transition entering rects to the new x-scale.
   // When the entering parent rect is done, make it visible!
   enter.selectAll("rect")
-      .attr("fill", d => color(!!d.children))
+      .attr("fill", d => color(d.data.taxLevel))
       .attr("fill-opacity", p => p === d ? 0 : null)
     .transition(transition2)
       .attr("width", d => x(d.value) - x(0))
@@ -212,7 +213,7 @@ d3.hierarchy(data)
     .eachAfter(d => d.index = d.parent ? d.parent.index = d.parent.index + 1 || 0 : 0)
 )});
   main.variable(observer("data")).define("data", ["d3"], function(d3){return(
-      {name: "select region", children: [{name: "select region", size:1 }]}
+      {name: "select region", children: [{name: "select region", size:1, taxLevel:"organisms" }]}
 )});
   main.variable(observer("x")).define("x", ["d3","margin","width"], function(d3,margin,width){return(
 d3.scaleLinear().range([margin.left, width - margin.right])
@@ -234,8 +235,9 @@ g => g
         .attr("y2", height - margin.bottom))
 )});
   main.variable(observer("color")).define("color", ["d3"], function(d3){return(
-d3.scaleOrdinal([true, false], ["steelblue", "#aaa"])
+d3.scaleOrdinal(["organisms", "kingdom", "phylum", "class", "order", "family", "genus", "species"], ["#ffa500", "#8240bd", "#bd47a0", "#35b9bd", "#0932bd", "#bd1e17", "#3fbd20", "#bdb7bd"])
 )});
+
   main.variable(observer("barStep")).define("barStep", function(){return(
 27
 )});
