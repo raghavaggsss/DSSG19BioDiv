@@ -11,7 +11,7 @@ ui <- fluidPage(
                   sep = ""),
       selectInput(inputId = "category", 
                   label = "Choose a Category:", 
-                  choices = c(colnames(dfsp[,tax_columns]), "Custom Tags"),
+                  choices = c(tax_list, "Custom Tags"),
                   selected = "species",
                   multiple = F),
       selectInput(inputId = "member", 
