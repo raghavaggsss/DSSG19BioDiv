@@ -17,7 +17,7 @@ df_map = df_map.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
 df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
 df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
 
-def getDict(df, taxLevelIndex, prevIndex):
+def generate_plot_json(df, taxLevelIndex, prevIndex):
     list_dicts = []
     if taxLevel[taxLevelIndex] == 'end':
         return ([], 0)
@@ -37,7 +37,7 @@ def getDict(df, taxLevelIndex, prevIndex):
     for i in ind_val:
         index = i[0]
         value = i[1]
-        next_data, num_types_next = getDict(df, taxLevelIndex + 1, index)
+        next_data, num_types_next = generate_plot_json(df, taxLevelIndex + 1, index)
         curr_gp = gp.get_group(index)
         redList = 0
         if (curr_gp.redList.unique().shape[0] > 1 or not pd.isna(curr_gp.redList.unique()[0])):
@@ -55,6 +55,38 @@ def getDict(df, taxLevelIndex, prevIndex):
                                "children": next_data,
                                "taxLevel": taxLevel[taxLevelIndex]
                                })
+
+    return (list_dicts, num_types)
+
+def generate_tree_json(df, taxLevelIndex, prevIndex):
+    list_dicts = []
+    if taxLevel[taxLevelIndex] == 'end':
+        return ([], 0)
+    if taxLevel[taxLevelIndex] == 'kingdom':
+        df_size = df.shape[0]
+        gp = df.groupby(taxLevel[taxLevelIndex])
+
+    else:
+        df_size = df[df[taxLevel[taxLevelIndex - 1]] == prevIndex].shape[0]
+        gp = df[df[taxLevel[taxLevelIndex - 1]] == prevIndex].groupby(taxLevel[taxLevelIndex])
+
+    indexes = gp.size().index.to_list()
+    values = list(gp.size().values)
+    num_types = len(gp)
+    ind_val = zip(indexes, values)
+    ind_val = sorted(ind_val, key=lambda tup: tup[1], reverse=True)
+    for i in ind_val:
+        index = i[0]
+        value = i[1]
+        next_data, num_types_next = generate_tree_json(df,taxLevelIndex + 1, index)
+        curr_gp = gp.get_group(index)
+        redList = 0
+        if (curr_gp.redList.unique().shape[0] > 1 or not pd.isna(curr_gp.redList.unique()[0])):
+            redList = 1
+        list_dicts.append({"name": index,
+                           "taxLevel": taxLevel[taxLevelIndex], "types": int(num_types_next),
+                           "size": int(value), "ratio": (1.0 * value) / df_size, "children": next_data,
+                           "redList": redList})
 
     return (list_dicts, num_types)
 
@@ -160,10 +192,18 @@ def show_summary(request):
                 'order', 'family', 'genus', 'species']] = df[['kingdom',
                                                               'phylum', 'class', 'order', 'family',
                                                    'genus', 'species']].fillna(value="Unknown")
-            json_dict, num_types = getDict(df, 0, "blah")
+            json_dict, num_types = generate_plot_json(df, 0, "blah")
             json_dict = {"name": "Organisms", "children": json_dict, "taxLevel": "organisms"}
 
             with open('biodivmap/static/biodivmap/bar_sunburst.json', 'w') as fp:
                 json.dump(json_dict, fp)
+
+            json_dict_2, num_types_2 = generate_tree_json(df,0, "blah")
+            json_dict_2 = { "name": "Organisms", 'taxLevel': "organisms", "types": num_types_2,
+                         "children": json_dict_2, "ratio": 1.0,
+                         "size": df.shape[0], "redList": 1}
+
+            with open('biodivmap/static/biodivmap/treedata_curr.json', 'w') as fp:
+                json.dump(json_dict_2, fp)
 
     return JsonResponse(["yo"], safe=False)

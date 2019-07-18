@@ -444,8 +444,24 @@ function showSummary(mun_id, bbox) {
                             region += ",";
                         }
                         console.log(region);
-                        document.getElementById('shiny').src = "http://127.0.0.1:7125/?region=" + region;
+                        document.getElementById('shiny').src = "http://127.0.0.1:4609/?region=" + region;
                     }
+                    d3.json(static_path + "treedata_curr.json").then(function (flare) {
+                        root = d3.hierarchy(flare);
+                        root.x0 = 0;
+                        root.y0 = 0;
+                        // open the tree collapsed
+                        desc = root.descendants();
+                        init_desc = root.descendants();
+                        var i = 0;
+                        for (i = 0; i < desc.length; i++) {
+                            desc[i]._children = desc[i].children;
+                            desc[i].children = null;
+                            desc[i].selected = 0;
+                        }
+                        update(root);
+
+                    });
                     document.getElementById('shiny').contentWindow.location.reload();
                 });
                 $('#loader-summary').hide();
