@@ -1,4 +1,7 @@
 server <- function(input, output, session){
+  
+  df_region <- reactiveValues(df=df_orig, dfsp=dfsp, tags=tag_list, use_tags=T)
+  
   # This observe statement changes the options provided to the user in the "Members" dropdown menu based on what they have selected from the "Category" dropdown menu
   observe(priority = 1, {
     # Retrieve the selected category
@@ -9,8 +12,8 @@ server <- function(input, output, session){
     # Change the member choices based on the category selection
     if (cat == "Custom Tags") {
       updateSelectInput(session, "member",
-                        choices = tag_list,
-                        selected = tag_list[[1]]
+                        choices = df_region$tags,
+                        selected = df_region$tags[1]
                         #selected = head(colnames(df_region$dfsp)[tag_columns], 1)
       )
     } 
@@ -25,7 +28,6 @@ server <- function(input, output, session){
   })
   
   # This is the observer that keeps track of the url and grabs any municipality information being transmitted through it for use down the line - it then filters the data into 
-  df_region <- reactiveValues(df=df_orig, dfsp=dfsp)
   observe({
     query <- parseQueryString(session$clientData$url_search)
     print(query['municipality'][[1]])
@@ -41,14 +43,21 @@ server <- function(input, output, session){
       maxy = max(coord[c(2,4)])
       df_region$df = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
     }
+    # These lines of code update the two variables that determine the choices users are given in the dropdown menus so if they narrow their selection, they aren't given options that correspond to empty data
     df_region$dfsp = dfsp[which(dfsp[,"species"] %in% df_region$df[,"species"]),]
+    removal_tags = c()
+    for (i in 1:length(tag_list)) {
+      if (!(T %in% unique(df_region$dfsp[,tag_list[[i]]]))) {removal_tags = c(removal_tags,i)}
+    }
+    if (length(removal_tags) != 0) {df_region$tags = df_region$tags[-removal_tags]}
+    if (length(df_region$tags) == 0) {df_region$use_tags = F} else {df_region$use_tags = T}
   })
   
   # df1 changes only with "category" and adds columns that gives member values for each category that could be chosen
   df1 = reactive({
     # This first line essentially prevents this from running until the "member" input has been registered, to prevent error messages resulting from putting the cart before the horse - the second line prevents a strange bug  where when "Custom Tags" is selected for category, member does not update from where it was previously right away, resulting in error messages
     if (is.null(input$member)) {return()}
-    if (input$category=="Custom Tags" & !any(input$member %in% tag_list)) {return()}
+    if (input$category=="Custom Tags" & !any(input$member %in% df_region$tags)) {return()}
     df1 = df_region$df
     # This if branch applies specifically for Custom Tags, since they work differently
     if (input$category == "Custom Tags") {
