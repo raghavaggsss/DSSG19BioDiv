@@ -444,7 +444,7 @@ function showSummary(mun_id, bbox) {
                             region += ",";
                         }
                         console.log(region);
-                        document.getElementById('shiny').src = "http://127.0.0.1:7125/?region=" + mun_id;
+                        document.getElementById('shiny').src = "http://127.0.0.1:7125/?region=" + region;
                     }
                     document.getElementById('shiny').contentWindow.location.reload();
                 });
