@@ -34,7 +34,7 @@ server <- function(input, output, session){
       df_region$df = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
     }
     if (!is.null(query['region'][[1]])) {
-      coord = as.double(strsplit(query['region'][[1]], ","))
+      coord = as.double(strsplit(query['region'][[1]], ",")[[1]])
       minx = min(coord[c(1,3)])
       maxx = max(coord[c(1,3)])
       miny = min(coord[c(2,4)])
