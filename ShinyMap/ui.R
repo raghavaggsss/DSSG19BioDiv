@@ -7,7 +7,7 @@ ui <- fluidPage(
                   min = 1800,
                   max = 2019,
                   step = 1,
-                  value = c(1800,2019),
+                  value = c(1980,2018),
                   sep = ""),
       selectInput(inputId = "category", 
                   label = "Choose a Category:", 
@@ -21,7 +21,7 @@ ui <- fluidPage(
                   multiple = T),
       radioButtons(inputId = "counts",
                    label = "Normalization Options",
-                   choices = c("Raw Counts", "Total Species Observations per Year"))),
+                   choices = c("Raw Counts", "Proportion of Total Observations"))),
     
 
     mainPanel(
