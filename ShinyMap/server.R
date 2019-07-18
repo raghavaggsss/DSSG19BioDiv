@@ -39,7 +39,7 @@ server <- function(input, output, session){
       maxx = max(coord[c(1,3)])
       miny = min(coord[c(2,4)])
       maxy = max(coord[c(2,4)])
-      df_region = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
+      df_region$df = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
     }
   })
   
