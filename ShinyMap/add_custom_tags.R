@@ -14,6 +14,8 @@ IUCN <- read.csv("~/Desktop/datasets/IUCN_redlist.csv",
 
 # read in the specific species info data frame 
 species_info <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F, na.strings = c("", " "))
+
+species_info <- species_info %>% rename(bc_list = BC.List, regional_dist = Regional.Dist, habitat_subtype = Habitat.Subtype)
  
 # note: 
 # it is of interest to know when each species was added to IUCN, BC red list, SARA etc.
@@ -172,6 +174,10 @@ species_info$pollinator <- pollinator
 species_info <- species_info %>% rename(pollinator_binary = pollinator)
 
 
-write.csv(species_info, file = "Taxonomy_Freq.csv")
+# create a binary vector for SARA listed species 
+# 1 = species is SARA listed, 0 = species is not on the SARA list 
+sara <- c()
+
+write.csv(species_info, file = "Taxonomy_Freq.csv", row.names = FALSE)
 
 
