@@ -8,9 +8,12 @@ df_orig <- readRDS("gbif_summary.rds")
 
 # Record which columns in dfsp should be treated as taxonomies and which should be treated as custom tags
 tax_columns = which(colnames(dfsp) %in% c("kingdom","phylum","order","class","family","genus","species"))
+tax_list = colnames(dfsp)[tax_columns]
+names(tax_list) = str_to_title(tax_list)
 tag_columns = grep("*_binary", colnames(dfsp))
 tag_list = colnames(dfsp)[tag_columns]
 names(tag_list) = sub("*_binary", "", colnames(dfsp)[tag_columns])
+names(tag_list) = sub("_", " ", names(tag_list))
 
 # create a dataframe containing total num of observations for each year 
 yearly_obs <- group_by(df_orig, year) %>% tally() %>% drop_na()
