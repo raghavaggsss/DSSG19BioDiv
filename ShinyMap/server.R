@@ -28,9 +28,18 @@ server <- function(input, output, session){
   df_region <- reactiveValues(df=df_orig)
   observe({
     query <- parseQueryString(session$clientData$url_search)
-    #print(query['municipality'][[1]])
+    print(query['municipality'][[1]])
+    print(query['region'][[1]])
     if (!is.null(query['municipality'][[1]])) {
       df_region$df = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
+    }
+    if (!is.null(query['region'][[1]])) {
+      coord = as.double(strsplit(query['region'][[1]], ","))
+      minx = min(coord[c(1,3)])
+      maxx = max(coord[c(1,3)])
+      miny = min(coord[c(2,4)])
+      maxy = max(coord[c(2,4)])
+      df_region = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
     }
   })
   
