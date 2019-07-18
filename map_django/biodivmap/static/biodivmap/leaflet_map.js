@@ -434,7 +434,18 @@ function showSummary(mun_id, bbox) {
                     bar_chart_occurrence_ref.redefine("data", summary_json);
                     bar_chart_species_ref.redefine("data", summary_json);
                     sunburst_ref.redefine("data", summary_json);
-                    document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
+                    if (mun_id) {
+                        document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
+                    }
+                    else {
+                        var region = "";
+                        for (i=0; i <4; i++) {
+                            region += bbox[i].toString();
+                            region += ",";
+                        }
+                        console.log(region);
+                        document.getElementById('shiny').src = "http://127.0.0.1:7125/?region=" + mun_id;
+                    }
                     document.getElementById('shiny').contentWindow.location.reload();
                 });
                 $('#loader-summary').hide();

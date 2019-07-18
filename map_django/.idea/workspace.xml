@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b56d32e5-0fc2-46dc-82ba-9013332c91ea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_sunburst.json" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_sunburst.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,11 +42,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="429" column="18" selection-start-line="429" selection-start-column="18" selection-end-line="429" selection-end-column="18" />
+            <state relative-caret-position="150">
+              <caret line="442" column="28" selection-start-line="442" selection-start-column="28" selection-end-line="442" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#6#0" expanded="true" />
+                <element signature="e#88#94#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,15 +67,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="172">
               <caret line="120" column="46" selection-start-line="120" selection-start-column="38" selection-end-line="120" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_sunburst.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="424" selection-start-column="424" selection-end-column="424" />
             </state>
           </provider>
         </entry>
@@ -125,7 +121,6 @@
       <find>showsumm</find>
       <find>shows</find>
       <find>df_obs_m</find>
-      <find>bbox</find>
       <find>plot</find>
       <find>graphs</find>
       <find>df_map</find>
@@ -148,8 +143,9 @@
       <find>steel</find>
       <find>ordinal</find>
       <find>color</find>
-      <find>taxLevel</find>
       <find>tax</find>
+      <find>taxLevel</find>
+      <find>bbox</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -176,15 +172,15 @@
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/zoomable-sunburst.js" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css" />
-        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js" />
         <option value="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" />
         <option value="$PROJECT_DIR$/biodivmap/views.py" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="331" />
     <option name="y" value="59" />
     <option name="width" value="1211" />
@@ -322,10 +318,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57243000" />
+    <option name="totallyTimeSpent" value="57522000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="331" y="59" width="1211" height="849" extended-state="1" />
+    <frame x="331" y="59" width="1211" height="849" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19589393" />
@@ -511,13 +507,6 @@
     <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="429" column="18" selection-start-line="429" selection-start-column="18" selection-end-line="429" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -547,6 +536,13 @@
         <state relative-caret-position="-140" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_sunburst.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="424" selection-start-column="424" selection-end-column="424" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -554,10 +550,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_sunburst.json">
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="424" selection-start-column="424" selection-end-column="424" />
+        <state relative-caret-position="150">
+          <caret line="442" column="28" selection-start-line="442" selection-start-column="28" selection-end-line="442" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#88#94#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
