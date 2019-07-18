@@ -115,7 +115,7 @@ function down(svg, d) {
 
   // Color the bars as parents; they will fade to children if appropriate.
   enter.selectAll("rect")
-      .attr("fill", d=> color(d.data.taxLevel))
+      .attr("fill", d=> color(d.parent.data.taxLevel))
       .attr("fill-opacity", 1)
     .transition(transition2)
       .attr("fill", d => color(d.data.taxLevel))
