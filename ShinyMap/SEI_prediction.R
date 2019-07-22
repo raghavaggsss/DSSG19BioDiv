@@ -1,0 +1,8 @@
+library(rgdal)
+library(spdplyr)
+sei <- readOGR(dsn = "/Users/raghav/Desktop/DSSG19BioDiv/ShinyMap/MVSEI2014/",
+               layer = "MVSEI2014")
+
+sei <- spTransform(sei, CRS("+proj=longlat +datum=WGS84"))
+
+View(sei)
