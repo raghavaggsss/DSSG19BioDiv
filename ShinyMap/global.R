@@ -18,7 +18,6 @@ names(tag_list) = sub("_", " ", names(tag_list))
 # create a dataframe containing total num of observations for each year 
 yearly_obs <- group_by(df_orig, year) %>% tally() %>% drop_na()
 
-
 ##~~ FUNCTIONS ~~##
 # Function for adding 0-value rows to aggregate tally dataframes to fill out the years between the first and last years
 # Note: "data" must have exactly columns "member", "year", and "n"
