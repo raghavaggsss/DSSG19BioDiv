@@ -135,17 +135,18 @@ server <- function(input, output, session){
   
   
   output$plot1 = renderPlot({
-    
     if (is.null(df3())) {return()}
     
     # Based on the radio button clicked, uses different y aesthetics and labels
     if (input$counts == "Proportion of Total Observations") {
       aesthetic = aes(x = year, y = normalized, color = member)
       yl = "Proportion of Total Observations"
+      obsr_seq = 0:(df3()$normalized[1]*2)
     }
     else {
       aesthetic = aes(x = year, y = n, color = member)
       yl = "Number of Reported Observations"
+      obsr_seq = 0:(df3()$n[1]+1)
     }
     
     if(nrow(df3()) > 1) {
@@ -162,16 +163,15 @@ server <- function(input, output, session){
               axis.title.y = element_text(face = "bold", size = 14),
               axis.text = element_text(face = "bold", size = 14),
               legend.title = element_text(face = "bold", size = 12),
-              legend.text = element_text(size = 12))
-      } 
+              legend.text = element_text(size = 12))+
+        expand_limits(y = 0)
       
-    else {
+    }else {
       year_seq = (df3()$year-1):(df3()$year+1)
-      obsr_seq = 0:(df3()$n+1)
       ggplot(df3(), aesthetic) + 
         geom_point() + 
-        scale_x_continuous(breaks = year_seq, limits = year_seq) +
-        scale_y_continuous(breaks = obsr_seq, limits = obsr_seq) +
+        scale_x_continuous(breaks = year_seq) +
+        scale_y_continuous(breaks = obsr_seq) +
         coord_cartesian(xlim = year_seq, ylim = obsr_seq) +
         labs(title = "Reported Species Occurence Over Time",
              x = "Year",

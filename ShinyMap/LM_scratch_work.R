@@ -23,7 +23,8 @@ ggplot(b, aes(x = Var1, y = normalized, group = 1))+
   theme(plot.title = element_text(face = "bold", size = 20),
         axis.title.x = element_text(face = "bold", size = 14),
         axis.title.y = element_text(face = "bold", size = 14),
-        axis.text = element_text(face = "bold", size = 14))
+        axis.text = element_text(face = "bold", size = 14))+
+  expand_limits(y = 0)
 
 
 

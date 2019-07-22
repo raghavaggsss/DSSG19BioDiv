@@ -13,7 +13,9 @@ IUCN <- read.csv("~/Desktop/datasets/IUCN_redlist.csv",
                  na.strings = c("", " "))
 
 # read in the specific species info data frame 
-species_info <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F, na.strings = c("", " "))
+species_info <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
+
+species_info <- species_info %>% rename(bc_list = BC.List, regional_dist = Regional.Dist, habitat_subtype = Habitat.Subtype)
  
 # note: 
 # it is of interest to know when each species was added to IUCN, BC red list, SARA etc.
@@ -26,23 +28,25 @@ species_info <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F, na.strings =
 # create a binary vector for IUCN red list species 
 # 1 = entry is a string (ie is on IUCN) , 0 = entry is NA (ie not on redlist)
 IUCN_binary <- c()
-for (i in species_info$IUCN_binary){
+for (i in species_info$redList){
   if(is.na(i)){
-    IUCN_redList_binary <- c(IUCN_redList_binary, 0)
+    IUCN_binary <- c(IUCN_binary, 0)
   }else {
-    IUCN_redList_binary <- c(IUCN_redList_binary, 1)
+    IUCN_binary <- c(IUCN_binary, 1)
   }
 }
 
 # add the binary vector to the species_info dataframe 
-species_info$IUCN_binary <- IUCN_redList_binary
+species_info$IUCN_binary <- IUCN_binary
 
 
 # create a binary vector for BC red listed species 
 # 1 = entry is a string "red" , 0 = entry is anything that is not string "red"
 bc_red_binary <- c()
-for (i in species_info$BC.List){
-  if(i == "Red"){
+for (i in species_info$bc_list){
+  if(is.na(i)){
+    bc_red_binary <- c(bc_red_binary, 0)
+  }else if(i == "Red"){
     bc_red_binary <- c(bc_red_binary, 1)
   }else {
     bc_red_binary <- c(bc_red_binary, 0)
@@ -56,9 +60,13 @@ species_info$bc_red_binary <- bc_red_binary
 # create a binary vector for BC blue listed species 
 # 1 = entry is a string "Blue" , 0 = entry is anything that is not string "Blue"
 bc_blue_binary <- c()
-for (i in species_info$BC.List){
-  if(i == "Blue"){
+for (i in species_info$bc_list){
+  if(is.na(i)){
+    bc_blue_binary <- c(bc_blue_binary, 0)
+    
+  }else if(i == "Blue"){
     bc_blue_binary <- c(bc_blue_binary, 1)
+    
   }else {
     bc_blue_binary <- c(bc_blue_binary, 0)
   }
@@ -73,8 +81,12 @@ species_info$bc_blue_binary <- bc_blue_binary
 # 1 = entry is a string "Y" , 0 = entry is anything that is not string "Y"
 bc_endemic_binary <- c()
 for (i in species_info$Endemic){
-  if(i == "Y"){
+  if(is.na(i)){
+    bc_endemic_binary <- c(bc_endemic_binary, 0)
+    
+  }else if(i == "Y"){
     bc_endemic_binary <- c(bc_endemic_binary, 1)
+    
   }else {
     bc_endemic_binary <- c(bc_endemic_binary, 0)
   }
@@ -156,22 +168,75 @@ pollinators <- species_info %>%
 
 # create a binary vector for pollinator species 
 # 1 = species is in the pollinator list above , 0 = species is not found in the pollinator list
-pollinator <- c()
+pollinator_binary <- c()
 for (i in species_info$simplified_names){
   if(i %in% pollinators$simplified_names){
-    pollinator <- c(pollinator, 1)
+    pollinator_binary <- c(pollinator_binary, 1)
   }else {
-    pollinator <- c(pollinator, 0)
+    pollinator_binary <- c(pollinator_binary, 0)
   }
 }
 
 # add the pollinator binary vector to the species_info dataframe 
-species_info$pollinator <- pollinator
+species_info$pollinator_binary <- pollinator_binary
 
 # rename the pollinator column to pollinator_binary
-species_info <- species_info %>% rename(pollinator_binary = pollinator)
+#species_info <- species_info %>% rename(pollinator_binary = pollinator)
 
 
-write.csv(species_info, file = "Taxonomy_Freq.csv")
+# create a binary vector for SARA listed species 
+# 1 = species is SARA listed, 0 = species is not on the SARA list 
+sara_binary <- c()
+for (i in species_info$SARA){
+  if(is.na(i)){
+    sara_binary <- c(sara_binary, 0)
+  }else {
+    sara_binary <- c(sara_binary, 1)
+  }
+}
+# add the SARA binary vector to the species_info dataframe 
+species_info$sara_binary <- sara_binary
+
+
+
+# Turn the SARA designations into a human readable vector 
+
+sara_designations <- c()
+for(i in species_info$SARA){
+  if(is.na(i)){
+    sara_designations <- c(sara_designations, "Not Listed")
+    
+  } else if(length(grep("XX", i))> 0){
+    sara_designations <- c(sara_designations, "Extinct")
+    
+  }else if(length(grep("XT", i))> 0){
+    sara_designations <- c(sara_designations, "Extirpated")
+    
+  }else if(length(grep("E", i))> 0){
+    sara_designations <- c(sara_designations, "Endangered")
+    
+  }else if(length(grep("T", i))> 0){
+    sara_designations <- c(sara_designations, "Threatened")
+    
+  }else if(length(grep("SC", i))> 0){
+    sara_designations <- c(sara_designations, "Special Concern")
+    
+  }else if(length(grep("NAR", i))> 0){
+    sara_designations <- c(sara_designations, "Not At Risk")
+    
+  }else if(length(grep("DD", i))> 0){
+    sara_designations <- c(sara_designations, "Data Deficient")
+    
+  }else
+    sara_designations <- c(sara_designations, "Not Listed")
+}
+
+# add the sara designations vector to the species_info dataframe 
+species_info$sara_designations <- sara_designations
+
+
+
+
+write.csv(species_info, file = "Taxonomy_Freq.csv", row.names = FALSE)
 
 
