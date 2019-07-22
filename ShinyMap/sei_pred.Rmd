@@ -1,0 +1,18 @@
+```{r}
+library(rgdal)
+library(spdplyr)
+sei <- readOGR(dsn = "/Users/raghav/Desktop/DSSG19BioDiv/ShinyMap/MVSEI2014/",
+               layer = "MVSEI2014")
+
+sei <- spTransform(sei, CRS("+proj=longlat +datum=WGS84"))
+
+```
+
+```{r}
+sei
+
+obs_dat = read.csv("gbif_map.csv", stringsAsFactors = F)
+obs_dat = obs_dat[,c(9:10,17)]
+
+```
+
