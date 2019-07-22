@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Geopandas to GeoJson-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Geopandas to GeoJson.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,29 +32,72 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="387" column="62" selection-start-line="387" selection-start-column="62" selection-end-line="387" selection-end-column="62" />
+            <state relative-caret-position="6975">
+              <caret line="465" column="10" selection-start-line="465" selection-start-column="10" selection-end-line="465" selection-end-column="10" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#svg#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#svg#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#15047#15128#0" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="433" column="69" selection-start-line="433" selection-start-column="69" selection-end-line="433" selection-end-column="69" />
+              <folding>
+                <element signature="e#0#6#0" expanded="true" />
+                <element signature="e#88#94#1" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1710">
+              <caret line="114" selection-start-line="114" selection-end-line="114" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="122" column="90" selection-start-line="122" selection-start-column="82" selection-end-line="122" selection-end-column="90" />
+            <state relative-caret-position="334">
+              <caret line="128" column="90" selection-start-line="128" selection-start-column="82" selection-end-line="128" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="117" column="52" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -66,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
+            <state relative-caret-position="945">
+              <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -96,39 +135,40 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>define</find>
-      <find>chart</find>
-      <find>Inspec</find>
-      <find>class</find>
-      <find>observa</find>
-      <find>bar</find>
-      <find>color</find>
-      <find>margin</find>
-      <find>xAxis</find>
-      <find>.define(&quot;bar</find>
-      <find>stagger</find>
-      <find>define1</find>
-      <find>parti</find>
-      <find>font</find>
-      <find>w</find>
       <find>width</find>
-      <find>size</find>
       <find>d3.hi</find>
       <find>sunbur</find>
       <find>json</find>
       <find>overflow</find>
-      <find>rect</find>
       <find>up</find>
       <find>=&gt;</find>
-      <find>value</find>
       <find>down</find>
       <find>button</find>
       <find>cons</find>
       <find>leaflet_map.js</find>
       <find>bounds</find>
+      <find>rds</find>
+      <find>$</find>
+      <find>sort</find>
+      <find>value</find>
+      <find>blue</find>
+      <find>steelblue</find>
+      <find>steel</find>
+      <find>cp;</find>
+      <find>data</find>
+      <find>d.data</find>
+      <find>taxlevel</find>
+      <find>taxLe</find>
+      <find>rect</find>
+      <find>taxLeve</find>
+      <find>sunburst</find>
+      <find>size</find>
+      <find>sunbu</find>
+      <find>color</find>
     </findStrings>
     <replaceStrings>
       <replace>TextField</replace>
+      <replace>d.size</replace>
       <replace>size</replace>
     </replaceStrings>
   </component>
@@ -167,22 +207,24 @@
         <option value="$PROJECT_DIR$/map_django/biodivmap/templates/taxontree/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/models.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/urls.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/untitled.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar_chart.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css" />
-        <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/sunburst.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/zoomable-sunburst.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" />
-        <option value="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" />
+        <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/sunburst.js" />
+        <option value="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" />
+        <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" />
+        <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="588" />
-    <option name="y" value="86" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="167" />
+    <option name="y" value="50" />
     <option name="width" value="1142" />
     <option name="height" value="834" />
   </component>
@@ -199,6 +241,51 @@
             <path>
               <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name=".ipynb_checkpoints" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="bar_chart" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
+              <item name="python_helpers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -218,15 +305,15 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/map_django/biodivmap" />
+      <recent name="$PROJECT_DIR$/map_django" />
+      <recent name="$PROJECT_DIR$/leaflet" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart" />
       <recent name="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/leaflet" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/map_django/biodivmap" />
-      <recent name="$PROJECT_DIR$/map_django" />
       <recent name="$PROJECT_DIR$/leaflet" />
     </key>
   </component>
@@ -276,10 +363,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184746000" />
+    <option name="totallyTimeSpent" value="193102000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="588" y="86" width="1142" height="834" extended-state="1" />
+    <frame x="167" y="50" width="1142" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20181818" />
@@ -394,7 +481,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="remove separate button for loading image; marker onclick instead" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/2000/Animalia/Chordata/Aves/Apodiformes/points.geojson" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/2016/Plantae/points.geojson" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/2018/Plantae/points.geojson" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/1982/Plantae/points.geojson" />
@@ -491,13 +577,6 @@
     <entry file="file://$PROJECT_DIR$/python_helpers/geojson_helpers.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/treedata.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-505654" />
@@ -516,21 +595,7 @@
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/view_hist/@raghavaggsss/hierarchical-bar-chart.js" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/view_hist/index.html" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar_chart.js" />
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/inspector.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17198" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/index.html" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/Municipalities_unsplit.geojson">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7860">
@@ -554,32 +619,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/sunburst.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/taxontree.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="254" column="73" selection-start-line="254" selection-start-column="73" selection-end-line="254" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/zoomable-sunburst.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -588,29 +629,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
+    <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="387" column="62" selection-start-line="387" selection-start-column="62" selection-end-line="387" selection-end-column="62" />
+        <state relative-caret-position="945">
+          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#svg#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#svg#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/inspector.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="451" selection-start-column="447" selection-end-column="451" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="413" column="25" lean-forward="true" selection-start-line="413" selection-start-column="25" selection-end-line="413" selection-end-column="25" />
+        <state relative-caret-position="134">
+          <caret line="433" column="69" selection-start-line="433" selection-start-column="69" selection-end-line="433" selection-end-column="69" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#88#94#1" expanded="true" />
@@ -620,8 +669,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="122" column="90" selection-start-line="122" selection-start-column="82" selection-end-line="122" selection-end-column="90" />
+        <state relative-caret-position="334">
+          <caret line="128" column="90" selection-start-line="128" selection-start-column="82" selection-end-line="128" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/sunburst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6975">
+          <caret line="465" column="10" selection-start-line="465" selection-start-column="10" selection-end-line="465" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#svg#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#svg#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15047#15128#0" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="117" column="52" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1710">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
         </state>
       </provider>
     </entry>

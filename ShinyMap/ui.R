@@ -7,17 +7,21 @@ ui <- fluidPage(
                   min = 1800,
                   max = 2019,
                   step = 1,
-
-                  value = c(1800,2019),
+                  value = c(1980,2018),
                   sep = ""),
-      selectInput(inputId = "species", 
-                  label = "Species", 
-                  choices = sort(unique(df2$species)),
-                  selected = "Abagrotis baueri",
+      selectInput(inputId = "category", 
+                  label = "Choose a Category:", 
+                  choices = c(tax_list, "Custom Tags"),
+                  selected = "species",
+                  multiple = F),
+      selectInput(inputId = "member", 
+                  label = "Select an Option to Plot", 
+                  choices = sort(dfsp$species),
+                  selected = "Calypte anna",
                   multiple = T),
       radioButtons(inputId = "counts",
                    label = "Normalization Options",
-                   choices = c("Raw Counts", "Total Species Observations per Year"))),
+                   choices = c("Raw Counts", "Proportion of Total Observations"))),
     
 
     mainPanel(
