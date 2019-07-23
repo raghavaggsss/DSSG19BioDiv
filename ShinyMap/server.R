@@ -30,8 +30,8 @@ server <- function(input, output, session){
   # This is the observer that keeps track of the url and grabs any municipality information being transmitted through it for use down the line - it then filters the data into 
   observe({
     query <- parseQueryString(session$clientData$url_search)
-    print(query['municipality'][[1]])
-    print(query['region'][[1]])
+    #print(query['municipality'][[1]])
+    #print(query['region'][[1]])
     if (!is.null(query['municipality'][[1]])) {
       df_region$df = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
     }
@@ -115,38 +115,71 @@ server <- function(input, output, session){
 
   # d3 is the normalized data
   df3 = reactive({
+    # Validate sends a more helpful message and prevents Shiny from trying to create the graph if the user has selected incompatible category and normalization options
+    validate(
+      need(!((input$category %in% c("Custom Tags","kingdom") & input$normalization == "Proportion of Kingdom Observations") | (input$category %in% c("Custom Tags","kingdom", "phylum","class") & input$normalization == "Proportion of Class Observations")),
+      "Please select a different normalization option for this category")
+    )
+    
     if (is.null(df2())) {return()}
     x = NULL
     for (mem in unique(df2()[,"member"])) {
       sdf = df2()[which(df2()[,"member"]==mem),]
       sdf = arrange(sdf, year)
-      y = yearly_obs
-      colnames(y)[2] = "all_obs"
+      y = combined_norm
+      # norm_col is a vector of integers representing the columns that correspond to the appropraite normalizations.
+      # This mean at least "Total", and possible "kingdom" and "class" normalizations based on the category.
+      norm_col = c(1,2)
+      if (!(input$category %in% c("Custom Tags", "kingdom"))) {
+        king_name = unique(dfsp$kingdom[which(dfsp[,input$category]==input$member)])
+        norm_col = c(norm_col, which(colnames(y)==king_name))
+        if (!(input$category %in% c("phylum", "class"))) {
+          class_name = unique(dfsp$class[which(dfsp[,input$category]==input$member)])
+          norm_col = c(norm_col, which(colnames(y)==class_name))
+        }
+      }
+      y = y[,norm_col]
       # Adds a column with the number of observations per year for every year in the dataframe
       sdf = merge(sdf, y, by = "year", all.x = T)
       # Then uses that to find what percentage of the total observations belonged to the given member
-      sdf = sdf %>% mutate(normalized = sdf$n/sdf$all_obs)
+      for (base in colnames(sdf)[4:ncol(sdf)]) {
+        sdf = sdf %>% mutate(sdf$n/sdf[,base])
+        if (base == "Total") {colnames(sdf)[ncol(sdf)] = "Total_norm"}
+        else if (base %in% dfsp$kingdom) {colnames(sdf)[ncol(sdf)] = "Kingdom_norm"}
+        else if (base %in% dfsp$class) {colnames(sdf)[ncol(sdf)] = "Class_norm"}
+      }
       x = rbind(x, sdf)
     }
     # This line is debateable - in order both to ensure a continuous line plot and to prevent Shiny from throwing an error message, the normalized values of NA (years in which there were no observations at all and thus 0/0 = NA) are changed to values of 0
-    if (any(is.na(x$normalized))) {x[which(is.na(x$normalized)),"normalized"] = 0}
+    #if (any(is.na(x[,4:ncol(x)]))) {x[which(is.na(x[,4:ncol(x)])),4:ncol(x)] = 0}
     return(x)
   })
   
   
   output$plot1 = renderPlot({
-    if (is.null(df3())) {return()}
     
+    if (is.null(df3())) {return()}
+
     # Based on the radio button clicked, uses different y aesthetics and labels
-    if (input$counts == "Proportion of Total Observations") {
-      aesthetic = aes(x = year, y = normalized, color = member)
-      yl = "Proportion of Total Observations"
-      obsr_seq = 0:(df3()$normalized[1]*2)
-    }
-    else {
+    if (input$normalization == "Raw Counts") {
       aesthetic = aes(x = year, y = n, color = member)
       yl = "Number of Reported Observations"
       obsr_seq = 0:(df3()$n[1]+1)
+    }
+    else if (input$normalization == "Proportion of Total Observations") {
+      aesthetic = aes(x = year, y = Total_norm, color = member)
+      yl = "Proportion of Total Observations"
+      obsr_seq = 0:(df3()$Total_norm[1]*2)
+    }
+    else if (input$normalization == "Proportion of Kingdom Observations") {
+      aesthetic = aes(x = year, y = Kingdom_norm, color = member)
+      yl = "Proportion of Kingdom Observations"
+      obsr_seq = 0:(df3()$Kingdom_norm[1]*2)
+    }
+    else if (input$normalization == "Proportion of Class Observations") {
+      aesthetic = aes(x = year, y = Class_norm, color = member)
+      yl = "Proportion of Class Observations"
+      obsr_seq = 0:(df3()$Class_norm[1]*2)
     }
     
     if(nrow(df3()) > 1) {
