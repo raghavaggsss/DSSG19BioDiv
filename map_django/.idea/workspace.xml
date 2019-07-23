@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b56d32e5-0fc2-46dc-82ba-9013332c91ea" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShinyMap/predict_SEI.R" beforeDir="false" afterPath="$PROJECT_DIR$/../ShinyMap/predict_SEI.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -318,7 +317,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59365000" />
+    <option name="totallyTimeSpent" value="59582000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="331" y="59" width="1211" height="849" extended-state="0" />

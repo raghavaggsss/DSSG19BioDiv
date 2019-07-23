@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_sunburst.json" afterDir="false" />
-    </list>
+    <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +27,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6975">
+            <state relative-caret-position="6930">
               <caret line="465" column="10" selection-start-line="465" selection-start-column="10" selection-end-line="465" selection-end-column="10" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -46,7 +41,6 @@
                 <element signature="n#style#0;n#svg#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#15047#15128#0" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -56,12 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="433" column="69" selection-start-line="433" selection-start-column="69" selection-end-line="433" selection-end-column="69" />
-              <folding>
-                <element signature="e#0#6#0" expanded="true" />
-                <element signature="e#88#94#1" expanded="true" />
-              </folding>
+            <state relative-caret-position="6285">
+              <caret line="433" column="5" selection-start-line="433" selection-start-column="5" selection-end-line="433" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -69,8 +59,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
-              <caret line="114" selection-start-line="114" selection-end-line="114" />
+            <state relative-caret-position="270">
+              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -78,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
+            <state relative-caret-position="1920">
               <caret line="128" column="90" selection-start-line="128" selection-start-column="82" selection-end-line="128" selection-end-column="90" />
             </state>
           </provider>
@@ -96,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
+            <state relative-caret-position="1755">
               <caret line="117" column="52" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="52" />
             </state>
           </provider>
@@ -105,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
+            <state relative-caret-position="870">
               <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -176,7 +166,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="shiny" />
       </map>
     </option>
   </component>
@@ -234,7 +224,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -291,6 +280,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -344,6 +334,7 @@
       <workItem from="1559846265211" duration="246000" />
       <workItem from="1559851469428" duration="50407000" />
       <workItem from="1562876170838" duration="9432000" />
+      <workItem from="1563901471428" duration="388000" />
     </task>
     <task id="LOCAL-00001" summary="Markers for data points in UBC on the Map. geopandas.to_json() gives double encoding of json. use write insted.">
       <created>1560273308210</created>
@@ -363,13 +354,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193102000" />
+    <option name="totallyTimeSpent" value="193490000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="167" y="50" width="1142" height="834" extended-state="0" />
+    <frame x="334" y="47" width="1142" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20181818" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20545454" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -381,7 +372,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007599" side_tool="true" weight="0.32904148" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924013" visible="true" weight="0.30997303" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924013" weight="0.30862534" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info active="true" anchor="bottom" id="Jupyter" order="11" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.18597998" />
@@ -603,12 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Taxonomy Dataframe.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Taxonomy Freq.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
@@ -629,23 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/inspector.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -653,24 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="451" selection-start-column="447" selection-end-column="451" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="433" column="69" selection-start-line="433" selection-start-column="69" selection-end-line="433" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#6#0" expanded="true" />
-            <element signature="e#88#94#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="128" column="90" selection-start-line="128" selection-start-column="82" selection-end-line="128" selection-end-column="90" />
         </state>
       </provider>
     </entry>
@@ -683,7 +633,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6975">
+        <state relative-caret-position="6930">
           <caret line="465" column="10" selection-start-line="465" selection-start-column="10" selection-end-line="465" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -697,23 +647,59 @@
             <element signature="n#style#0;n#svg#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#15047#15128#0" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6285">
+          <caret line="433" column="5" selection-start-line="433" selection-start-column="5" selection-end-line="433" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1920">
+          <caret line="128" column="90" selection-start-line="128" selection-start-column="82" selection-end-line="128" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
+        <state relative-caret-position="1755">
           <caret line="117" column="52" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="52" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/python_helpers/column_helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Taxonomy Dataframe.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
+        <state relative-caret-position="270">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
         </state>
       </provider>
     </entry>
