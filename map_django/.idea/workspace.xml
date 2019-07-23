@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b56d32e5-0fc2-46dc-82ba-9013332c91ea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MVSEI2014/Data_Dictionary_Appendix_II_Updated_2014.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVSEI2014/MVSEI2014_Metadata.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVSEI2014/SEI Metadata.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShinyMap/.RData" beforeDir="false" afterPath="$PROJECT_DIR$/../ShinyMap/.RData" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShinyMap/.Rhistory" beforeDir="false" afterPath="$PROJECT_DIR$/../ShinyMap/.Rhistory" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShinyMap/predict_SEI.R" beforeDir="false" afterPath="$PROJECT_DIR$/../ShinyMap/predict_SEI.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,21 +45,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="375">
+              <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#88#94#1" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/SEI.geojson">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4479">
-              <caret column="10915" lean-forward="true" selection-start-column="10915" selection-end-column="10915" />
             </state>
           </provider>
         </entry>
@@ -233,6 +221,14 @@
               <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
               <item name="map_django" type="462c0819:PsiDirectoryNode" />
               <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="sei" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -322,7 +318,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59328000" />
+    <option name="totallyTimeSpent" value="59365000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="331" y="59" width="1211" height="849" extended-state="0" />
@@ -530,9 +526,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/treedata_1.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/treedata_1.json" />
     <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/treedata_curr.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -569,8 +563,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="375">
+          <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#88#94#1" expanded="true" />

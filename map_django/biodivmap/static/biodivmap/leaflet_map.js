@@ -54,15 +54,11 @@ var municipality_style = {
     'fillOpacity': 0.5
 };
 
-
-var typeEco = {
+var typeSEI = {
     "ME": "#F012BE",
-    "SE": "#85144b",
+    // "SE": "#85144b",
     "XX": "rgb(39,39,48)",
-    "YS": "#c9c731"
-};
-
-var typeSE = {
+    "YS": "#c9c731",
     "OF": "#2ECC40",
     "MF": "#3D9970",
     "WD": "#653f2e",
@@ -105,13 +101,17 @@ var baseLayers = {
     "Streets": streetsBaseMap
 };
 
-sei_layer = L.geoJson(false, {
+sei_control_group = L.control.layers();
+sei_layers ={};
+
+function init_sei_layer(sei_type) {
+    curr_sei_layer = L.geoJson(false, {
         style: function (feature) {
             sstyle = remove_highlight;
             if (feature.properties.SE_ME_1 != "SE") {
-                sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+                sstyle.fillColor = typeSEI[feature.properties.SE_ME_1];
             } else {
-                sstyle.fillColor = typeSE[feature.properties.SECl_1];
+                sstyle.fillColor = typeSEI[feature.properties.SECl_1];
             }
 
             return sstyle;
@@ -137,9 +137,9 @@ sei_layer = L.geoJson(false, {
                 if (layer.selected) {
                     sstyle = remove_highlight;
                     if (feature.properties.SE_ME_1 != "SE") {
-                        sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+                        sstyle.fillColor = typeSEI[feature.properties.SE_ME_1];
                     } else {
-                        sstyle.fillColor = typeSE[feature.properties.SECl_1];
+                        sstyle.fillColor = typeSEI[feature.properties.SECl_1];
                     }
                     layer.setStyle(sstyle);
                     layer.selected = 0;
@@ -159,6 +159,15 @@ sei_layer = L.geoJson(false, {
             })
         }
     });
+    sei_control_group.addOverlay(curr_sei_layer, sei_type);
+    sei_layers[sei_type] = curr_sei_layer;
+}
+
+Object.keys(typeSEI).forEach(function(sei_key){
+        init_sei_layer(sei_key);
+    });
+
+
 
 mun_layer = L.geoJson(false, {
         onEachFeature: function (feature, layer) {
@@ -174,9 +183,7 @@ mun_layer = L.geoJson(false, {
     });
 
 
-var overlays = {Municipalities: mun_layer, SEI: sei_layer};
-var num_overlays = 2;
-
+var overlays = {Municipalities: mun_layer};
 var map = L.map('map', {
     center: [49.263710, -123.259378],
     zoom: 10,
@@ -192,14 +199,21 @@ var curr_rectangle = L.rectangle([[49.29127137605795, -123.12775596997044], [49.
 
 L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
 
+sei_control_group.addTo(map);
+
 grayScaleBaseMap.addTo(map);
 
 map.on('overlayadd', function(l) {
     if (l.layer == mun_layer) {
         json_path = "Municipalities.geojson";
     }
-    else if (l.layer == sei_layer) {
-        json_path = "SEI.geojson";
+    else {
+        Object.keys(sei_layers).forEach(function (sei_layer_name) {
+            if (l.layer == sei_layers[sei_layer_name]) {
+                json_path = "sei/" + sei_layer_name + ".geojson";
+            }
+        });
+
     }
 
     if (l.layer.toGeoJSON().features.length == 0) {
