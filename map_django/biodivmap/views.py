@@ -14,11 +14,17 @@ import geopandas as gpd
 taxLevel = ['kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'end']
 df_map = pd.read_pickle("biodivmap/gbif_map.pkl")
 df_map = df_map.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
+
 geometry = [Point(xy) for xy in zip(df_map['decimalLongitude'], df_map['decimalLatitude'])]
-geo_df = gpd.GeoDataFrame(df_map, geometry=geometry, crs={'init': 'epsg:4326'})
-spatial_index = geo_df.sindex
+geo_df_map = gpd.GeoDataFrame(df_map, geometry=geometry, crs={'init': 'epsg:4326'})
+spatial_index_map = geo_df_map.sindex
 
 df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
+
+geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
+geo_df_obs = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
+spatial_index_obs = geo_df_obs.sindex
+
 df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
 
 def generate_taxon_hierarchy(df, taxLevelIndex, prevIndex):
@@ -116,8 +122,8 @@ def ajax_species(request):
             coords = taxons_regions["polygon"]["geometry"]["coordinates"][0]
             poly = Polygon(coords)
 
-            possible_matches_index = list(spatial_index.intersection(poly.bounds))
-            possible_matches = geo_df.iloc[possible_matches_index]
+            possible_matches_index = list(spatial_index_map.intersection(poly.bounds))
+            possible_matches = geo_df_map.iloc[possible_matches_index]
             df_region = possible_matches[possible_matches.intersects(poly)]
             # df_region = df_region.drop(["geometry"], 1)
 
@@ -209,8 +215,8 @@ def summary_polygon(request):
             coords = polygon_json["geometry"]["coordinates"][0]
             poly = Polygon(coords)
 
-            possible_matches_index = list(spatial_index.intersection(poly.bounds))
-            possible_matches = geo_df.iloc[possible_matches_index]
+            possible_matches_index = list(spatial_index_obs.intersection(poly.bounds))
+            possible_matches = geo_df_obs.iloc[possible_matches_index]
             df_obs_region = possible_matches[possible_matches.intersects(poly)]
 
             df_taxon_region = df_taxon[df_taxon["species"].isin(df_obs_region['species'])]
