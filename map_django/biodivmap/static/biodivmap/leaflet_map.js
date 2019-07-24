@@ -220,11 +220,17 @@ map.addControl(new L.Control.Draw({
     }
 }));
 
+var curr_shape;
+
 map.on(L.Draw.Event.CREATED, function (event) {
     var layer = event.layer;
 
     drawnItems.addLayer(layer);
+    curr_shape = layer.toGeoJSON();
+    summarisePolygon();
 });
+
+drawnItems.on('click', function(feature) { console.log(feature); });
 
 map.on('overlayadd', function(l) {
     if (l.layer == mun_layer) {
@@ -415,7 +421,7 @@ function plotSpecies() {
             taxons_selected[init_desc[i].data.name] = {"index": init_desc[i].data.index, "taxLevel": init_desc[i].data.taxLevel};
         }
     }
-    var region_taxons = {"taxons": taxons_selected, "bbox": bounds_array};
+    var region_taxons = {"taxons": taxons_selected, "polygon": curr_shape};
 
     $.ajax({
             processData: false,
@@ -450,6 +456,59 @@ function plotSpecies() {
             }});
 
 }
+
+function summarisePolygon(){
+    $.ajax({
+            processData: false,
+            type: 'POST',
+            url: 'summarypolygon/',
+            data: JSON.stringify(curr_shape),
+            // data: {species_selected: $(".select2-species").select2('data')},
+            contentType: false,  // add this to indicate 'multipart/form-data'
+            success: function (data) {
+                $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
+                    // createSunburst(summary_json);
+                    bar_chart_occurrence_ref.redefine("data", summary_json);
+                    bar_chart_species_ref.redefine("data", summary_json);
+                    sunburst_ref.redefine("data", summary_json);
+                    // if (mun_id) {
+                    //     document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
+                    // }
+                    // else {
+                    //     var region = "";
+                    //     for (i=0; i <4; i++) {
+                    //         region += bbox[i].toString();
+                    //         region += ",";
+                    //     }
+                    //     console.log(region);
+                    //     document.getElementById('shiny').src = "http://127.0.0.1:4609/?region=" + region;
+                    // }
+                    d3.json(static_path + "treedata_curr.json").then(function (flare) {
+                        root = d3.hierarchy(flare);
+                        root.x0 = 0;
+                        root.y0 = 0;
+                        // open the tree collapsed
+                        desc = root.descendants();
+                        init_desc = root.descendants();
+                        var i = 0;
+                        for (i = 0; i < desc.length; i++) {
+                            desc[i]._children = desc[i].children;
+                            desc[i].children = null;
+                            desc[i].selected = 0;
+                        }
+                        update(root);
+
+                    });
+                    // document.getElementById('shiny').contentWindow.location.reload();
+                });
+                // $('#loader-summary').hide();
+            },
+            error: function(data) {
+                alert('summary failed');
+                // $('#loader-summary').hide();
+            }});
+}
+
 
 function showSummary(mun_id, bbox) {
     $('#loader-summary').show();
