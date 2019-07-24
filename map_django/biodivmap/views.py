@@ -8,12 +8,16 @@ from .models import SpeciesYear
 
 import json
 import pandas as pd
-from shapely.geometry import Point
+from shapely.geometry import Point, Polygon
 import geopandas as gpd
 
 taxLevel = ['kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'end']
 df_map = pd.read_pickle("biodivmap/gbif_map.pkl")
 df_map = df_map.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
+geometry = [Point(xy) for xy in zip(df_map['decimalLongitude'], df_map['decimalLatitude'])]
+geo_df = gpd.GeoDataFrame(df_map, geometry=geometry, crs={'init': 'epsg:4326'})
+spatial_index = geo_df.sindex
+
 df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
 df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
 
@@ -126,55 +130,110 @@ def ajax_species(request):
             print(taxons_regions)
             if not bool(taxons_regions["taxons"]):
                 return JsonResponse("no selection", safe=False)
-            bbox = taxons_regions["bbox"]
-            min_x = min([bbox[0], bbox[2]])
-            max_x = max([bbox[0], bbox[2]])
-            min_y = min([bbox[1], bbox[3]])
-            max_y = max([bbox[1], bbox[3]])
-            df_region = df_map[(df_map["decimalLatitude"] > min_y) & (df_map["decimalLongitude"] > min_x) &
-                                       (df_map["decimalLatitude"] < max_y) & (df_map["decimalLongitude"] < max_x)]
-            df_out = pd.DataFrame(columns=df_region.columns)
+            # bbox = taxons_regions["bbox"]
+            # min_x = min([bbox[0], bbox[2]])
+            # max_x = max([bbox[0], bbox[2]])
+            # min_y = min([bbox[1], bbox[3]])
+            # max_y = max([bbox[1], bbox[3]])
+            coords = taxons_regions["polygon"]["geometry"]["coordinates"][0]
+            poly = Polygon(coords)
+
+            possible_matches_index = list(spatial_index.intersection(poly.bounds))
+            possible_matches = geo_df.iloc[possible_matches_index]
+            df_region = possible_matches[possible_matches.intersects(poly)]
+            # df_region = df_region.drop(["geometry"], 1)
+
+            # df_region = df_map[(df_map["decimalLatitude"] > min_y) & (df_map["decimalLongitude"] > min_x) &
+            #                            (df_map["decimalLatitude"] < max_y) & (df_map["decimalLongitude"] < max_x)]
+
+            df_out = gpd.GeoDataFrame(columns=df_region.columns)
             for taxon_name, info_dict in taxons_regions["taxons"].items():
                 if df_region[df_region[info_dict["taxLevel"]] == taxon_name].shape[0] > 0:
-                    df_out = df_out.merge(df_region[df_region[info_dict["taxLevel"]] == taxon_name], how="outer")
+                    df_out = df_out.append(df_region[df_region[info_dict["taxLevel"]] == taxon_name])
 
-            geometry = [Point(xy) for xy in zip(df_out['decimalLongitude'], df_out['decimalLatitude'])]
-            # fix coordinate system
-            geo_df = gpd.GeoDataFrame(df_out, geometry=geometry, crs={'init': 'epsg:4326'})
-            geo_df = geo_df.drop(["decimalLongitude", "decimalLatitude", 'kingdom', 'phylum', 'class',
+            # geometry = [Point(xy) for xy in zip(df_out['decimalLongitude'], df_out['decimalLatitude'])]
+            # # fix coordinate system
+            # geo_df = gpd.GeoDataFrame(df_out, geometry=geometry, crs={'init': 'epsg:4326'})
+            df_out = df_out.drop(["decimalLongitude", "decimalLatitude", 'kingdom', 'phylum', 'class',
                         'order', 'family', 'genus'], 1)
-            if geo_df.shape[0] > 0:
-                geo_df.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
+            if df_out.shape[0] > 0:
+                df_out.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
                 return JsonResponse("success", safe=False)
             else:
                 return JsonResponse("no occurrence", safe=False)
 
     return JsonResponse("success", safe=False)
 
+# @csrf_exempt
+# def show_summary(request):
+#     if request.method == 'POST':
+#         if request.body:
+#             selected_regions = json.loads(request.body)
+#             # assume municipality json created as bar_sunburst.json
+#             #filter dataframe with municipality
+#
+#             if "municipality" in selected_regions.keys():
+#                 df_obs_region = df_obs[df_obs['municipality'] == selected_regions["municipality"]]
+#
+#             else:
+#                 bbox = selected_regions["bbox"]
+#                 min_x = min([bbox[0], bbox[2]])
+#                 max_x = max([bbox[0], bbox[2]])
+#                 min_y = min([bbox[1], bbox[3]])
+#                 max_y = max([bbox[1], bbox[3]])
+#                 df_obs_region = df_obs[(df_obs["decimalLatitude"] > min_y) & (df_obs["decimalLongitude"] > min_x) &
+#                                        (df_obs["decimalLatitude"] < max_y) & (df_obs["decimalLongitude"] < max_x)]
+#
+#                 # bbox_poly = Polygon([(min_x, min_y), (max_x, min_y), (max_x, max_y), (min_x, max_y)])
+#                 # geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
+#                 # geo_df = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
+#                 # df_obs_region = geo_df[geo_df.geometry.within(bbox_poly)]
+#
+#             df_taxon_region = df_taxon[df_taxon["species"].isin(df_obs_region['species'])]
+#             df_taxon_region = df_taxon_region.set_index("species")
+#             # species_gp = df_obs_mun.groupby(["species"])
+#             # for spec, gp_spec in species_gp:
+#             #     df_taxon_mun.loc[df_taxon_mun.loc[df_taxon_mun['species'] == spec].index, "freq"] = len(gp_spec)
+#             # print(df_taxon_mun.shape)
+#             df_freq = df_obs_region["species"].value_counts().to_frame()
+#             df_freq.columns = ["mun_freq"]
+#             df = pd.merge(df_taxon_region, df_freq, left_index=True, right_index=True)
+#
+#             # create jsons for sunburst and bar chart
+#             df["species"] = df.index
+#             df[['kingdom', 'phylum', 'class',
+#                 'order', 'family', 'genus', 'species']] = df[['kingdom',
+#                                                               'phylum', 'class', 'order', 'family',
+#                                                    'genus', 'species']].fillna(value="Unknown")
+#             json_dict, num_types = generate_plot_json(df, 0, "blah")
+#             json_dict = {"name": "Organisms", "children": json_dict, "taxLevel": "organisms"}
+#
+#             with open('biodivmap/static/biodivmap/bar_sunburst.json', 'w') as fp:
+#                 json.dump(json_dict, fp)
+#
+#             json_dict_2, num_types_2 = generate_tree_json(df,0, "blah")
+#             json_dict_2 = { "name": "Organisms", 'taxLevel': "organisms", "types": num_types_2,
+#                          "children": json_dict_2, "ratio": 1.0,
+#                          "size": df.shape[0], "redList": 1}
+#
+#             with open('biodivmap/static/biodivmap/treedata_curr.json', 'w') as fp:
+#                 json.dump(json_dict_2, fp)
+#
+#     return JsonResponse(["yo"], safe=False)
+
+
 @csrf_exempt
-def show_summary(request):
+def summary_polygon(request):
     if request.method == 'POST':
         if request.body:
-            selected_regions = json.loads(request.body)
-            # assume municipality json created as bar_sunburst.json
-            #filter dataframe with municipality
+            polygon_json = json.loads(request.body)
+            print(polygon_json)
+            coords = polygon_json["geometry"]["coordinates"][0]
+            poly = Polygon(coords)
 
-            if "municipality" in selected_regions.keys():
-                df_obs_region = df_obs[df_obs['municipality'] == selected_regions["municipality"]]
-
-            else:
-                bbox = selected_regions["bbox"]
-                min_x = min([bbox[0], bbox[2]])
-                max_x = max([bbox[0], bbox[2]])
-                min_y = min([bbox[1], bbox[3]])
-                max_y = max([bbox[1], bbox[3]])
-                df_obs_region = df_obs[(df_obs["decimalLatitude"] > min_y) & (df_obs["decimalLongitude"] > min_x) &
-                                       (df_obs["decimalLatitude"] < max_y) & (df_obs["decimalLongitude"] < max_x)]
-
-                # bbox_poly = Polygon([(min_x, min_y), (max_x, min_y), (max_x, max_y), (min_x, max_y)])
-                # geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
-                # geo_df = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
-                # df_obs_region = geo_df[geo_df.geometry.within(bbox_poly)]
+            possible_matches_index = list(spatial_index.intersection(poly.bounds))
+            possible_matches = geo_df.iloc[possible_matches_index]
+            df_obs_region = possible_matches[possible_matches.intersects(poly)]
 
             df_taxon_region = df_taxon[df_taxon["species"].isin(df_obs_region['species'])]
             df_taxon_region = df_taxon_region.set_index("species")
@@ -191,19 +250,28 @@ def show_summary(request):
             df[['kingdom', 'phylum', 'class',
                 'order', 'family', 'genus', 'species']] = df[['kingdom',
                                                               'phylum', 'class', 'order', 'family',
-                                                   'genus', 'species']].fillna(value="Unknown")
+                                                              'genus', 'species']].fillna(value="Unknown")
             json_dict, num_types = generate_plot_json(df, 0, "blah")
             json_dict = {"name": "Organisms", "children": json_dict, "taxLevel": "organisms"}
 
             with open('biodivmap/static/biodivmap/bar_sunburst.json', 'w') as fp:
                 json.dump(json_dict, fp)
 
-            json_dict_2, num_types_2 = generate_tree_json(df,0, "blah")
-            json_dict_2 = { "name": "Organisms", 'taxLevel': "organisms", "types": num_types_2,
-                         "children": json_dict_2, "ratio": 1.0,
-                         "size": df.shape[0], "redList": 1}
+            json_dict_2, num_types_2 = generate_tree_json(df, 0, "blah")
+            json_dict_2 = {"name": "Organisms", 'taxLevel': "organisms", "types": num_types_2,
+                           "children": json_dict_2, "ratio": 1.0,
+                           "size": df.shape[0], "redList": 1}
 
             with open('biodivmap/static/biodivmap/treedata_curr.json', 'w') as fp:
                 json.dump(json_dict_2, fp)
+
+            # precise_matches = precise_matches.drop(["decimalLongitude", "decimalLatitude", 'kingdom', 'phylum', 'class',
+            #                                         'order', 'family', 'genus'], 1)
+            # if precise_matches.shape[0] > 0:
+            #     precise_matches.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
+            #     return JsonResponse("success", safe=False)
+            # else:
+            #     return JsonResponse("no occurrence", safe=False)
+
 
     return JsonResponse(["yo"], safe=False)

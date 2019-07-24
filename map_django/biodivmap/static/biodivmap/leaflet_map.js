@@ -54,15 +54,11 @@ var municipality_style = {
     'fillOpacity': 0.5
 };
 
-
-var typeEco = {
+var typeSEI = {
     "ME": "#F012BE",
-    "SE": "#85144b",
+    // "SE": "#85144b",
     "XX": "rgb(39,39,48)",
-    "YS": "#c9c731"
-};
-
-var typeSE = {
+    "YS": "#c9c731",
     "OF": "#2ECC40",
     "MF": "#3D9970",
     "WD": "#653f2e",
@@ -105,13 +101,17 @@ var baseLayers = {
     "Streets": streetsBaseMap
 };
 
-sei_layer = L.geoJson(false, {
+sei_control_group = L.control.layers();
+sei_layers ={};
+
+function init_sei_layer(sei_type) {
+    curr_sei_layer = L.geoJson(false, {
         style: function (feature) {
             sstyle = remove_highlight;
             if (feature.properties.SE_ME_1 != "SE") {
-                sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+                sstyle.fillColor = typeSEI[feature.properties.SE_ME_1];
             } else {
-                sstyle.fillColor = typeSE[feature.properties.SECl_1];
+                sstyle.fillColor = typeSEI[feature.properties.SECl_1];
             }
 
             return sstyle;
@@ -137,9 +137,9 @@ sei_layer = L.geoJson(false, {
                 if (layer.selected) {
                     sstyle = remove_highlight;
                     if (feature.properties.SE_ME_1 != "SE") {
-                        sstyle.fillColor = typeEco[feature.properties.SE_ME_1];
+                        sstyle.fillColor = typeSEI[feature.properties.SE_ME_1];
                     } else {
-                        sstyle.fillColor = typeSE[feature.properties.SECl_1];
+                        sstyle.fillColor = typeSEI[feature.properties.SECl_1];
                     }
                     layer.setStyle(sstyle);
                     layer.selected = 0;
@@ -159,6 +159,15 @@ sei_layer = L.geoJson(false, {
             })
         }
     });
+    sei_control_group.addOverlay(curr_sei_layer, sei_type);
+    sei_layers[sei_type] = curr_sei_layer;
+}
+
+Object.keys(typeSEI).forEach(function(sei_key){
+        init_sei_layer(sei_key);
+    });
+
+
 
 mun_layer = L.geoJson(false, {
         onEachFeature: function (feature, layer) {
@@ -174,9 +183,7 @@ mun_layer = L.geoJson(false, {
     });
 
 
-var overlays = {Municipalities: mun_layer, SEI: sei_layer};
-var num_overlays = 2;
-
+var overlays = {Municipalities: mun_layer};
 var map = L.map('map', {
     center: [49.263710, -123.259378],
     zoom: 10,
@@ -192,14 +199,50 @@ var curr_rectangle = L.rectangle([[49.29127137605795, -123.12775596997044], [49.
 
 L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
 
+sei_control_group.addTo(map);
+
 grayScaleBaseMap.addTo(map);
+
+drawnItems = L.featureGroup().addTo(map);
+
+map.addControl(new L.Control.Draw({
+    edit: {
+        featureGroup: drawnItems,
+        poly: {
+            allowIntersection: false
+        }
+    },
+    draw: {
+        polygon: {
+            allowIntersection: false,
+            showArea: true
+        }
+    }
+}));
+
+var curr_shape;
+
+map.on(L.Draw.Event.CREATED, function (event) {
+    var layer = event.layer;
+
+    drawnItems.addLayer(layer);
+    curr_shape = layer.toGeoJSON();
+    summarisePolygon();
+});
+
+drawnItems.on('click', function(feature) { console.log(feature); });
 
 map.on('overlayadd', function(l) {
     if (l.layer == mun_layer) {
         json_path = "Municipalities.geojson";
     }
-    else if (l.layer == sei_layer) {
-        json_path = "SEI.geojson";
+    else {
+        Object.keys(sei_layers).forEach(function (sei_layer_name) {
+            if (l.layer == sei_layers[sei_layer_name]) {
+                json_path = "sei/" + sei_layer_name + ".geojson";
+            }
+        });
+
     }
 
     if (l.layer.toGeoJSON().features.length == 0) {
@@ -209,6 +252,7 @@ map.on('overlayadd', function(l) {
     }
 
 });
+
 
 function openWiki(callback, speciesName) {
     var title = callback.query.search[0].title;
@@ -377,7 +421,7 @@ function plotSpecies() {
             taxons_selected[init_desc[i].data.name] = {"index": init_desc[i].data.index, "taxLevel": init_desc[i].data.taxLevel};
         }
     }
-    var region_taxons = {"taxons": taxons_selected, "bbox": bounds_array};
+    var region_taxons = {"taxons": taxons_selected, "polygon": curr_shape};
 
     $.ajax({
             processData: false,
@@ -412,6 +456,59 @@ function plotSpecies() {
             }});
 
 }
+
+function summarisePolygon(){
+    $.ajax({
+            processData: false,
+            type: 'POST',
+            url: 'summarypolygon/',
+            data: JSON.stringify(curr_shape),
+            // data: {species_selected: $(".select2-species").select2('data')},
+            contentType: false,  // add this to indicate 'multipart/form-data'
+            success: function (data) {
+                $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
+                    // createSunburst(summary_json);
+                    bar_chart_occurrence_ref.redefine("data", summary_json);
+                    bar_chart_species_ref.redefine("data", summary_json);
+                    sunburst_ref.redefine("data", summary_json);
+                    // if (mun_id) {
+                    //     document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
+                    // }
+                    // else {
+                    //     var region = "";
+                    //     for (i=0; i <4; i++) {
+                    //         region += bbox[i].toString();
+                    //         region += ",";
+                    //     }
+                    //     console.log(region);
+                    //     document.getElementById('shiny').src = "http://127.0.0.1:4609/?region=" + region;
+                    // }
+                    d3.json(static_path + "treedata_curr.json").then(function (flare) {
+                        root = d3.hierarchy(flare);
+                        root.x0 = 0;
+                        root.y0 = 0;
+                        // open the tree collapsed
+                        desc = root.descendants();
+                        init_desc = root.descendants();
+                        var i = 0;
+                        for (i = 0; i < desc.length; i++) {
+                            desc[i]._children = desc[i].children;
+                            desc[i].children = null;
+                            desc[i].selected = 0;
+                        }
+                        update(root);
+
+                    });
+                    // document.getElementById('shiny').contentWindow.location.reload();
+                });
+                // $('#loader-summary').hide();
+            },
+            error: function(data) {
+                alert('summary failed');
+                // $('#loader-summary').hide();
+            }});
+}
+
 
 function showSummary(mun_id, bbox) {
     $('#loader-summary').show();
@@ -521,6 +618,10 @@ function drawRectangle() {
     plotSpecies();
     summariseSelection();
 }
+
+
+
+
 
 
 

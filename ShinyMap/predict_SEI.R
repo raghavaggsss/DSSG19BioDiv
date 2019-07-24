@@ -13,7 +13,6 @@ coordinates(obs_dat) = c("decimalLongitude", "decimalLatitude")
 proj4string(obs_dat) = CRS("+proj=longlat +datum=WGS84")
 obs_dat = spTransform(obs_dat, proj4string(sei))
 
-sei = sei[round(seq(0,nrow(sei),nrow(sei)/100)),]
 
 # Create a list that will hold 27 (spatial polygon) dataframes, each containing the gbif data for a given municipality/that occured within a polygon
 sei@data = sei@data[order(sei@data$SEI_PolyNb),]
