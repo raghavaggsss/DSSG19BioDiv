@@ -2,6 +2,7 @@ library(shiny)
 library(tidyverse)
 library(stringr)
 library(rgdal)
+library(jsonlite)
 
 # Read in the data 
 dfsp <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)

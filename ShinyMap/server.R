@@ -48,9 +48,8 @@ server <- function(input, output, session){
       coords = jsonlite::fromJSON(query['coords'][[1]])
       sel = SpatialPolygons(list(Polygons(list(Polygon(coords)),1)))
       # Create a SpatialPoints object from df_orig
-      spatialDF = SpatialPointsDataFrame(coords = df_orig[,3:4], data = df_orig[,-(3:4)])
-      inside = spatialDF[sel,]
-      df_region$df = df_region$df[as.integer(row.names(inside)),]
+      spatialDF = SpatialPointsDataFrame(coords = df_region$df[,3:4], data = df_region$df[,-(3:4)])
+      df_region$df = df_region$df[as.integer(row.names(spatialDF[sel,])),]
     }
     # These lines of code update the two variables that determine the choices users are given in the dropdown menus so if they narrow their selection, they aren't given options that correspond to empty data
     df_region$dfsp = dfsp[which(dfsp[,"species"] %in% df_region$df[,"species"]),]
