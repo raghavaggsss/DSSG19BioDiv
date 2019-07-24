@@ -411,9 +411,9 @@ clusters.addTo(map);
 
 layers_array = [];
 function plotSpecies() {
-    var curr_bounds = curr_rectangle.getBounds();
-    var bounds_array = [curr_bounds.getNorthEast().lng, curr_bounds.getNorthEast().lat,
-        curr_bounds.getSouthWest().lng, curr_bounds.getSouthWest().lat];
+    // var curr_bounds = curr_rectangle.getBounds();
+    // var bounds_array = [curr_bounds.getNorthEast().lng, curr_bounds.getNorthEast().lat,
+    //     curr_bounds.getSouthWest().lng, curr_bounds.getSouthWest().lat];
     $('#loader-plot').show();
     taxons_selected = {};
     for (i = 0; i < init_desc.length; i++) {
@@ -473,19 +473,13 @@ function summarisePolygon(){
                     bar_chart_occurrence_ref.redefine("data", summary_json);
                     bar_chart_species_ref.redefine("data", summary_json);
                     sunburst_ref.redefine("data", summary_json);
-                    // if (mun_id) {
-                    //     document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
-                    // }
-                    // else {
-                    //     var region = "";
-                    //     for (i=0; i <4; i++) {
-                    //         region += bbox[i].toString();
-                    //         region += ",";
-                    //     }
-                    //     console.log(region);
-                    //     document.getElementById('shiny').src = "http://127.0.0.1:4609/?region=" + region;
-                    // }
-                    // document.getElementById('shiny').contentWindow.location.reload();
+
+                    document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
+                        curr_shape["geometry"]["coordinates"][0]
+                    );
+                    console.log("http://127.0.0.1:4609/?coords=" + JSON.stringify(
+                        curr_shape["geometry"]["coordinates"][0]));
+                    document.getElementById('shiny').contentWindow.location.reload();
                 });
                 $('#loader-summary').hide();
             },
