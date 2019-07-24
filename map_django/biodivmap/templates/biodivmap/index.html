@@ -80,7 +80,7 @@
         <div style="margin: 20px">
         <img id="loader-summary" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
 {#        <button onclick="summariseSelection()"> Summarise</button>#}
-        <button onclick="drawRectangle()"> Select</button>
+{#        <button onclick="drawRectangle()"> Select</button>#}
 
     </div>
     </div>
@@ -146,8 +146,8 @@
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-            d3.json(static_path + "treedata.json").then(function (flare) {
-                root = d3.hierarchy(flare);
+            function reload_tax_tree(data) {
+                root = d3.hierarchy(data);
                 root.x0 = 0;
                 root.y0 = 0;
                 // open the tree collapsed
@@ -160,8 +160,11 @@
                     desc[i].selected = 0;
                 }
                 update(root);
+            }
 
-            });
+            reload_tax_tree({"name": "Organisms", "children": [], "taxLevel": "organisms", "types": 1,
+                         "ratio": 1.0, "size_tree": 1, "redList": 1 });
+
 
             var min_width = 5;
             {#var taxons_selected = {};#}
@@ -227,7 +230,7 @@
                     .attr("dy", 3.5)
                     .attr("dx", 5.5)
                     .text(function (d) {
-                        return (d.data.types + " " + d.data.name + " : " + d.data.size)
+                        return (d.data.types + " " + d.data.name + " : " + d.data.size_tree)
                     });
 
                 // text is taxonomy level, value is the actual taxonomy name

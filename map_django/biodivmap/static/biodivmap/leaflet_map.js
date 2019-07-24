@@ -190,8 +190,8 @@ var map = L.map('map', {
     layers: [streetsBaseMap, grayScaleBaseMap]
 });
 
-var curr_rectangle = L.rectangle([[49.29127137605795, -123.12775596997044], [49.23525962123947, -123.28225120922825]],
-    {color: 'grey', weight: 1}).addTo(map);
+// var curr_rectangle = L.rectangle([[49.29127137605795, -123.12775596997044], [49.23525962123947, -123.28225120922825]],
+//     {color: 'grey', weight: 1}).addTo(map);
 
 // map.on('moveend', function() {
 //      console.log(map.getBounds());
@@ -458,6 +458,7 @@ function plotSpecies() {
 }
 
 function summarisePolygon(){
+    $('#loader-summary').show();
     $.ajax({
             processData: false,
             type: 'POST',
@@ -466,7 +467,8 @@ function summarisePolygon(){
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
             success: function (data) {
-                $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
+                $.getJSON(static_path + "taxon_hierarchy.json", function(summary_json) {
+                    reload_tax_tree(summary_json);
                     // createSunburst(summary_json);
                     bar_chart_occurrence_ref.redefine("data", summary_json);
                     bar_chart_species_ref.redefine("data", summary_json);
@@ -483,100 +485,84 @@ function summarisePolygon(){
                     //     console.log(region);
                     //     document.getElementById('shiny').src = "http://127.0.0.1:4609/?region=" + region;
                     // }
-                    d3.json(static_path + "treedata_curr.json").then(function (flare) {
-                        root = d3.hierarchy(flare);
-                        root.x0 = 0;
-                        root.y0 = 0;
-                        // open the tree collapsed
-                        desc = root.descendants();
-                        init_desc = root.descendants();
-                        var i = 0;
-                        for (i = 0; i < desc.length; i++) {
-                            desc[i]._children = desc[i].children;
-                            desc[i].children = null;
-                            desc[i].selected = 0;
-                        }
-                        update(root);
-
-                    });
                     // document.getElementById('shiny').contentWindow.location.reload();
                 });
-                // $('#loader-summary').hide();
-            },
-            error: function(data) {
-                alert('summary failed');
-                // $('#loader-summary').hide();
-            }});
-}
-
-
-function showSummary(mun_id, bbox) {
-    $('#loader-summary').show();
-    if (mun_id) {
-        var curr_data = {"municipality": mun_id};
-    }
-    else {
-        var curr_data = {"bbox": bbox};
-    }
-    $.ajax({
-            processData: false,
-            type: 'POST',
-            url: 'summary/',
-            data: JSON.stringify(curr_data),
-            // data: {species_selected: $(".select2-species").select2('data')},
-            contentType: false,  // add this to indicate 'multipart/form-data'
-            success: function (data) {
-                $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
-                    // createSunburst(summary_json);
-                    bar_chart_occurrence_ref.redefine("data", summary_json);
-                    bar_chart_species_ref.redefine("data", summary_json);
-                    sunburst_ref.redefine("data", summary_json);
-                    if (mun_id) {
-                        document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
-                    }
-                    else {
-                        var region = "";
-                        for (i=0; i <4; i++) {
-                            region += bbox[i].toString();
-                            region += ",";
-                        }
-                        console.log(region);
-                        document.getElementById('shiny').src = "http://127.0.0.1:4609/?region=" + region;
-                    }
-                    d3.json(static_path + "treedata_curr.json").then(function (flare) {
-                        root = d3.hierarchy(flare);
-                        root.x0 = 0;
-                        root.y0 = 0;
-                        // open the tree collapsed
-                        desc = root.descendants();
-                        init_desc = root.descendants();
-                        var i = 0;
-                        for (i = 0; i < desc.length; i++) {
-                            desc[i]._children = desc[i].children;
-                            desc[i].children = null;
-                            desc[i].selected = 0;
-                        }
-                        update(root);
-
-                    });
-                    document.getElementById('shiny').contentWindow.location.reload();
-                });
                 $('#loader-summary').hide();
             },
             error: function(data) {
                 alert('summary failed');
                 $('#loader-summary').hide();
             }});
-
 }
 
-function summariseSelection() {
-    // return as x_min, ymin, x_max, y_max
-    var curr_bounds = curr_rectangle.getBounds();
-    showSummary( null,[curr_bounds.getNorthEast().lng, curr_bounds.getNorthEast().lat,
-        curr_bounds.getSouthWest().lng, curr_bounds.getSouthWest().lat]);
 
-}
+// function showSummary(mun_id, bbox) {
+//     $('#loader-summary').show();
+//     if (mun_id) {
+//         var curr_data = {"municipality": mun_id};
+//     }
+//     else {
+//         var curr_data = {"bbox": bbox};
+//     }
+//     $.ajax({
+//             processData: false,
+//             type: 'POST',
+//             url: 'summary/',
+//             data: JSON.stringify(curr_data),
+//             // data: {species_selected: $(".select2-species").select2('data')},
+//             contentType: false,  // add this to indicate 'multipart/form-data'
+//             success: function (data) {
+//                 $.getJSON(static_path + "bar_sunburst.json", function(summary_json) {
+//                     // createSunburst(summary_json);
+//                     bar_chart_occurrence_ref.redefine("data", summary_json);
+//                     bar_chart_species_ref.redefine("data", summary_json);
+//                     sunburst_ref.redefine("data", summary_json);
+//                     if (mun_id) {
+//                         document.getElementById('shiny').src = "http://127.0.0.1:7125/?municipality=" + mun_id;
+//                     }
+//                     else {
+//                         var region = "";
+//                         for (i=0; i <4; i++) {
+//                             region += bbox[i].toString();
+//                             region += ",";
+//                         }
+//                         console.log(region);
+//                         document.getElementById('shiny').src = "http://127.0.0.1:4609/?region=" + region;
+//                     }
+//                     d3.json(static_path + "treedata_curr.json").then(function (flare) {
+//                         root = d3.hierarchy(flare);
+//                         root.x0 = 0;
+//                         root.y0 = 0;
+//                         // open the tree collapsed
+//                         desc = root.descendants();
+//                         init_desc = root.descendants();
+//                         var i = 0;
+//                         for (i = 0; i < desc.length; i++) {
+//                             desc[i]._children = desc[i].children;
+//                             desc[i].children = null;
+//                             desc[i].selected = 0;
+//                         }
+//                         update(root);
+//
+//                     });
+//                     document.getElementById('shiny').contentWindow.location.reload();
+//                 });
+//                 $('#loader-summary').hide();
+//             },
+//             error: function(data) {
+//                 alert('summary failed');
+//                 $('#loader-summary').hide();
+//             }});
+//
+// }
+//
+// function summariseSelection() {
+//     // return as x_min, ymin, x_max, y_max
+//     var curr_bounds = curr_rectangle.getBounds();
+//     showSummary( null,[curr_bounds.getNorthEast().lng, curr_bounds.getNorthEast().lat,
+//         curr_bounds.getSouthWest().lng, curr_bounds.getSouthWest().lat]);
+//
+// }
 
 // function filterSpecies(geodata, species) {
 //     features = [];
