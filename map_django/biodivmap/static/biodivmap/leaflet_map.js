@@ -203,6 +203,29 @@ sei_control_group.addTo(map);
 
 grayScaleBaseMap.addTo(map);
 
+drawnItems = L.featureGroup().addTo(map);
+
+map.addControl(new L.Control.Draw({
+    edit: {
+        featureGroup: drawnItems,
+        poly: {
+            allowIntersection: false
+        }
+    },
+    draw: {
+        polygon: {
+            allowIntersection: false,
+            showArea: true
+        }
+    }
+}));
+
+map.on(L.Draw.Event.CREATED, function (event) {
+    var layer = event.layer;
+
+    drawnItems.addLayer(layer);
+});
+
 map.on('overlayadd', function(l) {
     if (l.layer == mun_layer) {
         json_path = "Municipalities.geojson";
@@ -223,6 +246,7 @@ map.on('overlayadd', function(l) {
     }
 
 });
+
 
 function openWiki(callback, speciesName) {
     var title = callback.query.search[0].title;
@@ -535,6 +559,10 @@ function drawRectangle() {
     plotSpecies();
     summariseSelection();
 }
+
+
+
+
 
 
 
