@@ -35,13 +35,22 @@ server <- function(input, output, session){
     if (!is.null(query['municipality'][[1]])) {
       df_region$df = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
     }
-    if (!is.null(query['region'][[1]])) {
-      coord = as.double(strsplit(query['region'][[1]], ",")[[1]])
-      minx = min(coord[c(1,3)])
-      maxx = max(coord[c(1,3)])
-      miny = min(coord[c(2,4)])
-      maxy = max(coord[c(2,4)])
-      df_region$df = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
+    #if (!is.null(query['region'][[1]])) {
+    #  coord = as.double(strsplit(query['region'][[1]], ",")[[1]])
+    #  minx = min(coord[c(1,3)])
+    #  maxx = max(coord[c(1,3)])
+    #  miny = min(coord[c(2,4)])
+    #  maxy = max(coord[c(2,4)])
+    #  df_region$df = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
+    #}
+    if (!is.null(query['coords'][[1]])) {
+      # Create a SpatialPolygons object from the user's selection
+      coords = jsonlite::fromJSON(query['coords'][[1]])
+      sel = SpatialPolygons(list(Polygons(list(Polygon(coords)),1)))
+      # Create a SpatialPoints object from df_orig
+      spatialDF = SpatialPointsDataFrame(coords = df_orig[,3:4], data = df_orig[,-(3:4)])
+      inside = spatialDF[sel,]
+      df_region$df = df_region$df[as.integer(row.names(inside)),]
     }
     # These lines of code update the two variables that determine the choices users are given in the dropdown menus so if they narrow their selection, they aren't given options that correspond to empty data
     df_region$dfsp = dfsp[which(dfsp[,"species"] %in% df_region$df[,"species"]),]
@@ -116,7 +125,7 @@ server <- function(input, output, session){
   # d3 is the normalized data
   df3 = reactive({
     # Validate sends a more helpful message and prevents Shiny from trying to create the graph if the user has selected incompatible category and normalization options
-    validate(
+    shiny::validate(
       need(!((input$category %in% c("Custom Tags","kingdom") & input$normalization == "Proportion of Kingdom Observations") | (input$category %in% c("Custom Tags","kingdom", "phylum","class") & input$normalization == "Proportion of Class Observations")),
       "Please select a different normalization option for this category")
     )

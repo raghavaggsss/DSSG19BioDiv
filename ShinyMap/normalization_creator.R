@@ -15,3 +15,4 @@ for (c in unique(yearly_class$class)) {
 }
 
 write.csv(combined_norm, "norms by year.csv", row.names = F)
+saveRDS(combined_norm, "norms by year.rds")
