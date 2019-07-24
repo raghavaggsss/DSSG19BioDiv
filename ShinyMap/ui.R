@@ -19,9 +19,9 @@ ui <- fluidPage(
                   choices = sort(dfsp$species),
                   selected = "Calypte anna",
                   multiple = T),
-      radioButtons(inputId = "counts",
+      radioButtons(inputId = "normalization",
                    label = "Normalization Options",
-                   choices = c("Raw Counts", "Proportion of Total Observations"))),
+                   choices = c("Raw Counts", "Proportion of Total Observations", "Proportion of Kingdom Observations", "Proportion of Class Observations"))),
     
 
     mainPanel(

@@ -1,6 +1,7 @@
 library(shiny)
 library(tidyverse)
 library(stringr)
+library(rgdal)
 
 # Read in the data 
 dfsp <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
@@ -16,7 +17,8 @@ names(tag_list) = sub("*_binary", "", colnames(dfsp)[tag_columns])
 names(tag_list) = sub("_", " ", names(tag_list))
 
 # create a dataframe containing total num of observations for each year 
-yearly_obs <- group_by(df_orig, year) %>% tally() %>% drop_na()
+#yearly_obs <- group_by(df_orig, year) %>% tally() %>% drop_na()
+combined_norm = readRDS("norms by year.rds")
 
 ##~~ FUNCTIONS ~~##
 # Function for adding 0-value rows to aggregate tally dataframes to fill out the years between the first and last years
