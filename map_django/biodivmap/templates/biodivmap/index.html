@@ -451,7 +451,28 @@
 
 <br>
 
-<div>
+<button id="toggle-bar-charts"> Toggle Bar charts</button>
+<script>
+    document.getElementById("toggle-bar-charts").addEventListener("click", function() {
+    showHideDiv("bar-charts");
+    }, false);
+</script>
+<br>
+<button id="toggle-sunburst"> Toggle Sunburst</button>
+<script>
+    document.getElementById("toggle-sunburst").addEventListener("click", function() {
+    showHideDiv("sunburst");
+    }, false);
+</script>
+<br>
+<button id="toggle-time-series"> Toggle Time Series</button>
+<script>
+    document.getElementById("toggle-time-series").addEventListener("click", function() {
+    showHideDiv("shiny");
+    }, false);
+</script>
+
+<div id="bar-charts">
 
 
     <div id="bar-chart-species" style="height:500px; overflow:auto; float:left; text-align: center;">
@@ -461,6 +482,8 @@
     <div id="bar-chart-occurrence" style="height:500px; overflow:auto; float:right; margin-right:50px; margin-left:25px; text-align: center;">
         <p> Species occurrence distribution</p>
     </div>
+
+</div>
 
         <script type="module">
 
@@ -505,14 +528,14 @@
 
         </script>
 
-</div>
+
 
 <div id="sunburst" style="margin-right:25px; margin-left:400px; margin-top:50px">
     </div>
 
 <br>
 <div class="row-container">
-  <iframe id="shiny" src="http://127.0.0.1:4609" class="second-row"></iframe>
+        <iframe id="shiny" src="http://127.0.0.1:4609" class="second-row"></iframe>
 </div>
 
 

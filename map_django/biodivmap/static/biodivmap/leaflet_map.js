@@ -599,6 +599,17 @@ function drawRectangle() {
     summariseSelection();
 }
 
+function showHideDiv(div_id) {
+    curr_div = document.getElementById(div_id);
+    if (curr_div.style.display == "none") {
+        curr_div.style.display = "block"
+    }
+    else {
+        curr_div.style.display = "none"
+    }
+
+}
+
 
 
 

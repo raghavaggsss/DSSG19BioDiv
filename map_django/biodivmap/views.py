@@ -21,9 +21,12 @@ spatial_index_map = geo_df_map.sindex
 
 df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
 
-geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
-geo_df_obs = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
-spatial_index_obs = geo_df_obs.sindex
+# TODO: store sindex outside and use full observations
+# geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
+# geo_df_obs = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
+# spatial_index_obs = geo_df_obs.sindex
+geo_df_obs = geo_df_map
+spatial_index_obs = spatial_index_map
 
 df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
 
