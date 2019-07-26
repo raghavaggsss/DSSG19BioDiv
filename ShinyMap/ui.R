@@ -16,7 +16,7 @@ ui <- fluidPage(
                   multiple = F),
       selectInput(inputId = "member", 
                   label = "Select an Option to Plot", 
-                  choices = sort(dfsp$species),
+                  choices = sort(unique(df_orig$species[which((df_orig$year >= 1980) & (df_orig$year <= 2019))])),
                   selected = "Calypte anna",
                   multiple = T),
       radioButtons(inputId = "normalization",

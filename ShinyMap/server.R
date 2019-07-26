@@ -1,6 +1,16 @@
+# Server Reactive Flow:
+## The inputs are as follows: year (2-item integer vector), normalization (single character string) category (single character string), and member (vector of character strings ranging from 0 to infinity in length).
+## The output is plot1, which renders a plot and reacts to df3 and input$normalization (to determine which column to plot on the y axis)
+## df3 is a dataframe of summarized data for members of interest with attached normalizations. It reacts to df2 from which it gets the summarized data. It uses the original non-reactive dfsp but will not run in response to dfsp changing (which should never happen).
+## df2 is a dataframe of summarized data for members of interest. It reacts to df1 (non-summarized data for members of interest), as well as input$category (it has an alternate branch if custom tags are selected), and in the custom tags branch it also reacts to input$member.
+## df1 is a dataframe of non-summarized data for members of interest. It reacts to reac$df_time (fully filtered data) as well as input$member and input$category.
+## reac is a container for reactive values.
+## reac$df_time is fully filtered data. It reacts to df_space (data filtered only for space) and input$year.
+## reac$df_space is partially filtered data. It reacts to URL queries (either municipality or coordinate input), and takes in but does not react to df_orig (the original, full dataset)
+
 server <- function(input, output, session){
   
-  df_region <- reactiveValues(df=df_orig, dfsp=dfsp, tags=tag_list, use_tags=T)
+  reac <- reactiveValues(df_space=df_orig, df_time=df_orig, dfsp=dfsp, tags=tag_list)
   
   # This observe statement changes the options provided to the user in the "Members" dropdown menu based on what they have selected from the "Category" dropdown menu
   observe(priority = 1, {
@@ -12,16 +22,15 @@ server <- function(input, output, session){
     # Change the member choices based on the category selection
     if (cat == "Custom Tags") {
       updateSelectInput(session, "member",
-                        choices = df_region$tags,
-                        selected = df_region$tags[1]
-                        #selected = head(colnames(df_region$dfsp)[tag_columns], 1)
+                        choices = reac$tags,
+                        selected = reac$tags[1]
       )
     } 
     else {
       # If "species" is selected, load Anna's Hummingbird by default
-      if (input$category == "species") {ch = "Calypte anna"} else {ch = head(df_region$dfsp[,cat], 1)}
+      if (input$category == "species") {ch = "Calypte anna"} else {ch = head(sort(unique(reac$dfsp[,cat])), 1)}
       updateSelectInput(session, "member",
-                        choices = sort(unique(df_region$dfsp[,cat])),
+                        choices = sort(unique(reac$dfsp[,cat])),
                         selected = ch
                         )
     }
@@ -34,7 +43,7 @@ server <- function(input, output, session){
     #print(query['region'][[1]])
     #print(query['coords'][[1]])
     if (!is.null(query['municipality'][[1]])) {
-      df_region$df = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
+      reac$df_space = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
     }
     #if (!is.null(query['region'][[1]])) {
     #  coord = as.double(strsplit(query['region'][[1]], ",")[[1]])
@@ -42,7 +51,7 @@ server <- function(input, output, session){
     #  maxx = max(coord[c(1,3)])
     #  miny = min(coord[c(2,4)])
     #  maxy = max(coord[c(2,4)])
-    #  df_region$df = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
+    #  reac$df = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
     #}
     if (!is.null(query['coords'][[1]])) {
       # Create a SpatialPolygons object from the user's selection
@@ -52,31 +61,35 @@ server <- function(input, output, session){
       # Create a SpatialPoints object from df_orig
       spatialDF = SpatialPointsDataFrame(coords = df_orig[,3:4], data = df_orig[,-(3:4)])
       inside = spatialDF[sel,]
-      df_region$df = inside@data
-      print(nrow(df_region$df))
+      reac$df_space = inside@data
+      print(nrow(reac$df))
     }
-    # These lines of code update the two variables that determine the choices users are given in the dropdown menus so if they narrow their selection, they aren't given options that correspond to empty data
-    df_region$dfsp = dfsp[which(dfsp[,"species"] %in% df_region$df[,"species"]),]
+  })
+  
+  # "react$df_time" is generated from "react$df_space" and the input years, meaning that it will recalculate as soon as either the year slider has changed or a different spatial selection is made. It feeds directly into the df1 function.
+  observe({
+    reac$df_time = reac$df_space[which((reac$df_space$year >= input$year[1]) & (reac$df_space$year <= input$year[2])),]
+    reac$dfsp = dfsp[which(dfsp[,"species"] %in% reac$df_time[,"species"]),]
+    # These lines of code remove custom tags that are left without tagged species after filtration
     removal_tags = c()
     for (i in 1:length(tag_list)) {
-      if (!(T %in% unique(df_region$dfsp[,tag_list[[i]]]))) {removal_tags = c(removal_tags,i)}
+      if (!(T %in% unique(reac$dfsp[,tag_list[[i]]]))) {removal_tags = c(removal_tags,i)}
     }
-    if (length(removal_tags) != 0) {df_region$tags = df_region$tags[-removal_tags]}
-    if (length(df_region$tags) == 0) {df_region$use_tags = F} else {df_region$use_tags = T}
+    if (length(removal_tags) != 0) {reac$tags = tag_list[-removal_tags]} else {reac$tags = tag_list}
   })
   
   # df1 changes only with "category" and adds columns that gives member values for each category that could be chosen
   df1 = reactive({
     # This first line essentially prevents this from running until the "member" input has been registered, to prevent error messages resulting from putting the cart before the horse - the second line prevents a strange bug  where when "Custom Tags" is selected for category, member does not update from where it was previously right away, resulting in error messages
     if (is.null(input$member)) {return()}
-    if (input$category=="Custom Tags" & !any(input$member %in% df_region$tags)) {return()}
-    df1 = df_region$df
+    if (input$category=="Custom Tags" & !any(input$member %in% reac$tags)) {return()}
+    df1 = reac$df_time
     # This if branch applies specifically for Custom Tags, since they work differently
     if (input$category == "Custom Tags") {
-      sp_col = which(colnames(df_region$dfsp)=="species")
+      sp_col = which(colnames(reac$dfsp)=="species")
       # Each member results in its own column filled with True and False values
       for (mem in input$member) {
-        compat_sp = df_region$dfsp[which(df_region$dfsp[,mem] == 1),sp_col]
+        compat_sp = reac$dfsp[which(reac$dfsp[,mem] == 1),sp_col]
         df1[which(df1$species %in% compat_sp),ncol(df1)+1] = TRUE
         df1[which(is.na(df1[,ncol(df1)])),ncol(df1)] = FALSE
         colnames(df1)[ncol(df1)] = mem
@@ -91,7 +104,7 @@ server <- function(input, output, session){
       df1$member = NA
       # Unlike above, only one column is produced - the number of members determines the number of unique possible string values in rows can possess within this column
       for (mem in input$member) {
-        compat_sp = df_region$dfsp[which(df_region$dfsp[,input$category] == mem),"species"]
+        compat_sp = reac$dfsp[which(reac$dfsp[,input$category] == mem),"species"]
         df1$member[which(df1$species %in% compat_sp)] = mem
       }
       return(df1[which(!is.na(df1$member)),])        
@@ -106,7 +119,6 @@ server <- function(input, output, session){
       df2 = NULL
       for (mem in input$member) {
         memdf = df1()[which(df1()[,mem] == T),] %>% 
-          filter(year>=input$year[1], year<=input$year[2]) %>%
           group_by(year) %>%
           tally() %>%
           add_zeros2(max(min(df1()[,"year"]), input$year[1]), min(max(df1()[,"year"]), input$year[2]))
@@ -117,7 +129,6 @@ server <- function(input, output, session){
     }
     else {
       df1() %>%
-        filter(member %in% input$member, year>=input$year[1], year<=input$year[2]) %>%
         group_by(member, year) %>%
         tally() %>%
         drop_na() %>%
@@ -142,16 +153,20 @@ server <- function(input, output, session){
       # norm_col is a vector of integers representing the columns that correspond to the appropraite normalizations.
       # This mean at least "Total", and possible "kingdom" and "class" normalizations based on the category.
       norm_col = c(1,2)
+      # "removal_names" is used to collect the names of the columns slated for removal later, after the proportions have been calculated and the totals are no longer needed.
+      removal_names = "Total"
       if (!(input$category %in% c("Custom Tags", "kingdom"))) {
-        king_name = unique(dfsp$kingdom[which(dfsp[,input$category]==input$member)])
+        king_name = unique(dfsp$kingdom[which(dfsp[,input$category]==mem)])
         norm_col = c(norm_col, which(colnames(y)==king_name))
+        removal_names = c(removal_names, king_name)
         if (!(input$category %in% c("phylum", "class"))) {
-          class_name = unique(dfsp$class[which(dfsp[,input$category]==input$member)])
+          class_name = unique(dfsp$class[which(dfsp[,input$category]==mem)])
           norm_col = c(norm_col, which(colnames(y)==class_name))
+          removal_names = c(removal_names, class_name)
         }
       }
+      # Picks out the "total" columns corresponding to the kingdom/class our "member" belongs to (as well as the overall total column) before matching them all to the data.
       y = y[,norm_col]
-      # Adds a column with the number of observations per year for every year in the dataframe
       sdf = merge(sdf, y, by = "year", all.x = T)
       # Then uses that to find what percentage of the total observations belonged to the given member
       for (base in colnames(sdf)[4:ncol(sdf)]) {
@@ -160,6 +175,7 @@ server <- function(input, output, session){
         else if (base %in% dfsp$kingdom) {colnames(sdf)[ncol(sdf)] = "Kingdom_norm"}
         else if (base %in% dfsp$class) {colnames(sdf)[ncol(sdf)] = "Class_norm"}
       }
+      sdf[,removal_names] = NULL
       x = rbind(x, sdf)
     }
     # This line is debateable - in order both to ensure a continuous line plot and to prevent Shiny from throwing an error message, the normalized values of NA (years in which there were no observations at all and thus 0/0 = NA) are changed to values of 0
