@@ -431,19 +431,17 @@ function plotSpecies() {
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
             success: function (response) {
-                console.log(response);
                 layers_array.forEach(function(prev_layer) {
                     clusters.removeLayer(prev_layer);
                     prev_layer = null
                 });
-                if (response == "success") {
-                    $.getJSON(static_path + "curr.geojson", function(geodata) {
-                        var layer_curr = L.geoJSON(geodata, points_layer_options);
-                            layers_array.push(layer_curr);
+                if (response["status"] == "success") {
+                    var layer_curr = L.geoJSON($.parseJSON(response["data"]), points_layer_options);
+                        layers_array.push(layer_curr);
                         clusters.addLayer(layer_curr);
-                    });
+
                 }
-                else if (response == "no occurrence"){
+                else if (response["status"] == "no occurrence"){
                     alert("Selected organisms do not occur in the selected region")
                 }
                 $('#loader-plot').hide();
@@ -466,22 +464,21 @@ function summarisePolygon(){
             data: JSON.stringify(curr_shape),
             // data: {species_selected: $(".select2-species").select2('data')},
             contentType: false,  // add this to indicate 'multipart/form-data'
-            success: function (data) {
-                $.getJSON(static_path + "taxon_hierarchy.json", function(summary_json) {
+            success: function (summary_json) {
+                {
                     reload_tax_tree(summary_json);
                     // createSunburst(summary_json);
                     bar_chart_occurrence_ref.redefine("data", summary_json);
                     bar_chart_species_ref.redefine("data", summary_json);
                     sunburst_ref.redefine("data", summary_json);
-
+                    $('#loader-summary').hide();
                     document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
                         curr_shape["geometry"]["coordinates"][0]
                     );
-                    console.log("http://127.0.0.1:4609/?coords=" + JSON.stringify(
-                        curr_shape["geometry"]["coordinates"][0]));
                     document.getElementById('shiny').contentWindow.location.reload();
-                });
-                $('#loader-summary').hide();
+
+                }
+
             },
             error: function(data) {
                 alert('summary failed');

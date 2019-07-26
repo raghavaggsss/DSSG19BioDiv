@@ -83,30 +83,6 @@ def generate_taxon_hierarchy(df, taxLevelIndex, prevIndex):
 
 
 def index(request):
-    # if request.method == 'POST':
-    #     form = SpeciesForm(request.POST)
-    #     if form.is_valid():
-    #         species = form.cleaned_data.get('species')
-    #         # do something with your results
-    #         print(species)
-    #         for spec in species:
-    #             print(spec)
-    # else:
-    #     form = SpeciesForm
-
-    # form = SpeciesForm
-
-    # select2_species = "[{id: 'rag', text: 'rag'}, {id: 'raggie', text: 'raggie'}]"
-    # lim = 1000
-    # select2_species = "["
-    # for obj in SpeciesYear.objects.all():
-        # # lim = lim - 1
-        # # if (lim <= 0):
-        # #     break
-        # select2_species += obj.select2element()
-        # select2_species+=","
-    # select2_species += "]"
-    # return render(request, 'biodivmap/index.html', {'select2_species': select2_species})
     return render(request, 'biodivmap/index.html')
 
 @csrf_exempt
@@ -144,10 +120,11 @@ def ajax_species(request):
             df_out = df_out.drop(["decimalLongitude", "decimalLatitude", 'kingdom', 'phylum', 'class',
                         'order', 'family', 'genus'], 1)
             if df_out.shape[0] > 0:
-                df_out.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
-                return JsonResponse("success", safe=False)
+                # df_out.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
+                json_out = df_out.to_json()
+                return JsonResponse({"status":"success", "data": json_out}, safe=False)
             else:
-                return JsonResponse("no occurrence", safe=False)
+                return JsonResponse({"status":"no occurrence", "data": null}, safe=False)
 
     return JsonResponse("success", safe=False)
 
@@ -242,8 +219,10 @@ def summary_polygon(request):
             json_dict = {"name": "Organisms", "children": json_dict, "taxLevel": "organisms", "types": num_types,
                          "ratio": 1.0, "size_tree": df.shape[0], "redList": 1 }
 
-            with open('biodivmap/static/biodivmap/taxon_hierarchy.json', 'w') as fp:
-                json.dump(json_dict, fp)
+            # with open('biodivmap/static/biodivmap/taxon_hierarchy.json', 'w') as fp:
+            #     json.dump(json_dict, fp)
+
+            return JsonResponse(json_dict, safe=False)
 
             # json_dict_2, num_types_2 = generate_tree_json(df, 0, "blah")
             # json_dict_2 = {"name": "Organisms", 'taxLevel': "organisms", "types": num_types_2,
