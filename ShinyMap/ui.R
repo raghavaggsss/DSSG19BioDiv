@@ -16,12 +16,12 @@ ui <- fluidPage(
                   multiple = F),
       selectInput(inputId = "member", 
                   label = "Select an Option to Plot", 
-                  choices = sort(dfsp$species),
+                  choices = sort(unique(df_orig$species[which((df_orig$year >= 1980) & (df_orig$year <= 2019))])),
                   selected = "Calypte anna",
                   multiple = T),
-      radioButtons(inputId = "counts",
+      radioButtons(inputId = "normalization",
                    label = "Normalization Options",
-                   choices = c("Raw Counts", "Proportion of Total Observations"))),
+                   choices = c("Raw Counts", "Proportion of Total Observations", "Proportion of Kingdom Observations", "Proportion of Class Observations"))),
     
 
     mainPanel(

@@ -23,9 +23,50 @@
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/stdlib"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/bar_chart/inspector.css' %}">
 
+
     <script>
         var static_path = "{% static "/biodivmap/" %}"
     </script>
+
+    <script src="{% static 'biodivmap/Leaflet.draw/src/Leaflet.draw.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/Leaflet.Draw.Event.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'biodivmap/Leaflet.draw/src/leaflet.draw.css' %}"/>
+
+    <script src="{% static 'biodivmap/Leaflet.draw/src/Toolbar.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/Tooltip.js' %}"></script>
+
+    <script src="{% static 'biodivmap/Leaflet.draw/src/ext/GeometryUtil.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/ext/LatLngUtil.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/ext/LineUtil.Intersect.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/ext/Polygon.Intersect.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/ext/Polyline.Intersect.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/ext/TouchEvents.js' %}"></script>
+
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/DrawToolbar.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/handler/Draw.Feature.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/handler/Draw.SimpleShape.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/handler/Draw.Polyline.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/handler/Draw.Marker.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/handler/Draw.Circle.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/handler/Draw.CircleMarker.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/handler/Draw.Polygon.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/draw/handler/Draw.Rectangle.js' %}"></script>
+
+
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/EditToolbar.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/EditToolbar.Edit.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/EditToolbar.Delete.js' %}"></script>
+
+    <script src="{% static 'biodivmap/Leaflet.draw/src/Control.Draw.js' %}"></script>
+
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.Poly.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.SimpleShape.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.Rectangle.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.Marker.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.CircleMarker.js' %}"></script>
+    <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.Circle.js' %}"></script>
+
+
 
     <!--    {{ form.media.css }}-->
 
@@ -39,7 +80,8 @@
         <div style="margin: 20px">
         <img id="loader-summary" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
 {#        <button onclick="summariseSelection()"> Summarise</button>#}
-        <button onclick="drawRectangle()"> Select</button>
+{#        <button onclick="drawRectangle()"> Select</button>#}
+
     </div>
     </div>
 </div>
@@ -104,8 +146,8 @@
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-            d3.json(static_path + "treedata.json").then(function (flare) {
-                root = d3.hierarchy(flare);
+            function reload_tax_tree(data) {
+                root = d3.hierarchy(data);
                 root.x0 = 0;
                 root.y0 = 0;
                 // open the tree collapsed
@@ -118,8 +160,11 @@
                     desc[i].selected = 0;
                 }
                 update(root);
+            }
 
-            });
+            reload_tax_tree({"name": "Organisms", "children": [], "taxLevel": "organisms", "types": 1,
+                         "ratio": 1.0, "size_tree": 1, "redList": 1 });
+
 
             var min_width = 5;
             {#var taxons_selected = {};#}
@@ -185,7 +230,7 @@
                     .attr("dy", 3.5)
                     .attr("dx", 5.5)
                     .text(function (d) {
-                        return (d.data.types + " " + d.data.name + " : " + d.data.size)
+                        return (d.data.types + " " + d.data.name + " : " + d.data.size_tree)
                     });
 
                 // text is taxonomy level, value is the actual taxonomy name
@@ -406,7 +451,28 @@
 
 <br>
 
-<div>
+<button id="toggle-bar-charts"> Toggle Bar charts</button>
+<script>
+    document.getElementById("toggle-bar-charts").addEventListener("click", function() {
+    showHideDiv("bar-charts");
+    }, false);
+</script>
+<br>
+<button id="toggle-sunburst"> Toggle Sunburst</button>
+<script>
+    document.getElementById("toggle-sunburst").addEventListener("click", function() {
+    showHideDiv("sunburst");
+    }, false);
+</script>
+<br>
+<button id="toggle-time-series"> Toggle Time Series</button>
+<script>
+    document.getElementById("toggle-time-series").addEventListener("click", function() {
+    showHideDiv("shiny");
+    }, false);
+</script>
+
+<div id="bar-charts">
 
 
     <div id="bar-chart-species" style="height:500px; overflow:auto; float:left; text-align: center;">
@@ -416,6 +482,8 @@
     <div id="bar-chart-occurrence" style="height:500px; overflow:auto; float:right; margin-right:50px; margin-left:25px; text-align: center;">
         <p> Species occurrence distribution</p>
     </div>
+
+</div>
 
         <script type="module">
 
@@ -460,14 +528,14 @@
 
         </script>
 
-</div>
+
 
 <div id="sunburst" style="margin-right:25px; margin-left:400px; margin-top:50px">
     </div>
 
 <br>
 <div class="row-container">
-  <iframe id="shiny" src="http://127.0.0.1:4609" class="second-row"></iframe>
+        <iframe id="shiny" src="http://127.0.0.1:4609" class="second-row"></iframe>
 </div>
 
 
