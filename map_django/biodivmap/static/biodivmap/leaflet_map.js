@@ -618,6 +618,3 @@ function showHideDiv(div_id) {
 
 
 
-
-
-

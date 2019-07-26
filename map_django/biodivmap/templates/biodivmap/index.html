@@ -19,6 +19,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="{% static 'biodivmap/bootstrap-toggle.min.css' %}" >
+    <script src={% static 'biodivmap/bootstrap-toggle.min.js' %}></script>
+
     <script src="https://unpkg.com/topojson@3"></script>
 
     <script src="{% static 'biodivmap/leaflet.edgebuffer.js' %}"></script>
@@ -88,23 +91,23 @@
       <div class="sidebar-heading">Start Bootstrap </div>
       <div class="list-group list-group-flush">
 
+        <input  id="toggle-bar-charts" type="checkbox" data-toggle="toggle" data-on="Bar charts" data-off="Bar charts" data-onstyle="success" data-offstyle="danger">
+          <input  id="toggle-sunburst" type="checkbox" data-toggle="toggle" data-on="Sunburst" data-off="Sunburst" data-onstyle="success" data-offstyle="danger">
+          <input  id="toggle-time-series" type="checkbox" data-toggle="toggle" data-on="Time Series" data-off="Time Series" data-onstyle="success" data-offstyle="danger">
 
-        <a id="toggle-bar-charts" class="list-group-item list-group-item-action bg-light" style="fill: red">Toggle Bar charts</a>
-        <a id="toggle-sunburst" class="list-group-item list-group-item-action bg-light">Toggle Sunburst</a>
-        <a id="toggle-time-series" class="list-group-item list-group-item-action bg-light">Toggle Time Series</a>
       </div>
     </div>
-    <script>
-        document.getElementById("toggle-bar-charts").addEventListener("click", function() {
-        showHideDiv("bar-charts");
-        }, false);
-        document.getElementById("toggle-sunburst").addEventListener("click", function() {
-        showHideDiv("sunburst");
-        }, false);
-        document.getElementById("toggle-time-series").addEventListener("click", function() {
-        showHideDiv("shiny");
-        }, false);
-    </script>
+{#    <script>#}
+{#        document.getElementById("toggle-bar-charts").addEventListener("click", function() {#}
+{#        showHideDiv("bar-charts");#}
+{#        }, false);#}
+{#        document.getElementById("toggle-sunburst").addEventListener("click", function() {#}
+{#        showHideDiv("sunburst");#}
+{#        }, false);#}
+{#        document.getElementById("toggle-time-series").addEventListener("click", function() {#}
+{#        showHideDiv("shiny");#}
+{#        }, false);#}
+{#    </script>#}
 
     <!-- /#sidebar-wrapper -->
 
@@ -527,11 +530,11 @@
 
 
     <div id="bar-chart-species" style="height:500px; overflow:auto; float:left; text-align: center;">
-        <p> Unique species distribution</p>
+        <h2 class="mt-4">Unique species distribution</h2>
     </div>
 
     <div id="bar-chart-occurrence" style="height:500px; overflow:auto; float:right; margin-right:50px; margin-left:25px; text-align: center;">
-        <p> Species occurrence distribution</p>
+        <h2 class="mt-4">Species occurrence distribution</h2>
     </div>
 
 </div>
@@ -581,7 +584,8 @@
 
 
 
-<div id="sunburst" style="margin-right:25px; margin-left:400px; margin-top:50px">
+<div id="sunburst" style="margin-right:25px; margin-left:20px; margin-top:50px">
+
     </div>
 
 <br>
@@ -607,6 +611,50 @@
       $("#wrapper").toggleClass("toggled");
     });
   </script>
+
+    <script>
+
+
+
+        $(document).ready(function(){
+            summary_divs = [document.getElementById("bar-charts"),
+                document.getElementById("sunburst"), document.getElementById("shiny")];
+            toggle_buttons = ["#toggle-bar-charts", "#toggle-sunburst", "#toggle-time-series"];
+            summary_divs[0].style.display = "none";
+            summary_divs[1].style.display = "none";
+            summary_divs[2].style.display = "none";
+
+                $(toggle_buttons[0]).change(function() {
+                    if ($(this).prop('checked')) {
+                        summary_divs[0].style.display = "block";
+                    }
+                    else {
+                        summary_divs[0].style.display = "none";
+                    }
+                })
+
+            $(toggle_buttons[1]).change(function() {
+                    if ($(this).prop('checked')) {
+                        summary_divs[1].style.display = "block";
+                    }
+                    else {
+                        summary_divs[1].style.display = "none";
+                    }
+                })
+
+            $(toggle_buttons[2]).change(function() {
+                    if ($(this).prop('checked')) {
+                        summary_divs[2].style.display = "block";
+                    }
+                    else {
+                        summary_divs[2].style.display = "none";
+                    }
+                })
+
+        });
+
+
+        </script>
 
 
 
