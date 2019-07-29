@@ -3,9 +3,13 @@ library(tidyverse)
 library(stringr)
 library(rgdal)
 library(jsonlite)
+library(shinyBS)
 
 # Read in the data 
 dfsp <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
+colnames(dfsp) <- c("simplified_names", "common", "redList", "kingdom", "phylum", "class", "order","family", "genus", 
+                    "species","freq", "bc_list", "SARA", "regional_dist", "habitat_subtype", "Endemic", "Pollinator_binary", "SARA_binary", 
+                    "sara_designations", "BC_Red_binary", "BC_Blue_binary", "BC_Endemic", "IUCN_binary")
 df_orig <- readRDS("gbif_summary.rds")
 
 # Record which columns in dfsp should be treated as taxonomies and which should be treated as custom tags
