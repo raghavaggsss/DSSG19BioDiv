@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/taxon_hierarchy.json" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/taxon_hierarchy.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/taxon_hierarchy.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/dssgweb/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/dssgweb/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1100">
-              <caret line="619" selection-start-line="619" selection-end-line="619" />
+              <caret line="617" selection-start-line="617" selection-end-line="617" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#88#94#1" expanded="true" />
@@ -647,7 +649,7 @@
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1100">
-          <caret line="619" selection-start-line="619" selection-end-line="619" />
+          <caret line="617" selection-start-line="617" selection-end-line="617" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#88#94#1" expanded="true" />

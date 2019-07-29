@@ -29,7 +29,8 @@ ui <- fluidPage(
     
 
     mainPanel(
-      h5("The time series graph below visualizes species occurrence records from the GBIF database for the area selected on the map. You may customize the plot by adjusting the year interval, taxon level (ie genus, species etc.) or choose a custom grouping like pollinators or endangered species. Normalization options are provided to correct for biases when comparing records across years."),
+      h6("The time series graph below visualizes species occurrence records for the area selected on the map. You may customize the plot by adjusting the year interval, taxon level (ie genus, species etc.) or choose a custom grouping like pollinators. Normalization options are provided to correct for biases when comparing records across years."),
+      headerPanel(""),
       headerPanel(""),
       plotOutput("plot1")
     )
