@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="{% static 'biodivmap/leaflet/leaflet.css' %}"/>
     <link rel="stylesheet" href="{% static 'biodivmap/leaflet_map.css' %}"/>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/simple-sidebar.css' %}">
 
 
@@ -16,10 +17,14 @@
     <script src="{% static 'biodivmap/jquery.min.js' %}"></script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{% static 'biodivmap/bootstrap-toggle.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'biodivmap/bootstrap-toggle.min.css' %}">
     <script src={% static 'biodivmap/bootstrap-toggle.min.js' %}></script>
 
     <script src="https://unpkg.com/topojson@3"></script>
@@ -78,7 +83,6 @@
     <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.Circle.js' %}"></script>
 
 
-
     <!--    {{ form.media.css }}-->
 
 </head>
@@ -88,574 +92,247 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Start Bootstrap </div>
-      <div class="list-group list-group-flush">
+        <div class="sidebar-heading">Start Bootstrap</div>
+        <div class="list-group list-group-flush">
 
-        <input  id="toggle-bar-charts" type="checkbox" data-toggle="toggle" data-on="Bar charts" data-off="Bar charts" data-onstyle="success" data-offstyle="danger">
-          <input  id="toggle-sunburst" type="checkbox" data-toggle="toggle" data-on="Sunburst" data-off="Sunburst" data-onstyle="success" data-offstyle="danger">
-          <input  id="toggle-time-series" type="checkbox" data-toggle="toggle" data-on="Time Series" data-off="Time Series" data-onstyle="success" data-offstyle="danger">
+            <input id="toggle-bar-charts" type="checkbox" data-toggle="toggle" data-on="Bar charts"
+                   data-off="Bar charts" data-onstyle="success" data-offstyle="danger">
+            <input id="toggle-sunburst" type="checkbox" data-toggle="toggle" data-on="Sunburst" data-off="Sunburst"
+                   data-onstyle="success" data-offstyle="danger">
+            <input id="toggle-time-series" type="checkbox" data-toggle="toggle" data-on="Time Series"
+                   data-off="Time Series" data-onstyle="success" data-offstyle="danger">
 
-      </div>
+        </div>
     </div>
-{#    <script>#}
-{#        document.getElementById("toggle-bar-charts").addEventListener("click", function() {#}
-{#        showHideDiv("bar-charts");#}
-{#        }, false);#}
-{#        document.getElementById("toggle-sunburst").addEventListener("click", function() {#}
-{#        showHideDiv("sunburst");#}
-{#        }, false);#}
-{#        document.getElementById("toggle-time-series").addEventListener("click", function() {#}
-{#        showHideDiv("shiny");#}
-{#        }, false);#}
-{#    </script>#}
-
-    <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">Summary</button>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-primary" id="menu-toggle">Summary</button>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-          </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+            <h1 class="mt-4">Biodiversity MV</h1>
+
+            <div style="width: 100%; overflow: hidden;">
+
+                <div id="map" style="float: left;">
+                    <div class="leaflet-bottom leaflet-right">
+                        <div style="margin: 20px">
+                            <img id="loader-summary" src="{% static 'biodivmap/ajax-loader.gif' %}"
+                                 style="display: none;"/>
+                            {#        <button onclick="summariseSelection()"> Summarise</button>#}
+                            {#        <button onclick="drawRectangle()"> Select</button>#}
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--<select class="select2-year" multiple="multiple" style="width:500px"> Select Year-->
+                <!--</select>-->
+
+                <!--&lt;!&ndash;<button onclick="plotGbif()">Plot gbif</button>&ndash;&gt;-->
+                <!--<br>-->
+
+                <!--<select class="select2-species" multiple="multiple" style="width:500px"> Select Species-->
+                <!--</select>-->
+
+
+                <!--<script>-->
+                <!--    select2_element = $(".select2-species").select2({-->
+                <!--      data: {{select2_species|safe}},-->
+                <!--      width: 'resolve',-->
+                <!--        closeOnSelect: false,-->
+                <!--    });-->
+                <!--</script>-->
+
+
+                <script src="{% static 'biodivmap/leaflet_map.js' %}"></script>
+
+                <div style="overflow:auto; height:500px; width:400px; background-color:#ffffff; float: left">
+
+                    <div>
+                        <img id="loader-plot" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;"/>
+                        <button onclick="plotSpecies()"> Plot species</button>
+                        <input id="taxon-search-field">
+                        <button id="taxon-search-button" onclick="searchTaxon()">Search</button>
+                    </div>
+
+                    <svg id="d3_graphs" style="float:left" width="400">
+                    </svg>
+                    <script src="{% static 'biodivmap/taxontree.js' %}"></script>
+                </div>
+                <div style="height:500px; width:100px; background-color:#ffffff; float: left">
+                    <svg id="labels" class="fixed_labels" style="float:right" height="400" width="100">
+                    </svg>
+                    <script src="{% static 'biodivmap/species_legend.js' %}"></script>
+
+                </div>
+            </div>
+
+
+            <br>
+
+            <div id="bar-charts">
+
+
+                <div id="bar-chart-species" style="height:500px; overflow:auto; float:left; text-align: center;">
+                    <h2 class="mt-4">Unique species distribution</h2>
+                </div>
+
+                <div id="bar-chart-occurrence"
+                     style="height:500px; overflow:auto; float:left; text-align: center;">
+                    <h2 class="mt-4">Species occurrence distribution</h2>
+                </div>
+
+            </div>
+
+            <script type="module">
+
+                import {Runtime, Inspector} from "{% static 'biodivmap/bar_chart/runtime.js' %}";
+                import bar_chart_occurrence from "{% static 'biodivmap/bar_chart/bar-chart-occurrence.js' %}";
+                import bar_chart_species from "{% static 'biodivmap/bar_chart/bar-chart-species.js' %}";
+                import sunburst from "{% static 'biodivmap/bar_chart/zoomable-sunburst.js' %}";
+
+                function define_bar_chart_occurence(runtime, observer) {
+                    const main = runtime.module();
+                    bar_chart_occurrence_ref = runtime.module(bar_chart_occurrence);
+                    main.import("chart", bar_chart_occurrence_ref);
+                    main.variable(observer()).define(["chart"], function (chart) {
+                        return (
+                            chart
+                        )
+                    });
+                    return main;
+                }
+
+                function define_bar_chart_species(runtime, observer) {
+                    const main = runtime.module();
+                    bar_chart_species_ref = runtime.module(bar_chart_species);
+                    main.import("chart", bar_chart_species_ref);
+                    main.variable(observer()).define(["chart"], function (chart) {
+                        return (
+                            chart
+                        )
+                    });
+                    return main;
+                }
+
+                function define_sunburst(runtime, observer) {
+                    const main = runtime.module();
+                    sunburst_ref = runtime.module(sunburst);
+                    main.import("chart", sunburst_ref);
+                    main.variable(observer()).define(["chart"], function (chart) {
+                        return (
+                            chart
+                        )
+                    });
+                    return main;
+                }
+
+                const runtime = new Runtime();
+                const main = runtime.module(define_bar_chart_occurence, Inspector.into(document.getElementById("bar-chart-occurrence")));
+                runtime.module(define_bar_chart_species, Inspector.into(document.getElementById("bar-chart-species")));
+                runtime.module(define_sunburst, Inspector.into(document.getElementById("sunburst")));
+
+            </script>
+            <br>
+
+            <div id="sunburst" style="margin-top:50px; margin-left:20%; display: block;">
+
+            </div>
+
+            <br>
+
+
         </div>
-      </nav>
 
-
-      <div class="container-fluid">
-        <h1 class="mt-4">Biodiversity MV</h1>
-
-          <div style="width: 100%; overflow: hidden;">
-
-<div id="map" style="float: left;">
-    <div class="leaflet-bottom leaflet-right">
-        <div style="margin: 20px">
-        <img id="loader-summary" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
-{#        <button onclick="summariseSelection()"> Summarise</button>#}
-{#        <button onclick="drawRectangle()"> Select</button>#}
-
-    </div>
-    </div>
-</div>
-
-
-<!--<select class="select2-year" multiple="multiple" style="width:500px"> Select Year-->
-<!--</select>-->
-
-<!--&lt;!&ndash;<button onclick="plotGbif()">Plot gbif</button>&ndash;&gt;-->
-<!--<br>-->
-
-<!--<select class="select2-species" multiple="multiple" style="width:500px"> Select Species-->
-<!--</select>-->
-
-
-
-<!--<script>-->
-<!--    select2_element = $(".select2-species").select2({-->
-<!--      data: {{select2_species|safe}},-->
-<!--      width: 'resolve',-->
-<!--        closeOnSelect: false,-->
-<!--    });-->
-<!--</script>-->
-
-
-<script src="{% static 'biodivmap/leaflet_map.js' %}"></script>
-
-<div style="overflow:auto; height:500px; width:400px; background-color:#ffffff; float: left" >
-
-    <div>
-        <img id="loader-plot" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;" />
-        <button onclick="plotSpecies()"> Plot species</button>
-        <input id="taxon-search-field">
-        <button id="taxon-search-button" onclick="searchTaxon()">Search</button>
-    </div>
-
-    <svg id="d3_graphs" style="float:left" width="400">
-
-        <script>
-
-            var init_desc;
-
-            var margin = {top: 30, right: 20, bottom: 30, left: 20},
-                width = 960,
-                barHeight = 20,
-                barWidth = (width - margin.left - margin.right) * 0.2;
-
-            var i = 0,
-                duration = 400,
-                root;
-
-            var diagonal = d3.linkHorizontal()
-                .x(function (d) {
-                    return d.y;
-                })
-                .y(function (d) {
-                    return d.x;
-                });
-
-            var svg_tree = d3.select("#d3_graphs").append("svg")
-                .attr("width", width) // + margin.left + margin.right)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            function reload_tax_tree(data) {
-                root = d3.hierarchy(data);
-                root.x0 = 0;
-                root.y0 = 0;
-                // open the tree collapsed
-                desc = root.descendants();
-                init_desc = root.descendants();
-                var i = 0;
-                for (i = 0; i < desc.length; i++) {
-                    desc[i]._children = desc[i].children;
-                    desc[i].children = null;
-                    desc[i].selected = 0;
-                }
-                update(root);
-            }
-
-            reload_tax_tree({"name": "Organisms", "children": [], "taxLevel": "organisms", "types": 1,
-                         "ratio": 1.0, "size_tree": 1, "redList": 1 });
-
-
-            var min_width = 5;
-            {#var taxons_selected = {};#}
-            {#taxons_selected['organisms'] = {};#}
-            {#taxons_selected['kingdom'] = {};#}
-            {#taxons_selected['phylum'] = {};#}
-            {#taxons_selected['class'] = {};#}
-            {#taxons_selected['order'] = {};#}
-            {#taxons_selected['family'] = {};#}
-            {#taxons_selected['genus'] = {};#}
-            {#taxons_selected['species'] = {};#}
-
-            function update(source) {
-
-                // Compute the flattened node list.
-                var nodes = root.descendants();
-
-                var height = Math.max(500, nodes.length * barHeight + margin.top + margin.bottom);
-
-                d3.select("#d3_graphs").transition()
-                    .duration(duration)
-                    .attr("height", height);
-
-                d3.select(self.frameElement).transition()
-                    .duration(duration)
-                    .style("height", height + "px");
-
-                // Compute the "layout". TODO https://github.com/d3/d3-hierarchy/issues/67
-                var index = -1;
-                root.eachBefore(function (n) {
-                    n.x = ++index * barHeight;
-                    n.y = n.depth * 20;
-                });
-
-                // Update the nodes…
-                var node = svg_tree.selectAll(".node")
-                    .data(nodes, function (d) {
-                        return d.id || (d.id = ++i);
-                    });
-
-                var nodeEnter = node.enter().append("g")
-                    .attr("class", "node")
-                    .attr("transform", function (d) {
-                        return "translate(" + source.y0 + "," + source.x0 + ")";
-                    })
-                    .style("opacity", 0);
-
-                // Enter any new nodes at the parent's previous position.
-                nodeEnter.append("rect")
-                    .attr("y", -barHeight / 2)
-                    .attr("height", barHeight)
-                    .attr("width", (function (d) {
-                        var curr_width = barWidth * d.data.ratio;
-                        if (curr_width < min_width) {
-                            return min_width;
-                        }
-                        return curr_width;
-                    }))
-                    .style("fill", color)
-                    .on("click", clickTree);
-
-                nodeEnter.append("text")
-                    .attr("dy", 3.5)
-                    .attr("dx", 5.5)
-                    .text(function (d) {
-                        return (d.data.types + " " + d.data.name + " : " + d.data.size_tree)
-                    });
-
-                // text is taxonomy level, value is the actual taxonomy name
-                nodeEnter.append("circle")
-                    .attr("cy", 0)
-                    .attr("cx", -5)
-                    //.text(function (d) {
-                    //    return d.data.taxLevel;
-                    //})
-                    .attr("r", 3)
-                    //.attr("value", function(d) {
-                    //    return d.data.name;
-                    //})
-                    .attr("fill", "white")
-                    .style("stroke", function(d) {
-                        if (d.data.redList) {
-                            return "red";
-                        }
-                        return "black";
-                    })
-                    .on("click", function (d) {
-                        var elem = d3.select(this);
-                        {#var taxonLevelName = elem.text();#}
-                        // if unselect
-                        {#console.log(d.selected);#}
-                        if (d.selected) {
-                            elem.attr("fill", "white");
-                            {#delete taxons_selected[d.data.name];#}
-                            d.selected = 0;
-                        } else {
-                            elem.attr("fill", "black");
-                            // make it equal to d.data.id
-                            {#taxons_selected[d.data.name] = {"index": d.data.index, "taxLevel": d.data.taxLevel};#}
-                            d.selected = 1;
-                        }
-
-                        //console.log(elem.text());
-                        //console.log(elem.attr("value"));
-                        // var taxon_name = d3.select(this).text();
-                    });
-
-                // Transition nodes to their new position.
-                nodeEnter.transition()
-                    .duration(duration)
-                    .attr("transform", function (d) {
-                        return "translate(" + d.y + "," + d.x + ")";
-                    })
-                    .style("opacity", 1);
-
-                node.transition()
-                    .duration(duration)
-                    .attr("transform", function (d) {
-                        return "translate(" + d.y + "," + d.x + ")";
-                    })
-                    .style("opacity", 1)
-                    .select("rect")
-                    .style("fill", color);
-
-                // Transition exiting nodes to the parent's new position.
-                node.exit().transition()
-                    .duration(duration)
-                    .attr("transform", function (d) {
-                        return "translate(" + source.y + "," + source.x + ")";
-                    })
-                    .style("opacity", 0)
-                    .remove();
-
-                // Update the links…
-                var link = svg_tree.selectAll(".link")
-                    .data(root.links(), function (d) {
-                        return d.target.id;
-                    });
-
-                // Enter any new links at the parent's previous position.
-                link.enter().insert("path", "g")
-                    .attr("class", "link")
-                    .attr("d", function (d) {
-                        var o = {x: source.x0, y: source.y0};
-                        return diagonal({source: o, target: o});
-                    })
-                    .transition()
-                    .duration(duration)
-                    .attr("d", diagonal);
-
-                // Transition links to their new position.
-                link.transition()
-                    .duration(duration)
-                    .attr("d", diagonal);
-
-                // Transition exiting nodes to the parent's new position.
-                link.exit().transition()
-                    .duration(duration)
-                    .attr("d", function (d) {
-                        var o = {x: source.x, y: source.y};
-                        return diagonal({source: o, target: o});
-                    })
-                    .remove();
-
-                // Stash the old positions for transition.
-                root.each(function (d) {
-                    d.x0 = d.x;
-                    d.y0 = d.y;
-                });
-            }
-
-            // Toggle children on click.
-            function clickTree(d) {
-                {#var curr_children = d.children;#}
-                if (d.children) {
-                    curr_desc = d.descendants();
-                    for (i = 1; i < curr_desc.length; i++) {
-                        curr_desc[i].selected = 0;
-                    }
-                    d._children = d.children;
-                    d.children = null;
-                } else {
-                    d.children = d._children;
-                    d._children = null;
-                }
-                update(d);
-            }
-
-            function color(d) {
-                // var nextChildren = d.children;
-                // if (!nextChildren) {
-                //     nextChildren = d._children;
-                //     if (!nextChildren) {
-                //         return "#fd8d3c"
-                //     }
-                // }
-                var height = d.height;
-                switch (height) {
-                    case 6:
-                        return "#8240bd"
-                    case 5:
-                        return "#bd47a0";
-                    case 4:
-                        return "#35b9bd";
-                    case 3:
-                        return "#0932bd";
-                    case 2:
-                        return "#bd1e17";
-                    case 1:
-                        return "#3fbd20";
-                    case 0:
-                        return "#bdb7bd";
-                    default:
-                        return "#ffa500";
-                }
-
-                // return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
-            }
-
-            function getRandomColor() {
-                var letters = '0123456789ABCDEF';
-                var color = '#';
-                for (var i = 0; i < 6; i++) {
-                    color += letters[Math.floor(Math.random() * 16)];
-                }
-                return color;
-            }
-
-        </script>
-    </svg>
-    </div>
-    <div style="height:500px; width:100px; background-color:#ffffff; float: left">
-        <svg id="labels" class="fixed_labels" style="float:right" height="400" width="100">
-        <script>
-            // Graph Legend
-            var color_legend = d3.scaleOrdinal()
-                .domain(['organisms', 'kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species',])
-                .range(["#ffa500", "#8240bd", "#bd47a0", "#35b9bd", "#0932bd", "#bd1e17", "#3fbd20", "#bdb7bd"]);
-
-            var legendRectSize = 20;
-            var legendSpacing = 12;
-
-
-            var legend = d3.select("#labels")
-                .append("svg")
-                .append("g")
-                .selectAll("g")
-                .data(color_legend.domain())
-                .enter()
-                .append('g')
-                .attr('class', 'legend')
-                .attr('transform', function (d, i) {
-                    var height = legendRectSize;
-                    var x = 0;
-                    var y = i * height;
-                    return 'translate(' + x + ',' + y + ')';
-                });
-
-            legend.append('rect')
-                .attr('width', legendRectSize)
-                .attr('height', legendRectSize)
-                .style('fill', color_legend)
-                .style('fill-opacity', 0.5);
-
-            legend.append('text')
-                .attr('x', legendRectSize + legendSpacing - 5)
-                .attr('y', 5 + legendRectSize - legendSpacing)
-                .text(function (d) {
-                    return d;
-                });
-        </script>
-
-
-    </svg>
-
-    </div>
-</div>
-
-
-
-
-<!--{{ form.media.js }}-->
-
-
-<br>
-
-<div id="bar-charts">
-
-
-    <div id="bar-chart-species" style="height:500px; overflow:auto; float:left; text-align: center;">
-        <h2 class="mt-4">Unique species distribution</h2>
-    </div>
-
-    <div id="bar-chart-occurrence" style="height:500px; overflow:auto; float:right; margin-right:50px; margin-left:25px; text-align: center;">
-        <h2 class="mt-4">Species occurrence distribution</h2>
-    </div>
-
-</div>
-
-        <script type="module">
-
-            import {Runtime, Inspector} from "{% static 'biodivmap/bar_chart/runtime.js' %}";
-            import bar_chart_occurrence from "{% static 'biodivmap/bar_chart/bar-chart-occurrence.js' %}";
-            import bar_chart_species from "{% static 'biodivmap/bar_chart/bar-chart-species.js' %}";
-            import sunburst from "{% static 'biodivmap/bar_chart/zoomable-sunburst.js' %}";
-
-            function define_bar_chart_occurence(runtime, observer) {
-              const main = runtime.module();
-              bar_chart_occurrence_ref = runtime.module(bar_chart_occurrence);
-              main.import("chart", bar_chart_occurrence_ref);
-              main.variable(observer()).define(["chart"], function(chart){return(
-            chart
-            )});
-              return main;
-            }
-
-            function define_bar_chart_species(runtime, observer) {
-              const main = runtime.module();
-              bar_chart_species_ref = runtime.module(bar_chart_species);
-              main.import("chart", bar_chart_species_ref);
-              main.variable(observer()).define(["chart"], function(chart){return(
-            chart
-            )});
-              return main;
-            }
-
-            function define_sunburst(runtime, observer) {
-              const main = runtime.module();
-              sunburst_ref = runtime.module(sunburst);
-              main.import("chart", sunburst_ref);
-              main.variable(observer()).define(["chart"], function(chart){return(
-            chart
-            )});
-              return main;
-            }
-            const runtime = new Runtime();
-            const main = runtime.module(define_bar_chart_occurence, Inspector.into(document.getElementById("bar-chart-occurrence")));
-            runtime.module(define_bar_chart_species,Inspector.into(document.getElementById("bar-chart-species")));
-            runtime.module(define_sunburst,Inspector.into(document.getElementById("sunburst")));
-
-        </script>
-
-
-
-<div id="sunburst" style="margin-right:25px; margin-left:20px; margin-top:50px">
-
-    </div>
-
-<br>
-
-
-
-
-      </div>
-
-                  <div class="row-container">
-        <iframe id="shiny" src="http://127.0.0.1:4609" class="second-row"></iframe>
-</div>
+        <div class="row-container">
+            <iframe id="shiny" src="http://127.0.0.1:4609" class="second-row"></iframe>
+        </div>
     </div>
     <!-- /#page-content-wrapper -->
 
-  </div>
-  <!-- /#wrapper -->
+</div>
+<!-- /#wrapper -->
 
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
     });
-  </script>
+</script>
 
-    <script>
+<script>
 
+    $(document).ready(function () {
+        summary_divs = [document.getElementById("bar-charts"),
+            document.getElementById("sunburst"), document.getElementById("shiny")];
+        toggle_buttons = ["#toggle-bar-charts", "#toggle-sunburst", "#toggle-time-series"];
+        summary_divs[0].style.display = "none";
+        summary_divs[1].style.display = "none";
+        summary_divs[2].style.display = "none";
 
+        $(toggle_buttons[0]).change(function () {
+            if ($(this).prop('checked')) {
+                summary_divs[0].style.display = "block";
+            } else {
+                summary_divs[0].style.display = "none";
+            }
+        })
 
-        $(document).ready(function(){
-            summary_divs = [document.getElementById("bar-charts"),
-                document.getElementById("sunburst"), document.getElementById("shiny")];
-            toggle_buttons = ["#toggle-bar-charts", "#toggle-sunburst", "#toggle-time-series"];
-            summary_divs[0].style.display = "none";
-            summary_divs[1].style.display = "none";
-            summary_divs[2].style.display = "none";
+        $(toggle_buttons[1]).change(function () {
+            if ($(this).prop('checked')) {
+                summary_divs[1].style.display = "block";
+            } else {
+                summary_divs[1].style.display = "none";
+            }
+        })
 
-                $(toggle_buttons[0]).change(function() {
-                    if ($(this).prop('checked')) {
-                        summary_divs[0].style.display = "block";
-                    }
-                    else {
-                        summary_divs[0].style.display = "none";
-                    }
-                })
+        $(toggle_buttons[2]).change(function () {
+            if ($(this).prop('checked')) {
+                summary_divs[2].style.display = "block";
+            } else {
+                summary_divs[2].style.display = "none";
+            }
+        })
 
-            $(toggle_buttons[1]).change(function() {
-                    if ($(this).prop('checked')) {
-                        summary_divs[1].style.display = "block";
-                    }
-                    else {
-                        summary_divs[1].style.display = "none";
-                    }
-                })
-
-            $(toggle_buttons[2]).change(function() {
-                    if ($(this).prop('checked')) {
-                        summary_divs[2].style.display = "block";
-                    }
-                    else {
-                        summary_divs[2].style.display = "none";
-                    }
-                })
-
-        });
+    });
 
 
-        </script>
-
+</script>
 
 
 </body>
