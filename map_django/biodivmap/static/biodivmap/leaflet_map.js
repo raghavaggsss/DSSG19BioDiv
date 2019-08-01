@@ -73,6 +73,24 @@ var typeSEI = {
 
 };
 
+var seiFullNames = {
+    "ME": "Modified Ecosystem",
+    // "SE": "#85144b",
+    "XX": "Other",
+    "YS": "Young Forest",
+    "OF": "Old Forest",
+    "MF": "Mature Forest",
+    "WD": "Woodland",
+    "RI": "Riparian",
+    "IT": "Intertidal & Shallow Sub-tidal",
+    "WN": "Wetland",
+    "HB": "Herbaceous",
+    "SV": "Sparsely Vegetated",
+    "ES": "Estuarine",
+    "FW": "Freshwater Lakes & Ponds",
+    "AP": "Alpine",
+}
+
 // initialize the map
 
 
@@ -159,7 +177,7 @@ function init_sei_layer(sei_type) {
             })
         }
     });
-    sei_control_group.addOverlay(curr_sei_layer, sei_type);
+    sei_control_group.addOverlay(curr_sei_layer, '<text style="color:' + typeSEI[sei_type] +';">' + seiFullNames[sei_type] + "</text>");
     sei_layers[sei_type] = curr_sei_layer;
 }
 
@@ -567,25 +585,25 @@ function summarisePolygon(){
 //     return features;
 // }
 
-function drawRectangle() {
-    if (curr_rectangle) {
-        curr_rectangle.remove();
-    }
-    curr_rectangle = L.rectangle(map.getBounds(), {color: 'grey', weight: 1}).addTo(map);
-    plotSpecies();
-    summariseSelection();
-}
-
-function showHideDiv(div_id) {
-    curr_div = document.getElementById(div_id);
-    if (curr_div.style.display == "none") {
-        curr_div.style.display = "block"
-    }
-    else {
-        curr_div.style.display = "none"
-    }
-
-}
+// function drawRectangle() {
+//     if (curr_rectangle) {
+//         curr_rectangle.remove();
+//     }
+//     curr_rectangle = L.rectangle(map.getBounds(), {color: 'grey', weight: 1}).addTo(map);
+//     plotSpecies();
+//     summariseSelection();
+// }
+//
+// function showHideDiv(div_id) {
+//     curr_div = document.getElementById(div_id);
+//     if (curr_div.style.display == "none") {
+//         curr_div.style.display = "block"
+//     }
+//     else {
+//         curr_div.style.display = "none"
+//     }
+//
+// }
 
 
 
