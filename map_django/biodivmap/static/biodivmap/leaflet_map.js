@@ -177,7 +177,7 @@ function init_sei_layer(sei_type) {
             })
         }
     });
-    sei_control_group.addOverlay(curr_sei_layer, '<text style="color:' + typeSEI[sei_type] +';">' + seiFullNames[sei_type] + "</text>");
+    sei_control_group.addOverlay(curr_sei_layer, '<b> <text style="color:' + typeSEI[sei_type] +';">' + seiFullNames[sei_type] + "</text> </b>");
     sei_layers[sei_type] = curr_sei_layer;
 }
 
@@ -235,7 +235,11 @@ map.addControl(new L.Control.Draw({
         polygon: {
             allowIntersection: false,
             showArea: true
-        }
+        },
+        circle: false,
+        marker: false,
+        circlemarker: false,
+        polyline: false,
     }
 }));
 
