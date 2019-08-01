@@ -85,6 +85,9 @@ def generate_taxon_hierarchy(df, taxLevelIndex, prevIndex):
 def index(request):
     return render(request, 'biodivmap/index.html')
 
+def home(request):
+    return render(request, 'biodivmap/home.html')
+
 @csrf_exempt
 def ajax_species(request):
     if request.method == 'POST':

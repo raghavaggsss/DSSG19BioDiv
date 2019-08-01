@@ -92,15 +92,17 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Start Bootstrap</div>
+        <div class="sidebar-heading">Summary options</div>
         <div class="list-group list-group-flush">
-
             <input id="toggle-bar-charts" type="checkbox" data-toggle="toggle" data-on="Bar charts"
-                   data-off="Bar charts" data-onstyle="success" data-offstyle="danger">
-            <input id="toggle-sunburst" type="checkbox" data-toggle="toggle" data-on="Sunburst" data-off="Sunburst"
-                   data-onstyle="success" data-offstyle="danger">
+                   data-off="Bar charts" data-onstyle="success" data-offstyle="danger" class="list-group-item list-group-item-action bg-light">
+            <br>
+            <input id="toggle-sunburst" type="checkbox" data-toggle="toggle" data-on="  Sunburst" data-off="Sunburst"
+                   data-onstyle="success" data-offstyle="danger" class="list-group-item list-group-item-action bg-light">
+            <br>
             <input id="toggle-time-series" type="checkbox" data-toggle="toggle" data-on="Time Series"
-                   data-off="Time Series" data-onstyle="success" data-offstyle="danger">
+                   data-off="Time Series" data-onstyle="success" data-offstyle="danger" class="list-group-item list-group-item-action bg-light">
+            <br>
 
         </div>
     </div>
@@ -109,7 +111,7 @@
     <div id="page-content-wrapper">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <button class="btn btn-primary" id="menu-toggle">Summary</button>
+            <button class="btn btn-primary" id="menu-toggle">Summary Tools Menu</button>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -208,7 +210,8 @@
 
 
                 <div id="bar-chart-species" style="height:500px; overflow:auto; float:left; text-align: center;">
-                    <h2 class="mt-4">Unique species distribution</h2>
+                    <h2 class="mt-4" data-toggle="tooltip" data-placement="left" title="Tooltip on top Tooltip on top">Unique species distribution</h2>
+
                 </div>
 
                 <div id="bar-chart-occurrence"
@@ -311,7 +314,7 @@
             } else {
                 summary_divs[0].style.display = "none";
             }
-        })
+        });
 
         $(toggle_buttons[1]).change(function () {
             if ($(this).prop('checked')) {
@@ -319,7 +322,7 @@
             } else {
                 summary_divs[1].style.display = "none";
             }
-        })
+        });
 
         $(toggle_buttons[2]).change(function () {
             if ($(this).prop('checked')) {
@@ -327,6 +330,12 @@
             } else {
                 summary_divs[2].style.display = "none";
             }
+        });
+
+        $("#wrapper").toggleClass("toggled");
+
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
         })
 
     });

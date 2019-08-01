@@ -567,27 +567,6 @@ function summarisePolygon(){
 //     return features;
 // }
 
-function searchTaxon() {
-    term = $("#taxon-search-field").val();
-    results = [];
-    for (i = 0; i < init_desc.length; i++) {
-        if (term.toLowerCase() == init_desc[i].data.name.toLowerCase()) {
-            results.push(init_desc[i])
-        }
-
-    }
-    results.forEach( function(result) {
-            while (result.parent) {
-                if (result.parent._children) {
-                    clickTree(result.parent);
-                }
-                result = result.parent;
-            }
-        }
-    )
-
-}
-
 function drawRectangle() {
     if (curr_rectangle) {
         curr_rectangle.remove();
