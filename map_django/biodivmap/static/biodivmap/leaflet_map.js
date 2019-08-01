@@ -175,7 +175,8 @@ mun_layer = L.geoJson(false, {
 
             layer.on('click', function () {
                 // change to newID
-                showSummary(feature.properties.newID, null);
+                curr_shape = {'type': 'Feature', 'properties': {}, 'geometry': feature.geometry}
+                summarisePolygon();
             });
             layer.setStyle(municipality_style);
         }
