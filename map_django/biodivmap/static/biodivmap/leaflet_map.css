@@ -13,8 +13,8 @@
     border-radius: 50%;
     color: white;
     background: rgba(225, 12, 28, 0.85);
-    -webkit-text-stroke: 0.5px white;
-    border: solid white;
+    -webkit-text-stroke: 0.1px white;
+    border: solid 3px white;
 }
 
 .not_endangered {
@@ -24,8 +24,8 @@
     border-radius: 50%;
     color: white;
     background: rgba(59, 101, 252, 0.85);
-    -webkit-text-stroke: 0.5px white;
-    border: solid white;
+    -webkit-text-stroke: 0.1px white;
+    border: solid 3px white;
 
 }
 

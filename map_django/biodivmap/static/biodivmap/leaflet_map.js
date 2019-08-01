@@ -398,9 +398,9 @@ var clusters = L.markerClusterGroup(
                         num_children = "";
                     }
                     if (endangered) {
-                        return L.divIcon({html: num_children, className: 'endangered', iconSize: 15});
+                        return L.divIcon({html: num_children, className: 'endangered', iconSize: 20});
                     } else {
-                        return L.divIcon({html: num_children, className: 'not_endangered', iconSize: 15});
+                        return L.divIcon({html: num_children, className: 'not_endangered', iconSize: 20});
                     }
 
 
