@@ -106,7 +106,6 @@ label {
 .node rect {
   cursor: pointer;
   fill: #fff;
-  fill-opacity: 0.5;
   /*stroke: #000000;*/
   /*stroke-width: 0.5px;*/
 }

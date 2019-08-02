@@ -92,6 +92,7 @@ function update(source) {
             return curr_width;
         }))
         .style("fill", color)
+        .style("opacity", 0.5)
         .on("click", clickTree);
 
     nodeEnter.append("text")
@@ -101,7 +102,9 @@ function update(source) {
             return (d.data.name)
         });
 
-    nodeEnter.on("mouseover", handleMouseOver);
+    nodeEnter.on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+    .on("mousemove", handleMouseMove );
 
     // text is taxonomy level, value is the actual taxonomy name
     nodeEnter.append("circle")
@@ -316,5 +319,57 @@ function searchTaxonEnter() {
 taxon_tree_stats = document.getElementById("taxon-stats");
 
 function handleMouseOver(d,i) {
+    curr_elem = d3.select(this);
+
+
+    curr_elem.append("rect")
+        // .attr("x",(function (d) {
+        //     var curr_width = barWidth * d.data.ratio;
+        //     if (curr_width < min_width) {
+        //         return min_width;
+        //     }
+        //     return curr_width/2;
+        // }))
+        .attr("x", d3.mouse(this)[0]+20)
+        .attr("y", -barHeight / 2)
+        .attr("height", barHeight)
+        .attr("width", 100)
+        .attr("rx", 10)
+        .style("fill", "black")
+        .attr("id", "r" + d.x + "-" + d.y + "-" + i);
+
+
+    curr_elem.append("text")
+        .attr("dy", 3.5)
+        .attr("x", d3.mouse(this)[0]+25)
+        // .attr("dx", (function (d) {
+        //     var curr_width = barWidth * d.data.ratio;
+        //     if (curr_width < min_width) {
+        //         return min_width;
+        //     }
+        //     return curr_width/2;
+        // }))
+        .attr("id", "t" + d.x + "-" + d.y + "-" + i)
+        .style('fill', 'white')
+        .text(function (d) {
+            return (" species:" + d.data.size_tree + " types:" + d.data.types)
+        });
+
     taxon_tree_stats.innerHTML =  "num-species: " + d.data.size_tree + "<br>sub-types: " + d.data.types;
+
 }
+
+function handleMouseOut(d, i) {
+            // Use D3 to select element, change color back to normal
+            // Select text by id and then remove
+    d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+    d3.select("#r" + d.x + "-" + d.y + "-" + i).remove();
+}
+
+function handleMouseMove(d, i) {
+            // Use D3 to select element, change color back to normal
+            // Select text by id and then remove
+    d3.select("#t" + d.x + "-" + d.y + "-" + i).attr("x", d3.mouse(this)[0] +25);  // Remove text location
+    d3.select("#r" + d.x + "-" + d.y + "-" + i).attr("x", d3.mouse(this)[0] +20);
+}
+
