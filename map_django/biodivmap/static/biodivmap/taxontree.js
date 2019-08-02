@@ -98,8 +98,10 @@ function update(source) {
         .attr("dy", 3.5)
         .attr("dx", 5.5)
         .text(function (d) {
-            return (d.data.types + " " + d.data.name + " : " + d.data.size_tree)
+            return (d.data.name)
         });
+
+    nodeEnter.on("mouseover", handleMouseOver);
 
     // text is taxonomy level, value is the actual taxonomy name
     nodeEnter.append("circle")
@@ -153,14 +155,12 @@ function update(source) {
             }
         })
         .transition()
-        .duration(duration)
+        .duration(duration*2)
         .style("opacity", 1)
         .on("end", node_blink);
     }
 
     node_blink();
-
-
 
     node.transition()
         .duration(duration)
@@ -311,4 +311,10 @@ function searchTaxonEnter() {
     if(event.key === 'Enter') {
         searchTaxon();
     }
+}
+
+taxon_tree_stats = document.getElementById("taxon-stats");
+
+function handleMouseOver(d,i) {
+    taxon_tree_stats.innerHTML =  "num-species: " + d.data.size_tree + "<br>sub-types: " + d.data.types;
 }

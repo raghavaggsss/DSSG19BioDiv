@@ -193,12 +193,15 @@
 
                     <svg id="d3_graphs" style="float:left" width="400">
                     </svg>
-                    <script src="{% static 'biodivmap/taxontree.js' %}"></script>
+
                 </div>
                 <div style="height:500px; width:100px; background-color:#ffffff; float: left">
+                    <br>
+                    <text id="taxon-stats" class="fixed_labels">num-species:<br>sub-types:</text>
                     <svg id="labels" class="fixed_labels" style="float:right" height="400" width="100">
                     </svg>
                     <script src="{% static 'biodivmap/species_legend.js' %}"></script>
+                    <script src="{% static 'biodivmap/taxontree.js' %}"></script>
 
                 </div>
             </div>
