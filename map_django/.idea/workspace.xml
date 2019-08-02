@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b56d32e5-0fc2-46dc-82ba-9013332c91ea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="46" column="50" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="50" />
+            <state relative-caret-position="-3817">
+              <caret line="64" column="97" lean-forward="true" selection-start-line="64" selection-start-column="97" selection-end-line="64" selection-end-column="97" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -39,34 +39,43 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1365">
-              <caret line="91" column="29" lean-forward="true" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-614">
-              <caret line="202" column="18" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="18" />
+            <state relative-caret-position="148">
+              <caret line="142" column="29" lean-forward="true" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="239" column="8" selection-start-line="239" selection-start-column="8" selection-end-line="239" selection-end-column="8" />
+            <state relative-caret-position="1703">
+              <caret line="241" column="24" selection-start-line="241" selection-start-column="24" selection-end-line="241" selection-end-column="24" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#88#94#1" expanded="true" />
                 <element signature="n#style#0;n#text#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="119" column="13" lean-forward="true" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1365">
+              <caret line="91" column="29" lean-forward="true" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -117,8 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>class</find>
-      <find>bar</find>
       <find>shiny</find>
       <find>sunbu</find>
       <find>bar-charts</find>
@@ -139,14 +146,16 @@
       <find>bootstrap</find>
       <find>searc</find>
       <find>search</find>
-      <find>clickTree</find>
       <find>unique sp</find>
       <find>position</find>
       <find>sei</find>
       <find>sei_control_group</find>
       <find>unique spo</find>
       <find>toggle</find>
+      <find>clickTree</find>
+      <find>color</find>
       <find>draw</find>
+      <find>duration</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -182,10 +191,10 @@
         <option value="$PROJECT_DIR$/biodivmap/views.py" />
         <option value="$PROJECT_DIR$/biodivmap/urls.py" />
         <option value="$PROJECT_DIR$/biodivmap/templates/biodivmap/home.html" />
-        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" />
         <option value="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css" />
-        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js" />
       </list>
     </option>
   </component>
@@ -331,13 +340,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87873000" />
+    <option name="totallyTimeSpent" value="92129000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="331" y="59" width="1211" height="849" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20615911" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20615911" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -603,20 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-614">
-          <caret line="202" column="18" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
@@ -626,8 +621,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="46" column="50" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="50" />
+        <state relative-caret-position="-3817">
+          <caret line="64" column="97" lean-forward="true" selection-start-line="64" selection-start-column="97" selection-end-line="64" selection-end-column="97" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -646,15 +641,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="119" column="13" lean-forward="true" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="239" column="8" selection-start-line="239" selection-start-column="8" selection-end-line="239" selection-end-column="8" />
+        <state relative-caret-position="1703">
+          <caret line="241" column="24" selection-start-line="241" selection-start-column="24" selection-end-line="241" selection-end-column="24" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#88#94#1" expanded="true" />
             <element signature="n#style#0;n#text#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="142" column="29" lean-forward="true" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
         </state>
       </provider>
     </entry>

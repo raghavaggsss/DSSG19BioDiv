@@ -34,6 +34,7 @@ function reload_tax_tree(data) {
         desc[i]._children = desc[i].children;
         desc[i].children = null;
         desc[i].selected = 0;
+        desc[i].found = 0;
     }
     update(root);
 }
@@ -136,12 +137,30 @@ function update(source) {
         });
 
     // Transition nodes to their new position.
-    nodeEnter.transition()
+
+    function node_blink() {
+        nodeEnter.transition()
         .duration(duration)
         .attr("transform", function (d) {
             return "translate(" + d.y + "," + d.x + ")";
         })
-        .style("opacity", 1);
+        .style("opacity", function(d) {
+            if (d.found == 1) {
+                return 0.1;
+            }
+            else {
+                return 1;
+            }
+        })
+        .transition()
+        .duration(duration)
+        .style("opacity", 1)
+        .on("end", node_blink);
+    }
+
+    node_blink();
+
+
 
     node.transition()
         .duration(duration)
@@ -177,6 +196,7 @@ function update(source) {
         .transition()
         .duration(duration)
         .attr("d", diagonal);
+
 
     // Transition links to their new position.
     link.transition()
@@ -261,13 +281,18 @@ function searchTaxon() {
     results = [];
     for (i = 0; i < init_desc.length; i++) {
         if (term.toLowerCase() == init_desc[i].data.name.toLowerCase()) {
+            init_desc[i].found = 1;
             results.push(init_desc[i])
+        }
+        else {
+            init_desc[i].found = 0;
         }
 
     }
     results.forEach( function(result) {
             while (result.parent) {
                 if (result.parent._children) {
+                    // result.parent.found = 1;
                     clickTree(result.parent);
                 }
                 result = result.parent;
