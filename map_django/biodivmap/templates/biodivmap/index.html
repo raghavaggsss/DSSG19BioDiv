@@ -95,13 +95,16 @@
         <div class="sidebar-heading">Summary options</div>
         <div class="list-group list-group-flush">
             <input id="toggle-bar-charts" type="checkbox" data-toggle="toggle" data-on="Bar charts"
-                   data-off="Bar charts" data-onstyle="success" data-offstyle="danger" class="list-group-item list-group-item-action bg-light">
+                   data-off="Bar charts" data-onstyle="success" data-offstyle="danger"
+                   class="list-group-item list-group-item-action bg-light">
             <br>
             <input id="toggle-sunburst" type="checkbox" data-toggle="toggle" data-on="  Sunburst" data-off="Sunburst"
-                   data-onstyle="success" data-offstyle="danger" class="list-group-item list-group-item-action bg-light">
+                   data-onstyle="success" data-offstyle="danger"
+                   class="list-group-item list-group-item-action bg-light">
             <br>
             <input id="toggle-time-series" type="checkbox" data-toggle="toggle" data-on="Time Series"
-                   data-off="Time Series" data-onstyle="success" data-offstyle="danger" class="list-group-item list-group-item-action bg-light">
+                   data-off="Time Series" data-onstyle="success" data-offstyle="danger"
+                   class="list-group-item list-group-item-action bg-light">
             <br>
 
         </div>
@@ -153,32 +156,10 @@
                         <div style="margin: 20px">
                             <img id="loader-summary" src="{% static 'biodivmap/ajax-loader.gif' %}"
                                  style="display: none;"/>
-                            {#        <button onclick="summariseSelection()"> Summarise</button>#}
-                            {#        <button onclick="drawRectangle()"> Select</button>#}
 
                         </div>
                     </div>
                 </div>
-
-
-                <!--<select class="select2-year" multiple="multiple" style="width:500px"> Select Year-->
-                <!--</select>-->
-
-                <!--&lt;!&ndash;<button onclick="plotGbif()">Plot gbif</button>&ndash;&gt;-->
-                <!--<br>-->
-
-                <!--<select class="select2-species" multiple="multiple" style="width:500px"> Select Species-->
-                <!--</select>-->
-
-
-                <!--<script>-->
-                <!--    select2_element = $(".select2-species").select2({-->
-                <!--      data: {{select2_species|safe}},-->
-                <!--      width: 'resolve',-->
-                <!--        closeOnSelect: false,-->
-                <!--    });-->
-                <!--</script>-->
-
 
                 <script src="{% static 'biodivmap/leaflet_map.js' %}"></script>
 
@@ -196,8 +177,8 @@
 
                 </div>
                 <div style="height:500px; width:100px; background-color:#ffffff; float: left">
-                    <br>
-                    <text id="taxon-stats" class="fixed_labels">num-species:<br>sub-types:</text>
+                    <img id="loader-summary" src="{% static 'biodivmap/question.png' %}"
+                         data-toggle="tooltip" data-placement="left" title="Tooltip on top Tooltip on top">
                     <svg id="labels" class="fixed_labels" style="float:right" height="400" width="100">
                     </svg>
                     <script src="{% static 'biodivmap/species_legend.js' %}"></script>
@@ -213,7 +194,8 @@
 
 
                 <div id="bar-chart-species" style="height:500px; overflow:auto; float:left; text-align: center;">
-                    <h2 class="mt-4" data-toggle="tooltip" data-placement="left" title="Tooltip on top Tooltip on top">Unique species distribution</h2>
+                    <h2 class="mt-4" data-toggle="tooltip" data-placement="left" title="Tooltip on top Tooltip on top">
+                        Unique species distribution</h2>
 
                 </div>
 
@@ -280,8 +262,6 @@
             </div>
 
             <br>
-
-
         </div>
 
         <div class="row-container">
@@ -301,50 +281,7 @@
     });
 </script>
 
-<script>
-
-    $(document).ready(function () {
-        summary_divs = [document.getElementById("bar-charts"),
-            document.getElementById("sunburst"), document.getElementById("shiny")];
-        toggle_buttons = ["#toggle-bar-charts", "#toggle-sunburst", "#toggle-time-series"];
-        summary_divs[0].style.display = "none";
-        summary_divs[1].style.display = "none";
-        summary_divs[2].style.display = "none";
-
-        $(toggle_buttons[0]).change(function () {
-            if ($(this).prop('checked')) {
-                summary_divs[0].style.display = "block";
-            } else {
-                summary_divs[0].style.display = "none";
-            }
-        });
-
-        $(toggle_buttons[1]).change(function () {
-            if ($(this).prop('checked')) {
-                summary_divs[1].style.display = "block";
-            } else {
-                summary_divs[1].style.display = "none";
-            }
-        });
-
-        $(toggle_buttons[2]).change(function () {
-            if ($(this).prop('checked')) {
-                summary_divs[2].style.display = "block";
-            } else {
-                summary_divs[2].style.display = "none";
-            }
-        });
-
-        $("#wrapper").toggleClass("toggled");
-
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip()
-        })
-
-    });
-
-
-</script>
+<script src="{% static 'biodivmap/initialise.js' %}"></script>
 
 
 </body>

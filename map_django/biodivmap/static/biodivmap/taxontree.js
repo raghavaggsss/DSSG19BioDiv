@@ -355,8 +355,6 @@ function handleMouseOver(d,i) {
             return (" species:" + d.data.size_tree + " types:" + d.data.types)
         });
 
-    taxon_tree_stats.innerHTML =  "num-species: " + d.data.size_tree + "<br>sub-types: " + d.data.types;
-
 }
 
 function handleMouseOut(d, i) {
