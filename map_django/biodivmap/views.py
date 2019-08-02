@@ -30,6 +30,17 @@ spatial_index_obs = spatial_index_map
 
 df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
 
+# predicting species in sei
+species = pd.read_csv("biodivmap/species_parameters.csv")
+species.index = species["Unnamed: 0"]
+species = species.drop(["Unnamed: 0"], 1)
+species = species.rename(columns={"(Intercept)": "Intercept"})
+sei =  pd.read_csv("biodivmap/sei_poly_info.csv")
+sei.index = sei.SEI_PolyNb
+sei = sei.drop(["SEI_PolyNb"], 1)
+
+
+
 def generate_taxon_hierarchy(df, taxLevelIndex, prevIndex):
     list_dicts = []
     if taxLevel[taxLevelIndex] == 'end':
@@ -252,5 +263,6 @@ def predict(request):
         if request.body:
             poly_index = json.loads(request.body)
             print(poly_index["sei_index"])
+            print(list(species.dot(sei.loc[int(poly_index["sei_index"])]).sort_values(ascending=False).index))
 
     return JsonResponse(["yo"], safe=False)
