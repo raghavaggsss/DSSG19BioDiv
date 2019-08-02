@@ -289,7 +289,12 @@ function searchTaxon() {
         }
 
     }
-    results.forEach( function(result) {
+
+    if (results.length == 0) {
+        alert("Search returned no results")
+    }
+    else {
+        results.forEach( function(result) {
             while (result.parent) {
                 if (result.parent._children) {
                     // result.parent.found = 1;
@@ -297,7 +302,13 @@ function searchTaxon() {
                 }
                 result = result.parent;
             }
-        }
-    )
+        })
+    }
 
+}
+
+function searchTaxonEnter() {
+    if(event.key === 'Enter') {
+        searchTaxon();
+    }
 }
