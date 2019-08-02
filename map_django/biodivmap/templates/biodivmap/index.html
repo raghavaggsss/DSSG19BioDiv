@@ -1,20 +1,19 @@
 {% load static %}
 
-
 <html>
 <head>
     <title>A Leaflet map!</title>
     <link rel="stylesheet" href="{% static 'biodivmap/leaflet/leaflet.css' %}"/>
-    <link rel="stylesheet" href="{% static 'biodivmap/leaflet_map.css' %}"/>
+    <link rel="stylesheet" href="{% static 'biodivmap/css/map.css' %}"/>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/simple-sidebar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'biodivmap/css/simple-sidebar.css' %}">
 
 
     <script src="{% static 'biodivmap/leaflet/leaflet.js' %}"></script>
     <script src="{% static 'biodivmap/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js' %}"></script>
-    <script src="{% static 'biodivmap/jquery.min.js' %}"></script>
+    <script src="{% static 'biodivmap/js/jquery.min.js' %}"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -24,13 +23,11 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{% static 'biodivmap/bootstrap-toggle.min.css' %}">
-    <script src={% static 'biodivmap/bootstrap-toggle.min.js' %}></script>
+    <link rel="stylesheet" href="{% static 'biodivmap/css/bootstrap-toggle.min.css' %}">
+    <script src={% static 'biodivmap/css/bootstrap-toggle.min.js' %}></script>
 
-    <script src="https://unpkg.com/topojson@3"></script>
-
-    <script src="{% static 'biodivmap/leaflet.edgebuffer.js' %}"></script>
-    <script src="{% static 'biodivmap/md5.min.js' %}"></script>
+    <script src="{% static 'biodivmap/js/leaflet.edgebuffer.js' %}"></script>
+    <script src="{% static 'biodivmap/js/md5.min.js' %}"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
@@ -154,19 +151,21 @@
                 <div id="map" style="float: left;">
                     <div class="leaflet-bottom leaflet-right">
                         <div style="margin: 20px">
-                            <img id="loader-summary" src="{% static 'biodivmap/ajax-loader.gif' %}"
+                            <img id="loader-summary" src="{% static 'biodivmap/images/ajax-loader.gif' %}"
                                  style="display: none;"/>
 
                         </div>
                     </div>
                 </div>
+                <script src="{% static 'biodivmap/js/map/map_init.js' %}"></script>
+                <script src="{% static 'biodivmap/js/map/map_points.js' %}"></script>
+                <script src="{% static 'biodivmap/js/map/map_interaction.js' %}"></script>
 
-                <script src="{% static 'biodivmap/leaflet_map.js' %}"></script>
 
                 <div style="overflow:auto; height:500px; width:400px; background-color:#ffffff; float: left">
 
                     <div>
-                        <img id="loader-plot" src="{% static 'biodivmap/ajax-loader.gif' %}" style="display: none;"/>
+                        <img id="loader-plot" src="{% static 'biodivmap/images/ajax-loader.gif' %}" style="display: none;"/>
                         <button onclick="plotSpecies()"> Plot species</button>
                         <input id="taxon-search-field" onkeydown="searchTaxonEnter()">
                         <button id="taxon-search-button" onclick="searchTaxon()">Search</button>
@@ -177,12 +176,12 @@
 
                 </div>
                 <div style="height:500px; width:100px; background-color:#ffffff; float: left">
-                    <img id="loader-summary" src="{% static 'biodivmap/question.png' %}"
+                    <img id="loader-summary" src="{% static 'biodivmap/images/question.png' %}"
                          data-toggle="tooltip" data-placement="left" title="Tooltip on top Tooltip on top">
                     <svg id="labels" class="fixed_labels" style="float:right" height="400" width="100">
                     </svg>
-                    <script src="{% static 'biodivmap/species_legend.js' %}"></script>
-                    <script src="{% static 'biodivmap/taxontree.js' %}"></script>
+                    <script src="{% static 'biodivmap/js/taxontree/species_legend.js' %}"></script>
+                    <script src="{% static 'biodivmap/js/taxontree/taxontree.js' %}"></script>
 
                 </div>
             </div>
@@ -271,18 +270,7 @@
     <!-- /#page-content-wrapper -->
 
 </div>
-<!-- /#wrapper -->
-
-<!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
-
-<script src="{% static 'biodivmap/initialise.js' %}"></script>
-
+<script src="{% static 'biodivmap/js/doc_ready.js' %}"></script>
 
 </body>
 </html>
