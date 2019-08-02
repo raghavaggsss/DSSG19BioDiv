@@ -8,5 +8,6 @@ urlpatterns = [
     # path('summary/', views.show_summary, name="summary"),
     path('summarypolygon/', views.summary_polygon, name="summary_polygon"),
     path('home/', views.home, name="home"),
+    path('predict/', views.predict, name="predict"),
 ]
 

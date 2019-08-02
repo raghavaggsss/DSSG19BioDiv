@@ -1,6 +1,7 @@
 var bar_chart_occurrence_ref;
 var bar_chart_species_ref;
 var sunburst_ref;
+var curr_shape;
 
 L.TopoJSON = L.GeoJSON.extend({
     addData: function (data) {
@@ -174,6 +175,9 @@ function init_sei_layer(sei_type) {
                     layer.selected = 1;
                     layer.bindPopup(popUpInfo).openPopup();
                 }
+                curr_shape = {'type': 'Feature', 'properties': {}, 'geometry': feature.geometry};
+                summarisePolygon();
+                predictSEI(feature.properties.SEI_PolyNb);
             })
         }
     });
@@ -193,7 +197,7 @@ mun_layer = L.geoJson(false, {
 
             layer.on('click', function () {
                 // change to newID
-                curr_shape = {'type': 'Feature', 'properties': {}, 'geometry': feature.geometry}
+                curr_shape = {'type': 'Feature', 'properties': {}, 'geometry': feature.geometry};
                 summarisePolygon();
             });
             layer.setStyle(municipality_style);
@@ -243,7 +247,7 @@ map.addControl(new L.Control.Draw({
     }
 }));
 
-var curr_shape;
+
 
 map.on(L.Draw.Event.CREATED, function (event) {
     var layer = event.layer;
@@ -499,6 +503,38 @@ function summarisePolygon(){
                         curr_shape["geometry"]["coordinates"][0]
                     );
                     document.getElementById('shiny').contentWindow.location.reload();
+
+                }
+
+            },
+            error: function(data) {
+                alert('summary failed');
+                $('#loader-summary').hide();
+            }});
+}
+
+function predictSEI(sei_index) {
+    $('#loader-summary').show();
+    $.ajax({
+            processData: false,
+            type: 'POST',
+            url: 'predict/',
+            data: JSON.stringify({"sei_index": sei_index}),
+            // data: {species_selected: $(".select2-species").select2('data')},
+            contentType: false,  // add this to indicate 'multipart/form-data'
+            success: function (species) {
+                {
+                    alert("done");
+                    // reload_tax_tree(summary_json);
+                    // // createSunburst(summary_json);
+                    // bar_chart_occurrence_ref.redefine("data", summary_json);
+                    // bar_chart_species_ref.redefine("data", summary_json);
+                    // sunburst_ref.redefine("data", summary_json);
+                    $('#loader-summary').hide();
+                    // document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
+                    //     curr_shape["geometry"]["coordinates"][0]
+                    // );
+                    // document.getElementById('shiny').contentWindow.location.reload();
 
                 }
 

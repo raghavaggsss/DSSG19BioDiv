@@ -244,4 +244,13 @@ def summary_polygon(request):
             #     return JsonResponse("no occurrence", safe=False)
 
 
+
+
+@csrf_exempt
+def predict(request):
+    if request.method == 'POST':
+        if request.body:
+            poly_index = json.loads(request.body)
+            print(poly_index["sei_index"])
+
     return JsonResponse(["yo"], safe=False)
