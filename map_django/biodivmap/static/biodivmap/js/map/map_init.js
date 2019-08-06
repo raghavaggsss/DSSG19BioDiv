@@ -62,7 +62,7 @@ mun_layer = L.geoJson(false, {
         layer.on('click', function () {
             // change to newID
             curr_shape = {'type': 'Feature', 'properties': {}, 'geometry': feature.geometry};
-            summarisePolygon();
+            summarisePolygon(null);
         });
         layer.setStyle(municipality_style);
     }
@@ -159,8 +159,7 @@ function init_sei_layer(sei_type) {
                     layer.bindPopup(popUpInfo).openPopup();
                 }
                 curr_shape = {'type': 'Feature', 'properties': {}, 'geometry': feature.geometry};
-                summarisePolygon();
-                predictSEI(feature.properties.SEI_PolyNb);
+                summarisePolygon(feature.properties.SEI_PolyNb);
             })
         }
     });

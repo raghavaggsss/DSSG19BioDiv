@@ -49,26 +49,35 @@ function plotSpecies() {
 
 }
 
-function summarisePolygon() {
+function summarisePolygon(sei_index) {
     $('#loader-summary').show();
     $.ajax({
         processData: false,
         type: 'POST',
         url: 'summarypolygon/',
-        data: JSON.stringify(curr_shape),
+        data: JSON.stringify({"shape": curr_shape, "sei_index": sei_index}),
         contentType: false,
-        success: function (summary_json) {
+        success: function (response) {
             {
-                reload_tax_tree(summary_json);
-                bar_chart_occurrence_ref.redefine("data", summary_json);
-                bar_chart_species_ref.redefine("data", summary_json);
-                sunburst_ref.redefine("data", summary_json);
+                reload_tax_tree(response["summary"]);
+                bar_chart_occurrence_ref.redefine("data", response["summary"]);
+                bar_chart_species_ref.redefine("data", response["summary"]);
+                sunburst_ref.redefine("data", response["summary"]);
                 $('#loader-summary').hide();
                 document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
                     curr_shape["geometry"]["coordinates"][0]
                 );
                 // document.getElementById('shiny').contentWindow.location.reload();
+                if (sei_index) {
+                    var dynatable = $('#prediction-table').dynatable({
+                      dataset: {
+                        records: response["pred"]["records"]
+                      }
+                    }).data('dynatable');
 
+                    dynatable.settings.dataset.originalRecords = response["pred"]["records"];
+                    dynatable.process();
+                    }
             }
 
         },
@@ -79,48 +88,48 @@ function summarisePolygon() {
     });
 }
 
-function predictSEI(sei_index) {
-    $('#loader-summary').show();
-    $.ajax({
-        processData: false,
-        type: 'POST',
-        url: 'predict/',
-        data: JSON.stringify({"sei_index": sei_index}),
-        // data: {species_selected: $(".select2-species").select2('data')},
-        contentType: false,  // add this to indicate 'multipart/form-data'
-        // dataType: 'text',
-        success: function (species) {
-            {
-                var dynatable = $('#prediction-table').dynatable({
-                  dataset: {
-                    records: species["records"]
-                  }
-                }).data('dynatable');
-
-                dynatable.settings.dataset.originalRecords = species["records"];
-                dynatable.process();
-                    // .bind('dynatable:afterProcess', changeColor);
-
-                // reload_tax_tree(summary_json);
-                // // createSunburst(summary_json);
-                // bar_chart_occurrence_ref.redefine("data", summary_json);
-                // bar_chart_species_ref.redefine("data", summary_json);
-                // sunburst_ref.redefine("data", summary_json);
-                $('#loader-summary').hide();
-                // document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
-                //     curr_shape["geometry"]["coordinates"][0]
-                // );
-                // document.getElementById('shiny').contentWindow.location.reload();
-
-            }
-
-        },
-        error: function (data) {
-            alert('summary failed');
-            $('#loader-summary').hide();
-        }
-    });
-}
+// function predictSEI(sei_index) {
+//     $('#loader-summary').show();
+//     $.ajax({
+//         processData: false,
+//         type: 'POST',
+//         url: 'predict/',
+//         data: JSON.stringify({"sei_index": sei_index}),
+//         // data: {species_selected: $(".select2-species").select2('data')},
+//         contentType: false,  // add this to indicate 'multipart/form-data'
+//         // dataType: 'text',
+//         success: function (species) {
+//             {
+//                 var dynatable = $('#prediction-table').dynatable({
+//                   dataset: {
+//                     records: species["records"]
+//                   }
+//                 }).data('dynatable');
+//
+//                 dynatable.settings.dataset.originalRecords = species["records"];
+//                 dynatable.process();
+//                     // .bind('dynatable:afterProcess', changeColor);
+//
+//                 // reload_tax_tree(summary_json);
+//                 // // createSunburst(summary_json);
+//                 // bar_chart_occurrence_ref.redefine("data", summary_json);
+//                 // bar_chart_species_ref.redefine("data", summary_json);
+//                 // sunburst_ref.redefine("data", summary_json);
+//                 $('#loader-summary').hide();
+//                 // document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
+//                 //     curr_shape["geometry"]["coordinates"][0]
+//                 // );
+//                 // document.getElementById('shiny').contentWindow.location.reload();
+//
+//             }
+//
+//         },
+//         error: function (data) {
+//             alert('summary failed');
+//             $('#loader-summary').hide();
+//         }
+//     });
+// }
 
 // function changeColor() {
 //     $('#prediction-table tr td').each(function() {

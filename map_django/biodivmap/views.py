@@ -204,8 +204,8 @@ def ajax_species(request):
 def summary_polygon(request):
     if request.method == 'POST':
         if request.body:
-            polygon_json = json.loads(request.body)
-            print(polygon_json)
+            req = json.loads(request.body)
+            polygon_json = req["shape"]
             coords = polygon_json["geometry"]["coordinates"][0]
             poly = Polygon(coords)
 
@@ -233,45 +233,42 @@ def summary_polygon(request):
             json_dict = {"name": "Organisms", "children": json_dict, "taxLevel": "organisms", "types": num_types,
                          "ratio": 1.0, "size_tree": df.shape[0], "redList": 1 }
 
-            # with open('biodivmap/static/biodivmap/taxon_hierarchy.json', 'w') as fp:
-            #     json.dump(json_dict, fp)
+            sei_index = req["sei_index"]
+            if not sei_index:
+                return JsonResponse({"summary": json_dict}, safe=False)
+            else:
+                specs = list(species.dot(sei.loc[int(sei_index)]).sort_values(ascending=False).index)
+                probs = list(species.dot(sei.loc[int(sei_index)]).sort_values(ascending=False).values)
+                df_species = df.species
+                records_list = []
+                for i in range(0, len(specs)):
+                    observed = "no"
+                    if specs[i] in df_species:
+                        observed = "yes"
+                    records_list.append({"rank": i + 1, "species": specs[i], "observed": observed, "odds": probs[i]})
+                table_json = {"records": records_list, "queryRecordCount": len(specs),
+                              "totalRecordCount": len(specs)}
 
-            return JsonResponse(json_dict, safe=False)
-
-            # json_dict_2, num_types_2 = generate_tree_json(df, 0, "blah")
-            # json_dict_2 = {"name": "Organisms", 'taxLevel': "organisms", "types": num_types_2,
-            #                "children": json_dict_2, "ratio": 1.0,
-            #                "size_tree": df.shape[0], "redList": 1}
-            #
-            # with open('biodivmap/static/biodivmap/treedata_curr.json', 'w') as fp:
-            #     json.dump(json_dict_2, fp)
-
-            # precise_matches = precise_matches.drop(["decimalLongitude", "decimalLatitude", 'kingdom', 'phylum', 'class',
-            #                                         'order', 'family', 'genus'], 1)
-            # if precise_matches.shape[0] > 0:
-            #     precise_matches.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
-            #     return JsonResponse("success", safe=False)
-            # else:
-            #     return JsonResponse("no occurrence", safe=False)
+                return JsonResponse({"summary": json_dict, "pred": table_json}, safe=False)
 
 
-
-
-@csrf_exempt
-def predict(request):
-    if request.method == 'POST':
-        if request.body:
-            poly_index = json.loads(request.body)
-            print(poly_index["sei_index"])
-            specs = list(species.dot(sei.loc[int(poly_index["sei_index"])]).sort_values(ascending=False).index)
-            probs = list(species.dot(sei.loc[int(poly_index["sei_index"])]).sort_values(ascending=False).values)
-
-            records_list = []
-            for i in range(0, len(specs)):
-                records_list.append({"rank": i+1, "species": specs[i], "observed": "yes", "odds": probs[i]})
-            table_json = {"records": records_list, "queryRecordCount": len(specs),
-                            "totalRecordCount": len(specs)}
-
-            return JsonResponse(table_json, safe=False)
-
-    return JsonResponse(["yo"], safe=False)
+#
+#
+# @csrf_exempt
+# def predict(request):
+#     if request.method == 'POST':
+#         if request.body:
+#             poly_index = json.loads(request.body)
+#             print(poly_index["sei_index"])
+#             specs = list(species.dot(sei.loc[int(poly_index["sei_index"])]).sort_values(ascending=False).index)
+#             probs = list(species.dot(sei.loc[int(poly_index["sei_index"])]).sort_values(ascending=False).values)
+#
+#             records_list = []
+#             for i in range(0, len(specs)):
+#                 records_list.append({"rank": i+1, "species": specs[i], "observed": "yes", "odds": probs[i]})
+#             table_json = {"records": records_list, "queryRecordCount": len(specs),
+#                             "totalRecordCount": len(specs)}
+#
+#             return JsonResponse(table_json, safe=False)
+#
+#     return JsonResponse(["yo"], safe=False)
