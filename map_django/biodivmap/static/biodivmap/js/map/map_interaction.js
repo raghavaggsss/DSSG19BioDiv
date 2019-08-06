@@ -91,12 +91,14 @@ function predictSEI(sei_index) {
         // dataType: 'text',
         success: function (species) {
             {
-                console.log(species);
-                $('#prediction-table').dynatable({
+                var dynatable = $('#prediction-table').dynatable({
                   dataset: {
                     records: species["records"]
                   }
-                });
+                }).data('dynatable');
+
+                dynatable.settings.dataset.originalRecords = species["records"];
+                dynatable.process();
                     // .bind('dynatable:afterProcess', changeColor);
 
                 // reload_tax_tree(summary_json);

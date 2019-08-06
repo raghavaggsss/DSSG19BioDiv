@@ -127,7 +127,6 @@
       <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/suites/LatLngUtilSpec.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/suites/SpecHelper.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -141,11 +140,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="82" column="89" lean-forward="true" selection-start-line="82" selection-start-column="89" selection-end-line="82" selection-end-column="89" />
+            <state relative-caret-position="135">
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -162,17 +161,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="124" column="41" lean-forward="true" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="41" />
+            <state relative-caret-position="1485">
+              <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="265" column="55" selection-start-line="265" selection-start-column="55" selection-end-line="265" selection-end-column="55" />
+            <state relative-caret-position="266">
+              <caret line="270" column="43" selection-start-line="270" selection-start-column="43" selection-end-line="270" selection-end-column="43" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -193,8 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>unique spo</find>
-      <find>toggle</find>
       <find>clickTree</find>
       <find>duration</find>
       <find>search</find>
@@ -223,6 +220,8 @@
       <find>municipalities.</find>
       <find>rect</find>
       <find>species</find>
+      <find>dynatable-head</find>
+      <find>console.lo</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -372,7 +371,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106204000" />
+    <option name="totallyTimeSpent" value="106792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="331" y="59" width="1211" height="849" extended-state="0" />
@@ -710,27 +709,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
+    <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="265" column="55" selection-start-line="265" selection-start-column="55" selection-end-line="265" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="124" column="41" lean-forward="true" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="41" />
+        <state relative-caret-position="1485">
+          <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
+    <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="82" column="89" lean-forward="true" selection-start-line="82" selection-start-column="89" selection-end-line="82" selection-end-column="89" />
+        <state relative-caret-position="266">
+          <caret line="270" column="43" selection-start-line="270" selection-start-column="43" selection-end-line="270" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

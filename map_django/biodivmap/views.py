@@ -35,7 +35,7 @@ species = pd.read_csv("biodivmap/species_parameters.csv")
 species.index = species["Unnamed: 0"]
 species = species.drop(["Unnamed: 0"], 1)
 species = species.rename(columns={"(Intercept)": "Intercept"})
-sei =  pd.read_csv("biodivmap/sei_poly_info.csv")
+sei = pd.read_csv("biodivmap/sei_poly_info.csv")
 sei.index = sei.SEI_PolyNb
 sei = sei.drop(["SEI_PolyNb"], 1)
 
