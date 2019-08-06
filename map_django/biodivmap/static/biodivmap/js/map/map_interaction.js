@@ -79,15 +79,6 @@ function summarisePolygon() {
     });
 }
 
-// $('#loader-summary').dynatable({
-//   dataset: {
-//     ajax: true,
-//     ajaxUrl: 'predict/',
-//     ajaxOnLoad: true,
-//     records: []
-//   }
-// });
-
 function predictSEI(sei_index) {
     $('#loader-summary').show();
     $.ajax({
@@ -106,6 +97,8 @@ function predictSEI(sei_index) {
                     records: species["records"]
                   }
                 });
+                    // .bind('dynatable:afterProcess', changeColor);
+
                 // reload_tax_tree(summary_json);
                 // // createSunburst(summary_json);
                 // bar_chart_occurrence_ref.redefine("data", summary_json);
@@ -127,3 +120,10 @@ function predictSEI(sei_index) {
     });
 }
 
+// function changeColor() {
+//     $('#prediction-table tr td').each(function() {
+//         if ($(this).text() == 'yes') {
+//             $(this).closest('tr').css('background-color', '#7fff7e');
+//         }
+//     });
+// }

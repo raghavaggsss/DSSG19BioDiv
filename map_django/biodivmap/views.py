@@ -268,11 +268,10 @@ def predict(request):
 
             records_list = []
             for i in range(0, len(specs)):
-                records_list.append({"rank": i+1, "species": specs[i], "odds": probs[i]})
+                records_list.append({"rank": i+1, "species": specs[i], "observed": "yes", "odds": probs[i]})
             table_json = {"records": records_list, "queryRecordCount": len(specs),
                             "totalRecordCount": len(specs)}
 
             return JsonResponse(table_json, safe=False)
-
 
     return JsonResponse(["yo"], safe=False)

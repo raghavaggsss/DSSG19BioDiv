@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b56d32e5-0fc2-46dc-82ba-9013332c91ea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/.codeclimate.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/.editorconfig" beforeDir="false" />
@@ -145,8 +144,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="273" column="24" selection-start-line="273" selection-start-column="24" selection-end-line="273" selection-end-column="24" />
+            <state relative-caret-position="174">
+              <caret line="82" column="89" lean-forward="true" selection-start-line="82" selection-start-column="89" selection-end-line="82" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -163,8 +162,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="108" column="49" lean-forward="true" selection-start-line="108" selection-start-column="49" selection-end-line="108" selection-end-column="49" />
+            <state relative-caret-position="562">
+              <caret line="124" column="41" lean-forward="true" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -172,33 +171,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="271" column="44" lean-forward="true" selection-start-line="271" selection-start-column="44" selection-end-line="271" selection-end-column="44" />
+            <state relative-caret-position="653">
+              <caret line="265" column="55" selection-start-line="265" selection-start-column="55" selection-end-line="265" selection-end-column="55" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3353">
-              <caret line="1729" column="34" lean-forward="true" selection-start-line="1729" selection-start-column="34" selection-end-line="1729" selection-end-column="34" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#39#47#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -290,10 +267,10 @@
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/doc_ready.js" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_init.js" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.js" />
-        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js" />
-        <option value="$PROJECT_DIR$/biodivmap/views.py" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.css" />
         <option value="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js" />
+        <option value="$PROJECT_DIR$/biodivmap/views.py" />
       </list>
     </option>
   </component>
@@ -310,73 +287,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="jquery-dynatable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="map" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,7 +372,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104719000" />
+    <option name="totallyTimeSpent" value="106204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="331" y="59" width="1211" height="849" extended-state="0" />
@@ -774,10 +685,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js">
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="108" column="49" lean-forward="true" selection-start-line="108" selection-start-column="49" selection-end-line="108" selection-end-column="49" />
+        <state relative-caret-position="180">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -788,19 +699,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="271" column="44" lean-forward="true" selection-start-line="271" selection-start-column="44" selection-end-line="271" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3353">
+        <state relative-caret-position="176">
           <caret line="1729" column="34" lean-forward="true" selection-start-line="1729" selection-start-column="34" selection-end-line="1729" selection-end-column="34" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -809,17 +710,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.css">
+    <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+        <state relative-caret-position="653">
+          <caret line="265" column="55" selection-start-line="265" selection-start-column="55" selection-end-line="265" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="562">
+          <caret line="124" column="41" lean-forward="true" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="273" column="24" selection-start-line="273" selection-start-column="24" selection-end-line="273" selection-end-column="24" />
+        <state relative-caret-position="174">
+          <caret line="82" column="89" lean-forward="true" selection-start-line="82" selection-start-column="89" selection-end-line="82" selection-end-column="89" />
         </state>
       </provider>
     </entry>
