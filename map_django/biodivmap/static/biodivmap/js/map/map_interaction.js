@@ -63,11 +63,7 @@ function summarisePolygon(sei_index) {
                 bar_chart_occurrence_ref.redefine("data", response["summary"]);
                 bar_chart_species_ref.redefine("data", response["summary"]);
                 sunburst_ref.redefine("data", response["summary"]);
-                $('#loader-summary').hide();
-                document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
-                    curr_shape["geometry"]["coordinates"][0]
-                );
-                // document.getElementById('shiny').contentWindow.location.reload();
+
                 if (sei_index) {
                     var dynatable = $('#prediction-table').dynatable({
                       dataset: {
@@ -78,6 +74,13 @@ function summarisePolygon(sei_index) {
                     dynatable.settings.dataset.originalRecords = response["pred"]["records"];
                     dynatable.process();
                     }
+
+                $('#loader-summary').hide();
+
+                document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
+                    curr_shape["geometry"]["coordinates"][0]
+                );
+                document.getElementById('shiny').contentWindow.location.reload();
             }
 
         },
