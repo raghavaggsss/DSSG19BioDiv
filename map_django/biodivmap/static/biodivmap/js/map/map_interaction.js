@@ -67,7 +67,7 @@ function summarisePolygon() {
                 document.getElementById('shiny').src = "http://127.0.0.1:4609/?coords=" + JSON.stringify(
                     curr_shape["geometry"]["coordinates"][0]
                 );
-                document.getElementById('shiny').contentWindow.location.reload();
+                // document.getElementById('shiny').contentWindow.location.reload();
 
             }
 
@@ -79,6 +79,15 @@ function summarisePolygon() {
     });
 }
 
+// $('#loader-summary').dynatable({
+//   dataset: {
+//     ajax: true,
+//     ajaxUrl: 'predict/',
+//     ajaxOnLoad: true,
+//     records: []
+//   }
+// });
+
 function predictSEI(sei_index) {
     $('#loader-summary').show();
     $.ajax({
@@ -88,9 +97,15 @@ function predictSEI(sei_index) {
         data: JSON.stringify({"sei_index": sei_index}),
         // data: {species_selected: $(".select2-species").select2('data')},
         contentType: false,  // add this to indicate 'multipart/form-data'
+        // dataType: 'text',
         success: function (species) {
             {
-                alert("done");
+                console.log(species);
+                $('#prediction-table').dynatable({
+                  dataset: {
+                    records: species["records"]
+                  }
+                });
                 // reload_tax_tree(summary_json);
                 // // createSunburst(summary_json);
                 // bar_chart_occurrence_ref.redefine("data", summary_json);
@@ -111,3 +126,4 @@ function predictSEI(sei_index) {
         }
     });
 }
+

@@ -79,6 +79,9 @@
     <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.CircleMarker.js' %}"></script>
     <script src="{% static 'biodivmap/Leaflet.draw/src/edit/handler/Edit.Circle.js' %}"></script>
 
+    <link rel="stylesheet" href="{% static 'biodivmap/jquery-dynatable/jquery.dynatable.css' %}"/>
+    <script src="{% static 'biodivmap/jquery-dynatable/jquery.dynatable.js' %}"></script>
+
 
     <!--    {{ form.media.css }}-->
 
@@ -261,6 +264,18 @@
             </div>
 
             <br>
+        </div>
+
+        <div id="pred-table">
+            <table id="prediction-table" class="table table-bordered">
+              <thead>
+                <th>rank</th>
+                <th>species</th>
+                <th>odds</th>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
         </div>
 
         <div class="row-container">

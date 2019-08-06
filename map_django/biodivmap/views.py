@@ -263,6 +263,16 @@ def predict(request):
         if request.body:
             poly_index = json.loads(request.body)
             print(poly_index["sei_index"])
-            print(list(species.dot(sei.loc[int(poly_index["sei_index"])]).sort_values(ascending=False).index))
+            specs = list(species.dot(sei.loc[int(poly_index["sei_index"])]).sort_values(ascending=False).index)
+            probs = list(species.dot(sei.loc[int(poly_index["sei_index"])]).sort_values(ascending=False).values)
+
+            records_list = []
+            for i in range(0, len(specs)):
+                records_list.append({"rank": i+1, "species": specs[i], "odds": probs[i]})
+            table_json = {"records": records_list, "queryRecordCount": len(specs),
+                            "totalRecordCount": len(specs)}
+
+            return JsonResponse(table_json, safe=False)
+
 
     return JsonResponse(["yo"], safe=False)
