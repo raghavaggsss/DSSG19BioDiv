@@ -40,11 +40,11 @@ write.csv(x = obs, file = "./occurrence/rufus_occurrence.csv", row.names = FALSE
 
 # Prepare to crop the environment layers to min and max long/lat 
 
-# set the geographic extent 
-max_lat <- ceiling(max(obs$latitude))
-min_lat <- floor(min(obs$latitude))
-max_lon <- ceiling(max(obs$longitude))
-min_lon <- floor(min(obs$longitude))
+# set the geographic extent for Metro Vancouver 
+max_lat <- 49.5
+min_lat <- 49
+max_lon <- -122.5
+min_lon <- -123.5
 
 geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 
