@@ -30,3 +30,6 @@ map_django/.idea/
 *.stx
 *.Rproj
 *.zip
+*.vrt
+*.grd
+*.gri

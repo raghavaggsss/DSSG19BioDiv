@@ -20,24 +20,6 @@ browseVignettes("SSDM")
 
 ######### Section 1: Species Distribution Modelling ###### 
 
-# Prepare the Environment rasters
-
-# dowload the bioclim data at the highest resolution available
-getData(name = 'worldclim', path = "./environment/", var = 'bio', res = 0.5, lon = -123.11934, lat = 49.24966)
-
-
-# load in bioclim data
-bioclim <- load_var(path = "./environment/wc0.5/")
-
-
-# download the altitude data, place it in same directory as the bioclim data
-getData(name = 'alt', path = "./environment/wc2-5/", country = 'CAN', mask = TRUE)
-
-# load in alt data and normalize it
-alt <- load_var(path = "./environment/", files = "CAN_msk_alt.grd")
-
-
-
 
 # Prepare the rufus species occurrence data 
 # note: the gbif_map.csv can be found in google drive under map_jango data
@@ -45,7 +27,7 @@ gbif_map <- read.csv("./gbif_map.csv", stringsAsFactors = F)
 
 # select only long/lat columns and change order of long/lat in dataframe
 rufus <- filter(gbif_map, species=="Selasphorus rufus") %>% 
-      select(species, decimalLatitude, decimalLongitude) %>% 
+      dplyr::select(species, decimalLatitude, decimalLongitude) %>% 
       rename(latitude = decimalLatitude, longitude = decimalLongitude) 
 
 rufus <- rufus[,c("species", "longitude", "latitude")]
@@ -54,7 +36,6 @@ obs <- rufus
 
 # save the occurrence data
 write.csv(x = obs, file = "./occurrence/rufus_occurrence.csv", row.names = FALSE)
-
 
 
 # Prepare to crop the environment layers to min and max long/lat 
@@ -67,47 +48,61 @@ min_lon <- floor(min(obs$longitude))
 
 geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 
+
+
+# Prepare the Environment rasters
+
+# dowload the bioclim data at the highest resolution available
+worldclim <- getData(name = 'worldclim', path = "./environment/", var = 'bio', res = 0.5, lon = -123.11934, lat = 49.24966)
+
+
 # crop the environment layers to the species' extent 
-bioclim <- crop(x = bioclim, y = geographic_extent)
+bioclim <- crop(x = worldclim, y = geographic_extent)
 
 # save the cropped raster file 
-writeRaster(x = bioclim, filename = c("./cropped_env/bio1.bil",
-                                      "./cropped_env/bio2.bil",
-                                      "./cropped_env/bio3.bil",
-                                      "./cropped_env/bio4.bil",
-                                      "./cropped_env/bio5.bil",
-                                      "./cropped_env/bio6.bil",
-                                      "./cropped_env/bio7.bil",
-                                      "./cropped_env/bio8.bil",
-                                      "./cropped_env/bio9.bil",
-                                      "./cropped_env/bio10.bil",
-                                      "./cropped_env/bio11.bil",
-                                      "./cropped_env/bio12.bil",
-                                      "./cropped_env/bio13.bil",
-                                      "./cropped_env/bio14.bil",
-                                      "./cropped_env/bio15.bil",
-                                      "./cropped_env/bio16.bil",
-                                      "./cropped_env/bio17.bil",
-                                      "./cropped_env/bio18.bil",
-                                      "./cropped_env/bio19.bil"), 
+writeRaster(x = bioclim, filename = c("./environment/bio1.bil",
+                                      "./environment/bio2.bil",
+                                      "./environment/bio3.bil",
+                                      "./environment/bio4.bil",
+                                      "./environment/bio5.bil",
+                                      "./environment/bio6.bil",
+                                      "./environment/bio7.bil",
+                                      "./environment/bio8.bil",
+                                      "./environment/bio9.bil",
+                                      "./environment/bio10.bil",
+                                      "./environment/bio11.bil",
+                                      "./environment/bio12.bil",
+                                      "./environment/bio13.bil",
+                                      "./environment/bio14.bil",
+                                      "./environment/bio15.bil",
+                                      "./environment/bio16.bil",
+                                      "./environment/bio17.bil",
+                                      "./environment/bio18.bil",
+                                      "./environment/bio19.bil"), 
             bylayer = TRUE)
+
+
+# download the altitude data, place it in same directory as the bioclim data
+alt <- getData(name = 'alt', path = "./environment/wc0.5/", country = 'CAN', mask = TRUE)
+
 
 ## crop the altitude data
 alt <- crop(x = alt, y = geographic_extent)
 
 # save the cropped altitude data 
-writeRaster(x = alt, filename = "./cropped_env/CAN_alt.bil")
+writeRaster(x = alt, filename = "./environment/CAN_alt.bil")
+
+
+# load in the cropped environment data
+# note: function scales/normalizes the predictors by default
+predictors <- load_var(path = "./environment/")
+
 
 #Plot the cropped altitude raster to see what it looks like 
 tmap_leaflet(qtm(shp = alt))
 
 # plot the cropped bioclim data 
 tmap_leaflet(qtm(shp = bioclim))
-
-
-# load in the cropped environment data
-# note: function scales/normalizes the predictors by default
-predictors <- load_var(path = "./cropped_env/")
 
 
 # load in the species occurrence data, allowing spatial thinning
