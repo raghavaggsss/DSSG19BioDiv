@@ -23,25 +23,25 @@ browseVignettes("SSDM")
 # Prepare the Environment rasters
 
 # dowload the bioclim data at the highest resolution available
-getData(name = 'worldclim', path = "./sdm/", var = 'bio', res = 0.5, lon = -123.11934, lat = 49.24966)
+getData(name = 'worldclim', path = "./environment/", var = 'bio', res = 0.5, lon = -123.11934, lat = 49.24966)
 
 
 # load in bioclim data
-bioclim <- load_var(path = "./sdm/wc0.5/")
+bioclim <- load_var(path = "./environment/wc0.5/")
 
 
 # download the altitude data, place it in same directory as the bioclim data
-getData(name = 'alt', path = "./sdm/wc2-5/", country = 'CAN', mask = TRUE)
+getData(name = 'alt', path = "./environment/wc2-5/", country = 'CAN', mask = TRUE)
 
 # load in alt data and normalize it
-alt <- load_var(path = "./sdm/", files = "CAN_msk_alt.grd")
+alt <- load_var(path = "./environment/", files = "CAN_msk_alt.grd")
 
 
 
 
 # Prepare the rufus species occurrence data 
 # note: the gbif_map.csv can be found in google drive under map_jango data
-gbif_map <- read.csv("./sdm/gbif_map.csv", stringsAsFactors = F)
+gbif_map <- read.csv("./gbif_map.csv", stringsAsFactors = F)
 
 # select only long/lat columns and change order of long/lat in dataframe
 rufus <- filter(gbif_map, species=="Selasphorus rufus") %>% 
@@ -53,7 +53,7 @@ rufus <- rufus[,c("species", "longitude", "latitude")]
 obs <- rufus
 
 # save the occurrence data
-write.csv(x = obs, file = "./sdm/occurrence/rufus_occurrence.csv", row.names = FALSE)
+write.csv(x = obs, file = "./occurrence/rufus_occurrence.csv", row.names = FALSE)
 
 
 
@@ -71,32 +71,32 @@ geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 bioclim <- crop(x = bioclim, y = geographic_extent)
 
 # save the cropped raster file 
-writeRaster(x = bioclim, filename = c("./sdm/cropped_env/bio1.bil",
-                                      "./sdm/cropped_env/bio2.bil",
-                                      "./sdm/cropped_env/bio3.bil",
-                                      "./sdm/cropped_env/bio4.bil",
-                                      "./sdm/cropped_env/bio5.bil",
-                                      "./sdm/cropped_env/bio6.bil",
-                                      "./sdm/cropped_env/bio7.bil",
-                                      "./sdm/cropped_env/bio8.bil",
-                                      "./sdm/cropped_env/bio9.bil",
-                                      "./sdm/cropped_env/bio10.bil",
-                                      "./sdm/cropped_env/bio11.bil",
-                                      "./sdm/cropped_env/bio12.bil",
-                                      "./sdm/cropped_env/bio13.bil",
-                                      "./sdm/cropped_env/bio14.bil",
-                                      "./sdm/cropped_env/bio15.bil",
-                                      "./sdm/cropped_env/bio16.bil",
-                                      "./sdm/cropped_env/bio17.bil",
-                                      "./sdm/cropped_env/bio18.bil",
-                                      "./sdm/cropped_env/bio19.bil"), 
+writeRaster(x = bioclim, filename = c("./cropped_env/bio1.bil",
+                                      "./cropped_env/bio2.bil",
+                                      "./cropped_env/bio3.bil",
+                                      "./cropped_env/bio4.bil",
+                                      "./cropped_env/bio5.bil",
+                                      "./cropped_env/bio6.bil",
+                                      "./cropped_env/bio7.bil",
+                                      "./cropped_env/bio8.bil",
+                                      "./cropped_env/bio9.bil",
+                                      "./cropped_env/bio10.bil",
+                                      "./cropped_env/bio11.bil",
+                                      "./cropped_env/bio12.bil",
+                                      "./cropped_env/bio13.bil",
+                                      "./cropped_env/bio14.bil",
+                                      "./cropped_env/bio15.bil",
+                                      "./cropped_env/bio16.bil",
+                                      "./cropped_env/bio17.bil",
+                                      "./cropped_env/bio18.bil",
+                                      "./cropped_env/bio19.bil"), 
             bylayer = TRUE)
 
 ## crop the altitude data
 alt <- crop(x = alt, y = geographic_extent)
 
 # save the cropped altitude data 
-writeRaster(x = alt, filename = "./sdm/cropped_env/CAN_alt.bil")
+writeRaster(x = alt, filename = "./cropped_env/CAN_alt.bil")
 
 #Plot the cropped altitude raster to see what it looks like 
 tmap_leaflet(qtm(shp = alt))
@@ -107,11 +107,11 @@ tmap_leaflet(qtm(shp = bioclim))
 
 # load in the cropped environment data
 # note: function scales/normalizes the predictors by default
-predictors <- load_var(path = "./sdm/cropped_env/")
+predictors <- load_var(path = "./cropped_env/")
 
 
 # load in the species occurrence data, allowing spatial thinning
-obs <- load_occ(path = "./sdm/occurrence/", 
+obs <- load_occ(path = "./occurrence/", 
                 Env = predictors,
                 file = "rufus_occurrence.csv",
                 sep = ",",
@@ -264,10 +264,10 @@ write.csv(x =obs2,  file = "./sdm/occurrence/stacked_species.csv", row.names = F
 
 # build the model
 # load in the cropped environment data
-predictors <- load_var(path = "./sdm/cropped_env/")
+predictors <- load_var(path = "./cropped_env/")
 
 # load in the stacked species occurrences
-obs2 <- load_occ(path = "./sdm/occurrence/", 
+obs2 <- load_occ(path = "./occurrence/", 
                  Env = predictors,
                  file = "stacked_species.csv",
                  sep = ",",
@@ -289,7 +289,7 @@ SSDM<- stack_modelling(algorithms = c("GLM", 'GAM'),
 
 plot(SSDM)
 
-# look a the evaluation stats
+# look at the evaluation stats
 knitr::kable(SSDM@evaluation)
 
 # set the options for mapping window
