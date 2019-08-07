@@ -25,3 +25,7 @@ map_django/.idea/
 .Rproj.user
 *.RData
 *.Rhistory
+*.bil
+*.hdr
+*.stx
+*.Rproj
