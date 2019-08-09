@@ -54,7 +54,7 @@ geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 
 # dowload the bioclim data at the highest resolution available
 worldclim <- getData(name = 'worldclim', path = "./environment/", var = 'bio', res = 0.5, lon = -123.11934, lat = 49.24966)
-
+climlegend = c("Annual Mean Temperature","Mean Diurnal Range mean of monthly max temp sub min temp","Isothermality","Temperature Seasonality standard deviationx100","Max Temperature of Warmest Month","Min Temperature of Coldest Month","Temperature Annual Range BIO5 sub BIO6","Mean Temperature of Wettest Quarter","Mean Temperature of Driest Quarter","Mean Temperature of Warmest Quarter","Mean Temperature of Coldest Quarter","Annual Precipitation","Precipitation of Wettest Month","Precipitation of Driest Month","Precipitation Seasonality coefficient of variation","Precipitation of Wettest Quarter","Precipitation of Driest Quarter","Precipitation of Warmest Quarter","Precipitation of Coldest Quarter")
 
 # crop the environment layers to the species' extent 
 bioclim <- crop(x = worldclim, y = geographic_extent)
@@ -85,18 +85,22 @@ writeRaster(x = bioclim, filename = c("./environment/bio1.bil",
 # download the altitude data, place it in same directory as the bioclim data
 alt <- getData(name = 'alt', path = "./environment/wc0.5/", country = 'CAN', mask = TRUE)
 
+a1 = raster("raw altitude maps/092G02_cdsm_final_w.tif", RAT = T)
+a2 = raster("raw altitude maps/092G03_cdsm_final_w.tif", RAT = T)
+a3 = raster("raw altitude maps/092G06_cdsm_final_w.tif", RAT = T)
+a4 = raster("raw altitude maps/092G07_cdsm_final_w.tif", RAT = T)
+a5 = raster("raw altitude maps/092G02_cdsm_final_e.tif", RAT = T)
+a6 = raster("raw altitude maps/092G03_cdsm_final_e.tif", RAT = T)
+a7 = raster("raw altitude maps/092G06_cdsm_final_e.tif", RAT = T)
+a8 = raster("raw altitude maps/092G07_cdsm_final_e.tif", RAT = T)
+alt = merge(a1,a2,a3,a4,a5,a6,a7,a8)
+alt = brick(alt)
 
 ## crop the altitude data
-alt <- crop(x = alt, y = geographic_extent)
+#alt <- crop(x = alt, y = geographic_extent)
 
 # save the cropped altitude data 
-writeRaster(x = alt, filename = "./environment/CAN_alt.bil")
-
-
-# load in the cropped environment data
-# note: function scales/normalizes the predictors by default
-predictors <- load_var(path = "./environment/")
-
+writeRaster(x = alt, filename = "./cropped_env/van_alt.bil")
 
 #Plot the cropped altitude raster to see what it looks like 
 tmap_leaflet(qtm(shp = alt))
@@ -104,6 +108,10 @@ tmap_leaflet(qtm(shp = alt))
 # plot the cropped bioclim data 
 tmap_leaflet(qtm(shp = bioclim))
 
+# load in the cropped environment data
+# note: function scales/normalizes the predictors by default
+predictors <- load_var(path = "./cropped_env/")
+names(predictors) = c(climlegend[c(1,10:19,2:9)], "Altitude")
 
 # load in the species occurrence data, allowing spatial thinning
 obs <- load_occ(path = "./occurrence/", 
@@ -243,6 +251,7 @@ tmap_leaflet(qtm(shp = ESDM@uncertainty,
 ##### Prepare the Occurrence data ######
 
 # get the species that have over 40 observations, algorithms are better if a frequency threshold is set
+taxon_freq = read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
 over_40 <- filter(taxon_freq, freq>=40)
 
 # filter data for 3 different species
@@ -254,7 +263,7 @@ obs2 <- filter(gbif_map, species=="Bombus impatiens" | species== "Sambucus racem
 obs2 <- obs2[,c("species", "longitude", "latitude")] 
 
 # save the stacked occurrence data 
-write.csv(x =obs2,  file = "./sdm/occurrence/stacked_species.csv", row.names = FALSE)
+write.csv(x =obs2,  file = "./occurrence/stacked_species.csv", row.names = FALSE)
 
 
 # build the model
@@ -272,7 +281,7 @@ obs2 <- load_occ(path = "./occurrence/",
                  GeoRes = TRUE)
 
 # build the model using GAM
-SSDM<- stack_modelling(algorithms = c("GLM", 'GAM'),
+SSDM<- stack_modelling(algorithms = "GAM",
                        Occurrences = obs2,
                        Env = predictors,
                        Xcol = "longitude",
@@ -280,7 +289,7 @@ SSDM<- stack_modelling(algorithms = c("GLM", 'GAM'),
                        Spcol = "species",
                        rep = 1,
                        tmp = TRUE,
-                       cores = 1)
+                       cores = 2)
 
 plot(SSDM)
 
