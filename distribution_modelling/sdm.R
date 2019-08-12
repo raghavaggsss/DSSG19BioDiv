@@ -41,10 +41,16 @@ write.csv(x = obs, file = "./occurrence/rufus_occurrence.csv", row.names = FALSE
 # Prepare to crop the environment layers to min and max long/lat 
 
 # set the geographic extent for Metro Vancouver 
-max_lat <- 49.5
+# max_lat <- ceiling(max(obs$latitude))
+# min_lat <- floor(min(obs$latitude))
+# max_lon <- ceiling(max(obs$longitude))
+# min_lon <- floor(min(obs$longitude))
+
+
+max_lat <- 49.75
 min_lat <- 49
-max_lon <- -122.5
-min_lon <- -123.5
+max_lon <- -122.
+min_lon <- -123.75
 
 geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 
@@ -79,7 +85,7 @@ writeRaster(x = bioclim, filename = c("./environment/bio1.bil",
                                       "./environment/bio17.bil",
                                       "./environment/bio18.bil",
                                       "./environment/bio19.bil"), 
-            bylayer = TRUE)
+            bylayer = TRUE, overwrite= TRUE)
 
 
 # download the altitude data, place it in same directory as the bioclim data
@@ -90,7 +96,7 @@ alt <- getData(name = 'alt', path = "./environment/wc0.5/", country = 'CAN', mas
 alt <- crop(x = alt, y = geographic_extent)
 
 # save the cropped altitude data 
-writeRaster(x = alt, filename = "./environment/CAN_alt.bil")
+writeRaster(x = alt, filename = "./environment/CAN_alt.bil", overwrite = TRUE)
 
 
 # load in the cropped environment data
@@ -102,7 +108,8 @@ predictors <- load_var(path = "./environment/")
 tmap_leaflet(qtm(shp = alt))
 
 # plot the cropped bioclim data 
-tmap_leaflet(qtm(shp = bioclim))
+tmap_leaflet(qtm(shp = subset(bioclim, 1)))
+
 
 
 # load in the species occurrence data, allowing spatial thinning
