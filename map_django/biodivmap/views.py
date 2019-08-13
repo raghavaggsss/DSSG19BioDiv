@@ -3,14 +3,16 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
-from .models import SpeciesYear
 # from .views_helpers import geojson_creater
+from .models import GbifSummary
 
 import json
 import pandas as pd
 from shapely.geometry import Point, Polygon
 import geopandas as gpd
 import math
+
+from django.contrib.gis.geos import Polygon as Polyrag
 
 taxLevel = ['kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'end']
 df_map = pd.read_pickle("biodivmap/gbif_map.pkl")
@@ -214,6 +216,7 @@ def summary_polygon(request):
             coords = polygon_json["geometry"]["coordinates"][0]
             poly = Polygon(coords)
 
+            print(GbifSummary.objects.filter(point__within=Polyrag(polygon_json["geometry"]["coordinates"][0])))
 
             spatial_index_obs = request.session.get('spatial_index_obs')
             if not spatial_index_obs:

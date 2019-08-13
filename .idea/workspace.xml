@@ -3,9 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="39a7a510-7c84-423c-9ac0-4f891e615dbd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UBC Analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/UBC Analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0002_auto_20190625_1646.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0003_auto_20190625_1649.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0004_auto_20190625_1651.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0005_auto_20190625_1655.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0006_auto_20190625_1706.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0007_delete_contacts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0008_speciesyear.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0009_auto_20190626_1816.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0010_speciesrecency.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0011_auto_20190725_1752.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/migrations/0012_speciesrecency_speciesyear.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/biodivmap/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_django/biodivmap/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/biodivmap/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_django/dssgweb/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_django/dssgweb/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,11 +72,38 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map_django/biodivmap/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="216" column="12" selection-start-line="216" selection-start-column="12" selection-end-line="218" selection-end-column="53" />
+            <state relative-caret-position="228">
+              <caret line="218" column="25" lean-forward="true" selection-start-line="218" selection-start-column="25" selection-end-line="218" selection-end-column="25" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/map_django/dssgweb/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1185">
+              <caret line="79" column="59" selection-start-line="79" selection-start-column="59" selection-end-line="79" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/map_django/biodivmap/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda2/envs/jupy2/lib/python2.7/site-packages/django/db/models/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -89,8 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>=&gt;</find>
-      <find>down</find>
       <find>button</find>
       <find>cons</find>
       <find>leaflet_map.js</find>
@@ -119,11 +157,13 @@
       <find>df_obs</find>
       <find>spatial_index</find>
       <find>spatial</find>
+      <find>spatia</find>
+      <find>CharField</find>
     </findStrings>
     <replaceStrings>
-      <replace>TextField</replace>
       <replace>d.size</replace>
       <replace>size</replace>
+      <replace>TextField</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -151,14 +191,12 @@
         <option value="$PROJECT_DIR$/map_django/models_file.py" />
         <option value="$PROJECT_DIR$/map_django/models_db.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/fixtures/1990-1993.yaml" />
-        <option value="$PROJECT_DIR$/map_django/dssgweb/settings.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/forms.py" />
         <option value="$PROJECT_DIR$/python_helpers/column_helpers.py" />
         <option value="$PROJECT_DIR$/python_helpers/geojson_helpers.py" />
         <option value="$PROJECT_DIR$/d3_tree/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/taxontree/treedata.json" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/templates/taxontree/index.html" />
-        <option value="$PROJECT_DIR$/map_django/biodivmap/models.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/urls.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/index.html" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/bar_chart/untitled.js" />
@@ -173,6 +211,8 @@
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/Leaflet.SelectAreaFeature.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/leaflet_map.js" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/templates/biodivmap/index.html" />
+        <option value="$PROJECT_DIR$/map_django/dssgweb/settings.py" />
+        <option value="$PROJECT_DIR$/map_django/biodivmap/models.py" />
         <option value="$PROJECT_DIR$/map_django/biodivmap/views.py" />
       </list>
     </option>
@@ -207,11 +247,6 @@
               <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
               <item name="map_django" type="462c0819:PsiDirectoryNode" />
               <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSSG19BioDiv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSSG19BioDiv" type="462c0819:PsiDirectoryNode" />
-              <item name="python_helpers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -271,7 +306,7 @@
       <workItem from="1559851469428" duration="50407000" />
       <workItem from="1562876170838" duration="9432000" />
       <workItem from="1563901471428" duration="2990000" />
-      <workItem from="1565302917102" duration="1319000" />
+      <workItem from="1565302917102" duration="5943000" />
     </task>
     <task id="LOCAL-00001" summary="Markers for data points in UBC on the Map. geopandas.to_json() gives double encoding of json. use write insted.">
       <created>1560273308210</created>
@@ -291,7 +326,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197411000" />
+    <option name="totallyTimeSpent" value="202035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="334" y="47" width="1142" height="834" extended-state="0" />
@@ -409,9 +444,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="remove separate button for loading image; marker onclick instead" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/2018/Plantae/points.geojson" />
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/1982/Plantae/points.geojson" />
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/1985/Bacteria/points.geojson" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/1987/Animalia/Arthropoda/points.geojson" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/2007/Animalia/Annelida/points.geojson" />
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/static/biodivmap/gbif/2006/Animalia/Chordata/Aves/Accipitriformes/points.geojson" />
@@ -457,20 +489,6 @@
           <folding>
             <element signature="n#style#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-753">
-          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/map_django/dssgweb/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="121" column="21" selection-start-line="121" selection-start-column="15" selection-end-line="121" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -579,10 +597,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/anaconda2/envs/jupy2/lib/python2.7/site-packages/django/db/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/envs/jupy2/lib/python2.7/site-packages/django/db/models/fields/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3353">
+          <caret selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/envs/jupy2/lib/python2.7/site-packages/django/contrib/gis/db/models/fields.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="74" column="6" selection-start-line="74" selection-start-column="6" selection-end-line="74" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/dssgweb/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="79" column="59" selection-start-line="79" selection-start-column="59" selection-end-line="79" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_django/biodivmap/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/map_django/biodivmap/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="216" column="12" selection-start-line="216" selection-start-column="12" selection-end-line="218" selection-end-column="53" />
+        <state relative-caret-position="228">
+          <caret line="218" column="25" lean-forward="true" selection-start-line="218" selection-start-column="25" selection-end-line="218" selection-end-column="25" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
