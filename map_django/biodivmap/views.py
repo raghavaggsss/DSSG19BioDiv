@@ -10,6 +10,7 @@ import json
 import pandas as pd
 from shapely.geometry import Point, Polygon
 import geopandas as gpd
+import math
 
 taxLevel = ['kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'end']
 df_map = pd.read_pickle("biodivmap/gbif_map.pkl")
@@ -17,16 +18,16 @@ df_map = df_map.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
 
 geometry = [Point(xy) for xy in zip(df_map['decimalLongitude'], df_map['decimalLatitude'])]
 geo_df_map = gpd.GeoDataFrame(df_map, geometry=geometry, crs={'init': 'epsg:4326'})
-spatial_index_map = geo_df_map.sindex
+# spatial_index_map = geo_df_map.sindex
 
-df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
+# df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
 
 # TODO: store sindex outside and use full observations
 # geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
 # geo_df_obs = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
 # spatial_index_obs = geo_df_obs.sindex
 geo_df_obs = geo_df_map
-spatial_index_obs = spatial_index_map
+# spatial_index_obs = spatial_index_map
 
 df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
 
@@ -114,6 +115,10 @@ def ajax_species(request):
             # max_y = max([bbox[1], bbox[3]])
             coords = taxons_regions["polygon"]["geometry"]["coordinates"][0]
             poly = Polygon(coords)
+
+            spatial_index_map = request.session.get('spatial_index_map')
+            if not spatial_index_map:
+                spatial_index_map = geo_df_map.sindex
 
             possible_matches_index = list(spatial_index_map.intersection(poly.bounds))
             possible_matches = geo_df_map.iloc[possible_matches_index]
@@ -209,6 +214,10 @@ def summary_polygon(request):
             coords = polygon_json["geometry"]["coordinates"][0]
             poly = Polygon(coords)
 
+
+            spatial_index_obs = request.session.get('spatial_index_obs')
+            if not spatial_index_obs:
+                spatial_index_obs = geo_df_obs.sindex
             possible_matches_index = list(spatial_index_obs.intersection(poly.bounds))
             possible_matches = geo_df_obs.iloc[possible_matches_index]
             df_obs_region = possible_matches[possible_matches.intersects(poly)]
@@ -245,7 +254,9 @@ def summary_polygon(request):
                     observed = "no"
                     if specs[i] in df_species:
                         observed = "yes"
-                    records_list.append({"rank": i + 1, "species": specs[i], "observed": observed, "odds": probs[i]})
+                    exp_odds = math.exp(probs[i])
+                    prob = exp_odds / (1 + exp_odds)
+                    records_list.append({"rank": i + 1, "species": specs[i], "observed": observed, "prob": prob})
                 table_json = {"records": records_list, "queryRecordCount": len(specs),
                               "totalRecordCount": len(specs)}
 

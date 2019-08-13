@@ -1,0 +1,13 @@
+name: ShinyMap
+title: ShinyMap
+username:
+account: dssgbiodiv
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1076179
+bundleId: 2302384
+url: https://dssgbiodiv.shinyapps.io/ShinyMap/
+when: 1565302407.91139
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|add_custom_tags.R|app.R|final_report_plots.R|fnmsa.nb.html|fnmsa.Rmd|gbid_map_polyfull.csv|GBif with Municipalities and Years.csv|gbif_map_poly.csv|gbif_map.csv|GBif_recency.csv|gbif_sei_poly_collapsed.csv|gbif_sei_poly.csv|gbif_summary_creation.R|gbif_summary.csv|LM_scratch_work.R|mun_years.rds|normalization_creator.R|old_server.R|predict_SEI.R|process.R|sei_data.csv|SEI_over.R|sei_pred.Rmd|SEI_prediction.R|sei_species.R|SEI_split_geojson.nb.html|SEI_split_geojson.Rmd|test.json.txt|MVSEI2014
