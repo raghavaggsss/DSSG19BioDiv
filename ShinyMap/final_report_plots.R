@@ -2,7 +2,9 @@
 library(tidyverse)
 library(gridExtra)
 library(grid)
-
+library(scales)
+library(VennDiagram)
+library(ggthemes)
 df_orig <- readRDS("gbif_summary.rds")
 
 sp_df <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = FALSE)
@@ -43,13 +45,32 @@ top_10_datasets <- head(arrange(dataset_freq, desc(`Number of Records`)), 10)
 grid.table(top_10_datasets)
 
 
-# get the gbif raw plant observations 
-plants_raw <- filter(gbif_complete, kingdom=="Plantae")
+# make a df of BC list species that are tagged as MVRD
+bc_mvrd <- rainbow_list[grep("MVRD", rainbow_list$Regional.Dist),]
 
 
+# compare the bc mvrd list to gbif species
+# how many of the bc mvrd species are found in gbif?
+overlap <- sum(bc_mvrd$Scientific.Name%in%unique(sp_df$scientific_name))
 
+# what percent of the bc mvrd list is found in gbif?
+sum(bc_mvrd$Scientific.Name%in%unique(sp_df$scientific_name))/nrow(bc_mvrd)*100
 
-
+# make a Venn diagram of the overlap 
+draw.pairwise.venn(area1 = nrow(bc_mvrd),
+                   area2 = length(unique(sp_df$simplified_names)),
+                   cross.area = ceiling(overlap),
+                   category = c("GBIF", "BC MVRD"),
+                   lty = rep("blank", 2),
+                   fill = c("blue", "cyan"),
+                   alpha = rep(0.5, 2),
+                   cat.dist = rep(0.025, 2),
+                   scaled = FALSE,
+                   cat.fontface = rep("bold", 2),
+                   cat.cex = 2,
+                   cex = rep(2, 3), 
+                   cat.pos = c(-80, 80))
+ 
 
 
 
