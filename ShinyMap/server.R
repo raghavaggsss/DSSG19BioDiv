@@ -94,7 +94,7 @@ server <- function(input, output, session){
         df1[which(is.na(df1[,ncol(df1)])),ncol(df1)] = FALSE
         colnames(df1)[ncol(df1)] = mem
       }
-      # This line removes rows that are False for all custom tags (works differently if you have 1 vs. +1 tags selected)
+      # This line removes rows that are False for all custom tags (works differently if you have 1 vs. >1 tags selected)
       if (length(input$member)==1) {df1 = df1[which(df1[,ncol(df1)]==T),]}
       else {df1 = df1[which(apply(df1[,(ncol(df1)+1-(length(input$member))):ncol(df1)], 1, any)),]}
       return(df1)

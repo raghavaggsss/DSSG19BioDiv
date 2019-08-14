@@ -3,130 +3,130 @@
   <component name="ChangeListManager">
     <list default="true" id="b56d32e5-0fc2-46dc-82ba-9013332c91ea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/.codeclimate.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/.eslintrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/BREAKINGCHANGES.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/ISSUE_TEMPLATE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/Jakefile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/Leaflet.draw.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/MIT-LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/TODO.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/build.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/build.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/deps.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/docs-index.leafdoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/docs-misc.leafdoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/docs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/hintrc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/comments.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/constructor.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/crs.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/destructor.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/event.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/example.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/factory.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/function.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/html.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/inherited.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/method.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/namespace.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/option.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/pane.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/projection.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/property.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/section.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leafdoc-templates/supersection.hbs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/leaflet.draw-include.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/build/publish.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/dist/images/layers-2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/dist/images/layers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/dist/images/marker-icon-2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/dist/images/marker-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/dist/images/marker-shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/dist/images/spritesheet-2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/dist/images/spritesheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/dist/images/spritesheet.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/css/normalize.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/basic.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/edithandlers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/full.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/Leaflet.draw.drag-src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/images/layers-2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/images/layers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/images/marker-icon-2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/images/marker-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/images/marker-icon@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/images/marker-shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/leaflet-src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/leaflet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/leaflet.geometryutil.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/leaflet.snap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/spectrum.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/libs/spectrum.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples-0.7.x/snapping.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/basic.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/edithandlers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/full.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/Leaflet.draw.drag-src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/images/layers-2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/images/layers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/images/marker-icon-2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/images/marker-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/images/marker-shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/leaflet-src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/leaflet-src.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/leaflet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/leaflet.geometryutil.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/leaflet.snap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/spectrum.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/libs/spectrum.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/popup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/examples/snapping.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/highlight/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/highlight/highlight.pack.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/highlight/styles/github-gist.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/images/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/images/forum-round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/images/github-round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/images/sprite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/images/sprite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/images/twitter-round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/images/twitter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/js/docs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-0.4.12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-0.4.14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-0.4.2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-0.4.3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-0.4.4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-0.4.5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-0.4.7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-0.4.9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/docs/leaflet-draw-latest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/after.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/before.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/expect.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/happen.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/karma.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/sinon.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/spec.hintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/suites/DrawControlSpec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/suites/EditSpec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/suites/GeometryUtilSpec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/suites/LatLngUtilSpec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet.draw/spec/suites/SpecHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.codeclimate.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.eslintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/BREAKINGCHANGES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/ISSUE_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/Jakefile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/Leaflet.draw.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/MIT-LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/TODO.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/build.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/deps.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/docs-index.leafdoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/docs-misc.leafdoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/docs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/hintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/comments.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/constructor.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/crs.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/destructor.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/event.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/example.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/factory.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/function.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/html.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/inherited.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/method.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/namespace.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/option.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/pane.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/projection.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/property.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/section.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/supersection.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leaflet.draw-include.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/publish.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/layers-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/layers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/marker-icon-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/marker-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/marker-shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/spritesheet-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/spritesheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/spritesheet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/css/normalize.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/basic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/edithandlers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/full.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/Leaflet.draw.drag-src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/layers-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/layers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/marker-icon-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/marker-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/marker-icon@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/marker-shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/leaflet-src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/leaflet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/leaflet.geometryutil.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/leaflet.snap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/spectrum.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/spectrum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/snapping.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/basic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/edithandlers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/full.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/Leaflet.draw.drag-src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/layers-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/layers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/marker-icon-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/marker-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/marker-shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet-src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet-src.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet.geometryutil.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet.snap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/spectrum.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/spectrum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/popup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/snapping.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/highlight/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/highlight/highlight.pack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/highlight/styles/github-gist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/forum-round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/github-round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/sprite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/twitter-round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/twitter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/js/docs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-latest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/after.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/before.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/expect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/happen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/karma.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/sinon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/spec.hintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/DrawControlSpec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/EditSpec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/GeometryUtilSpec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/LatLngUtilSpec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/SpecHelper.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -139,11 +139,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4260">
-              <caret line="287" column="14" lean-forward="true" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
+            <state relative-caret-position="-139">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -169,7 +169,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_init.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="960">
@@ -331,6 +331,36 @@
               <item name="map_django" type="462c0819:PsiDirectoryNode" />
               <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="Leaflet_draw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="Leaflet_draw" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -419,7 +449,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109314000" />
+    <option name="totallyTimeSpent" value="110214000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="331" y="58" width="1211" height="849" extended-state="0" />
@@ -725,16 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4260">
-          <caret line="287" column="14" lean-forward="true" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/doc_ready.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="41">
@@ -746,6 +766,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="64" column="28" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-139">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
