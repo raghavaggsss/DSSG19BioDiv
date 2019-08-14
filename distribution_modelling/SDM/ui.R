@@ -18,11 +18,11 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
+       selectInput(inputId = "model",
+                   label = "Choose a Model Method",
+                   choices = c("Single Species", "Multiple Species"),
+                   selected = "Multiple Species",
+                   multiple = FALSE)
     ),
     
     # Show a plot of the generated distribution

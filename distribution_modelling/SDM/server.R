@@ -11,6 +11,11 @@ library(shiny)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+      if(input$model == "Single Species"){
+            # perform SDM
+      }else {
+            # perform SSDM
+      }
    
   output$distPlot <- renderPlot({
     

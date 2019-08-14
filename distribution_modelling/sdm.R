@@ -50,7 +50,7 @@ write.csv(x = obs, file = "./occurrence/rufus_occurrence.csv", row.names = FALSE
 
 max_lat <- 49.75
 min_lat <- 49
-max_lon <- -122.
+max_lon <- -122
 min_lon <- -123.75
 
 geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
@@ -63,7 +63,7 @@ geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 worldclim <- getData(name = 'worldclim', path = "./environment/", var = 'bio', res = 0.5, lon = -123.11934, lat = 49.24966)
 climlegend = c("Annual Mean Temperature","Mean Diurnal Range mean of monthly max temp sub min temp","Isothermality","Temperature Seasonality standard deviationx100","Max Temperature of Warmest Month","Min Temperature of Coldest Month","Temperature Annual Range BIO5 sub BIO6","Mean Temperature of Wettest Quarter","Mean Temperature of Driest Quarter","Mean Temperature of Warmest Quarter","Mean Temperature of Coldest Quarter","Annual Precipitation","Precipitation of Wettest Month","Precipitation of Driest Month","Precipitation Seasonality coefficient of variation","Precipitation of Wettest Quarter","Precipitation of Driest Quarter","Precipitation of Warmest Quarter","Precipitation of Coldest Quarter")
 
-# crop the environment layers to the species' extent 
+# crop the climate layers to the Metro Van extent 
 bioclim <- crop(x = worldclim, y = geographic_extent)
 
 # save the cropped raster file 
@@ -100,6 +100,7 @@ a7 = raster("raw altitude maps/092G06_cdsm_final_e.tif", RAT = T)
 a8 = raster("raw altitude maps/092G07_cdsm_final_e.tif", RAT = T)
 alt = merge(a1,a2,a3,a4,a5,a6,a7,a8)
 alt = brick(alt)
+
 
 # save the altitude rasterBrick
 writeRaster(x = alt, filename = "./environment/cdsm_altitude.bil", format = "EHdr", bylayer = FALSE)
