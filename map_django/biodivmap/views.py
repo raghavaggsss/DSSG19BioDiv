@@ -3,30 +3,34 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
-from .models import SpeciesYear
 # from .views_helpers import geojson_creater
+from .models import GbifSummary
 
 import json
 import pandas as pd
 from shapely.geometry import Point, Polygon
 import geopandas as gpd
+import math
+import shapely.wkt
+
+from django.contrib.gis.geos import Polygon as Polyrag
 
 taxLevel = ['kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'end']
-df_map = pd.read_pickle("biodivmap/gbif_map.pkl")
-df_map = df_map.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
+# df_map = pd.read_pickle("biodivmap/gbif_map.pkl")
+# df_map = df_map.drop(['Unnamed: 0', 'Winter', 'Spring', 'Summer', 'Fall'], 1)
+#
+# geometry = [Point(xy) for xy in zip(df_map['decimalLongitude'], df_map['decimalLatitude'])]
+# geo_df_map = gpd.GeoDataFrame(df_map, geometry=geometry, crs={'init': 'epsg:4326'})
+# spatial_index_map = geo_df_map.sindex
 
-geometry = [Point(xy) for xy in zip(df_map['decimalLongitude'], df_map['decimalLatitude'])]
-geo_df_map = gpd.GeoDataFrame(df_map, geometry=geometry, crs={'init': 'epsg:4326'})
-spatial_index_map = geo_df_map.sindex
-
-df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
+# df_obs = pd.read_pickle("biodivmap/gbif_summary.pkl")
 
 # TODO: store sindex outside and use full observations
 # geometry = [Point(xy) for xy in zip(df_obs['decimalLongitude'], df_obs['decimalLatitude'])]
 # geo_df_obs = gpd.GeoDataFrame(df_obs, geometry=geometry, crs={'init': 'epsg:4326'})
 # spatial_index_obs = geo_df_obs.sindex
-geo_df_obs = geo_df_map
-spatial_index_obs = spatial_index_map
+# geo_df_obs = geo_df_map
+# spatial_index_obs = spatial_index_map
 
 df_taxon = pd.read_csv("biodivmap/Taxonomy Freq.csv", encoding="latin1")
 
@@ -113,11 +117,24 @@ def ajax_species(request):
             # min_y = min([bbox[1], bbox[3]])
             # max_y = max([bbox[1], bbox[3]])
             coords = taxons_regions["polygon"]["geometry"]["coordinates"][0]
-            poly = Polygon(coords)
+            # poly = Polygon(coords)
 
-            possible_matches_index = list(spatial_index_map.intersection(poly.bounds))
-            possible_matches = geo_df_map.iloc[possible_matches_index]
-            df_region = possible_matches[possible_matches.intersects(poly)]
+            qset = GbifSummary.objects.filter(point__within=Polyrag(coords))
+            df = pd.DataFrame(list(qset.values()))
+            df_region = df.rename(columns={'t_kingdom': 'kingdom', 't_phylum': 'phylum', 't_class': 'class',
+                                               't_order': 'order', 't_family': 'family', 't_genus': 'genus',
+                                           'lat': 'decimalLatitude', 'lon': 'decimalLongitude'})
+            geometry = [Point(xy) for xy in zip(df_region['decimalLongitude'], df_region['decimalLatitude'])]
+            df_region = gpd.GeoDataFrame(df_region, geometry=geometry, crs={'init': 'epsg:4326'})
+
+
+            # spatial_index_map = request.session.get('spatial_index_map')
+            # if not spatial_index_map:
+            #     spatial_index_map = geo_df_map.sindex
+            #
+            # possible_matches_index = list(spatial_index_map.intersection(poly.bounds))
+            # possible_matches = geo_df_map.iloc[possible_matches_index]
+            # df_region = possible_matches[possible_matches.intersects(poly)]
             # df_region = df_region.drop(["geometry"], 1)
 
             # df_region = df_map[(df_map["decimalLatitude"] > min_y) & (df_map["decimalLongitude"] > min_x) &
@@ -132,7 +149,7 @@ def ajax_species(request):
             # # fix coordinate system
             # geo_df = gpd.GeoDataFrame(df_out, geometry=geometry, crs={'init': 'epsg:4326'})
             df_out = df_out.drop(["decimalLongitude", "decimalLatitude", 'kingdom', 'phylum', 'class',
-                        'order', 'family', 'genus'], 1)
+                        'order', 'family', 'genus', "point"], 1)
             if df_out.shape[0] > 0:
                 # df_out.to_file("biodivmap/static/biodivmap/curr.geojson", driver="GeoJSON")
                 json_out = df_out.to_json()
@@ -207,11 +224,19 @@ def summary_polygon(request):
             req = json.loads(request.body)
             polygon_json = req["shape"]
             coords = polygon_json["geometry"]["coordinates"][0]
-            poly = Polygon(coords)
+            # poly = Polygon(coords)
 
-            possible_matches_index = list(spatial_index_obs.intersection(poly.bounds))
-            possible_matches = geo_df_obs.iloc[possible_matches_index]
-            df_obs_region = possible_matches[possible_matches.intersects(poly)]
+            qset = GbifSummary.objects.filter(point__within=Polyrag(coords))
+            df = pd.DataFrame(list(qset.values()))
+            df_obs_region = df.rename(columns={'t_kingdom': 'kingdom', 't_phylum': 'phylum', 't_class': 'class',
+                                    't_order': 'order', 't_family': 'family', 't_genus': 'genus'})
+
+            # spatial_index_obs = request.session.get('spatial_index_obs')
+            # if not spatial_index_obs:
+            #     spatial_index_obs = geo_df_obs.sindex
+            # possible_matches_index = list(spatial_index_obs.intersection(poly.bounds))
+            # possible_matches = geo_df_obs.iloc[possible_matches_index]
+            # df_obs_region = possible_matches[possible_matches.intersects(poly)]
 
             df_taxon_region = df_taxon[df_taxon["species"].isin(df_obs_region['species'])]
             df_taxon_region = df_taxon_region.set_index("species")
@@ -245,7 +270,9 @@ def summary_polygon(request):
                     observed = "no"
                     if specs[i] in df_species:
                         observed = "yes"
-                    records_list.append({"rank": i + 1, "species": specs[i], "observed": observed, "odds": probs[i]})
+                    exp_odds = math.exp(probs[i])
+                    prob = exp_odds / (1 + exp_odds)
+                    records_list.append({"rank": i + 1, "species": specs[i], "observed": observed, "prob": prob})
                 table_json = {"records": records_list, "queryRecordCount": len(specs),
                               "totalRecordCount": len(specs)}
 
