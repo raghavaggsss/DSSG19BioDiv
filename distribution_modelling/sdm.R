@@ -14,6 +14,7 @@ library(knitr)
 library(leaflet.opacity)
 library(rJava)
 
+
 # check out the vignette for SSDM package for more details about the workflow
 browseVignettes("SSDM")
 
@@ -342,6 +343,7 @@ write.csv(x =obs2,  file = "./occurrence/stacked_species.csv", row.names = FALSE
 # build the model
 # load in the cropped environment data
 predictors <- load_var(path = "./environment/")
+names(predictors) = c(climlegend[c(1,10:19,2:9)], "Altitude")
 
 # load in the stacked species occurrences
 obs2 <- load_occ(path = "./occurrence/", 
