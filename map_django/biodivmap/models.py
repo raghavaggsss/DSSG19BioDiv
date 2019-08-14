@@ -19,4 +19,6 @@ class GbifSummary(models.Model):
     t_genus = models.TextField(default=None)
     species = models.TextField(default=None)
     recency = models.TextField(default=None)
+    lon = models.DecimalField(max_digits=30, decimal_places=6, default=None)
+    lat = models.DecimalField(max_digits=30, decimal_places=6, default=None)
     point = models.PointField(spatial_index=True)
