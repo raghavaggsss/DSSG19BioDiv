@@ -42,12 +42,22 @@ for (p in 1:length(polys)) {
 df = read.csv("gbif_map_poly.csv", stringsAsFactors = F)
 rn = row.names(unique(df[,c("species","poly_index")])) # Collapse across the multiple sightings of the same species within a given polygon
 df2 = df[rn,] # Only ~6,000 species (~60,000 observations) were spotted in SEI polygons
-df3 = df2
-for (sp in unique(df3$species)) {
-  if (length(df3$poly_index[which(df3$species==sp)]) < 10) {
-    df3 = df3[-which(df3$species==sp),]
+df_species = df2
+for (sp in unique(df_species$species)) {
+  if (length(df_species$poly_index[which(df_species$species==sp)]) < 10) {
+    df_species = df_species[-which(df_species$species==sp),]
   }
 } # Only ~536 species (~50,000 observations) were spotted in at least 10 polygons
+rn = row.names(unique(df[,c("class","poly_index")]))
+df_classes = df[rn,] # All 88 classes (5,674 observations) were spotted in SEI polygons
+for (cl in unique(df_classes$class)) {
+  if (length(df_classes$poly_index[which(df_classes$class==cl)]) < 20) {
+    df_classes = df_classes[-which(df_classes$class==cl),]
+  }
+} # Restricting classes to having been seen in only 10 polygons leaves us with 36 classes - making the threshold 20 leaves us with 25 classes (5,406 observations)
+df_species = df_species[,c("species","poly_index")]
+df_classes = df_classes[,c("class","poly_index")]
+
 # Ensure we are dealing with a character - it will be changed to a factor later
 if (class(polys@data$SECl_1) == "factor") { 
   polys@data$SECl_1 = as.character(polys@data$SECl_1)
@@ -119,17 +129,26 @@ logit2prob <- function(logit){
 # Define the logistic regression functions which the other functions depend on.
 log_reg_factor = function(species) {
   # Assigns a variable called 'present' based on whether a species can be found in a given polygon
-  foundin = unique(df2$poly_index[which(df2$species==species)])
+  foundin = unique(df_species$poly_index[which(df_species$species==species)])
   poly_df$present = F
   poly_df$present[which(poly_df$SEI_PolyNb %in% foundin)] = T
   return(glm(present ~ SECl_1 + Freshwater_Distance + Saltwater_Distance + Condition + Context + Size + temp + precipitation + elevation, data = poly_df, family = "binomial", contrasts = list(SECl_1 = "contr.sum")))
 }
-log_reg_deciles = function(species) {
+log_reg_deciles = function(unit) {
+  # Determine which data set you're working with
+  if (unit %in% unique(df$species)) {df = df_species
+  }  else if (unit %in% unique(df$class)) {df = df_classes
+  }  else {print("Please enter valid grouping")}
   # Assigns a variable called 'present' based on whether a species can be found in a given polygon
-  foundin = unique(df2$poly_index[which(df2$species==species)])
+  foundin = unique(df$poly_index[which(df[,1]==unit)])
   poly_df$present = F
   poly_df$present[which(poly_df$SEI_PolyNb %in% foundin)] = T
-  return(glm(present ~ AP + ES + FW + HB + IT + ME + MF + OF + RI + SV + WD + WN + YS + Freshwater_Distance + Saltwater_Distance + Condition + Context + Size + temp + precipitation + elevation, data = poly_df, family = "binomial"))
+  terrain = colSums(poly_df[which(poly_df$present==T),])[2:14]
+  var_names = c(names(terrain[which(terrain!=0)]), "Freshwater_Distance", "Saltwater_Distance", "Condition", "Context", "Size", "temp", "precipitation", "elevation")
+  f = as.formula(paste("present",
+                       paste(var_names, collapse = " + " ),
+                       sep = " ~ "))
+  return(glm(f, data = poly_df, family = "binomial"))
 }
 # Important statistical note with the decile regression! Since by both necessity and design all deciles add to the same number (10), we would normally have the problem of multicollinearity - essentially, not all combinations of our 14 class variables are possible since you automatically know the value of the 14th variable if you know the first 13. A more intuitive way of demonstrating the problem is by considering that a parameter of .1 means that for every one decile increase of that class in a polygon, your log odds go up by one. But since the deciles need to add up to 10, a 1 decile increase in this class means another class has to go down 1 - so which class is going down? The parameters only makes sense if we assume that there are 11 deciles in a polygon (more accurately we assume that there can be infinite deciles in any polygon), which we know is false.
 # To fix this, XX has been removed as a predictor, which essentially makes it the baseline. Thus, a parameter of .2 for MF means that you would expect a polygon which has one more decile of mature forest *and one less decile of XX* to have an increase of .2 in its log odds. You can also directly compare the predictors. If a polygon is being developed and has thus lost a decile of MF to modified ecosystems but XX is not involved at all, subtract the MF parameter from the ME parameter to get your change in log odds. See https://stats.stackexchange.com/questions/183601/interpreting-proportions-that-sum-to-one-as-independent-variables-in-linear-regr for a better explanation.
@@ -152,23 +171,32 @@ indv_class_probs = function(species) {
 }
 
 # Create a dataframe storing the parameters for the logistic regression equations, with each row representing a different species and each column representing the parameters of a different predictor
-equation_developer = function() {
-  eq_df = data.frame()
+equation_developer = function(grouping) {
+  eq_df = data.frame(matrix(ncol = 44, nrow = 0))
+  colnames(eq_df) = c("Intercept", colnames(poly_df)[2:22], "Intercept_sig",
+                      paste(colnames(poly_df)[2:22], "_sig", sep = ""))
   counter = 1
-  for (sp in unique(df3$species)) {
-    logit = log_reg_deciles(sp)
-    logcoef = as.data.frame(summary(logit)$coefficients)$Estimate
-    logsig = as.data.frame(summary(logit)$coefficients)$`Pr(>|z|)`
-    eq_df = rbind(eq_df, c(logcoef, logsig))
-    if (counter %in% round(seq(0,length(unique(df3$species)),length(unique(df3$species))/20))) {
-      print(paste(round(counter/length(unique(df3$species))*100),"%", sep = ""))
+  if (grouping == "species") {set = unique(df_species$species)
+  }  else if (grouping == "class") {set = unique(df_classes$class)}
+  set_len = length(set)
+  for (unit in set) {
+    logit = as.data.frame(summary(log_reg_deciles(unit))$coefficients)
+    filled_cols = c(1, which(colnames(eq_df) %in% rownames(logit)))
+    eq_df[counter,filled_cols] = logit$Estimate
+    eq_df[counter,(filled_cols + 22)] = logit$`Pr(>|z|)`
+    if (counter %in% round(seq(0,set_len,set_len/20))) {
+      print(paste(round(counter/set_len*100),"%", sep = ""))
     }
     counter = counter + 1
   }
-  colnames(eq_df) = c(row.names(as.data.frame(summary(logit)$coefficients)), paste(row.names(as.data.frame(summary(logit)$coefficients)), "_sig", sep = ""))
-  rownames(eq_df) = unique(df3$species)
+  rownames(eq_df) = set
+  # The results are clearly extreme and inaccurate for certain members. Unfortunately I could find no way of testing whether or not a particular run produced an error; while it woul dbe ideal to discard just the equations that threw errors, we must make do by discarding any equation with a value above 8 (from an inspection of the equations, parameters do seem to be fairly bimodal - mostly >10 in the 'error' runs and mostly <1 in the rest)
+  for (r in rownames(eq_df)) {
+    if (any( abs(eq_df[r,2:ncol(eq_df)]) > 6, na.rm = T)) {eq_df = eq_df[!(row.names(eq_df) %in% r),]}
+  } # Helpfulto note that equations with extreme intercepts are not excluded - extremely low intercepts are quite possible under normal conditions, and are simply a sign of a taxon being rare; it is extreme non-intercept parameters we are worried about.
   return(eq_df)
 }
+
 # Make predictions based on the stored parameters (see "equation_developer" above)
 predict_odds = function(parameters, species, cls, fresh_prox, salt_prox) {
   # Firstly construct a series of zeros with a single one, representing the input values for the SEI class factor
@@ -197,7 +225,22 @@ common_wildlife = function(class) {
   return(output)
 }
 
-eq_df = equation_developer()
+species_equations = equation_developer("species")
+class_equations = equation_developer("class")
+
+# This is the code for replacing 'NA' parameters (i.e., that taxon was never seen in that SEI category) with the lowest SEI class parameter value, to ensure that the equation still gives predictions for such classes but the odds  are never better than for the least likely SEI class.
+for (r in 1:nrow(species_equations)) {
+  min = min(species_equations[r,2:14], na.rm = T)
+  nas = which(is.na(species_equations[r,]))
+  nas = nas[nas < 15]
+  species_equations[r,nas] = min
+}
+for (r in 1:nrow(class_equations)) {
+  min = min(class_equations[r,2:14], na.rm = T)
+  nas = which(is.na(class_equations[r,]))
+  nas = nas[nas < 15]
+  class_equations[r,nas] = min
+}
 
 # This code factors in the significance of parameters by reducing any parameters that are not significant to zero
 # NOTE the numbers 22, 23, and 44 below depend on the number of variables and must be updated if variables are added to or subtracted from the data
@@ -212,14 +255,17 @@ for (r in 1:nrow(eq_df_sig)) {
 }
 eq_df_sig2 = eq_df_sig[-rr,]
 
-
+# Alternately, if you have no intention of using the signficance value, this code simply removes them
+species_equations[,23:44] = NULL
+class_equations[,23:44] = NULL
 
 ## ~~ EXPORT ~~##
 saveRDS(polys, "complete polygons.rds")
 poly_inputs = cbind(Intercept = 1, poly_df)
 poly_inputs = poly_inputs[,c(2,1,12:24,3:10)]
 write.csv(poly_inputs, "polygon inputs.csv", row.names = F)
-write.csv(eq_df_sig2, "Parameter Dataframe.csv")
+write.csv(species_equations, "Species Parameters.csv")
+write.csv(class_equations, "Class Parameters.csv")
 
 
 # Example code for deriving ranked species occurances using both a normalized and unnormalized technique (with and without the intercept term)

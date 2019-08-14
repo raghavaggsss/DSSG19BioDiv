@@ -41,10 +41,16 @@ write.csv(x = obs, file = "./occurrence/rufus_occurrence.csv", row.names = FALSE
 # Prepare to crop the environment layers to min and max long/lat 
 
 # set the geographic extent for Metro Vancouver 
-max_lat <- 49.5
+# max_lat <- ceiling(max(obs$latitude))
+# min_lat <- floor(min(obs$latitude))
+# max_lon <- ceiling(max(obs$longitude))
+# min_lon <- floor(min(obs$longitude))
+
+
+max_lat <- 49.75
 min_lat <- 49
-max_lon <- -122.5
-min_lon <- -123.5
+max_lon <- -122.
+min_lon <- -123.75
 
 geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 
@@ -54,7 +60,7 @@ geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 
 # dowload the bioclim data at the highest resolution available
 worldclim <- getData(name = 'worldclim', path = "./environment/", var = 'bio', res = 0.5, lon = -123.11934, lat = 49.24966)
-
+climlegend = c("Annual Mean Temperature","Mean Diurnal Range mean of monthly max temp sub min temp","Isothermality","Temperature Seasonality standard deviationx100","Max Temperature of Warmest Month","Min Temperature of Coldest Month","Temperature Annual Range BIO5 sub BIO6","Mean Temperature of Wettest Quarter","Mean Temperature of Driest Quarter","Mean Temperature of Warmest Quarter","Mean Temperature of Coldest Quarter","Annual Precipitation","Precipitation of Wettest Month","Precipitation of Driest Month","Precipitation Seasonality coefficient of variation","Precipitation of Wettest Quarter","Precipitation of Driest Quarter","Precipitation of Warmest Quarter","Precipitation of Coldest Quarter")
 
 # crop the environment layers to the species' extent 
 bioclim <- crop(x = worldclim, y = geographic_extent)
@@ -79,31 +85,36 @@ writeRaster(x = bioclim, filename = c("./environment/bio1.bil",
                                       "./environment/bio17.bil",
                                       "./environment/bio18.bil",
                                       "./environment/bio19.bil"), 
-            bylayer = TRUE)
+            bylayer = TRUE, overwrite= TRUE)
 
 
-# download the altitude data, place it in same directory as the bioclim data
-alt <- getData(name = 'alt', path = "./environment/wc0.5/", country = 'CAN', mask = TRUE)
+# load in the altitude rasters
+a1 = raster("raw altitude maps/092G02_cdsm_final_w.tif", RAT = T)
+a2 = raster("raw altitude maps/092G03_cdsm_final_w.tif", RAT = T)
+a3 = raster("raw altitude maps/092G06_cdsm_final_w.tif", RAT = T)
+a4 = raster("raw altitude maps/092G07_cdsm_final_w.tif", RAT = T)
+a5 = raster("raw altitude maps/092G02_cdsm_final_e.tif", RAT = T)
+a6 = raster("raw altitude maps/092G03_cdsm_final_e.tif", RAT = T)
+a7 = raster("raw altitude maps/092G06_cdsm_final_e.tif", RAT = T)
+a8 = raster("raw altitude maps/092G07_cdsm_final_e.tif", RAT = T)
+alt = merge(a1,a2,a3,a4,a5,a6,a7,a8)
+alt = brick(alt)
+
+# save the altitude rasterBrick
+writeRaster(x = alt, filename = "./environment/cdsm_altitude.bil", format = "EHdr", bylayer = FALSE)
 
 
-## crop the altitude data
-alt <- crop(x = alt, y = geographic_extent)
-
-# save the cropped altitude data 
-writeRaster(x = alt, filename = "./environment/CAN_alt.bil")
+# plot the cropped bioclim data 
+tmap_leaflet(qtm(shp = subset(bioclim, 1)))
 
 
 # load in the cropped environment data
 # note: function scales/normalizes the predictors by default
 predictors <- load_var(path = "./environment/")
+names(predictors) = c(climlegend[c(1,10:19,2:9)], "Altitude")
 
-
-#Plot the cropped altitude raster to see what it looks like 
-tmap_leaflet(qtm(shp = alt))
-
-# plot the cropped bioclim data 
-tmap_leaflet(qtm(shp = bioclim))
-
+#Plot the environmental rasters to see what it looks like 
+tmap_leaflet(qtm(shp = predictors))
 
 # load in the species occurrence data, allowing spatial thinning
 obs <- load_occ(path = "./occurrence/", 
@@ -115,6 +126,8 @@ obs <- load_occ(path = "./occurrence/",
                 Spcol = "species",
                 GeoRes = TRUE)
 
+
+##### Model 1 #####
 # build the model using GLM
 SDM <- modelling(algorithm = 'GLM',
                  Occurrences = obs,
@@ -122,6 +135,7 @@ SDM <- modelling(algorithm = 'GLM',
                  Xcol = "longitude",
                  Ycol = "latitude")
 
+# check out the model evaluation metrics
 knitr::kable(SDM@evaluation)
 
 # evaluate the model in shiny
@@ -134,7 +148,7 @@ pred_importance <- gather(data = SDM@variable.importance,
 
 ggplot(pred_importance, aes(x = reorder(predictor, -value), y = value))+
       geom_col()+
-      labs(title = "Importance to the Model of the Predictors",
+      labs(title = "Important Model Predictors",
            x = "Environmental Predictors",
            y = "Level of Importance")+
       coord_flip()
@@ -145,7 +159,7 @@ plot(SDM@projection)
 
 tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
 map <- tm_shape(SDM@projection)+
-      tm_layout(title = "Predicted Distribution for Rufus Hummingbird\nwith 90% Accuracy")+
+      tm_layout(title = "Predicted Distribution for Rufus Hummingbird with GLM & 63% Accuracy")+
       tm_raster(alpha = 0.6, saturation = 1, title = "Probability")
 
 tmap_leaflet(map)
@@ -154,9 +168,7 @@ tmap_leaflet(map)
 
 
 
-
-
-
+##### Model 2 #####
 
 ##### Build the model again with different algorithms ####
 # build the model using GAM
@@ -166,18 +178,36 @@ SDM_GAM <- modelling(algorithm = 'GAM',
                      Xcol = "longitude",
                      Ycol = "latitude")
 
-plot(SDM_GAM)
 
+# check out the model metrics
 knitr::kable(SDM_GAM@evaluation)
 
+# check shiny app
+plot(SDM_GAM)
+
+# plot the importance of environmental variables 
+pred_importance_GAM <- gather(data = SDM_GAM@variable.importance, 
+                          key = "predictor", 
+                          value = "value")
+
+ggplot(pred_importance_GAM, aes(x = reorder(predictor, -value), y = value))+
+      geom_col()+
+      labs(title = "Important Model Predictors",
+           x = "Environmental Predictors",
+           y = "Level of Importance")+
+      coord_flip()
+
+# plot the model 
 tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
 map_GAM <- tm_shape(SDM_GAM@projection)+
-      tm_layout(title = "Predicted Distribution for Rufus Hummingbird\nwith 90% Accuracy")+
+      tm_layout(title = "Predicted Distribution for Rufus Hummingbird with GAM & 71% Accuracy")+
       tm_raster(alpha = 0.6, saturation = 1, title = "Probability")
 
 
 tmap_leaflet(map_GAM)
 
+
+#### Model 3 #######
 
 # MARS algorithm 
 SDM_MARS<- modelling(algorithm = 'MARS',
@@ -186,42 +216,93 @@ SDM_MARS<- modelling(algorithm = 'MARS',
                      Xcol = "longitude",
                      Ycol = "latitude")
 
+# look at evaluation metrics 
+knitr::kable(SDM_MARS@evaluation)
+
 # open the model metrics in shiny 
 plot(SDM_MARS)
 
-# look at evaluation metrics 
-knitr::kable(SDM_MARS@evaluation)
 
 # plot the model 
 tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
 map_MARS <- tm_shape(SDM_MARS@projection)+
-      tm_layout(title = "Predicted Distribution for Rufus Hummingbird\nwith MARS")+
+      tm_layout(title = "Predicted Distribution for Rufus Hummingbird with MARS and 72% Accuracy")+
       tm_raster(alpha = 0.6, saturation = 1, title = "Probability")
 
 tmap_leaflet(map_MARS)
 
 
+##### Model 4 ######
+
+# GBM algorithm 
+# Note: This algorithm took a very long time to run on rufus hummingbird
+SDM_GBM<- modelling(algorithm = 'GBM',
+                     Occurrences = obs,
+                     Env = predictors,
+                     Xcol = "longitude",
+                     Ycol = "latitude")
+
+# look at evaluation metrics 
+knitr::kable(SDM_GBM@evaluation)
+
+# open the model metrics in shiny 
+plot(SDM_GBM)
+
+# plot the importance of environmental variables 
+pred_importance_GBM<- gather(data = SDM_GBM@variable.importance, 
+                               key = "predictor", 
+                               value = "value")
+
+ggplot(pred_importance_GBM, aes(x = reorder(predictor, -value), y = value))+
+      geom_col()+
+      labs(title = "Important Model Predictors",
+           x = "Environmental Predictors",
+           y = "Level of Importance")+
+      coord_flip()
+
+
+# plot the model 
+tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
+map_GBM <- tm_shape(SDM_MARS@projection)+
+      tm_layout(title = "Predicted Distribution for Rufus Hummingbird with GBM and 67% Accuracy")+
+      tm_raster(alpha = 0.6, saturation = 1, title = "Probability")
+
+tmap_leaflet(map_GBM)
+
+
 
 
 ###### Section 2: Perform Ensebmle modelling (ESDM) ####
-ESDM <- ensemble_modelling(algorithms = c("GLM", "MARS", "GAM"),
+ESDM <- ensemble_modelling(algorithms = c("MARS", "GAM"),
                            Occurrences = obs,
                            Env = predictors,
                            Xcol = "longitude",
                            Ycol = "latitude",
                            tmp = TRUE,
                            rep = 1)
+# look at evaluation metrics 
+knitr::kable(ESDM@evaluation)
 
 # look at evaluaiton metrics in shiny 
 plot(ESDM)
 
-# look at evaluation metrics 
-knitr::kable(ESDM@evaluation)
+
+# plot the importance of environmental variables 
+pred_importance_ESDM <- gather(data = ESDM@variable.importance, 
+                              key = "predictor", 
+                              value = "value")
+
+ggplot(pred_importance_ESDM, aes(x = reorder(predictor, -value), y = value))+
+      geom_col()+
+      labs(title = "Important Model Predictors",
+           x = "Environmental Predictors",
+           y = "Level of Importance")+
+      coord_flip()
 
 # plot the model 
 tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
 map_ESDM <- tm_shape(ESDM@projection)+
-      tm_layout(title = "Habitat Suitability for Rufus Hummingbird using GLM, GAM and MARS")+
+      tm_layout(title = "Predicted Distribution for Rufus Hummingbird with GAM and MARS & ....% Accuracy")+
       tm_raster(alpha = 0.6, saturation = 1, title = "Probability")
 
 tmap_leaflet(map_ESDM)
@@ -229,7 +310,7 @@ tmap_leaflet(map_ESDM)
 
 tmap_leaflet(qtm(shp = ESDM@uncertainty, 
                  raster = "uncertainty.map",
-                 title = "Habitat Suitability for Rufus Hummingbird using GLM, GAM and MARS"))
+                 title = "Habitat Suitability for Rufus Hummingbird using GAM and MARS"))
 
 
 
@@ -243,6 +324,7 @@ tmap_leaflet(qtm(shp = ESDM@uncertainty,
 ##### Prepare the Occurrence data ######
 
 # get the species that have over 40 observations, algorithms are better if a frequency threshold is set
+taxon_freq = read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
 over_40 <- filter(taxon_freq, freq>=40)
 
 # filter data for 3 different species
@@ -254,12 +336,12 @@ obs2 <- filter(gbif_map, species=="Bombus impatiens" | species== "Sambucus racem
 obs2 <- obs2[,c("species", "longitude", "latitude")] 
 
 # save the stacked occurrence data 
-write.csv(x =obs2,  file = "./sdm/occurrence/stacked_species.csv", row.names = FALSE)
+write.csv(x =obs2,  file = "./occurrence/stacked_species.csv", row.names = FALSE)
 
 
 # build the model
 # load in the cropped environment data
-predictors <- load_var(path = "./cropped_env/")
+predictors <- load_var(path = "./environment/")
 
 # load in the stacked species occurrences
 obs2 <- load_occ(path = "./occurrence/", 
@@ -272,26 +354,28 @@ obs2 <- load_occ(path = "./occurrence/",
                  GeoRes = TRUE)
 
 # build the model using GAM
-SSDM<- stack_modelling(algorithms = c("GLM", 'GAM'),
+SSDM_GAM<- stack_modelling(algorithms = "GAM",
                        Occurrences = obs2,
                        Env = predictors,
+                       ensemble.thresh = 0,
                        Xcol = "longitude",
                        Ycol = "latitude",
                        Spcol = "species",
                        rep = 1,
+                       method = "pSSDM",
                        tmp = TRUE,
                        cores = 1)
 
-plot(SSDM)
+plot(SSDM_GAM)
 
 # look at the evaluation stats
-knitr::kable(SSDM@evaluation)
+knitr::kable(SSDM_GAM@evaluation)
 
 # set the options for mapping window
 tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
 
-map_SSDM <- tm_shape(SSDM@projection)+
-      tm_layout(title = "Probability Distribution for Rufus Hummingbird\nBumblebee and Red Elderberry")+
+map_SSDM <- tm_shape(SSDM_GAM@diversity.map)+
+      tm_layout(title = "Probability Distribution for Rufus Hummingbird, Bumblebee and Red Elderberry")+
       tm_raster(alpha = 0.6, saturation = 1, title = "Probability") 
 
 tmap_leaflet(map_SSDM)
