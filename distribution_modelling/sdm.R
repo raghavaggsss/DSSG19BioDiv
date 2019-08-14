@@ -150,7 +150,7 @@ ggplot(pred_importance, aes(x = reorder(predictor, -value), y = value))+
       geom_col()+
       labs(title = "Important Model Predictors",
            x = "Environmental Predictors",
-           y = "Level of Importance")+
+           y = "Percentage Contribution to the Model")+
       coord_flip()
 
 
@@ -342,6 +342,7 @@ write.csv(x =obs2,  file = "./occurrence/stacked_species.csv", row.names = FALSE
 # build the model
 # load in the cropped environment data
 predictors <- load_var(path = "./environment/")
+names(predictors) = c(climlegend[c(1,10:19,2:9)], "Altitude")
 
 # load in the stacked species occurrences
 obs2 <- load_occ(path = "./occurrence/", 
@@ -375,8 +376,8 @@ knitr::kable(SSDM_GAM@evaluation)
 tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
 
 map_SSDM <- tm_shape(SSDM_GAM@diversity.map)+
-      tm_layout(title = "Probability Distribution for Rufus Hummingbird, Bumblebee and Red Elderberry")+
-      tm_raster(alpha = 0.6, saturation = 1, title = "Probability") 
+      tm_layout(title = "Predicted Species Richness for Rufus Hummingbird, Bumblebee and Red Elderberry")+
+      tm_raster(alpha = 0.6, saturation = 1, title = "Diversity") 
 
 tmap_leaflet(map_SSDM)
 
