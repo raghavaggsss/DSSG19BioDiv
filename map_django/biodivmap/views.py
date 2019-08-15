@@ -231,12 +231,18 @@ def summary_polygon(request):
             df_obs_region = df.rename(columns={'t_kingdom': 'kingdom', 't_phylum': 'phylum', 't_class': 'class',
                                     't_order': 'order', 't_family': 'family', 't_genus': 'genus'})
 
+            if df_obs_region.shape[0] == 0:
+                df_obs_region = pd.DataFrame(columns=['common', 'datasetname', 'id', 'lat', 'lon', 'point', 'recency',
+                       'redlist', 'species', 'class', 'family', 'genus', 'kingdom', 'order',
+                       'phylum'])
+
             # spatial_index_obs = request.session.get('spatial_index_obs')
             # if not spatial_index_obs:
             #     spatial_index_obs = geo_df_obs.sindex
             # possible_matches_index = list(spatial_index_obs.intersection(poly.bounds))
             # possible_matches = geo_df_obs.iloc[possible_matches_index]
             # df_obs_region = possible_matches[possible_matches.intersects(poly)]
+
 
             df_taxon_region = df_taxon[df_taxon["species"].isin(df_obs_region['species'])]
             df_taxon_region = df_taxon_region.set_index("species")
