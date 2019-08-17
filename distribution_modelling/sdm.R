@@ -153,6 +153,10 @@ ggplot(pred_importance, aes(x = reorder(predictor, -value), y = value))+
       labs(title = "Important Model Predictors",
            x = "Environmental Predictors",
            y = "Percentage Contribution to the Model")+
+      theme(title = element_text(face = "bold", size = 16),
+            axis.title.x = element_text(face = "bold", size = "14"),
+            axis.title.y = element_text(face = "bold", size = "14"),
+            axis.text = element_text(size = 12))+
       coord_flip()
 
 

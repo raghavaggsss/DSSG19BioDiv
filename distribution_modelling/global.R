@@ -1,4 +1,5 @@
 # Load the necessary libraries
+library(shiny)
 library(tidyverse)
 library(SSDM)
 library(dismo)
@@ -12,20 +13,32 @@ library(ggmap)
 library(leaflet)
 library(knitr)
 library(leaflet.opacity)
-library(rJava)
-library(RPostgreSQL)
+library(shinyBS)
+#library(rJava)
+#library(RPostgreSQL)
 
-db = dbConnect(
-      Postgres(),
-      user = 'gabe',
-      password = 'p04281088ef1e53efce910757a295fe9dc9c5b04374b8ba5a695b9dab4ae87044',
-      dbname = 'dbsftg98g2ls2b',
-      host = 'ec2-3-225-228-195.compute-1.amazonaws.com',
-      port = 5432,
-      sslmode = 'require'
-)
+# db = dbConnect(
+#       Postgres(),
+#       user = 'gabe',
+#       password = 'p04281088ef1e53efce910757a295fe9dc9c5b04374b8ba5a695b9dab4ae87044',
+#       dbname = 'dbsftg98g2ls2b',
+#       host = 'ec2-3-225-228-195.compute-1.amazonaws.com',
+#       port = 5432,
+#       sslmode = 'require'
+# )
+# 
+# df_orig = dbGetQuery(db, "SELECT * FROM biodivmap_gbifsummary")
+gbif_map <- read.csv("./gbif_map.csv", stringsAsFactors = F)
 
-df_orig = dbGetQuery(db, "SELECT * FROM biodivmap_gbifsummary")
+df_orig = gbif_map
+
+taxon_freq <- read.csv("~/Desktop/DSSG19BioDiv/ShinyMap/Taxonomy_Freq.csv")
+
+over_threshold <- filter(taxon_freq, freq>=40)
+
+# filter the gbif data to species that have above threshold of observations *************why are there names on taxon_freq that are not in gbif_map?
+df_orig <- df_orig[which(df_orig$species%in%over_threshold$simplified_names),]
+
 
 # set the Metro Vancouver lat/lon limits
 max_lat <- 49.75
@@ -42,8 +55,9 @@ climlegend = c("Annual Mean Temperature","Mean Diurnal Range mean of monthly max
 # load in the environment data 
 # note: function scales/normalizes the predictors by default
 # ##### Need to provide a path to the SQL database to load in the separate alt and climate Rasterstacks
-predictors <- load_var(path = "./environment/")
+predictors <- load_var(path = "~/Desktop/DSSG19BioDiv/distribution_modelling/environment/")
 names(predictors) = c(climlegend[c(1,10:19,2:9)], "Altitude")
+
 
 
 
