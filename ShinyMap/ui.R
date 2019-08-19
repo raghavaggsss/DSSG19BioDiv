@@ -18,7 +18,8 @@ ui <- fluidPage(
       
       selectInput(inputId = "member", 
                   label = "Select an Option to Plot", 
-                  choices = sort(unique(df_orig$species[which((df_orig$year >= 1980) & (df_orig$year <= 2019))])),
+                  #choices = sort(unique(dfsp$species[which((dfsp$year >= 1980) & (dfsp$year <= 2019))])),
+                  choices = sort(unique(dfsp$species)),
                   selected = "Calypte anna",
                   multiple = T),
       
@@ -45,9 +46,9 @@ ui <- fluidPage(
                 title = "Note: Raw Counts is the number of species records for a given year. Normalizing by Total Observations in a given year corrects for the fact that GBIF occurrence records are increasing every year, regardless whether a given species is actually increasing in abundance. Normalizing by Kingdom or Class corrects for certain organisms being oversampled in certain years compared to others.",
                 placement = "bottom",
                 trigger = "hover")
-      ),
+    ),
     
-
+    
     mainPanel(
       bsPopover(id = "plot1",
                 title = "How to Interpret this Plot",
@@ -58,4 +59,3 @@ ui <- fluidPage(
     )
   )
 )
-

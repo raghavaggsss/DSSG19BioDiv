@@ -10,7 +10,7 @@
 
 server <- function(input, output, session){
   
-  reac <- reactiveValues(df_space=df_orig, df_time=df_orig, dfsp=dfsp, tags=tag_list)
+  reac <- reactiveValues(df_space=data.frame(), df_time=data.frame(), dfsp=dfsp, tags=tag_list)
   
   # This observe statement changes the options provided to the user in the "Members" dropdown menu based on what they have selected from the "Category" dropdown menu
   observe(priority = 1, {
@@ -32,42 +32,34 @@ server <- function(input, output, session){
       updateSelectInput(session, "member",
                         choices = sort(unique(reac$dfsp[,cat])),
                         selected = ch
-                        )
+      )
     }
   })
   
   # This is the observer that keeps track of the url and grabs any municipality information being transmitted through it for use down the line - it then filters the data into 
   observe({
     query <- parseQueryString(session$clientData$url_search)
-    #print(query['municipality'][[1]])
-    #print(query['region'][[1]])
-    #print(query['coords'][[1]])
-    if (!is.null(query['municipality'][[1]])) {
-      reac$df_space = df_orig[which(df_orig$municipality == as.integer(query['municipality'][[1]])),]
-    }
-    #if (!is.null(query['region'][[1]])) {
-    #  coord = as.double(strsplit(query['region'][[1]], ",")[[1]])
-    #  minx = min(coord[c(1,3)])
-    #  maxx = max(coord[c(1,3)])
-    #  miny = min(coord[c(2,4)])
-    #  maxy = max(coord[c(2,4)])
-    #  reac$df = df_orig %>% filter(decimalLongitude > minx, decimalLongitude < maxx, decimalLatitude > miny, decimalLatitude < maxy)
-    #}
     if (!is.null(query['coords'][[1]])) {
       # Create a SpatialPolygons object from the user's selection
       coords = jsonlite::fromJSON(query['coords'][[1]])
       print(coords)
-      sel = SpatialPolygons(list(Polygons(list(Polygon(coords)),1)))
+      poly = SpatialPolygons(list(Polygons(list(Polygon(coords)), ID = 1)))
+      polyWKT = writeWKT(poly)
+      df_temp = as.data.frame(dbGetQuery(db, sprintf("SELECT * FROM biodivmap_gbifsummaryfull WHERE ST_Within(point, 'SRID=4326;%s')", polyWKT)))
+      colnames(df_temp)[colnames(df_temp) %in% c("lon","lat")] = c("decimalLongitude","decimalLatitude")
+      reac$df_space = df_temp
+      
+      #sel = SpatialPolygons(list(Polygons(list(Polygon(coords)),1)))
       # Create a SpatialPoints object from df_orig
-      spatialDF = SpatialPointsDataFrame(coords = df_orig[,3:4], data = df_orig[,-(3:4)])
-      inside = spatialDF[sel,]
-      reac$df_space = inside@data
-      print(nrow(reac$df))
+      #spatialDF = SpatialPointsDataFrame(coords = df_orig[,c("decimalLongitude","decimalLatitude")], data = df_orig[,!(colnames(df_orig) %in% c("decimalLongitude","decimalLatitude"))])
+      #inside = spatialDF[sel,]
+      #reac$df_space = inside@data
     }
   })
   
   # "react$df_time" is generated from "react$df_space" and the input years, meaning that it will recalculate as soon as either the year slider has changed or a different spatial selection is made. It feeds directly into the df1 function.
   observe({
+    if (nrow(reac$df_space)==0) {return()}
     reac$df_time = reac$df_space[which((reac$df_space$year >= input$year[1]) & (reac$df_space$year <= input$year[2])),]
     reac$dfsp = dfsp[which(dfsp[,"species"] %in% reac$df_time[,"species"]),]
     # These lines of code remove custom tags that are left without tagged species after filtration
@@ -80,6 +72,10 @@ server <- function(input, output, session){
   
   # df1 changes only with "category" and adds columns that gives member values for each category that could be chosen
   df1 = reactive({
+    shiny::validate(
+      need(nrow(reac$df_time)!=0,
+           "Please select coordinates")
+    )
     # This first line essentially prevents this from running until the "member" input has been registered, to prevent error messages resulting from putting the cart before the horse - the second line prevents a strange bug  where when "Custom Tags" is selected for category, member does not update from where it was previously right away, resulting in error messages
     if (is.null(input$member)) {return()}
     if (input$category=="Custom Tags" & !any(input$member %in% reac$tags)) {return()}
@@ -94,7 +90,7 @@ server <- function(input, output, session){
         df1[which(is.na(df1[,ncol(df1)])),ncol(df1)] = FALSE
         colnames(df1)[ncol(df1)] = mem
       }
-      # This line removes rows that are False for all custom tags (works differently if you have 1 vs. >1 tags selected)
+      # This line removes rows that are False for all custom tags (works differently if you have 1 vs. +1 tags selected)
       if (length(input$member)==1) {df1 = df1[which(df1[,ncol(df1)]==T),]}
       else {df1 = df1[which(apply(df1[,(ncol(df1)+1-(length(input$member))):ncol(df1)], 1, any)),]}
       return(df1)
@@ -135,13 +131,13 @@ server <- function(input, output, session){
         add_zeros1()
     }
   })
-
+  
   # d3 is the normalized data
   df3 = reactive({
     # Validate sends a more helpful message and prevents Shiny from trying to create the graph if the user has selected incompatible category and normalization options
     shiny::validate(
       need(!((input$category %in% c("Custom Tags","kingdom") & input$normalization == "Proportion of Kingdom Observations") | (input$category %in% c("Custom Tags","kingdom", "phylum","class") & input$normalization == "Proportion of Class Observations")),
-      "Please select a different normalization option for this category")
+           "Please select a different normalization option for this category")
     )
     
     if (is.null(df2())) {return()}
@@ -187,7 +183,7 @@ server <- function(input, output, session){
   output$plot1 = renderPlot({
     
     if (is.null(df3())) {return()}
-
+    
     # Based on the radio button clicked, uses different y aesthetics and labels
     if (input$normalization == "Raw Counts") {
       aesthetic = aes(x = year, y = n, color = member)
@@ -246,4 +242,3 @@ server <- function(input, output, session){
     }
   })
 }
-
