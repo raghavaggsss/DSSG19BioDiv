@@ -1,6 +1,5 @@
 # Load the necessary libraries
 library(tidyverse)
-library(SSDM)
 library(dismo)
 library(maptools)
 library(rgdal)
@@ -13,6 +12,8 @@ library(leaflet)
 library(knitr)
 library(leaflet.opacity)
 library(rJava)
+library(SSDM)
+
 
 # check out the vignette for SSDM package for more details about the workflow
 browseVignettes("SSDM")
@@ -49,7 +50,7 @@ write.csv(x = obs, file = "./occurrence/rufus_occurrence.csv", row.names = FALSE
 
 max_lat <- 49.75
 min_lat <- 49
-max_lon <- -122.
+max_lon <- -122
 min_lon <- -123.75
 
 geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
@@ -62,7 +63,7 @@ geographic_extent <-  extent(x = c(min_lon, max_lon, min_lat, max_lat))
 worldclim <- getData(name = 'worldclim', path = "./environment/", var = 'bio', res = 0.5, lon = -123.11934, lat = 49.24966)
 climlegend = c("Annual Mean Temperature","Mean Diurnal Range mean of monthly max temp sub min temp","Isothermality","Temperature Seasonality standard deviationx100","Max Temperature of Warmest Month","Min Temperature of Coldest Month","Temperature Annual Range BIO5 sub BIO6","Mean Temperature of Wettest Quarter","Mean Temperature of Driest Quarter","Mean Temperature of Warmest Quarter","Mean Temperature of Coldest Quarter","Annual Precipitation","Precipitation of Wettest Month","Precipitation of Driest Month","Precipitation Seasonality coefficient of variation","Precipitation of Wettest Quarter","Precipitation of Driest Quarter","Precipitation of Warmest Quarter","Precipitation of Coldest Quarter")
 
-# crop the environment layers to the species' extent 
+# crop the climate layers to the Metro Van extent 
 bioclim <- crop(x = worldclim, y = geographic_extent)
 
 # save the cropped raster file 
@@ -99,6 +100,7 @@ a7 = raster("raw altitude maps/092G06_cdsm_final_e.tif", RAT = T)
 a8 = raster("raw altitude maps/092G07_cdsm_final_e.tif", RAT = T)
 alt = merge(a1,a2,a3,a4,a5,a6,a7,a8)
 alt = brick(alt)
+
 
 # save the altitude rasterBrick
 writeRaster(x = alt, filename = "./environment/cdsm_altitude.bil", format = "EHdr", bylayer = FALSE)
@@ -150,7 +152,11 @@ ggplot(pred_importance, aes(x = reorder(predictor, -value), y = value))+
       geom_col()+
       labs(title = "Important Model Predictors",
            x = "Environmental Predictors",
-           y = "Level of Importance")+
+           y = "Percentage Contribution to the Model")+
+      theme(title = element_text(face = "bold", size = 16),
+            axis.title.x = element_text(face = "bold", size = "14"),
+            axis.title.y = element_text(face = "bold", size = "14"),
+            axis.text = element_text(size = 12))+
       coord_flip()
 
 
@@ -194,7 +200,7 @@ ggplot(pred_importance_GAM, aes(x = reorder(predictor, -value), y = value))+
       geom_col()+
       labs(title = "Important Model Predictors",
            x = "Environmental Predictors",
-           y = "Level of Importance")+
+           y = "Percentage Contribution to the Model")+
       coord_flip()
 
 # plot the model 
@@ -257,7 +263,7 @@ ggplot(pred_importance_GBM, aes(x = reorder(predictor, -value), y = value))+
       geom_col()+
       labs(title = "Important Model Predictors",
            x = "Environmental Predictors",
-           y = "Level of Importance")+
+           y = "Percentage Contribution to the Model")+
       coord_flip()
 
 
@@ -296,7 +302,7 @@ ggplot(pred_importance_ESDM, aes(x = reorder(predictor, -value), y = value))+
       geom_col()+
       labs(title = "Important Model Predictors",
            x = "Environmental Predictors",
-           y = "Level of Importance")+
+           y = "Percentage Contribution to the Model")+
       coord_flip()
 
 # plot the model 
@@ -324,7 +330,7 @@ tmap_leaflet(qtm(shp = ESDM@uncertainty,
 ##### Prepare the Occurrence data ######
 
 # get the species that have over 40 observations, algorithms are better if a frequency threshold is set
-taxon_freq = read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
+taxon_freq = read.csv("~/Desktop/DSSG19BioDiv/ShinyMap/Taxonomy_Freq.csv", stringsAsFactors = F)
 over_40 <- filter(taxon_freq, freq>=40)
 
 # filter data for 3 different species
@@ -335,13 +341,16 @@ obs2 <- filter(gbif_map, species=="Bombus impatiens" | species== "Sambucus racem
 # switch order of columns
 obs2 <- obs2[,c("species", "longitude", "latitude")] 
 
+
 # save the stacked occurrence data 
 write.csv(x =obs2,  file = "./occurrence/stacked_species.csv", row.names = FALSE)
+
 
 
 # build the model
 # load in the cropped environment data
 predictors <- load_var(path = "./environment/")
+names(predictors) = c(climlegend[c(1,10:19,2:9)], "Altitude")
 
 # load in the stacked species occurrences
 obs2 <- load_occ(path = "./occurrence/", 
@@ -353,6 +362,9 @@ obs2 <- load_occ(path = "./occurrence/",
                  Spcol = "species",
                  GeoRes = TRUE)
 
+# make the species column into a character vector
+obs2$species <- as.character(obs2$species)
+
 # build the model using GAM
 SSDM_GAM<- stack_modelling(algorithms = "GAM",
                        Occurrences = obs2,
@@ -363,10 +375,22 @@ SSDM_GAM<- stack_modelling(algorithms = "GAM",
                        Spcol = "species",
                        rep = 1,
                        method = "pSSDM",
-                       tmp = TRUE,
-                       cores = 1)
+                       tmp = F,
+                       cores = 3)
 
 plot(SSDM_GAM)
+
+# plot the importance of environmental variables 
+pred_importance_SSDM <- gather(data = SSDM_GAM@variable.importance, 
+                               key = "predictor", 
+                               value = "value")
+
+ggplot(pred_importance_SSDM, aes(x = reorder(predictor, -value), y = value))+
+      geom_col()+
+      labs(title = "Important Model Predictors",
+           x = "Environmental Predictors",
+           y = "Percentage Contribution to the Model")+
+      coord_flip()
 
 # look at the evaluation stats
 knitr::kable(SSDM_GAM@evaluation)
@@ -374,12 +398,238 @@ knitr::kable(SSDM_GAM@evaluation)
 # set the options for mapping window
 tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
 
+# plot the diversity prediction map 
 map_SSDM <- tm_shape(SSDM_GAM@diversity.map)+
-      tm_layout(title = "Probability Distribution for Rufus Hummingbird, Bumblebee and Red Elderberry")+
-      tm_raster(alpha = 0.6, saturation = 1, title = "Probability") 
+      tm_layout(title = "Predicted Species Richness for Rufus Hummingbird, Bumblebee and Red Elderberry")+
+      tm_raster(alpha = 0.6, saturation = 1, title = "Diversity") 
 
 tmap_leaflet(map_SSDM)
 
+# plot the prediction uncertainty map
+map_SSDM_uncertainty <- tm_shape(SSDM_GAM@uncertainty)+
+      tm_layout(title = "Prediction Uncertainty for Rufus Hummingbird, Bumblebee and Red Elderberry")+
+      tm_raster(alpha = 0.6, saturation = 1) 
 
+#title = "Diversity"
+
+tmap_leaflet(map_SSDM_uncertainty)
+
+
+
+
+########   create another Stacked model using species that are more similar ie plant species)
+
+# filter data for 3 different tree species, Vine maple, Western Hemlock, Western Red cedar
+obs3 <- filter(gbif_map, species=="Acer circinatum" | species== "Tsuga heterophylla"| species=="Thuja plicata") %>% 
+      dplyr::select(species, decimalLatitude, decimalLongitude) %>% 
+      rename(latitude = decimalLatitude, longitude = decimalLongitude)
+
+# switch order of columns
+obs3 <- obs3[,c("species", "longitude", "latitude")] 
+
+
+# save the stacked occurrence data 
+write.csv(x =obs3,  file = "./occurrence/stacked_species2.csv", row.names = FALSE)
+
+# load in the stacked species occurrences
+obs3 <- load_occ(path = "./occurrence/", 
+                 Env = predictors,
+                 file = "stacked_species2.csv",
+                 sep = ",",
+                 Xcol = "longitude",
+                 Ycol = "latitude",
+                 Spcol = "species",
+                 GeoRes = TRUE)
+
+# make the species column into a character vector
+obs3$species <- as.character(obs3$species)
+
+# build the model using GAM
+SSDM_GAM2<- stack_modelling(algorithms = "GAM",
+                           Occurrences = obs3,
+                           Env = predictors,
+                           ensemble.thresh = 0,
+                           Xcol = "longitude",
+                           Ycol = "latitude",
+                           Spcol = "species",
+                           rep = 1,
+                           method = "pSSDM",
+                           tmp = F,
+                           cores = 3)
+
+plot(SSDM_GAM2)
+
+# plot the importance of environmental variables 
+pred_importance_SSDM2 <- gather(data = SSDM_GAM2@variable.importance, 
+                               key = "predictor", 
+                               value = "value")
+
+ggplot(pred_importance_SSDM2, aes(x = reorder(predictor, -value), y = value))+
+      geom_col()+
+      labs(title = "Important Model Predictors",
+           x = "Environmental Predictors",
+           y = "Percentage Contribution to the Model")+
+      coord_flip()
+
+# look at the evaluation stats
+knitr::kable(SSDM_GAM2@evaluation)
+
+# set the options for mapping window
+tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
+
+# plot the diversity prediction map 
+map_SSDM2 <- tm_shape(SSDM_GAM2@diversity.map)+
+      tm_layout(title = paste("Prediction Uncertainty for Vine Maple, Western Hemlock & Western Red cedar with", 
+                              as.character(round(SSDM_GAM2@evaluation[1,2], 2)), "probability of success"))+
+      tm_raster(alpha = 0.6, saturation = 1, title = "Diversity") 
+
+tmap_leaflet(map_SSDM2)
+
+# plot the prediction uncertainty map
+map_SSDM_uncertainty2 <- tm_shape(SSDM_GAM2@uncertainty)+
+      tm_layout(title = paste("Prediction Uncertainty for Vine Maple, Western Hemlock & Western Red cedar with", as.character(round(SSDM_GAM2@evaluation[1,2], 2)), "probability of success"))+
+      tm_raster(alpha = 0.6, saturation = 1) 
+
+#title = "Diversity"
+
+tmap_leaflet(map_SSDM_uncertainty2)
+
+
+
+
+
+
+
+######## run the model on hummingbird species, selasphorus rufus, Calypte costae and calypte anna ######
+# filter data for 3 different tree species, selasphorus rufus, Calypte costae and calypte anna 
+obs4 <- filter(gbif_map, species=="Selasphorus rufus" | species== "Calypte anna"| species=="Calypte costae") %>% 
+      dplyr::select(species, decimalLatitude, decimalLongitude) %>% 
+      rename(latitude = decimalLatitude, longitude = decimalLongitude)
+
+# switch order of columns
+obs4 <- obs4[,c("species", "longitude", "latitude")] 
+
+
+# save the stacked occurrence data 
+write.csv(x =obs4,  file = "./occurrence/stacked_species3.csv", row.names = FALSE)
+
+# load in the stacked species occurrences
+obs4 <- load_occ(path = "./occurrence/", 
+                 Env = predictors,
+                 file = "stacked_species3.csv",
+                 sep = ",",
+                 Xcol = "longitude",
+                 Ycol = "latitude",
+                 Spcol = "species",
+                 GeoRes = TRUE)
+
+# make the species column into a character vector
+obs4$species <- as.character(obs4$species)
+
+# build the model using GAM
+SSDM_GAM3<- stack_modelling(algorithms = "GAM",
+                            Occurrences = obs4,
+                            Env = predictors,
+                            ensemble.thresh = 0,
+                            Xcol = "longitude",
+                            Ycol = "latitude",
+                            Spcol = "species",
+                            rep = 1,
+                            method = "pSSDM",
+                            tmp = F,
+                            cores = 3)
+
+plot(SSDM_GAM3)
+
+# plot the importance of environmental variables 
+pred_importance_SSDM3 <- gather(data = SSDM_GAM3@variable.importance, 
+                                key = "predictor", 
+                                value = "value")
+
+ggplot(pred_importance_SSDM3, aes(x = reorder(predictor, -value), y = value))+
+      geom_col()+
+      labs(title = "Important Model Predictors",
+           x = "Environmental Predictors",
+           y = "Percentage Contribution to the Model")+
+      coord_flip()
+
+# look at the evaluation stats
+knitr::kable(SSDM_GAM3@evaluation)
+
+# set the options for mapping window
+tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
+
+# plot the diversity prediction map 
+map_SSDM3 <- tm_shape(SSDM_GAM3@diversity.map)+
+      tm_layout(title = paste("Prediction Uncertainty for Vine Maple, Western Hemlock & Western Red cedar with", 
+                              as.character(round(SSDM_GAM3@evaluation[1,2], 2)), "probability of success"))+
+      tm_raster(alpha = 0.6, saturation = 1, title = "Diversity") 
+
+tmap_leaflet(map_SSDM3)
+
+# plot the prediction uncertainty map
+map_SSDM_uncertainty3 <- tm_shape(SSDM_GAM3@uncertainty)+
+      tm_layout(title = paste("Prediction Uncertainty for Vine Maple, Western Hemlock & Western Red cedar with", 
+                              as.character(round(SSDM_GAM3@evaluation[1,2], 2)), "probability of success"))+
+      tm_raster(alpha = 0.6, saturation = 1) 
+
+#title = "Diversity"
+
+tmap_leaflet(map_SSDM_uncertainty3)
+
+
+
+
+##### Run the hummingbird species again with different algorithms 
+
+SSDM_multi<- stack_modelling(algorithms = c('CTA', 'SVM'),
+                            Occurrences = obs4,
+                            Env = predictors,
+                            ensemble.thresh = 0,
+                            Xcol = "longitude",
+                            Ycol = "latitude",
+                            Spcol = "species",
+                            rep = 1,
+                            method = "pSSDM",
+                            tmp = F,
+                            cores = 3)
+
+plot(SSDM_multi)
+
+# plot the importance of environmental variables 
+pred_importance_SSDM_multi <- gather(data = SSDM_multi@variable.importance, 
+                                key = "predictor", 
+                                value = "value")
+
+ggplot(pred_importance_SSDM_multi, aes(x = reorder(predictor, -value), y = value))+
+      geom_col()+
+      labs(title = "Important Model Predictors",
+           x = "Environmental Predictors",
+           y = "Percentage Contribution to the Model")+
+      coord_flip()
+
+# look at the evaluation stats
+knitr::kable(SSDM_multi@evaluation)
+
+# set the options for mapping window
+tmap_options(basemaps = 'OpenStreetMap', basemaps.alpha = 1)
+
+# plot the diversity prediction map 
+map_SSDM_multi <- tm_shape(SSDM_multi@diversity.map)+
+      tm_layout(title = paste("Prediction Uncertainty for Selasphorus rufus, Calypte anna & Calypte costae with", 
+                              as.character(round(SSDM_multi@evaluation[1,2], 2)), "Probability of Success"))+
+      tm_raster(alpha = 0.6, saturation = 1, title = "Diversity") 
+
+tmap_leaflet(map_SSDM_multi)
+
+# plot the prediction uncertainty map
+map_SSDM_uncertainty4 <- tm_shape(SSDM_multi@uncertainty)+
+      tm_layout(title = paste("Prediction Uncertainty for Vine Maple, Western Hemlock & Western Red cedar with", 
+                              as.character(round(SSDM_GAM3@evaluation[1,2], 2)), "probability of success"))+
+      tm_raster(alpha = 0.6, saturation = 1) 
+
+#title = "Diversity"
+
+tmap_leaflet(map_SSDM_uncertainty4)
 
 
