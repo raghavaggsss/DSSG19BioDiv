@@ -5,6 +5,7 @@ library(rgdal)
 library(jsonlite)
 library(shinyBS)
 library(RPostgres)
+library(rgeos)
 
 # Read in the data 
 dfsp <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
