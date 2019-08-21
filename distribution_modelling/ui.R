@@ -55,11 +55,16 @@ ui <- fluidPage(
                  title = "You may choose between modeling a single species or pick multiple species to find regions that would support the greatest number of your chosen organisms.",
                  placement = "top",
                  trigger = "hover"),
-       
-       bsTooltip(id = "species",
-                 title = "Select only a single species name if modeling a single species or select multiple names if modeling different species together",
-                 placement = "top",
-                 trigger = "hover"),
+    
+    bsTooltip(id = "single", 
+              title = "Select a single species to model.",
+              placement = "top",
+              trigger = "hover"),
+    
+    bsTooltip(id = "multi",
+              title = "Select greater than 1 species to model.",
+              placement = "top",
+              trigger = "hover"),
        
        bsTooltip(id = "algorithm",
                  title = "Selecting different algorithms will slightly change the prediction map and accuracy. Certain models may predict better than others. Some models will perform better with different species.",
