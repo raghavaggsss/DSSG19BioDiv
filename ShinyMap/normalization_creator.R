@@ -1,4 +1,9 @@
-df_partialtax = merge(df_orig, dfsp[,c("species","kingdom","class")], by = "species", all.x = T)
+### This script (meant to be used with the GBIF observation and species-specific data) generates the total number of observations of organisms in every group at three levels: total organisms, kingdoms, and classes.
+
+observations = read.csv("gbif_summary_full.csv", stringsAsFactors = T)
+speciesspecific = read.csv("Taxonomy_Freq.csv", stringsAsFactors = T)
+
+df_partialtax = merge(observations, speciesspecific[,c("species","kingdom","class")], by = "species", all.x = T)
 yearly_total <- group_by(df_partialtax, year) %>% tally() %>% drop_na()
 yearly_king <- group_by(df_partialtax, year, kingdom) %>% tally() %>% drop_na()
 yearly_class <- group_by(df_partialtax, year, class) %>% tally() %>% drop_na()

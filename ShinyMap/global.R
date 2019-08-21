@@ -5,27 +5,28 @@ library(rgdal)
 library(jsonlite)
 library(shinyBS)
 library(RPostgres)
+library(processx)
+library(httr)
+library(dbplyr)
+library(rgeos)
 
 # Read in the data 
 dfsp <- read.csv("Taxonomy_Freq.csv", stringsAsFactors = F)
-colnames(dfsp) <- c("simplified_names", "common", "redList", "kingdom", "phylum", "class", "order","family", "genus", 
-                    "species","freq", "bc_list", "SARA", "regional_dist", "habitat_subtype", "Endemic", "Pollinator_binary", "SARA_binary", 
-                    "sara_designations", "BC_Red_binary", "BC_Blue_binary", "BC_Endemic_binary", "IUCN_binary")
-#df_orig2 <- readRDS("gbif_summary.rds")
+#colnames(dfsp) <- c("simplified_names", "common", "redList", "kingdom", "phylum", "class", "order","family", "genus","species","freq", "bc_list", "SARA", "regional_dist", "habitat_subtype", "Endemic", "Pollinator_binary", "SARA_binary", "sara_designations", "BC_Red_binary", "BC_Blue_binary", "BC_Endemic_binary", "IUCN_binary")
 
 db = dbConnect(
   Postgres(), 
-  user = 'uek12ocn0646te',
-  password = 'pb2767719c75cfc8a683f6d478b4d7117fa8ae2c6f773be4628b84c0213873470',
-  dbname = 'dbsftg98g2ls2b',
-  host = 'ec2-3-225-228-195.compute-1.amazonaws.com',
+  user = 'shiny',
+  password = 'p457e97104c822a7bd26d8e2dbd80cd3b8ae139685e8e8ac57cd7a5dc464456bd',
+  dbname = 'd6n9p4o7gello',
+  host = 'ec2-52-44-120-183.compute-1.amazonaws.com',
   port = 5432,
   sslmode = 'require'
 )
-#df_orig = as.data.frame(dbGetQuery(db, "SELECT * FROM biodivmap_gbifsummaryfull"))
-#df_orig2 = as.data.frame(dbGetQuery(db, "SELECT * FROM biodivmap_gbifsummaryfull LIMIT 10000"))
-#colnames(df_orig)[colnames(df_orig) %in% c("lon","lat")] = c("decimalLongitude","decimalLatitude")
-#df_orig = df_orig[,!(colnames(df_orig) == "point")]
+
+config <- run("heroku", c("config:get", "DATABASE_URL", "-a", "dssgbiodiv"))
+
+#config = run("heroku", c("config:get", "DATABASE_URL", "-a", "postgresql-perpendicular-84436"))
 
 # Record which columns in dfsp should be treated as taxonomies and which should be treated as custom tags
 tax_columns = which(colnames(dfsp) %in% c("kingdom","phylum","order","class","family","genus","species"))
@@ -37,8 +38,7 @@ names(tag_list) = sub("*_binary", "", colnames(dfsp)[tag_columns])
 names(tag_list) = sub("_", " ", names(tag_list))
 
 # create a dataframe containing total num of observations for each year 
-#yearly_obs <- group_by(df_orig, year) %>% tally() %>% drop_na()
-combined_norm = readRDS("norms by year.rds")
+combined_norm = readRDS("norms_by_year.rds")
 
 ##~~ FUNCTIONS ~~##
 # Function for adding 0-value rows to aggregate tally dataframes to fill out the years between the first and last years

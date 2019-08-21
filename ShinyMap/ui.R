@@ -18,7 +18,6 @@ ui <- fluidPage(
       
       selectInput(inputId = "member", 
                   label = "Select an Option to Plot", 
-                  #choices = sort(unique(dfsp$species[which((dfsp$year >= 1980) & (dfsp$year <= 2019))])),
                   choices = sort(unique(dfsp$species)),
                   selected = "Calypte anna",
                   multiple = T),

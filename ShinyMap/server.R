@@ -6,7 +6,7 @@
 ## df1 is a dataframe of non-summarized data for members of interest. It reacts to reac$df_time (fully filtered data) as well as input$member and input$category.
 ## reac is a container for reactive values.
 ## reac$df_time is fully filtered data. It reacts to df_space (data filtered only for space) and input$year.
-## reac$df_space is partially filtered data. It reacts to URL queries (either municipality or coordinate input), and takes in but does not react to df_orig (the original, full dataset)
+## reac$df_space is partially filtered data. It reacts to URL queries (coordinates of polygons) and takes select information from the Heroku database 
 
 server <- function(input, output, session){
   
@@ -36,24 +36,19 @@ server <- function(input, output, session){
     }
   })
   
-  # This is the observer that keeps track of the url and grabs any municipality information being transmitted through it for use down the line - it then filters the data into 
+  # This is the observer that keeps track of the url so that it can derive coordinate information and filter the data to the selected region 
   observe({
     query <- parseQueryString(session$clientData$url_search)
     if (!is.null(query['coords'][[1]])) {
-      # Create a SpatialPolygons object from the user's selection
+      # Create a wellknown-text (WKT) object from the user's selection
       coords = jsonlite::fromJSON(query['coords'][[1]])
       print(coords)
       poly = SpatialPolygons(list(Polygons(list(Polygon(coords)), ID = 1)))
       polyWKT = writeWKT(poly)
+      # Use the WKT to select a subset of the data from Heroku (data cannot be loaded all at once)
       df_temp = as.data.frame(dbGetQuery(db, sprintf("SELECT * FROM biodivmap_gbifsummaryfull WHERE ST_Within(point, 'SRID=4326;%s')", polyWKT)))
       colnames(df_temp)[colnames(df_temp) %in% c("lon","lat")] = c("decimalLongitude","decimalLatitude")
       reac$df_space = df_temp
-      
-      #sel = SpatialPolygons(list(Polygons(list(Polygon(coords)),1)))
-      # Create a SpatialPoints object from df_orig
-      #spatialDF = SpatialPointsDataFrame(coords = df_orig[,c("decimalLongitude","decimalLatitude")], data = df_orig[,!(colnames(df_orig) %in% c("decimalLongitude","decimalLatitude"))])
-      #inside = spatialDF[sel,]
-      #reac$df_space = inside@data
     }
   })
   
@@ -72,10 +67,10 @@ server <- function(input, output, session){
   
   # df1 changes only with "category" and adds columns that gives member values for each category that could be chosen
   df1 = reactive({
+    # Instead of throwing an error message, tells the user to select coordinates in the event that none are provided
     shiny::validate(
       need(nrow(reac$df_time)!=0,
-           "Please select coordinates")
-    )
+           "Please select coordinates"))
     # This first line essentially prevents this from running until the "member" input has been registered, to prevent error messages resulting from putting the cart before the horse - the second line prevents a strange bug  where when "Custom Tags" is selected for category, member does not update from where it was previously right away, resulting in error messages
     if (is.null(input$member)) {return()}
     if (input$category=="Custom Tags" & !any(input$member %in% reac$tags)) {return()}
