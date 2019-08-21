@@ -1,7 +1,5 @@
 # Load the necessary libraries
 library(shiny)
-library(tidyverse)
-library(SSDM)
 library(dismo)
 library(maptools)
 library(rgdal)
@@ -14,8 +12,11 @@ library(leaflet)
 library(knitr)
 library(leaflet.opacity)
 library(shinyBS)
+library(tidyverse)
+library(SSDM)
 #library(rJava)
 #library(RPostgreSQL)
+library(rpostgis)
 
 # db = dbConnect(
 #       Postgres(),
