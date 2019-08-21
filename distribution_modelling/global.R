@@ -16,7 +16,7 @@ library(tidyverse)
 library(SSDM)
 #library(rJava)
 #library(RPostgreSQL)
-library(rpostgis)
+#library(rpostgis)
 
 # db = dbConnect(
 #       Postgres(),
