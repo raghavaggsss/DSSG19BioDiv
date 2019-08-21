@@ -22,3 +22,11 @@ class GbifSummary(models.Model):
     lon = models.DecimalField(max_digits=30, decimal_places=6, default=None)
     lat = models.DecimalField(max_digits=30, decimal_places=6, default=None)
     point = models.PointField(spatial_index=True)
+
+class GbifSummaryFull(models.Model):
+    datasetname = models.TextField(default=None)
+    species = models.TextField(default=None)
+    lon = models.DecimalField(max_digits=30, decimal_places=6, default=None)
+    lat = models.DecimalField(max_digits=30, decimal_places=6, default=None)
+    point = models.PointField(spatial_index=True)
+    year = models.IntegerField(max_length=4, default=None)

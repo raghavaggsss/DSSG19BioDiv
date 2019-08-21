@@ -24,10 +24,6 @@ db = dbConnect(
   sslmode = 'require'
 )
 
-config <- run("heroku", c("config:get", "DATABASE_URL", "-a", "dssgbiodiv"))
-
-#config = run("heroku", c("config:get", "DATABASE_URL", "-a", "postgresql-perpendicular-84436"))
-
 # Record which columns in dfsp should be treated as taxonomies and which should be treated as custom tags
 tax_columns = which(colnames(dfsp) %in% c("kingdom","phylum","order","class","family","genus","species"))
 tax_list = colnames(dfsp)[tax_columns]

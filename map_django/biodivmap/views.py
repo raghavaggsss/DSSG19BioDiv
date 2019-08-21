@@ -4,7 +4,7 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 # from .views_helpers import geojson_creater
-from .models import GbifSummary
+from .models import GbifSummary, GbifSummaryFull
 
 import json
 import pandas as pd
@@ -226,10 +226,14 @@ def summary_polygon(request):
             coords = polygon_json["geometry"]["coordinates"][0]
             # poly = Polygon(coords)
 
-            qset = GbifSummary.objects.filter(point__within=Polyrag(coords))
-            df = pd.DataFrame(list(qset.values()))
-            df_obs_region = df.rename(columns={'t_kingdom': 'kingdom', 't_phylum': 'phylum', 't_class': 'class',
-                                    't_order': 'order', 't_family': 'family', 't_genus': 'genus'})
+            qset = GbifSummaryFull.objects.filter(point__within=Polyrag(coords))
+            df_obs_region = pd.DataFrame(list(qset.values()))
+            # df_obs_region = df.rename(columns={'t_kingdom': 'kingdom', 't_phylum': 'phylum', 't_class': 'class',
+            #                         't_order': 'order', 't_family': 'family', 't_genus': 'genus'})
+
+            if df_obs_region.shape[0] == 0:
+                df_obs_region = pd.DataFrame(columns=['datasetname', 'lat', 'lon', 'species',
+                                                      'year'])
 
             # spatial_index_obs = request.session.get('spatial_index_obs')
             # if not spatial_index_obs:
@@ -237,6 +241,7 @@ def summary_polygon(request):
             # possible_matches_index = list(spatial_index_obs.intersection(poly.bounds))
             # possible_matches = geo_df_obs.iloc[possible_matches_index]
             # df_obs_region = possible_matches[possible_matches.intersects(poly)]
+
 
             df_taxon_region = df_taxon[df_taxon["species"].isin(df_obs_region['species'])]
             df_taxon_region = df_taxon_region.set_index("species")

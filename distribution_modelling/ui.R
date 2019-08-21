@@ -24,30 +24,46 @@ ui <- fluidPage(
                    choices = c("Single Species", "Multiple Species"),
                    selected = "Single Species",
                    multiple = FALSE),
-       selectInput(inputId = "species",
-                   label = "Choose Species to Model",
-                   choices = sort(unique(df_orig$species)),
-                   selected = "Selasphorus rufus",
-                   multiple = FALSE),
+       
        selectInput(inputId = "algorithm",
                    label = "Choose an Algorithm",
                    choices = c("GLM", "GAM", "MARS", "GBM", "CTA", "RF", "SVM"),
                    selected = "GLM",
                    multiple = FALSE),
        
+       conditionalPanel(condition = "input.model == 'Single Species'",
+                        selectInput(
+                              inputId = "single",
+                              label = "Choose a Species to Model",
+                              choices = sort(unique(df_orig$species)),
+                              selected = "Selasphorus rufus",
+                              multiple = FALSE)),
+       
+    conditionalPanel(condition = "input.model == 'Multiple Species'",
+                     selectInput(
+                           inputId = "multi", 
+                           label = "Choose Multiple Species to Model",
+                           choices = sort(unique(df_orig$species)),
+                           selected = NULL,
+                           multiple = TRUE)),
+    
+    actionButton(inputId = "submit",
+                 label = "Plot Model"),
+      
+       
        bsTooltip(id = "model",
                  title = "You may choose between modeling a single species or pick multiple species to find regions that would support the greatest number of your chosen organisms.",
-                 placement = "bottom",
+                 placement = "top",
                  trigger = "hover"),
        
        bsTooltip(id = "species",
                  title = "Select only a single species name if modeling a single species or select multiple names if modeling different species together",
-                 placement = "bottom",
+                 placement = "top",
                  trigger = "hover"),
        
        bsTooltip(id = "algorithm",
                  title = "Selecting different algorithms will slightly change the prediction map and accuracy. Certain models may predict better than others. Some models will perform better with different species.",
-                 placement = "bottom",
+                 placement = "top",
                  trigger = "hover")
     ),
 
