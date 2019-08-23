@@ -1,9 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="152116f2-05c9-4636-baf3-b7d5c59ba23d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" afterDir="false" />
+    <list default="true" id="b56d32e5-0fc2-46dc-82ba-9013332c91ea" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw" beforeDir="false" afterPath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.codeclimate.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.eslintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/BREAKINGCHANGES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/ISSUE_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/Jakefile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/Leaflet.draw.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/MIT-LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/TODO.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/build.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/deps.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/docs-index.leafdoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/docs-misc.leafdoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/docs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/hintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/comments.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/constructor.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/crs.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/destructor.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/event.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/example.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/factory.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/function.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/html.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/inherited.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/method.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/namespace.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/option.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/pane.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/projection.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/property.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/section.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leafdoc-templates/supersection.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/leaflet.draw-include.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/build/publish.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/layers-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/layers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/marker-icon-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/marker-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/marker-shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/spritesheet-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/spritesheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/dist/images/spritesheet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/css/normalize.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/basic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/edithandlers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/full.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/Leaflet.draw.drag-src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/layers-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/layers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/marker-icon-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/marker-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/marker-icon@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/images/marker-shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/leaflet-src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/leaflet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/leaflet.geometryutil.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/leaflet.snap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/spectrum.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/libs/spectrum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples-0.7.x/snapping.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/basic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/edithandlers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/full.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/Leaflet.draw.drag-src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/layers-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/layers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/marker-icon-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/marker-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/images/marker-shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet-src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet-src.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet.geometryutil.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/leaflet.snap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/spectrum.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/libs/spectrum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/popup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/examples/snapping.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/highlight/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/highlight/highlight.pack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/highlight/styles/github-gist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/forum-round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/github-round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/sprite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/twitter-round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/images/twitter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/js/docs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-0.4.9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/docs/leaflet-draw-latest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/after.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/before.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/expect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/happen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/karma.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/sinon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/spec.hintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/DrawControlSpec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/EditSpec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/GeometryUtilSpec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/LatLngUtilSpec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biodivmap/static/biodivmap/Leaflet_draw/spec/suites/SpecHelper.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,12 +138,60 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-139">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/doc_ready.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="41">
+              <caret line="65" column="52" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_init.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="960">
+              <caret line="64" column="28" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="69" column="60" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+            <state relative-caret-position="3885">
+              <caret line="259" column="26" selection-start-line="259" selection-start-column="26" selection-end-line="259" selection-end-column="26" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -29,19 +200,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/biodivmap/models.py">
+        <entry file="file://$PROJECT_DIR$/biodivmap/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dssgweb/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+            <state relative-caret-position="165">
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,64 +217,98 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>s</find>
-      <find>source</find>
-      <find>nodeEnter</find>
-      <find>desc</find>
-      <find>descendat</find>
-      <find>root</find>
-      <find>children</find>
-      <find>consol</find>
-      <find>selectall</find>
-      <find>i</find>
-      <find>data</find>
-      <find>node</find>
-      <find>update</find>
-      <find>layers</find>
-      <find>no results</find>
-      <find>consolde.</find>
-      <find>d_desc</find>
-      <find>curr_desc</find>
-      <find>taxons_selec</find>
-      <find>taxons_selected</find>
-      <find>plot</find>
-      <find>sta</find>
-      <find>gif</find>
-      <find>layer</find>
-      <find>addto</find>
-      <find>plot sp</find>
-      <find>showRe</find>
-      <find>showR</find>
-      <find>showget</find>
-      <find>Tracheophyta</find>
+      <find>tree</find>
+      <find>opacity</find>
+      <find>color</find>
+      <find>searc</find>
+      <find>questio</find>
+      <find>draw</find>
+      <find>top</find>
+      <find>overlays</find>
+      <find>grayScaleBase</find>
+      <find>graySca</find>
+      <find>layers_array</find>
+      <find>curr_sha</find>
+      <find>map_p</find>
+      <find>map</find>
+      <find>selectar</find>
+      <find>styl</find>
+      <find>sunburst</find>
+      <find>leaflet</find>
+      <find>leaflet.marke</find>
+      <find>leaflet.js</find>
+      <find>../..</find>
+      <find>municipalities.</find>
+      <find>rect</find>
+      <find>species</find>
+      <find>dynatable-head</find>
+      <find>console.lo</find>
+      <find>re</find>
+      <find>request.b</find>
+      <find>requ</find>
+      <find>summarisePolygon</find>
     </findStrings>
+    <replaceStrings>
+      <replace>size</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="shiny_integrated" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css" />
-        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js" />
         <option value="$PROJECT_DIR$/biodivmap/geojson_creater" />
         <option value="$PROJECT_DIR$/biodivmap/views_helpers/geojson_creater" />
-        <option value="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/L.TileLayer.BetterWMS.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/sunburst.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/Municipalities.geojson" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/hierarchical-bar-chart.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/zoomable-sunburst.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/simple-sidebar.css" />
+        <option value="$PROJECT_DIR$/../../heroku_app/dssgweb/settings.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/dssgweb/settings.py" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/species_legend.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/hierarchy_module_call.js" />
+        <option value="$PROJECT_DIR$/biodivmap/templates/biodivmap/home.html" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/initialise.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/init_map.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/init_draw_tool.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/map_interaction.js" />
         <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/doc_ready.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_init.js" />
         <option value="$PROJECT_DIR$/biodivmap/views.py" />
+        <option value="$PROJECT_DIR$/biodivmap/urls.py" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.css" />
+        <option value="$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html" />
+        <option value="$PROJECT_DIR$/biodivmap/static/biodivmap/js/doc_ready.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="395" />
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="331" />
+    <option name="y" value="58" />
     <option name="width" value="1211" />
     <option name="height" value="849" />
   </component>
@@ -119,6 +318,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,31 +347,50 @@
             <path>
               <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
               <item name="map_django" type="462c0819:PsiDirectoryNode" />
-              <item name="dssgweb" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="Leaflet_draw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="map_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="map_django" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="biodivmap" type="462c0819:PsiDirectoryNode" />
+              <item name="Leaflet_draw" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/biodivmap/static/biodivmap" />
+    <property name="jsx.switch.disabled" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/biodivmap/views_helpers" />
+      <recent name="$PROJECT_DIR$/biodivmap/static/biodivmap/map_data" />
       <recent name="$PROJECT_DIR$/biodivmap/static/biodivmap" />
+      <recent name="$PROJECT_DIR$/biodivmap/static/biodivmap/js" />
+      <recent name="$PROJECT_DIR$/biodivmap/static/biodivmap/images" />
+      <recent name="$PROJECT_DIR$/biodivmap/static/biodivmap/css" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/biodivmap/static/biodivmap" />
+      <recent name="$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart" />
+      <recent name="$PROJECT_DIR$/biodivmap" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -193,6 +412,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="dssgweb.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -216,38 +436,41 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="152116f2-05c9-4636-baf3-b7d5c59ba23d" name="Default Changelist" comment="" />
+      <changelist id="b56d32e5-0fc2-46dc-82ba-9013332c91ea" name="Default Changelist" comment="" />
       <created>1561655537898</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561655537898</updated>
       <workItem from="1561655541235" duration="22064000" />
+      <workItem from="1562876171706" duration="14945000" />
+      <workItem from="1563999106576" duration="6314000" />
+      <workItem from="1564179304595" duration="2967000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29318000" />
+    <option name="totallyTimeSpent" value="110214000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="395" y="23" width="1211" height="849" extended-state="1" />
+    <frame x="331" y="58" width="1211" height="849" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1924722" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20615911" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.497006" weight="0.32893" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49957228" weight="0.32893" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49957228" weight="0.21664464" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Python Console" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" visible="true" weight="0.1994716" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.502994" side_tool="true" visible="true" weight="0.32893" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -258,85 +481,300 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#84#93#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/biodivmap/views_helpers/geojson_creater" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/L.TileLayer.BetterWMS.js" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/treedata.json" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/Municipalities_unsplit.geojson" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/municipalities_new_new.json" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/gbif_map.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="240">
+          <caret line="16" column="86" selection-start-line="16" selection-start-column="86" selection-end-line="16" selection-end-column="86" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/Taxonomy Freq.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/gbif_summary.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="-713">
+          <caret column="59" selection-start-column="47" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/taxontree.js">
+    <entry file="file://$PROJECT_DIR$/biodivmap/temp.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/index.html" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/inspector.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/curr.geojson" />
-    <entry file="file://$PROJECT_DIR$/biodivmap/views_helpers/geojson_creater" />
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet_map.js">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/common.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
-          <caret line="135" column="41" selection-start-line="135" selection-start-column="41" selection-end-line="135" selection-end-column="41" />
+        <state relative-caret-position="196">
+          <caret line="189" column="18" selection-start-line="189" selection-start-column="18" selection-end-line="189" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/zoomable-sunburst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="115" column="37" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_sunburst.json" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/treedata_1.json" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/treedata_curr.json" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/SEI.geojson" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/map_data/Municipalities.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4635">
+          <caret column="309271" selection-start-column="309271" selection-end-column="309271" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-species.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="120" column="46" selection-start-line="120" selection-start-column="38" selection-end-line="120" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bar_chart/bar-chart-occurrence.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/migrations/0011_auto_20190725_1752.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/bootstrap.bundle.min.js" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/css/simple-sidebar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/css/bootstrap-toggle.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/css/bootstrap-toggle.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/curr.geojson" />
+    <entry file="file://$PROJECT_DIR$/../../heroku_app/dssgweb/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="65" lean-forward="true" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dssgweb/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/hierarchy_module_call.js" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/map_data/sei/AP.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret column="1589" selection-start-column="1579" selection-end-column="1589" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/images/question.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/init_draw_tool.js" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/style.css" />
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/leaflet/leaflet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="4" />
           <folding>
-            <element signature="e#0#6#0" expanded="true" />
-            <element signature="e#88#94#1" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/L.TileLayer.BetterWMS.js" />
-    <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/sunburst_depc.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="277" column="51" lean-forward="true" selection-start-line="277" selection-start-column="51" selection-end-line="277" selection-end-column="51" />
+        <state relative-caret-position="255">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/css/map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="107" column="13" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/templates/taxontree/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dssgweb/settings.py">
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_points.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/taxontree/species_legend.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+        <state relative-caret-position="270">
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/curr.geojson">
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/taxontree/taxontree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="225" lean-forward="true" selection-start-line="14" selection-start-column="225" selection-end-line="14" selection-end-column="225" />
+        <state relative-caret-position="567">
+          <caret line="332" lean-forward="true" selection-start-line="332" selection-end-line="332" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/treedata.json">
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret column="897" selection-start-column="897" selection-end-column="897" />
+        <state relative-caret-position="176">
+          <caret line="1729" column="34" lean-forward="true" selection-start-line="1729" selection-start-column="34" selection-end-line="1729" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#39#47#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biodivmap/models.py">
+    <entry file="file://$PROJECT_DIR$/biodivmap/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="165">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_interaction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="69" column="60" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/biodivmap/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+        <state relative-caret-position="3885">
+          <caret line="259" column="26" selection-start-line="259" selection-start-column="26" selection-end-line="259" selection-end-column="26" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/jquery-dynatable/jquery.dynatable.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/doc_ready.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="65" column="52" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/static/biodivmap/js/map/map_init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="64" column="28" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biodivmap/templates/biodivmap/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-139">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

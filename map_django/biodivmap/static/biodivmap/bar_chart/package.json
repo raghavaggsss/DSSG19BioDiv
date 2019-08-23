@@ -1,0 +1,14 @@
+{
+  "name": "@raghavaggsss/hierarchical-bar-chart",
+  "main": "bar-chart-occurrence.js",
+  "version": "320.0.0",
+  "homepage": "https://observablehq.com/@raghavaggsss/hierarchical-bar-chart",
+  "author": {
+    "name": "Raghav Aggarwal",
+    "url": "https://observablehq.com/@raghavaggsss"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

@@ -19,10 +19,12 @@ The preview shows you a rendered HTML copy of the contents of the editor. Conseq
 
 ```{r}
 library(rgdal)
-sei <- readOGR(dsn = "/Users/raghav/DSSG19BioDiv/MVSEI2014",
-                  layer = "MVSEI2014")
+sei <- readOGR(dsn = "/Users/raghav/Desktop/DSSG19BioDiv/boundary",
+                  layer = "boundary")
 
 sei <- spTransform(sei, CRS("+proj=longlat +datum=WGS84"))
+```
+```{r}
 ```
 
 ```{r}
@@ -31,6 +33,9 @@ nrow(sei)-sum(is.na(sei$Comp2Lgnd))
 unique(sei$SECl_1)
 ```
 
+```{r}
+sei
+```
 
 
 ```{r}
@@ -49,7 +54,7 @@ library(geojsonio)
 ```
 
 ```{r}
-sei_json <- topojson_json(sei_select)
+sei_json <- geojson_json(sei)
 ```
 
 ```{r}
@@ -59,7 +64,7 @@ sei_json_simplified <- ms_simplify(sei_json)
 
 
 ```{r}
-geojson_write(sei_json_simplified, file = "/Users/raghav/DSSG19BioDiv/leaflet/SEI.topojson")
+geojson_write(sei_json_simplified, file = "/Users/raghav/Desktop/DSSG19BioDiv/map_django/biodivmap/static/biodivmap/Municipalities.geojson")
 ```
 
 

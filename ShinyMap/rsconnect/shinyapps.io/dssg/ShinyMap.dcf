@@ -1,0 +1,13 @@
+name: ShinyMap
+title: ShinyMap
+username:
+account: dssg
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1100856
+bundleId: 2339065
+url: https://dssg.shinyapps.io/ShinyMap/
+when: 1566339096.08218
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: add_custom_tags.R|app.R|Dataset_freq.png|final_report_plots.R|fnmsa.nb.html|fnmsa.Rmd|Gbif_records_over_time.png|gbif_summary.rds|gbif_summary_creation.R|gbif_summary_full.csv|LM_scratch_work.R|mun_years.rds|normalization_creator.R|Norms_By_Year.csv|old_server.R|predict_SEI.R|process.R|SEI_over.R|sei_pred.Rmd|SEI_prediction.R|sei_species.R|SEI_split_geojson.nb.html|SEI_split_geojson.Rmd|test.json.txt|Top_10_data.png|MVSEI2014

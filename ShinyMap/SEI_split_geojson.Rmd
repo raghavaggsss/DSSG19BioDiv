@@ -1,0 +1,46 @@
+```{r}
+library(rgdal)
+sei <- readOGR(dsn = "/Users/raghav/Desktop/DSSG19BioDiv/ShinyMap/MVSEI2014/",
+                  layer = "MVSEI2014")
+sei <- spTransform(sei, CRS("+proj=longlat +datum=WGS84"))
+```
+
+
+```{r}
+sei_select <- sei %>% select(SEI_PolyNb, Comp1Lgnd_, Comp2Lgnd_, Comp3Lgnd_, QualityNo_, Location, SE_ME_1,SECl_1)
+```
+```{r}
+sei_select
+```
+
+```{r}
+sei_select = sei_select[which(sei_select$SE_ME_1 == "SE"),]
+```
+
+
+```{r}
+sei_filter = sei_select[which(sei_select$SECl_1 == "AP"),]
+sei_json <- geojson_json(sei_filter)
+sei_json_simplified <- ms_simplify(sei_json)
+geojson_write(sei_json_simplified, file = "/Users/raghav/Desktop/DSSG19BioDiv/map_django/biodivmap/static/biodivmap/sei/AP.geojson")
+```
+
+```{r}
+library(geojsonio)
+library(rmapshaper)
+```
+
+```{r}
+
+```
+
+```{r}
+
+
+```
+
+
+```{r}
+
+```
+

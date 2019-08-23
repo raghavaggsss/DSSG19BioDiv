@@ -1,0 +1,13 @@
+name: distribution
+title: distribution
+username:
+account: dssgbiodiv
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1104139
+bundleId: 2343031
+url: https://dssgbiodiv.shinyapps.io/distribution/
+when: 1566427431.06874
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|092G02_cdsm_final_w.tif|CAN_alt.bil|CAN_alt.hdr|CAN_alt.stx|environment_stack.bil|environment_stack.hdr|environment_stack.stx|gbif_map.csv|sdm.R|occurrence/rufus_occurrence.csv|occurrence/stacked_species.csv|occurrence/stacked_species2.csv|occurrence/stacked_species3.csv|environment|raw altitude maps
