@@ -12,9 +12,9 @@ The Data Science for Social Good program, administered through the [University o
 
 [Biodiversity Mapping Tool](https://dssgbiodiv.herokuapp.com/biodivmap/)
 
-[KDD_Youtube_Link](https://www.youtube.com/watch?v=fJWIvBmJh5o)
+[KDD Youtube Link](https://www.youtube.com/watch?v=fJWIvBmJh5o)
 
-[Medium_Article_by_UBC_Science](https://medium.com/ubcscience/visualizing-vancouvers-biodiversity-127ca0bb9a45)
+[Medium Article by UBC Science](https://medium.com/ubcscience/visualizing-vancouvers-biodiversity-127ca0bb9a45)
 
 [See full report here](https://drive.google.com/file/d/1Ex6AJQtmHsKA7DTmKsaRMUmNkqyL58CR/view?usp=sharing)
 
